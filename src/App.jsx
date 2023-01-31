@@ -22,7 +22,6 @@ export default function Profile() {
     const [profiledata,setData]=React.useState({})
 React.useEffect(()=>
 {
-
     if(localStorage.getItem("token")){
         const getToken = localStorage.getItem("token");
         
