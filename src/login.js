@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 
 
 function Login(){
-axios.defaults.baseURL=process.env.REACT_APP_API_URL
+
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
 const [error,setError]= useState("")
@@ -34,7 +34,7 @@ const navigate=useNavigate()
 
 // )
 const Poster   =()=>{
-axios.post("/login",{email,password}).then
+axios.post("https://amaccompany.onrender.com//login",{email,password}).then
 (e=>e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.setItem("token",e.data) & navigate("/profile") 
 )
 
