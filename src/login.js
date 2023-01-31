@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 
 
 function Login(){
-
+axios.defaults.baseURL=process.env.REACT_APP_API_URL
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
 const [error,setError]= useState("")
