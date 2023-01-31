@@ -6,7 +6,7 @@ import App from './App';
 
 import reportWebVitals from './reportWebVitals';
 import Register from './register';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import NavigationBar from './navbar';
  import AlignItemsList from "./components/requestpreview"
 import Login from './login';
@@ -18,6 +18,7 @@ import Chat from './components/engineerReq';
 // Profile
 import ColorBadge from './iconNotifications';
 import DataPreview from './datapreview';
+
 import Previewtable from './preview';
 import ImportedData from './tables/firsttransaction';
 import Profile from './App';
@@ -25,7 +26,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   //  <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
   <ResponsiveAppBar/>
     <Routes>
     {/* <Route element={<DataPreview/>}  path="/"/> */}
@@ -40,7 +41,7 @@ root.render(
     
     <Route element={<Login/>}  path="login"/>
     </Routes>
-    </BrowserRouter>
+    </HashRouter>
   // </React.StrictMode>
 );
 
