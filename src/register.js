@@ -53,7 +53,7 @@ axios.post("/file",fd).then(e=>
   
   )
 
-axios.post("/register",{username:username,
+axios.post("https://amaccompany.onrender.com/register",{username:username,
   firstName:firstName,
     secondName:secondName,
     position:position,
