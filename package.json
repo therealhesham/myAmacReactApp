@@ -42,7 +42,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://amaccompany.onrender.com",
+  "proxy": "https://amaccompany.onrender.com/",
   "browserslist": {
     "production": [
       ">0.2%",
