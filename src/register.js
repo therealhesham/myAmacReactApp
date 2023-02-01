@@ -40,7 +40,7 @@ if(jwtDecoder.username) setCheck(jwtDecoder);
 
 })
 
-axios.defaults.withCredentials = true
+
 const Poster=()=>{
   
 const fd = new FormData()
