@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField'
-import  Joi  from "joi-browser";
+import  Joi, { options }  from "joi-browser";
 import Box from '@mui/material/Box';
 import { Alert, Button, Input, Stack, useMediaQuery } from "@mui/material";
 import { Form, useNavigate } from "react-router-dom";
@@ -48,7 +48,7 @@ const fd = new FormData()
   fd.append("image",selectedFile)
 // form.append("image",selectedFile)
 // console.log(fd)
-axios.post("https://amaccompany.onrender.com/file",fd).then(e=>
+axios.post("https://amaccompany.onrender.com/file",fd,{withCredentials:true}).then(e=>
   setUrl(e.data)
   
   )
@@ -63,7 +63,7 @@ axios.post("https://amaccompany.onrender.com/register",{username:username,
     repeatpassword:reoeatpassword,
     nationalID:ID,
 url:url
-    }).then(e=>e.data.error ? setError(e.data.error[0].message) & setSpecificError(e.data.error[0].path[0]): localStorage.setItem("token",e.data) 
+    },{withCredentials:true}).then(e=>e.data.error ? setError(e.data.error[0].message) & setSpecificError(e.data.error[0].path[0]): localStorage.setItem("token",e.data) 
   
     // & navigate("/")     
     )
