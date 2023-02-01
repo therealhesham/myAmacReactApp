@@ -40,9 +40,9 @@ if(jwtDecoder.username) setCheck(jwtDecoder);
 
 })
 
-
+axios.defaults.withCredentials = true
 const Poster=()=>{
-  axios.defaults.withCredentials = true
+  
 const fd = new FormData()
   // const form = new FormData()
   // console.log(document.getElementById("input-file"))
