@@ -48,7 +48,7 @@ const fd = new FormData()
   fd.append("image",selectedFile)
 // form.append("image",selectedFile)
 // console.log(fd)
-axios.post("https://amaccompany.onrender.com//file",fd).then(e=>
+axios.post("https://amaccompany.onrender.com/file",fd).then(e=>
   setUrl(e.data)
   
   )
