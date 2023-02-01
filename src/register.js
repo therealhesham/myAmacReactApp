@@ -26,7 +26,7 @@ const matchDesktop = useMediaQuery("(min-width: 451px)")
 const [url,setUrl]=useState("");
 const [checkJWt,setCheck]=useState()
 
-axios.defaults.withCredentials = false
+
 useEffect(()=>{
   
 const localGetter = localStorage.getItem("token")
