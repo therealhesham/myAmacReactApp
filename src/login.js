@@ -34,7 +34,7 @@ const navigate=useNavigate()
 
 // )
 const Poster   =()=>{
-axios.post("amaccompany.onrender.com/login",{email,password}).then
+axios.post("http://amaccompany.onrender.com/login",{email,password}).then
 (e=>e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.setItem("token",e.data) & navigate("/profile") 
 )
 
