@@ -37,7 +37,7 @@ const navigate = useNavigate()
 const ref = React.useRef(0)
 useEffect( ()=>{
   if(ref.current == 0){
-   axios.get("/falserequests").then((e)=> e.data == "not authenticated"  ?
+   axios.get("/").then((e)=> e.data == "not authenticated"  ?
     localStorage.clear() : 
     setData(e.data) )
 
