@@ -26,7 +26,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   //  <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
   <ResponsiveAppBar/>
     <Routes>
     {/* <Route element={<DataPreview/>}  path="/"/> */}
@@ -41,7 +41,7 @@ root.render(
     
     <Route element={<Login/>}  path="login"/>
     </Routes>
-    </HashRouter>
+    </BrowserRouter>
   // </React.StrictMode>
 );
 

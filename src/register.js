@@ -50,12 +50,12 @@ const fd = new FormData()
   fd.append("image",selectedFile)
 // form.append("image",selectedFile)
 // console.log(fd)
-axios.post("/file",fd).then(e=>
+axios.post("https://amaccompany.onrender.com/file",fd).then(e=>
   setUrl(e.data)
   
   )
 
-axios.post("/register",{username:username,
+axios.post("https://amaccompany.onrender.com/register",{username:username,
   firstName:firstName,
     secondName:secondName,
     position:position,
