@@ -26,7 +26,7 @@ const matchDesktop = useMediaQuery("(min-width: 451px)")
 const [url,setUrl]=useState("");
 const [checkJWt,setCheck]=useState()
 useEffect(()=>{
-
+  axios.defaults.withCredentials = true
 const localGetter = localStorage.getItem("token")
 if(!localGetter) return console.log("not localGetter");
 const jwtDecoder = jwtDecode(localGetter) 
