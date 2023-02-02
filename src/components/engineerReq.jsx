@@ -22,7 +22,7 @@ const matches = useMediaQuery('(max-width:600px)')
 useEffect(()=>{
    
 {localStorage.getItem("token") ?
-    axios.get("/userlists").then((e)=> {setUsers(e.data)
+    axios.get("/userlists").then((e)=> {console.log(e.data)
     const tokens = localStorage.getItem("token")
     const  decoder = jwtDecode(tokens)
     setToken(decoder)
