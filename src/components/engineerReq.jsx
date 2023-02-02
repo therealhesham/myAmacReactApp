@@ -25,8 +25,9 @@ useEffect(()=>{
     axios.get("https://amaccompany.onrender.com/userlists", {
       headers: {
         'Content-Type': 'application/json'
-      },
-      withCredentials: false
+      }
+      // ,
+      // withCredentials: false
     }).then((e)=> {console.log(e.data)
     const tokens = localStorage.getItem("token")
     const  decoder = jwtDecode(tokens)
