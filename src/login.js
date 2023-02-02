@@ -34,7 +34,12 @@ const navigate=useNavigate()
 
 // )
 const Poster   =()=>{
- axios.post("https://amaccompany.onrender.com/login",{email,password},{withCredentials:true}).then
+ axios.post("https://amaccompany.onrender.com/login",{email,password}, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    withCredentials: true
+  }).then
 (e=> e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.setItem("token",e.data) 
 )
 
