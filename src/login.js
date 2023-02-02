@@ -34,8 +34,8 @@ const navigate=useNavigate()
 
 // )
 const Poster   =()=>{
- axios.post("https://amaccompany.onrender.com/login",{email,password},{withCredentials:false}).then
-(e=>e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.setItem("token",e.data) & navigate("/profile") 
+ axios.post("https://amaccompany.onrender.com/login",{email,password}).then
+(e=> e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.setItem("token",e.data) & navigate("/profile") 
 )
 
 }
