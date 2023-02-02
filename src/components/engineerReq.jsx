@@ -22,7 +22,12 @@ const matches = useMediaQuery('(max-width:600px)')
 useEffect(()=>{
    
 {localStorage.getItem("token") ?
-    axios.get("https://amaccompany.onrender.com/userlists").then((e)=> {console.log(e.data)
+    axios.get("https://amaccompany.onrender.com/userlists", {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      withCredentials: false
+    }).then((e)=> {console.log(e.data)
     const tokens = localStorage.getItem("token")
     const  decoder = jwtDecode(tokens)
     setToken(decoder)
