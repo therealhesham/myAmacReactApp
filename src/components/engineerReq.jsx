@@ -144,7 +144,7 @@ return(<div>
     <Button onClick={mmessage} disabled={message?false:true}>submit</Button>
     
     </Stack>}
-    </form>    :localStorage.clear()}
+    </form>    :localStorage.removeItem("token")}
 
 </div>)
 
