@@ -27,7 +27,7 @@ useEffect(()=>{
         'Content-Type': 'application/json'
       },
       withCredentials: false
-    }).then((e)=> {console.log(e.data)
+    }).then((e)=> {setUsers(e.data)
     const tokens = localStorage.getItem("token")
     const  decoder = jwtDecode(tokens)
     setToken(decoder)
