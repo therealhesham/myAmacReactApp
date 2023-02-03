@@ -34,13 +34,19 @@ const navigate=useNavigate()
 
 // )
 const Poster   =()=>{
- axios.post("https://amaccompany.onrender.com/login",{email,password}, {
-    headers: {
+  axios({
+    method: 'post',
+    url: 'https://amaccompany.onrender.com/login',
+    data: {email,password}
+  })
+//  axios.post("https://amaccompany.onrender.com/login",{email,password}, {
+//     headers: {
       
-      'Content-Type': 'application/json'
-    },
+//       'Content-Type': 'application/json'
+//     },
 
-  }).then
+//   })
+  .then
 (e=>  e.data.data == "dataNotFound" ? setError("user not reistered"):console.log(e) 
 )
 
