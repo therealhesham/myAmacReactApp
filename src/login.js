@@ -46,8 +46,6 @@ const Poster   =()=>{
 
 }
 // s
-// s
-// s
 return(
 <div>
 <form>
