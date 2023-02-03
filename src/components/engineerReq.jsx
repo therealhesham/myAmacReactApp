@@ -23,9 +23,9 @@ useEffect(()=>{
    
 {localStorage.getItem("token") ?
     axios.get("https://amaccompany.onrender.com/userlists", {
-      // headers: {
-      //   'Content-Type': 'application/json'
-      // },
+      headers: {
+        'Content-Type': 'application/json'
+      },
       withCredentials: false
     }).then((e)=> {console.log(e.data)
     const tokens = localStorage.getItem("token")
