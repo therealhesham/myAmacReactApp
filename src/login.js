@@ -40,7 +40,8 @@ const Poster   =()=>{
     },
     withCredentials: false
   }).then
-(e=> console.log(e.data == "not authenticated") 
+(e=> setError(e.data)
+// ? setError("user not reistered"):localStorage.setItem("token",e.data) 
 )
 
 }
@@ -73,7 +74,7 @@ return(
 
       onChange={e=>setPassword(e.target.value) }
           />
-{error ? "user not found" :""}
+{error  == "not authenticated"? "user not found" : navigate("/")}
 
 <Button   onClick={Poster}variant="contained" size="medium">Submit</Button>
 
