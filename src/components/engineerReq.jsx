@@ -58,7 +58,7 @@ const mmessage = ()=>{
  
 return(<div>
 
-  {users ? <form  >
+  {users < 1? <form  >
     
     {matches ?<Stack gap={3} maxwidth="90%" style={{padding:"12px"}} >
     
