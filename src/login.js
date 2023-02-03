@@ -31,7 +31,7 @@ const navigate=useNavigate()
    
 // }
 
-// 
+
 // )
 const Poster   =()=>{
  axios.post("https://amaccompany.onrender.com/login",{email,password}, {
@@ -40,7 +40,7 @@ const Poster   =()=>{
     },
     withCredentials: false
   }).then
-(e=> {e.data == "not authenticated" ? setError("user not reistered"):console.log(e) }
+(e=> e.data == "not authenticated" ? setError("user not reistered"):localStorage.setItem("token",e.data) 
 )
 
 }
