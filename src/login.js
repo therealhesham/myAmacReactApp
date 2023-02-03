@@ -40,7 +40,8 @@ const Poster   =()=>{
     },
     withCredentials: false
   }).then
-(e=> e.data.data == "dataNotFound" ? setError("user not reistered"):console.log("token",e.data) 
+(e=> console.log(e)
+    // e.data.data == "dataNotFound" ? setError("user not reistered"):console.log("token",e.data) 
 )
 
 }
