@@ -35,8 +35,8 @@ const navigate=useNavigate()
 // )
 const Poster   =()=>{
   axios({
-    method: "post",
-    url: 'https://localhost:3000/login',
+    method: "POST",
+    url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
   })
 //  axios.post("https://amaccompany.onrender.com/login",{email,password}, {
