@@ -34,13 +34,12 @@ const navigate=useNavigate()
 
 // )
 const Poster   =()=>{
+  
   axios({
-    method: "POST",
+    method: "post",
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
-  }
-  ,{withCredentials:true}
-  )
+  },{withCredentials:true})
 //  axios.post("https://amaccompany.onrender.com/login",{email,password}, {
 //     headers: {
       
@@ -49,7 +48,7 @@ const Poster   =()=>{
 
 //   })
   .then
-(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"): document.cookie == e.data
+(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"): localStorage.setItem("token",e.data)
 )
 
 }
