@@ -40,7 +40,7 @@ const Poster   =()=>{
     },
     withCredentials: false
   }).then
-(e=> console.log(e.data == "not authenticated") ? setError("user not reistered"):localStorage.setItem("token",e.data) 
+(e=> console.log(e.data == "not authenticated") 
 )
 
 }
