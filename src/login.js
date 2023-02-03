@@ -41,7 +41,7 @@ const Poster   =()=>{
     },
 
   }).then
-(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"):console.log(e.data) 
+(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"):console.log(e) 
 )
 
 }
