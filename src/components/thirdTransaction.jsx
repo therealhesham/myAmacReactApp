@@ -43,7 +43,7 @@ axios.post("https://amaccompany.onrender.com/thirdtransaction",{from:from,to:to,
 }
 const getSpecificData =(e)   =>{
     // alert(destination)
-
+// ss
     axios.post("https://amaccompany.onrender.com/specificdata",{store:from}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
    
