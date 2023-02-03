@@ -38,7 +38,7 @@ const Poster   =()=>{
     headers: {
       'Content-Type': 'application/json'
     },
-    withCredentials: false
+    withCredentials: true
   }).then
 (e=>  e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.setItem("token",e.data) 
 )
