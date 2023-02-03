@@ -29,7 +29,10 @@ navigate("/") :
     'Content-Type': 'application/json'
   },
   withCredentials: false
-}).then((e)=> {setUsers(e.data)
+}).then((e)=> {
+  
+  
+  setUsers(e.data)
 const tokens = localStorage.getItem("token")
 const  decoder = jwtDecode(tokens)
 setToken(decoder)
@@ -56,7 +59,8 @@ const mmessage = ()=>{
     }
     
  
-return(<div>
+return({user = "error from token Getter"? navigate("/") :
+<div>
 <form  >
     
 {matches ?<Stack gap={3} maxwidth="90%" style={{padding:"12px"}} >
@@ -144,7 +148,10 @@ onChange={(e)=>setFirstName(e.target.value)}
 
 </Stack>}
 </form>
-</div>)
+</div>
+
+
+})
 
 
 
