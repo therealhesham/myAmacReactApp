@@ -26,7 +26,7 @@ useEffect(()=>{
   
   if(ref.current == 0){
     console.log(ref.current);
-    axios.get('/preview').then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
+    axios.get('https://amaccompany.onrender.com/preview').then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
 //     console.log(data )
 
 if(localStorage.getItem("token")){
@@ -66,7 +66,7 @@ setPage(1)
     }
 
     const Delet=(e)=>{
-      axios.post('/delete',{id:e}).then((e) => console.log(e.data))
+      axios.post('https://amaccompany.onrender.com/delete',{id:e}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)

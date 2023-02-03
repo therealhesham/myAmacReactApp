@@ -48,7 +48,7 @@ setFirstName("")
   
   }    
 const mmessage = ()=>{
-    axios.post("/send",{sender:token.firstName,firstName:firstName,id:id,message:message,
+    axios.post("https://amaccompany.onrender.com/send",{sender:token.firstName,firstName:firstName,id:id,message:message,
       title:title}).then(e=> e.data ? clear() : "")
 
       

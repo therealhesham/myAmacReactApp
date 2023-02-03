@@ -35,12 +35,12 @@ const [done,setDone]=useState("")
 const getSpecificData =(e)   =>{
     // alert(destination)
 e.preventDefault()
-    axios.post("/specificdata",{store:destination}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    axios.post("https://amaccompany.onrender.com/specificdata",{store:destination}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
  }
 const PostHandler= ()=>{
     if (!contractor ||  !destination || !quantity || !type || !items ) return setExistense("رجاء ملىء البيانات")
-axios.post("/refund",{contractor:contractor,destination:destination,itens:items,
+axios.post("https://amaccompany.onrender.com/refund",{contractor:contractor,destination:destination,itens:items,
     quantity:quantity,type:type}).then(e=>{
         !e.data ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
 

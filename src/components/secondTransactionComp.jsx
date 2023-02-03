@@ -45,7 +45,7 @@ const [done,setDone]=useState(null)
 const postHandler =(e)=>{
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items  ) return setExistense("رجاء ملىء البيانات")
     e.preventDefault()
-    axios.post("/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
+    axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,
         items:items,location:lOcation,quantity:quantity}).then(e=>
            e.data == false ? setExistense("خطأ في التسجيل المهام غير متاحة بالمخزن") :
@@ -68,7 +68,7 @@ settypeOfContracting("")
     const getSpecificData =(e)   =>{
     // alert(destination)
 
-    axios.post("/specificdata",{store:from}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    axios.post("https://amaccompany.onrender.com/specificdata",{store:from}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
     
  }

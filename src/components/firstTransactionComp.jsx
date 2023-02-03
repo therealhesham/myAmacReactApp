@@ -41,7 +41,7 @@ const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"err
 const postHandler =(e)=>{
     e.preventDefault()
     if (!from ||  !type || !quantity || !destination || !item ) return setExistense("رجاء ملىء البيانات")
-    axios.post("/transactionexport",
+    axios.post("https://amaccompany.onrender.com/transactionexport",
     {source:from,destination:destination,unit:type,quantity:quantity,items:item}).
     then(e=>{
         !e.data ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
@@ -50,7 +50,7 @@ const postHandler =(e)=>{
  const getSpecificData =(e)   =>{
     // alert(destination)
 
-    axios.post("/specificdata",{store:destination}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    axios.post("https://amaccompany.onrender.com/specificdata",{store:destination}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
  }
 return(
