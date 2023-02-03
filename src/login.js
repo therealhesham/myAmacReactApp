@@ -14,7 +14,7 @@ function Login(){
 
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
-const [error,setError]= useState("")
+const [error,setError]= useState(null)
 
 
 const navigate=useNavigate()
@@ -40,7 +40,7 @@ const Poster   =()=>{
     },
     withCredentials: false
   }).then
-(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.getItem("token",e.data) 
+(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.setItem("token",e.data) 
 )
 
 }
@@ -71,7 +71,7 @@ return(
 
       onChange={e=>setPassword(e.target.value) }
           />
-{error ?<Alert  color="error">"user not found"</Alert> :""}
+{error ?<Alert  color="error">"user not found"</Alert> : navigate("/")}
 
 <Button   onClick={Poster}variant="contained" size="medium">Submit</Button>
 
