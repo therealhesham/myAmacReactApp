@@ -11,8 +11,18 @@ import ImportedData from './tables/firsttransaction';
 import SecondTransactionadding from './tables/secondtransaction';
 import ThirdTransactionadding from './tables/thirdtransaction';
 import FourthTransactionadding from './tables/fourthtransaction';
+import jwtDecode from 'jwt-decode';
 
 export default function Previewtable() {
+
+  React.useEffect(()=>
+  {
+const token = localStorage.getItem("token")
+const decoder = jwtDecode(token)
+if(!decoder) return;
+
+
+  })
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
@@ -20,6 +30,7 @@ export default function Previewtable() {
   };
 
   return (
+
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

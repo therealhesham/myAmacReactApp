@@ -22,6 +22,8 @@ import DataPreview from './datapreview';
 import Previewtable from './preview';
 import ImportedData from './tables/firsttransaction';
 import Profile from './App';
+import jwtDecode from 'jwt-decode';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
