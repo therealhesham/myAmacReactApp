@@ -71,7 +71,7 @@ return(
 
       onChange={e=>setPassword(e.target.value) }
           />
-{error ?<Alert  color="error">"user not found"</Alert> : navigate("/")}
+{error ?<Alert  color="error">"user not found"</Alert> : ""}
 
 <Button   onClick={Poster}variant="contained" size="medium">Submit</Button>
 
