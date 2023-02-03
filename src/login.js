@@ -31,7 +31,7 @@ const navigate=useNavigate()
    
 // }
 
-
+// 
 // )
 const Poster   =()=>{
  axios.post("https://amaccompany.onrender.com/login",{email,password}, {
