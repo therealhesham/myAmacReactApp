@@ -1,4 +1,4 @@
-import { Button, Stack, TextField } from "@mui/material"
+import { Alert, Button, Stack, TextField } from "@mui/material"
 import axios from "axios"
 import jwtDecode from "jwt-decode"
 import { useEffect, useState } from "react"
@@ -40,7 +40,7 @@ const Poster   =()=>{
     },
     withCredentials: false
   }).then
-(e=>  {e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.getItem("token",e.data) }
+(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"):localStorage.getItem("token",e.data) 
 )
 
 }
@@ -71,7 +71,7 @@ return(
 
       onChange={e=>setPassword(e.target.value) }
           />
-{error ? "user not found" :""}
+{error ?<Alert  color="error">"user not found"</Alert> :""}
 
 <Button   onClick={Poster}variant="contained" size="medium">Submit</Button>
 
