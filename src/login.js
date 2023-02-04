@@ -39,7 +39,7 @@ const Poster   =()=>{
     method: "post",
     url: '/login',
     data: {email,password}
-  },{proxy:"https://amaccompany.onrender.com",withCredentials:true})
+  },{proxy:"https://amaccompany.onrender.com"})
 
   .then
 (e=>  e.data.data == "dataNotFound" ? setError("user not reistered"): console.log(e)
