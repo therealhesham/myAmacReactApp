@@ -37,9 +37,9 @@ const Poster   =()=>{
   
   axios({
     method: "post",
-    url: 'https://amaccompany.onrender.com/login',
+    url: '/login',
     data: {email,password}
-  })
+  },{proxy:"https://amaccompany.onrender.com",withCredentials:true})
 
   .then
 (e=>  e.data.data == "dataNotFound" ? setError("user not reistered"): console.log(e)
