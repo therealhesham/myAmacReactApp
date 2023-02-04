@@ -39,7 +39,7 @@ const Poster   =()=>{
     method: "post",
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
-  },{withCredentials:true})
+  })
 //  axios.post("https://amaccompany.onrender.com/login",{email,password}, {
 //     headers: {
       
