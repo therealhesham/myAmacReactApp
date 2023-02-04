@@ -40,15 +40,9 @@ const Poster   =()=>{
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
   })
-//  axios.post("https://amaccompany.onrender.com/login",{email,password}, {
-//     headers: {
-      
-//       'Content-Type': 'application/json'
-//     },
 
-//   })
   .then
-(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"): localStorage.setItem("token",e.data)
+(e=>  e.data.data == "dataNotFound" ? setError("user not reistered"): console.log(e)
 )
 
 }
