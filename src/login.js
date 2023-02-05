@@ -47,6 +47,9 @@ const Poster   = async()=>{
 
   }),
   Cache: 'default'
+  
+ ,
+ withCredentials:true 
 })
   // axios({
   //   method: "post",
