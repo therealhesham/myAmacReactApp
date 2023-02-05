@@ -35,12 +35,13 @@ const navigate=useNavigate()
 // )
 const Poster   = ()=>{
    fetch('https://amaccompany.onrender.com/login', {
-  Method: 'POST',
-  Headers: {
+  
+   method: 'POST',
+  headers: {
     Accept: 'application.json',
     'Content-Type': 'application/json'
   },
-  Body: JSON.stringify({
+  body: JSON.stringify({
     email:email,
     password:password
 
