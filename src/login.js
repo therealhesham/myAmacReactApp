@@ -37,7 +37,7 @@ const Poster   =()=>{
   
   axios({
     method: "post",
-    url: 'https://newamac.onrender.com/login',
+    url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
   })
 
