@@ -54,7 +54,7 @@ const Poster   = ()=>{
   // })
 
   .then
-(e=>  console.log(e.json())
+(e=>  console.log(e)
 )
 
 }
