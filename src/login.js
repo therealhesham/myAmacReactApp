@@ -33,8 +33,8 @@ const navigate=useNavigate()
 
 
 // )
-const Poster   =()=>{
-  fetch('https://amaccompany.onrender.com/login', {
+const Poster   =async ()=>{
+  await fetch('https://amaccompany.onrender.com/login', {
   Method: 'POST',
   Headers: {
     Accept: 'application.json',
@@ -50,7 +50,7 @@ const Poster   =()=>{
   // })
 
   .then
-(e=>  console.log(e)
+(e=>  console.log(e.json())
 )
 
 }
