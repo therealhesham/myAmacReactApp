@@ -60,8 +60,9 @@ axios.post("https://amaccompany.onrender.com/register",{username:username,
     username:username,
     password:password,
     repeatpassword:reoeatpassword,
-    nationalID:ID,
-url:url
+    nationalID:ID
+//     ,
+// url:url
     },{withCredentials:true}).then(e=>
       e.data.error ?
        setError(e.data.error[0].message) & setSpecificError(e.data.error[0].path[0]): localStorage.setItem("token",e.data) 
