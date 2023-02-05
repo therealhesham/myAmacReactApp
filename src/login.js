@@ -33,16 +33,16 @@ const navigate=useNavigate()
 
 
 // )
-const Poster   =async ()=>{
-  await fetch('https://amaccompany.onrender.com/login', {
+const Poster   = ()=>{
+   fetch('https://amaccompany.onrender.com/login', {
   Method: 'POST',
   Headers: {
     Accept: 'application.json',
     'Content-Type': 'application/json'
   },
   Body: JSON.stringify({
-    email,
-    password
+    email:email,
+    password:password
 
   }),
   Cache: 'default'
