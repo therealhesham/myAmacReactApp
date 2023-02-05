@@ -39,7 +39,7 @@ const Poster   =()=>{
     method: "post",
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
-  })
+  },{withCredentials:true})
 
   .then
 (e=>  e.data.data == "dataNotFound" ? setError("user not reistered"): console.log(e)
