@@ -40,7 +40,11 @@ const Poster   =async ()=>{
     Accept: 'application.json',
     'Content-Type': 'application/json'
   },
-  Body: {email,password},
+  Body: JSON.stringify({
+    email,
+    password
+
+  }),
   Cache: 'default'
 })
   // axios({
