@@ -56,7 +56,7 @@ await  axios({
     method: "post",
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
-  })
+  },{withCredentials:true})
 
   .then
 (e=>  console.log(e.headers.token) )
