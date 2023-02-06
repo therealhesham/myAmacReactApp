@@ -22,6 +22,9 @@ import { useRef } from "react";
 
 export default function FirstTransaction({fromList,data,source,client,unit,pader,styler
 }){
+
+// React.useEffect
+
     const [transactionType,setTransactionType]=useState("")
 const[from,setFrom]=useState("")
 const refFocus =useRef()

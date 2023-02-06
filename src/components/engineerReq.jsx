@@ -23,12 +23,11 @@ useEffect(()=>{
    
 {!localStorage.getItem("token") ?
     
-navigate("/") :
+navigate("/login") :
  axios.get("https://amaccompany.onrender.com/userlists", {
   headers: {
     'Content-Type': 'application/json'
-  },
-  withCredentials: false
+  }
 }).then((e)=> {
   
   

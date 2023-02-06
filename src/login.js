@@ -52,18 +52,23 @@ const Poster   = async()=>{
 //  ,
 //  withCredentials:true 
 // })
+
+
+
 await  axios({
     method: "post",
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
-  },{withCredentials:true})
+  }
+  // ,{withCredentials:false}
+  )
 
   .then
 (e=>  console.log(e) )
 
 
 }
-// s
+// 
 return(
 <div>
 <form>

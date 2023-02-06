@@ -23,14 +23,18 @@ import Previewtable from './preview';
 import ImportedData from './tables/firsttransaction';
 import Profile from './App';
 import jwtDecode from 'jwt-decode';
+import {Provider} from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   //  <React.StrictMode>
+  // <Provider>
     <BrowserRouter>
   <ResponsiveAppBar/>
     <Routes>
+    <Route element={<Login/>}  path="login"/>
+
     {/* <Route element={<DataPreview/>}  path="/"/> */}
     <Route element={<Transaction/>}  path="/transaction"/>
     <Route element={<DataPreview/>}  path="/preview" />
@@ -41,10 +45,11 @@ root.render(
     <Route element={<Register/>}  path="/register"/>
   <Route element={<PostNewDataToMainWarehouse/>} path="/postmaindata"/>
     
-    <Route element={<Login/>}  path="login"/>
+
     </Routes>
     </BrowserRouter>
-   // </React.StrictMode> 
+   /* // </React.StrictMode>  */
+   /* </Provider> */
 );
 
 // If you want to start measuring performance in your app, pass a function
