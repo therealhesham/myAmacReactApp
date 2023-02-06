@@ -59,7 +59,7 @@ await  axios({
   })
 
   .then
-(e=>  {return console.log(e)} )
+(e=>  {return console.log(e.headers.token)} )
 
 
 }
