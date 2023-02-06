@@ -58,7 +58,7 @@ const Poster   = async()=>{
   // })
 
   .then
-(e=>  {return e.json()} ).then(e=>console.log(e))
+(e=>  {return console.log(e)} )
 
 
 }
