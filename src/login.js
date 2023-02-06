@@ -39,7 +39,8 @@ const Poster   = async()=>{
    method: 'POST',
   headers: {
     Accept: 'application.json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    "append":"token"
   },
   body: JSON.stringify({
     email:email,
