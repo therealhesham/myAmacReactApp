@@ -33,7 +33,7 @@ const navigate=useNavigate()
 
 
 // )
-const Poster   = async()=>{
+const Poster   = ()=>{
 //    await fetch('https://amaccompany.onrender.com/login', {
   
 //    method: 'POST',
@@ -55,7 +55,7 @@ const Poster   = async()=>{
 
 
 
-await  axios({
+  axios({
     method: "post",
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
