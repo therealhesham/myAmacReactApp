@@ -57,7 +57,7 @@ const Poster   = async()=>{
 
 await  axios({
     method: "post",
-    url: 'https://myamac.onrender.com/login',
+    url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
     ,withCredentials:true
   }
