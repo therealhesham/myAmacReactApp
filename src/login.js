@@ -34,38 +34,35 @@ const navigate=useNavigate()
 
 // )
 const Poster   = async()=>{
-   await fetch('https://amaccompany.onrender.com/login', {
+//    await fetch('https://amaccompany.onrender.com/login', {
   
-   method: 'POST',
-  headers: {
-    Accept: 'application.json',
-    'Content-Type': 'application/json',
-    "append":"token"
-  },
-  body: JSON.stringify({
-    email:email,
-    password:password
+//    method: 'POST',
+//   headers: {
+//     Accept: 'application.json',
+//     'Content-Type': 'application/json',
+//     "append":"token"
+//   },
+//   body: JSON.stringify({
+//     email:email,
+//     password:password
 
-  }),
-  Cache: 'default'
+//   }),
+//   Cache: 'default'
   
- ,
- withCredentials:true 
-})
+//  ,
+//  withCredentials:true 
+// })
 
 
 
-// await axios.post("https://amaccompany.onrender.com/login",{email,password},{withCredentials:true}
-// )
-
-// axios({
-//     method: "post",
-//     url: 'https://amaccompany.onrender.com/login',
-//     data: {email,password}
-//     ,withCredentials:true
-//   }
-//   // ,{withCredentials:false}
-//   )
+await  axios({
+    method: "post",
+    url: 'https://amaccompany.onrender.com/login',
+    data: {email,password}
+    ,withCredentials:true
+  }
+  // ,{withCredentials:false}
+  )
 
   .then
 (e=>  console.log(e) )
