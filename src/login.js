@@ -59,9 +59,9 @@ const Poster   = ()=>{
     method: "post",
     url: 'https://amaccompany.onrender.com/login',
     data: {email,password}
-    ,withCredentials:true
+    // ,withCredentials:true,
   }
-  // ,{withCredentials:false}
+  ,{withCredentials:true}
   )
 
   .then
