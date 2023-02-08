@@ -49,7 +49,7 @@ const Poster   = ()=>{
   Cache: 'default'
   
  ,
- credentials:true
+ credentials:"include"
 })
 
 
