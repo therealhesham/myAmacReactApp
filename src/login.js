@@ -33,7 +33,7 @@ const navigate=useNavigate()
 
 
 // )
-// const Poster   = ()=>{
+const Poster   = ()=>{
 //    fetch('https://amaccompany.onrender.com/login', {
   
 //    method: 'POST',
