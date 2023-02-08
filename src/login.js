@@ -34,34 +34,34 @@ const navigate=useNavigate()
 
 // )
 const Poster   = ()=>{
-   fetch('https://amaccompany.onrender.com/login', {
+//    fetch('https://amaccompany.onrender.com/login', {
   
-   method: 'POST',
-  headers: {
-    Accept: 'application.json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    email:email,
-    password:password
+//    method: 'POST',
+//   headers: {
+//     Accept: 'application.json',
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     email:email,
+//     password:password
 
-  }),
-  Cache: 'default'
+//   }),
+//   Cache: 'default'
   
- ,
- credentials:"include"
-})
+//  ,
+//  credentials:"include"
+// })
 
 
 
-  // axios({
-  //   method: "post",
-  //   url: 'https://amaccompany.onrender.com/login',
-  //   data: {email,password}
-  //   // ,withCredentials:true,
-  // }
-  // ,{withCredentials:true}
-  // )
+  axios({
+    method: "post",
+    url: 'https://amaccompany.onrender.com/login',
+    data: {email,password}
+    // ,withCredentials:true,
+  }
+  ,{withCredentials:true}
+  )
 
   .then
 (e=>  console.log(e) )
