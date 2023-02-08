@@ -60,7 +60,7 @@ const navigate=useNavigate()
     data: {email,password}
     // ,withCredentials:true,
   }
-  ,{withCredentials:true}
+  // ,{withCredentials:true}
   )
 
   .then
