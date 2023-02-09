@@ -15,8 +15,7 @@ function Login(){
 useEffect(()=>{
   
        axios.get("https://amaccompany.onrender.com/").then(response=>
-           console.log(response.headers)
-       
+           console.log(response       
     )
 
 
