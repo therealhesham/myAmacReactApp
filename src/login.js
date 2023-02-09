@@ -72,9 +72,9 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  console.log(e) ).then(e=> e == "dataNotFound" ? setError("error") :  e !== "dataNotFound"?
+(e=>  console.log(e) ).then(e=> e == "dataNotFound" ? setError("error") :
  localStorage.setItem("token",e) 
-:console.log("not done ")
+
 
 )
 
