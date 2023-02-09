@@ -72,7 +72,11 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  console.log(e) ).then(e=> e == "dataNotFound" ?setError("error") : localStorage.setItem("token",Cookies.get("token")) )
+(e=>  console.log(e) ).then(e=> {e == "dataNotFound" ? setError("error") : 
+// localStorage.setItem("token",Cookies.get("token")) 
+console.log("done")}
+
+)
 
 
 }
