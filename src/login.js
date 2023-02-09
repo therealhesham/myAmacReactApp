@@ -13,11 +13,9 @@ import { useNavigate } from "react-router-dom"
 function Login(){
 
 useEffect(()=>{
-  
-       axios.get("https://amaccompany.onrender.com/").then(response=>
-           console.log(response       
-    )
-)
+  const decode = localStorage.getItem("token")
+const decoder = jwtDecode(decode)  
+console.log(decoder)
 })
 
 
