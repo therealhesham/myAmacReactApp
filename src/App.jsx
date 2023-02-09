@@ -28,7 +28,7 @@ React.useEffect(()=>
         const details = jwtDecode(getToken)
         setToken(details)
         // console.log(token)
-        axios.get("'https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/"))
+        axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/"))
         }else if(localStorage.getItem("token") == null)
         {navigate("/login")}
 
