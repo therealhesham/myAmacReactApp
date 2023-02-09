@@ -72,7 +72,7 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  {return e.json()} ).then(e=> {return e != "dataNotFound" ?setError("error") : localStorage.setItem("token",Cookies.get("token")) })
+(e=>  console.log(e) ).then(e=> {return e != "dataNotFound" ?setError("error") : localStorage.setItem("token",Cookies.get("token")) })
 
 
 }
