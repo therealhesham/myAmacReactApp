@@ -53,8 +53,8 @@ const Poster   = ()=>{
  'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    email:email,
-    password:password
+    "email":email,
+    "password":password
 
   }),
   Cache: 'default'
@@ -75,7 +75,7 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  {return e.json()} ).then(e=> e == "dataNotFound" ? setError("error") : localStorage.setItem("token",e) 
+(e=>  {return e.json()} ).then(e=> e == "dataNotFound" ? setError("error") : localStorage.setItem("token",e)  & navigate("/profile")
 
 
 )
