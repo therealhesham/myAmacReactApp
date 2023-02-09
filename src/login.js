@@ -40,11 +40,11 @@ const Poster   = ()=>{
   headers: {
  'Content-Type': 'application/json'
   },
-  body: JSON.stringify({
+  body: JSON.parse(JSON.stringify({
     email:email,
     password:password
 
-  }),
+  })),
   Cache: 'default'
   
  ,
