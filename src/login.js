@@ -15,7 +15,7 @@ function Login(){
 useEffect(()=>{
   
        fetch("https://amaccompany.onrender.com/").then(response=>{
-           console.log(response.headers)
+           console.log(response.headers.get("Set-Cookie"))
        
     })
 
