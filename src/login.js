@@ -3,7 +3,7 @@ import axios from "axios"
 import jwtDecode from "jwt-decode"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import Cookies from 'react-cookie';
+// import Cookies from 'react-cookie';
 
 
 
@@ -73,7 +73,7 @@ const Poster   = ()=>{
 
   .then
 (e=>  console.log(e) ).then(e=> e == "dataNotFound" ? setError("error") :  e !== "dataNotFound"?
- localStorage.setItem("token",Cookies.get("token")) 
+ localStorage.setItem("token",e) 
 :console.log("not done ")
 
 )
