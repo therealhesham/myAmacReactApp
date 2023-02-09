@@ -13,9 +13,14 @@ import { useNavigate } from "react-router-dom"
 function Login(){
 
 useEffect(()=>{
+try {
   const decode = localStorage.getItem("token")
 const decoder = jwtDecode(decode)  
 console.log(decoder)
+} catch (error) {
+  console.log(error)
+}  
+  
 })
 
 
