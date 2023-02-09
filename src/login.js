@@ -3,7 +3,7 @@ import axios from "axios"
 import jwtDecode from "jwt-decode"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-
+import Cookies from 'react-cookie';
 
 
 
@@ -17,8 +17,7 @@ useEffect(()=>{
        axios.get("https://amaccompany.onrender.com/").then(response=>
            console.log(response       
     )
-
-
+)
 })
 
 
@@ -73,7 +72,7 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  {return e.json()} ).then(e=> e != "dataNotFound" ?setError("error") : localStorage.setItem("token",JSON.stringify(e)) )
+(e=>  {return e.json()} ).then(e=> e != "dataNotFound" ?setError("error") : localStorage.setItem("token",Cookies.get("token")) )
 
 
 }
