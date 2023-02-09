@@ -63,7 +63,7 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  console.log(e) )
+(e=>  {return e.json()} ).then(e=>console.log(e))
 
 
 }
