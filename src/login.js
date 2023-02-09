@@ -63,7 +63,7 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  {return e.headers} ).then(e=>console.log(e))
+(e=>  {return e.json()} ).then(e=>  { return e == {data:"dataNotFound"} ? setError("notFound") : localStorage.setItem("token",e)})
 
 
 }
