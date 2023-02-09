@@ -40,11 +40,11 @@ const Poster   = ()=>{
   headers: {
  'Content-Type': 'application/json'
   },
-  body: JSON.parse(JSON.stringify({
+  body: JSON.stringify({
     email:email,
     password:password
 
-  })),
+  }),
   Cache: 'default'
   
  ,
@@ -63,7 +63,7 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  {return e.json()} ).then(e=> e != "dataNotFound" ?setError("error") : localStorage.setItem("token",e) )
+(e=>  {return e.json()} ).then(e=> e != "dataNotFound" ?setError("error") : localStorage.setItem("token",JSON.stringify(e)) )
 
 
 }
