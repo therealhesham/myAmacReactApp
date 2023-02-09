@@ -11,12 +11,12 @@ import { useNavigate } from "react-router-dom"
 
 
 function Login(){
-
+  const navigate=useNavigate()
 useEffect(()=>{
 try {
   const decode = localStorage.getItem("token")
 const decoder = jwtDecode(decode)  
-console.log(decoder)
+navigate("/profile")
 } catch (error) {
   console.log(error)
 }  
@@ -29,7 +29,7 @@ const [password,setPassword]=useState("")
 const [error,setError]= useState(null)
 
 
-const navigate=useNavigate()
+
 
 
 // useEffect(()=>{
