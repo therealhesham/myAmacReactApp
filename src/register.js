@@ -61,13 +61,13 @@ axios.post("https://amaccompany.onrender.com/register",{username:username,
     password:password,
     repeatpassword:reoeatpassword,
     nationalID:ID
-//     ,
-// url:url
+    ,
+url:url
     },{withCredentials:true}).then(e=>
       e.data.error ?
        setError(e.data.error[0].message) & setSpecificError(e.data.error[0].path[0]): localStorage.setItem("token",e.data) 
   
-    // & navigate("/")     
+    & navigate("/login")     
     )
     // console.log(error)
     // console.log(errorID)
@@ -172,7 +172,7 @@ return(
   
              </Stack>
   </form >
-  :""}
+  :navigate("/profile")}
   {matchDesktop? <form >
    <Stack gap={1} style={{margin:"90px", marginRight:"0px", width:"600px" }}  >
   
@@ -267,7 +267,7 @@ return(
   </form >:""}
   </div>
   
-   : navigate("/")}
+   : navigate("/profile")}
 </>
 
 )}
