@@ -19,7 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Profile() {
     const [ token,setToken]=React.useState("")
     const navigate = useNavigate();
-    const ref = React.useRef()
+    const ref = React.useRef(0)
     const [profiledata,setData]=React.useState({})
 React.useEffect(()=>
 {
