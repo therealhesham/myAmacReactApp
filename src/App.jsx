@@ -23,21 +23,22 @@ export default function Profile() {
     const [profiledata,setData]=React.useState({})
 React.useEffect(()=>
 {
+  if(ref.current == 0){
     if(localStorage.getItem("token")){
         const getToken = localStorage.getItem("token");
         
         const details = jwtDecode(getToken)
         setToken(details)
         // console.log(token)
-        if(ref.current == 0){
+        
         axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/login"))
       
-      ref.current = ref.current +1
+      
       }
         }else if(localStorage.getItem("token") == null)
         {navigate("/login")}
 
-        
+        ref.current = ref.current +1  
 
 }
 
