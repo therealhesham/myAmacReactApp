@@ -17,10 +17,11 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Profile() {
-    const [ token,setToken]=React.useState("")
+    
     const navigate = useNavigate();
     const ref = React.useRef(0)
     const [profiledata,setData]=React.useState({})
+    const [ token,setToken]=React.useState(profiledata)
 React.useEffect(()=>
 {
     if(localStorage.getItem("token")){
