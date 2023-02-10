@@ -31,7 +31,7 @@ React.useEffect(()=>
         // console.log(token)
         // if(ref.current == 0){
           
-        axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/login"))
+        axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?console.log(e.data):navigate("/login"))
         console.log(data)
       // ref.current = ref.current +1
       // }
