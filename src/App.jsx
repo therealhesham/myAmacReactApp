@@ -22,7 +22,7 @@ export default function Profile() {
     const ref = React.useRef(0)
     const [profiledata,setData]=React.useState({})
     const [ token,setToken]=React.useState(profiledata)
-    if(ref.current == 0){
+
 React.useEffect(()=>
 {
     if(localStorage.getItem("token")){
@@ -32,12 +32,12 @@ React.useEffect(()=>
         setToken(details)
         // console.log(token)
         // 
-          
+        if(ref.current == 0){          
         axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/login"))
       console.log(profiledata)
       // https://my-amac-react-app.vercel.app/profile
       ref.current = ref.current +1
-      
+        }
         }else if(localStorage.getItem("token") == null)
         {navigate("/login")}
 
@@ -51,7 +51,7 @@ React.useEffect(()=>
 )    
 
 
-}
+
   return (<div style={{backgroundColor:"azure" ,color:"orchid"}}>
     {(localStorage.getItem("token"))?<Box sx={{ flexGrow: 1 }}>
       <Grid  gap={4} container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} 
