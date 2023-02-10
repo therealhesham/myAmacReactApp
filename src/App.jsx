@@ -30,9 +30,9 @@ React.useEffect(()=>
         setToken(details)
         // console.log(token)
         // if(ref.current == 0){
-          console.log(token)
+          
         axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/login"))
-      
+        console.log(data)
       // ref.current = ref.current +1
       // }
         }else if(localStorage.getItem("token") == null)
