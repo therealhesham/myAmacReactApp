@@ -25,7 +25,8 @@ import jwtDecode from 'jwt-decode';
 
 const pages = [{link : <Link to="/profile" style={{textDecoration:"none",color:"white"}}>الصفحة الشخصية</Link>,id:1}, {link:<Link to="/preview" style={{textDecoration:"none",color:"white",borderColor:"white"}}>جرد المخازن</Link>,id:2}];
 const settings = [{setting:<Link to="/profile">Profile</Link>,id:1}, {setting:'store',id:2},
- {setting:'Dashboard',id:3}, {setting:'Logout',id:4}];
+ 
+{setting:'Dashboard',id:3}, {setting:'Logout',id:4}];
 
 function ResponsiveAppBar() {
 const [list,setList] = React.useState([])
@@ -154,7 +155,7 @@ setToken(details)
               <Button
                 key={page.id}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'blue', display: 'block' }}
               >
                 {page.link}
               </Button>
