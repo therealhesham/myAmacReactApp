@@ -19,6 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Profile() {
     const [ token,setToken]=React.useState("")
     const navigate = useNavigate();
+    const ref = React.useRef()
     const [profiledata,setData]=React.useState({})
 React.useEffect(()=>
 {
@@ -28,7 +29,11 @@ React.useEffect(()=>
         const details = jwtDecode(getToken)
         setToken(details)
         // console.log(token)
-        axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/"))
+        if(req.current == 0){
+        axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/login"))
+      
+      ref.current = ref.current +1
+      }
         }else if(localStorage.getItem("token") == null)
         {navigate("/login")}
 
