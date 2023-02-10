@@ -58,7 +58,7 @@ const Poster   = ()=>{
 
   }),
   Cache: 'default'
-,mode:"no-cors"  
+,mode:"cors"  
  ,
  credentials:"include"
 })
