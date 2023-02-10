@@ -24,7 +24,7 @@ import ButtonsComponent from './components/registerloginbutton';
 import jwtDecode from 'jwt-decode';
 
 const pages = [{link : <Link to="/profile" style={{textDecoration:"none",color:"white"}}>الصفحة الشخصية</Link>,id:1}, {link:<Link to="/preview" style={{textDecoration:"none",color:"white",borderColor:"white"}}>جرد المخازن</Link>,id:2}];
-const settings = [{setting:'Profile',id:1}, {setting:'store',id:2},
+const settings = [{setting:<Link to="/profile">Profile</Link>,id:1}, {setting:'store',id:2},
  {setting:'Dashboard',id:3}, {setting:'Logout',id:4}];
 
 function ResponsiveAppBar() {
