@@ -67,7 +67,7 @@ url:url
       e.data.error ?
        setError(e.data.error[0].message) & setSpecificError(e.data.error[0].path[0]): localStorage.setItem("token",e.data) 
   
-    
+    & navigate("/login")     
     )
     // console.log(error)
     // console.log(errorID)
@@ -172,13 +172,13 @@ return(
   
              </Stack>
   </form >
-  :navigate("/profile")}
+  :""}
   {matchDesktop? <form >
    <Stack gap={1} style={{margin:"90px", marginRight:"0px", width:"600px" }}  >
   
   <TextField
 
-
+  
          helperText={errorID == "username" ? "الاسم مستخدم من قبل" :""}
             error={errorID === "username"? true:false}
             id="outlined-required"
