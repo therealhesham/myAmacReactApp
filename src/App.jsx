@@ -35,7 +35,8 @@ React.useEffect(()=>
           
         axios.get("https://amaccompany.onrender.com/info/"+token.id).then(e=>e.data?setData(e.data):navigate("/login"))
       console.log(profiledata)
-      // ref.current = ref.current +1
+      // https://my-amac-react-app.vercel.app/profile
+      ref.current = ref.current +1
       
         }else if(localStorage.getItem("token") == null)
         {navigate("/login")}
@@ -49,7 +50,7 @@ React.useEffect(()=>
 
 )    
 
-ref.current=ref.current+1
+
 }
   return (<div style={{backgroundColor:"azure" ,color:"orchid"}}>
     {(localStorage.getItem("token"))?<Box sx={{ flexGrow: 1 }}>
