@@ -23,10 +23,14 @@ import SendIcon from '@mui/icons-material/Send';
 import ButtonsComponent from './components/registerloginbutton';
 import jwtDecode from 'jwt-decode';
 
-const pages = [{link : <Link to="/profile" style={{textDecoration:"none",color:"white"}}>الصفحة الشخصية</Link>,id:1}, {link:<Link to="/preview" style={{textDecoration:"none",color:"white",borderColor:"white"}}>جرد المخازن</Link>,id:2}];
+const pages = [{link : <Link to="/profile" style={{textDecoration:"none",color:"white"}}>الصفحة الشخصية</Link>,id:1}, {link:<Link to="/preview" style={{textDecoration:"none",color:"white",borderColor:"white"}}>جرد المخازن</Link>,id:2}
+,
+{link:<Link to="/postmaindata" style={{textDecoration:"none",color:"white",borderColor:"white"}}>اضافة جرد</Link>,id:3}
+
+];
 const settings = [{setting:<Link to="/profile">Profile</Link>,id:1}, {setting:'store',id:2},
  
-{setting:'Dashboard',id:3}, {setting:'Logout',id:4}];
+{setting:'Dashboard',id:3}, {setting:<Link >{()=>localStorage.clear()}تسجيل خروج</Link>,id:4}];
 
 function ResponsiveAppBar() {
 const [list,setList] = React.useState([])
