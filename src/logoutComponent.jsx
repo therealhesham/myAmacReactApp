@@ -9,7 +9,7 @@ function Logout(){
 useEffect(()=>
 {
     
-    axios.get("https://amaccompany.onrender.com/logout").then((e)=> {e.data=="token deleted"?localStorage.clear():""} )
+    axios.get("https://amaccompany.onrender.com/logout").then((e)=> { return e.data=="token deleted"?localStorage.clear():""} )
 
 // if(logouter == "token deleted")  { 
     
