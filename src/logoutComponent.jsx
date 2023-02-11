@@ -9,16 +9,16 @@ function Logout(){
 useEffect(()=>
 {
     
-    axios.get("https://amaccompany.onrender.com/logout").then((e)=> { return e.data=="token deleted"?localStorage.clear():""} )
+    axios.get("https://amaccompany.onrender.com/logout").then((e)=>setLogouter(e.data) )
 
-// if(logouter == "token deleted")  { 
-    
-// navigate("/login")
 
-// } ;
 }
 )
+return(
 
+
+    <>{logouter ==="token deleted" ? navigate("/login"):""}</>
+)
 
 
 }
