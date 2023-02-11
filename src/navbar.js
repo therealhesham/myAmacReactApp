@@ -23,14 +23,15 @@ import SendIcon from '@mui/icons-material/Send';
 import ButtonsComponent from './components/registerloginbutton';
 import jwtDecode from 'jwt-decode';
 
-const pages = [{link : <Link to="/profile" style={{textDecoration:"none",color:"white"}}>الصفحة الشخصية</Link>,id:1}, {link:<Link to="/preview" style={{textDecoration:"none",color:"white",borderColor:"white"}}>جرد المخازن</Link>,id:2}
+
+const pages = [{link : <Link to="/profile" style={{textDecoration:"none",color:"black"}}>الصفحة الشخصية</Link>,id:1}, {link:<Link to="/preview" style={{textDecoration:"none",color:"black",borderColor:"white"}}>جرد المخازن</Link>,id:2}
 ,
-{link:<Link to="/postmaindata" style={{textDecoration:"none",color:"white",borderColor:"white"}}>اضافة جرد</Link>,id:3}
+{link:<Link to="/postmaindata" style={{textDecoration:"none",color:"black",borderColor:"black"}}>اضافة جرد</Link>,id:3}
 
 ];
 const settings = [{setting:<Link to="/profile">Profile</Link>,id:1}, {setting:'store',id:2},
  
-{setting:'Dashboard',id:3}, {setting:<Link >{()=>localStorage.clear()}تسجيل خروج</Link>,id:4}];
+{setting:'Dashboard',id:3}, {setting:<Link to="/logout">تسجيل خروج</Link>,id:4}];
 
 function ResponsiveAppBar() {
 const [list,setList] = React.useState([])
@@ -129,7 +130,7 @@ setToken(details)
             >
               {pages.map((page) => (
                 <MenuItem  onClick={handleCloseNavMenu}>
-                  <Typography key={page.id} textAlign="center">{page.link}</Typography>
+                  <Typography key={page.id} textAlign="center" variant='black'>{page.link}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -157,9 +158,12 @@ setToken(details)
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
+              
+              variant='primary'
+              
                 key={page.id}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'blue', display: 'block' }}
+                sx={{ my: 2, color: 'primary', display: 'block'}}
               >
                 {page.link}
               </Button>

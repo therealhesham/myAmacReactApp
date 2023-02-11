@@ -24,6 +24,7 @@ import ImportedData from './tables/firsttransaction';
 import Profile from './App';
 import jwtDecode from 'jwt-decode';
 import {Provider} from 'react-redux'
+import Logout from './logoutComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -33,7 +34,8 @@ root.render(
     <BrowserRouter>
   <ResponsiveAppBar/>
     <Routes>
-    <Route element={<Login/>}  path="login"/>
+    <Route element={<Login/>}  path="/login"/>
+    <Route element={<Logout/>}  path="/logout"/>
 
     {/* <Route element={<DataPreview/>}  path="/"/> */}
     <Route element={<Transaction/>}  path="/transaction"/>
