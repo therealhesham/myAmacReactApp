@@ -17,7 +17,7 @@ useEffect(()=>
 return(
 
 
-    <>{logouter ==="token deleted" ? navigate("/login"):""}</>
+    <>{logouter ==="token deleted" ? localStorage.clear() & navigate("/login"):""}</>
 )
 
 
