@@ -82,7 +82,7 @@ useEffect( ()=>{
 axios.get("/preview").then(e=> e.data == "not authenticated" ? navigate("/login"):setData(e.data)).catch(error=>console.log(error))
 // alert(localStorage.getItem("firstname"))
 const loStorage = localStorage.getItem("token")
-if(!loStorage) return;
+if(!loStorage) navigate("login");
 // console.log(Tabs);
 
 const geTTer = jwtDecode(loStorage)
