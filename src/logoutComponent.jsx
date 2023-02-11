@@ -7,12 +7,15 @@ function Logout(){
     const [logouter,setLogouter]=useState("")
     const navigate = useNavigate()
 useEffect(()=>
-{axios.get("https://amaccompany.onrender.com/logout").then((e)=>setLogouter(e.data))
+{
+    
+    axios.get("https://amaccompany.onrender.com/logout").then((e)=> {e.data=="token deleted"?localStorage.clear():""} )
 
-if(logouter == "token deleted")  { localStorage.clear()
-navigate("/login")
+// if(logouter == "token deleted")  { 
+    
+// navigate("/login")
 
-} ;
+// } ;
 }
 )
 
