@@ -35,8 +35,7 @@ if(localStorage.getItem("token")){
   const details = jwtDecode(getToken)
   setToken(details)
   
-  }else if(localStorage.getItem("token") == null)
-  {navigate("/login")}
+  }
     ref.current=ref.current +1
 
 }
