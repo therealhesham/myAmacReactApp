@@ -21,12 +21,13 @@ const [id,setId]=useState("")
 const [token,setToken]=useState()
 const ref = useRef(0);
 const [admin,isAdmin]=useState(true)
+// const [authenticator,setAuthenticate]=useState
 const navigate = useNavigate()
 useEffect(()=>{
   
   if(ref.current == 0){
     console.log(ref.current);
-    axios.get('https://amaccompany.onrender.com/preview').then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
+    axios.get('https://amaccompany.onrender.com/preview').then((e) => {return e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) })
 //     console.log(data )
 
 if(localStorage.getItem("token")){
