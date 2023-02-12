@@ -28,7 +28,7 @@ useEffect(()=>{
   
   if(ref.current == 0){ 
     console.log(ref.current);
-    axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
+    axios.get("https://amaccompany.onrender.com/preview").then((e) => 
     // console.log(e)
      e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) 
      )
