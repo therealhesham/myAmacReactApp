@@ -67,7 +67,7 @@ url:url
       e.data.error ?
        setError(e.data.error[0].message) & setSpecificError(e.data.error[0].path[0]): localStorage.setItem("token",e.data) 
   
-    & navigate("/login")     
+    & navigate("/profile")     
     )
     // console.log(error)
     // console.log(errorID)
