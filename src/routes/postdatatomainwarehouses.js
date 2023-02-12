@@ -60,7 +60,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>
 <Button variant="contained" size="medium" onClick={PostHandler}>تسجيل بيانات</Button>
 
 {error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
-{error ? <Alert severity="success">تم تسجيل البيانات بنجاح</Alert>:null}
+{success ? <Alert severity="success">تم تسجيل البيانات بنجاح</Alert>:null}
 
 </Stack></form>
 </div>
