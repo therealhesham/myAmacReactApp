@@ -89,7 +89,7 @@ return(
    <Stack gap={1} style={{marginLeft:"25px",marginTop:"25px", width:"295px" }}  >
   
   <TextField
-         helperText={errorID == "username" ? "الاسم مستخدم من قبل" :""}
+         helperText={errorID == "username" ? "اعد كتابة الاسم .قد يكون من قبل" :""}
             error={errorID === "username"? true:false}
             id="outlined-required"
             label="اسم المستخدم"

@@ -106,7 +106,7 @@ return(
           label="Password"
       name="password"    
       value={password}
-
+type="password"
       onChange={e=>setPassword(e.target.value) }
           />
 {error ?<Alert  color="error">"user not found"</Alert> : ""}
