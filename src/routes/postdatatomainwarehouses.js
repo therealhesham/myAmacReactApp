@@ -16,13 +16,21 @@ const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
 const [error,setError]= useState("")
 const [success,setSuccess]= useState()
+clear=()=>{
+    setItems("")
+    setStore("")
+    setType("")
+    setQuantity("")
+    setError("")
+    
+    }
+    
 const PostHandler = (e)=>{
     e.preventDefault()
 axios.post("/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
-then(e=>{e.data.errors  ?setError("يرجى مراعاة ادخال البيانات الصحيحة"): console.log(e)})
+then(e=>{e.data.errors  ?setError("يرجى مراعاة ادخال البيانات الصحيحة"): clear()})
 
 }
-
 const conditionalAlert=()=>{
 if (!error) {
     return null
