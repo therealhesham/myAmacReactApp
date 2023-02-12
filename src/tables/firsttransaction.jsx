@@ -24,7 +24,7 @@ useEffect(()=>{
   
   if(ref.current == 0){
     // console.log(ref.current);
-    axios.get('https://amaccompany.onrender.com/firsttansactionlist').then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
+    axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
     
     ref.current=ref.current +1
 
@@ -54,7 +54,7 @@ setPage(1)
     }
 
     const Delet=(e)=>{
-      axios.post('/deletfirsttransaction',{id:e}).then((e) => console.log(e.data))
+      axios.post('/deletfirsttransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)

@@ -25,7 +25,7 @@ useEffect(()=>{
   
   if(ref.current == 0){
     // console.log(ref.current);
-    axios.get('https://amaccompany.onrender.com/getsecondtransactions').then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data.reverse()) )
+    axios.get('https://amaccompany.onrender.com/getsecondtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data.reverse()) )
     
     ref.current=ref.current +1
 

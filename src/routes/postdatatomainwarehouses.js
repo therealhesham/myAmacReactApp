@@ -18,7 +18,7 @@ const [error,setError]= useState("")
 const [success,setSuccess]= useState()
 const PostHandler = (e)=>{
     e.preventDefault()
-axios.post("/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity}).
+axios.post("/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
 then(e=>{e.data.errors  ?setError("يرجى مراعاة ادخال البيانات الصحيحة"): console.log(e)})
 
 }

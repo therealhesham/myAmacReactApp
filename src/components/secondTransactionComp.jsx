@@ -47,7 +47,7 @@ const postHandler =(e)=>{
     e.preventDefault()
     axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,
-        items:items,location:lOcation,quantity:quantity}).then(e=>
+        items:items,location:lOcation,quantity:quantity},{withCredentials:true}).then(e=>
            e.data == false ? setExistense("خطأ في التسجيل المهام غير متاحة بالمخزن") :
             setDone("تم تسجيل البيانات بنجاح")  & Clear() 
             )
@@ -68,7 +68,7 @@ settypeOfContracting("")
     const getSpecificData =(e)   =>{
     // alert(destination)
 
-    axios.post("https://amaccompany.onrender.com/specificdata",{store:from}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
     
  }

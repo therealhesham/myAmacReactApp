@@ -31,7 +31,7 @@ if (!token) return navigate("/login")
 
 
 // if (ref.current < 1){
-axios.get("https://amaccompany.onrender.com/requests").then((e)=>   { e.data == "not authenticated" ? navigate("/login")  : setData(e.data)} )
+axios.get("https://amaccompany.onrender.com/requests",{withCredentials:true}).then((e)=>   { e.data == "not authenticated" ? navigate("/login")  : setData(e.data)} )
 
 setFiltered(data.filter(e=> e.isOk == true))
 setFilteredfalse(data.filter(e=> e.isOk != true))
@@ -51,7 +51,7 @@ setFilteredfalse(data.filter(e=> e.isOk != true))
 
 },[data,filteredData,filtered])
 const setter = (id)=>{
-axios.post("https://amaccompany.onrender.com/setter",{id:id}).then(e=>console.log("deleted"))
+axios.post("https://amaccompany.onrender.com/setter",{id:id},{withCredentials:true}).then(e=>console.log("deleted"))
 ref.current = -1
 
 }

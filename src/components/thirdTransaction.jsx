@@ -37,14 +37,14 @@ const postHandler = (e)=>{
 e.preventDefault();
 if (!from ||  !to || !quantity || !type || !items ) return setExistense("رجاء ملىء البيانات")
 if (from === to ) return setExistense("من فضلك غير احد المخزنين")
-axios.post("https://amaccompany.onrender.com/thirdtransaction",{from:from,to:to,items:items,type:type,quantity:quantity}).then(e=>
+axios.post("https://amaccompany.onrender.com/thirdtransaction",{from:from,to:to,items:items,type:type,quantity:quantity},{withCredentials:true}).then(e=>
     !e.data ? setExistense("  خطأ في التسجيل ... المهام غير متاحة بالمخزن المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : setDone("تم تسجيل البيانات بنجاح") & Clear())
 
 }
 const getSpecificData =(e)   =>{
     // alert(destination)
 // ss
-    axios.post("https://amaccompany.onrender.com/specificdata",{store:from}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
    
  }
