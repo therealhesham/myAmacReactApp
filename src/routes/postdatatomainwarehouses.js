@@ -27,7 +27,7 @@ const clear=()=>{
     
 const PostHandler = (e)=>{
     e.preventDefault()
-axios.post("/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
+axios.post("https://amaccompany.onrender.com/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
 then(e=>{e.data.errors  ?setError("يرجى مراعاة ادخال البيانات الصحيحة"): clear()})
 
 }
