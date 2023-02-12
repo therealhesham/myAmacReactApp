@@ -73,7 +73,12 @@ url:url
     // console.log(errorID)
     
 }
+// clear()=>{
+// setError("")
+// setSpecificError("")
 
+
+// }
 
 return(
 <>
