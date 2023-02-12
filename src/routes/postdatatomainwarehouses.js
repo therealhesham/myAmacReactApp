@@ -21,7 +21,7 @@ const clear=()=>{
     setStore("")
     setType("")
     setQuantity("")
-    setError("")
+    setError(null)
     setSuccess("تم تسجيل البيانات بنجاح")
     }
     
