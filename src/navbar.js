@@ -54,7 +54,7 @@ function Logout(){
 useEffect( ()=>{
   if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
-    Logout() : 
+    Logout : 
     setData(e.data) )
 ref.current = ref.current+1
 }
