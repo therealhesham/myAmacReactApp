@@ -38,11 +38,7 @@ React.useEffect(()=>
       // https://my-amac-react-app.vercel.app/profile
       ref.current = ref.current +1
         }
-        }else if(window.localStorage.getItem("token") == null)
-        {
-          
-          alert("error here")
-          navigate("/login")}
+        }
 
         
 
