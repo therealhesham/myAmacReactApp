@@ -16,7 +16,9 @@ function Logout(){
     useEffect(()=>
 {
     
-    axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=>setLogouter(e.data) )
+    axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=> 
+    e.data =="token deleted" ? Logout() & navigate("/login"):""
+    )
 
 
 }
