@@ -14,13 +14,13 @@ function Logout(){
 }
     useEffect(()=>
 {
-    if(ref.current == 0)
+    
     axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=> 
     e.data =="token deleted" ? localStorage.removeItem("token")
     & window.location.reload():""
     
     )
-    ref.current = ref.current+1;
+    // ref.current = ref.current+1;
 
 }
 )
