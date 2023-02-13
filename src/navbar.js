@@ -48,7 +48,7 @@ const ref = React.useRef(0)
 function Logout(){
     
   localStorage.clear()
-  window.location.reload()
+  // window.location.reload()
  
  }
 useEffect( ()=>{
