@@ -17,7 +17,7 @@ function Logout(){
 {
     if(ref.current == 0)
     axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=> 
-    e.data =="token deleted" ? Logout():""
+    e.data =="token deleted" ? Logout:""
     
     )
     ref.current = ref.current+1;
@@ -27,7 +27,7 @@ function Logout(){
 return(
 
 
-    <>{logouter=="token deleted" ? Logout() & navigate("/login"):""}</>
+    <>{logouter=="token deleted" ? Logout & navigate("/login"):""}</>
 )
 
 
