@@ -167,7 +167,7 @@ onChange={(e)=>setType(e.target.value)}
 name="quantity" value={quantity} onChange={e=>setQuantity(e.target.value)}/>
 <Button variant="contained" size="medium"  onClick={postHandler} >تسجيل بيانات</Button> 
 
-
+<button style={{backgroundColor:"blue",color:"white"}} onClick={postHandler}>تسجيل بيانات</button>
 
 { notExist ? <Alert severity="error" >
     {notExist}</Alert>:null}
