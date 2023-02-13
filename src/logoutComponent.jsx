@@ -14,7 +14,10 @@ function Logout(){
 }
     useEffect(()=>
 {
-    
+    if(!localStorage.getItem("token")){
+
+        navigate("/login")
+    }    
     axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=> 
     e.data =="token deleted" ? localStorage.removeItem("token")
     & window.location.reload():""
@@ -27,7 +30,7 @@ function Logout(){
 return(
 
 
-    <>{logouter=="token deleted" ? Logout & navigate("/login"):""}</>
+    <></>
 )
 
 
