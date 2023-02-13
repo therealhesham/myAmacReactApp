@@ -47,17 +47,17 @@ const navigate = useNavigate()
 const ref = React.useRef(0)
 function Logout(){
     
-  localStorage.clear()
+  
   // window.location.reload()
  
  }
 useEffect( ()=>{
-  // if(ref.current == 0){
+  if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
-    Logout : 
+   localStorage.clear() : 
     setData(e.data) )
-// ref.current = ref.current+1
-// }
+ref.current = ref.current+1
+}
 if(localStorage.getItem("token")){
 const getToken = localStorage.getItem("token");
 
@@ -65,8 +65,8 @@ const details = jwtDecode(getToken)
 setToken(details)
  }
  
-else if(localStorage.getItem("token") == null)
-{navigate("/login")}
+// else if(localStorage.getItem("token") == null)
+// {navigate("/login")}
 //  }
   },[data])
   const [anchorElNav, setAnchorElNav] = React.useState(null);
