@@ -2,7 +2,7 @@ import { Alert, Button, Stack, TextField } from "@mui/material"
 import axios from "axios"
 import jwtDecode from "jwt-decode"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { unstable_HistoryRouter, useNavigate } from "react-router-dom"
 // import Cookies from 'react-cookie';
 
 
@@ -11,6 +11,11 @@ import { useNavigate } from "react-router-dom"
 
 
 function Login(){
+  
+  function Refreshpage(){
+
+    window.location.reload()
+  }
   const navigate=useNavigate()
 useEffect(()=>{
 try {
@@ -75,7 +80,7 @@ const Poster   = ()=>{
   // )
 
   .then
-(e=>  {return e.json()} ).then(e=> e == "dataNotFound" ? setError("error") : localStorage.setItem("token",e)  & window.location.reload()
+(e=>  {return e.json()} ).then(e=> e == "dataNotFound" ? setError("error") : localStorage.setItem("token",e)  & Refreshpage()
 
 
 )
