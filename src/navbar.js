@@ -40,7 +40,7 @@ const settings = [{setting:<Link to="/profile">Profile</Link>,id:1}, {setting:'s
 function ResponsiveAppBar() {
 const [list,setList] = React.useState([])
 const [filtered,setFiltered]=React.useState([])
-const [data,setData ] = React.useState([])
+const [data,setData ] = React.useState("")
 const [filteredData,setFilteredfalse]=React.useState([])
 const [token,setToken]=React.useState("")
 const navigate = useNavigate()
@@ -55,7 +55,7 @@ useEffect( ()=>{
   // if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
    
-   alert("localStorage.clear()") : 
+   localStorage.removeItem("token") : 
     setData(e.data) )
 // ref.current = ref.current+1
 // }
