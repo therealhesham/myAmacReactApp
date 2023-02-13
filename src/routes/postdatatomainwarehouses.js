@@ -27,25 +27,7 @@ const clear=()=>{
     
 const PostHandler = (e)=>{
     e.preventDefault()
-    fetch('https://amaccompany.onrender.com/login', {
-  
-   method: 'POST',
-  headers: {
- 'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    "email":email,
-    "password":password
-
-  }),
-  Cache: 'default'
-  
- ,
- credentials:"include"
-})
-
-
-
+    
 axios.post("https://amaccompany.onrender.com/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
 then(e=>e.data == "success" ? clear() :setError("يرجى مراعاة ادخال البيانات الصحيحة"))
 
