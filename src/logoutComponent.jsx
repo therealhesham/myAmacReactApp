@@ -6,7 +6,12 @@ import { useNavigate } from "react-router-dom";
 function Logout(){
     const [logouter,setLogouter]=useState("")
     const navigate = useNavigate()
-useEffect(()=>
+
+function Logout(){
+return localStorage.clear()
+
+}
+    useEffect(()=>
 {
     
     axios.get("https://amaccompany.onrender.com/logout").then((e)=>setLogouter(e.data) )
@@ -17,7 +22,7 @@ useEffect(()=>
 return(
 
 
-    <>{logouter=="token deleted" ? localStorage.clear() & navigate("/login"):""}</>
+    <>{logouter=="token deleted" ? Logout() & navigate("/login"):""}</>
 )
 
 

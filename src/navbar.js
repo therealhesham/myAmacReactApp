@@ -45,9 +45,10 @@ const [filteredData,setFilteredfalse]=React.useState([])
 const [token,setToken]=React.useState("")
 const navigate = useNavigate()
 const ref = React.useRef(0)
+
 useEffect( ()=>{
   if(ref.current == 0){
-   axios.get("/").then((e)=> e.data == "not authenticated"  ?
+   axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
     localStorage.clear() : 
     setData(e.data) )
 
