@@ -48,7 +48,7 @@ const ref = React.useRef(0)
 function Logout(){
     
   localStorage.clear()
-  window.location.reload()
+  // window.location.reload()
  
  }
 useEffect( ()=>{
@@ -63,10 +63,11 @@ const getToken = localStorage.getItem("token");
 const details = jwtDecode(getToken)
 setToken(details)
  }
- ref.current = ref.current+1
-}else if(localStorage.getItem("token") == null)
+ 
+else if(localStorage.getItem("token") == null)
 {navigate("/login")}
-//  }
+// ref.current = ref.current+1
+}//  }
   },[data])
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
