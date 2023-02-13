@@ -21,7 +21,7 @@ export default function Profile() {
     const navigate = useNavigate();
     const ref = React.useRef(0)
     const [profiledata,setData]=React.useState({})
-    const [ token,setToken]=React.useState(profiledata)
+    const [ token,setToken]=React.useState({})
 
 React.useEffect(()=>
 {
@@ -30,7 +30,7 @@ React.useEffect(()=>
         
         const details = jwtDecode(getToken)
         setToken(details)
-        // console.log(token)
+        console.log(token)
         // 
         if(ref.current == 0){          
         axios.get("https://amaccompany.onrender.com/info/"+token.id,{withCredentials:true}).then(e=>e.data?setData(e.data):navigate("/login"))
