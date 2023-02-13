@@ -45,11 +45,16 @@ const [filteredData,setFilteredfalse]=React.useState([])
 const [token,setToken]=React.useState("")
 const navigate = useNavigate()
 const ref = React.useRef(0)
-
+function Logout(){
+    
+  localStorage.clear()
+  window.location.reload()
+ 
+ }
 useEffect( ()=>{
   if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
-    localStorage.clear() : 
+    Logout() : 
     setData(e.data) )
 
 if(localStorage.getItem("token")){
