@@ -9,15 +9,15 @@ function Logout(){
     const ref = useRef()
 function Logout(){
     
- localStorage.clear()
- window.location.reload()
+ 
 
 }
     useEffect(()=>
 {
     if(ref.current == 0)
     axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=> 
-    e.data =="token deleted" ? Logout:""
+    e.data =="token deleted" ? localStorage.removeItem("token")
+    & window.location.reload():""
     
     )
     ref.current = ref.current+1;
