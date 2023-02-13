@@ -7,11 +7,7 @@ function Logout(){
     const [logouter,setLogouter]=useState("")
     const navigate = useNavigate()
     const ref = useRef()
-function Logout(){
-    
- 
 
-}
     useEffect(()=>
 {
     if(!localStorage.getItem("token")){
