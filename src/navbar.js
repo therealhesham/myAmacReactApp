@@ -53,7 +53,7 @@ function Logout(){
  }
 useEffect( ()=>{
   // if(ref.current == 0){
-   axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
+   axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "deleted token"  ?
    
    localStorage.removeItem("token") : 
     setData(e.data) )
