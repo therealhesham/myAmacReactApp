@@ -79,7 +79,7 @@ useEffect( ()=>{
 
 
     // for (let i = 0; i < ref.current ; i++) {
-axios.get("/preview").then(e=> e.data == "not authenticated" ? navigate("/login"):setData(e.data)).catch(error=>console.log(error))
+axios.get("/preview",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):setData(e.data)).catch(error=>console.log(error))
 // alert(localStorage.getItem("firstname"))
 const loStorage = localStorage.getItem("token")
 if(!loStorage) return;
@@ -90,7 +90,7 @@ SetToken(geTTer.username)
 const arr=[]
 const unitArr = []
    data.forEach(e=> {if (!arr.includes(e.store)) return arr.push(e.store)})
-
+console.log(data)
    data.forEach(e=> {if (!unitArr.includes(e.type)) return unitArr.push(e.type)})
 setFromList(arr)
 setUnit(unitArr)
