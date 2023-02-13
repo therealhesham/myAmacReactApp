@@ -8,13 +8,15 @@ function Logout(){
     const navigate = useNavigate()
 
 function Logout(){
-return localStorage.clear()
+    
+ localStorage.clear()
+ window.location.reload()
 
 }
     useEffect(()=>
 {
     
-    axios.get("https://amaccompany.onrender.com/logout").then((e)=>setLogouter(e.data) )
+    axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=>setLogouter(e.data) )
 
 
 }
