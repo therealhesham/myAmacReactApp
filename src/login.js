@@ -81,7 +81,7 @@ const Poster   = ()=>{
 
   .then
 (e=>  {return e.json()} ).then(e=> e == "dataNotFound" ? setError("error") : 
-localStorage.setItem("token",e)   
+localStorage.setItem("token",e) & Refreshpage() 
 
 
 )
