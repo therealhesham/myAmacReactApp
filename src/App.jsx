@@ -39,7 +39,10 @@ React.useEffect(()=>
       ref.current = ref.current +1
         }
         }else if(localStorage.getItem("token") == null)
-        {navigate("/login")}
+        {
+          
+          alert("error here")
+          navigate("/login")}
 
         
 

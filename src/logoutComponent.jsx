@@ -27,7 +27,7 @@ function Logout(){
 return(
 
 
-    <>{logouter=="token deleted" ? Logout & navigate("/login"):""}</>
+    <></>
 )
 
 
