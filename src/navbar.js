@@ -52,12 +52,12 @@ function Logout(){
  
  }
 useEffect( ()=>{
-  if(ref.current == 0){
+  // if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
    localStorage.clear() : 
     setData(e.data) )
-ref.current = ref.current+1
-}
+// ref.current = ref.current+1
+// }
 if(localStorage.getItem("token")){
 const getToken = localStorage.getItem("token");
 
