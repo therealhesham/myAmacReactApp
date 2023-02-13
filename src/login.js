@@ -86,8 +86,8 @@ localStorage.setItem("token",e)
 
 )
 if(localStorage.getItem("token")){
-Refreshpage()
-
+// Refreshpage()
+console.log("getter")
 }
 else(console.log("waiting"))
 
