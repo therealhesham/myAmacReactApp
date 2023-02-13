@@ -47,7 +47,7 @@ const navigate = useNavigate()
 const ref = React.useRef(0)
 function Logout(){
     
-  
+  localStorage.removeItem("token")  
   // window.location.reload()
  
  }
@@ -55,7 +55,7 @@ useEffect( ()=>{
   // if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "deleted token"  ?
    
-   localStorage.removeItem("token") : 
+ Logout: 
     setData(e.data) )
 // ref.current = ref.current+1
 // }
