@@ -48,7 +48,7 @@ const ref = React.useRef(0)
 function Logout(){
     
   localStorage.clear()
-  // window.location.reload()
+  window.location.reload()
  
  }
 useEffect( ()=>{
@@ -56,7 +56,8 @@ useEffect( ()=>{
    axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "not authenticated"  ?
     Logout() : 
     setData(e.data) )
-
+ref.current = ref.current+1
+}
 if(localStorage.getItem("token")){
 const getToken = localStorage.getItem("token");
 
@@ -66,8 +67,7 @@ setToken(details)
  
 else if(localStorage.getItem("token") == null)
 {navigate("/login")}
-// ref.current = ref.current+1
-}//  }
+//  }
   },[data])
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
