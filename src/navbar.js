@@ -102,7 +102,7 @@ setToken(details)
             AMAC Company
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {details?<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -134,11 +134,11 @@ setToken(details)
             >
               {pages.map((page) => (
                 <MenuItem  onClick={handleCloseNavMenu}>
-                  <Typography key={page.id} textAlign="center" variant='black'>{page.link}</Typography>
+                  <Typography key={page.id} textAlign="center" variant='black' >{page.link}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>:""}
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
@@ -159,7 +159,7 @@ setToken(details)
             Amac
           </Typography>
           
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+         {details? <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
               
@@ -173,7 +173,7 @@ setToken(details)
               </Button>
             ))}
             
-          </Box>
+          </Box>:""}
           {localStorage.getItem("token")?
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
