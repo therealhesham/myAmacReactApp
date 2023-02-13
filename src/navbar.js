@@ -102,7 +102,7 @@ setToken(details)
             AMAC Company
           </Typography>
 
-          {details?<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {token?<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -159,7 +159,7 @@ setToken(details)
             Amac
           </Typography>
           
-         {details? <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+         {token? <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
               
