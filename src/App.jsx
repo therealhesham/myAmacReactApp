@@ -30,7 +30,7 @@ React.useEffect(()=>
 
         const details = jwtDecode(getToken)
         setToken(details)
-        console.log(token)
+        // console.log(token)
         // 
         if(ref.current == 0){          
         axios.get("https://amaccompany.onrender.com/info/"+details.id,{withCredentials:true}).then(e=>e.data?setData(e.data):navigate("/login"))
