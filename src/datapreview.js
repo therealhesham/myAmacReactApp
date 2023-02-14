@@ -93,7 +93,7 @@ setSearcher(dataRe)
             </tr>
           </thead>
           {/* {data.} */}
-          {_.drop(searchedData.reverse(),(startpage-1 )* size).slice(0,size).map((e)=>
+          {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map((e)=>
           <tbody key={e._id}>
             <tr>
 
