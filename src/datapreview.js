@@ -16,7 +16,7 @@ function DataPreview(){
 const [data,setData]=useState([]);
 const [startpage,setPage] = useState(0)
 const [size,setSize] = useState(10)
-const [searchedData,setSearcher ] = useState("")
+const [searchedData,setSearcher ] = useState([])
 const [id,setId]=useState("")
 const [token,setToken]=useState()
 const ref = useRef(0);
@@ -30,7 +30,7 @@ useEffect(()=>{
     console.log(ref.current);
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
-     e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) 
+     e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data.reverse()) & setData(e.data.reverse()) 
      )
 //     console.log(data )
 
@@ -93,7 +93,7 @@ setSearcher(dataRe)
             </tr>
           </thead>
           {/* {data.} */}
-          {_.drop(searchedData,(startpage-1 )* size).reverse().slice(0,size).map((e)=>
+          {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map((e)=>
           <tbody key={e._id}>
             <tr>
 
