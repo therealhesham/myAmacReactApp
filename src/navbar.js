@@ -53,7 +53,7 @@ function Logout(){
  }
 useEffect( ()=>{
   // if(ref.current == 0){
-   axios.get("https://amaccompany.onrender.com/checker").then((e)=> e.data == "deleted token"  ?
+   axios.get("https://amaccompany.onrender.com/falserequests").then((e)=> e.data == "deleted token"  ?
    
  Logout: 
     setData(e.data) )
