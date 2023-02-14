@@ -30,7 +30,7 @@ useEffect(()=>{
     console.log(ref.current);
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
-     e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data.reverse()) & setData(e.data.reverse()) 
+     e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) 
      )
 //     console.log(data )
 
@@ -93,7 +93,7 @@ setSearcher(dataRe)
             </tr>
           </thead>
           {/* {data.} */}
-          {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map((e)=>
+          {_.drop(searchedData.reverse(),(startpage-1 )* size).slice(0,size).map((e)=>
           <tbody key={e._id}>
             <tr>
 
