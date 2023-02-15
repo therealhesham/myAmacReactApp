@@ -121,7 +121,7 @@ setSearcher(dataRe)
               <td>{e.quantity}</td>
               <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>setUpdater(e._id)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
-                    {/* <br></br> */}
+                    <br></br>
           {updater == e._id ? 
           <div><form  >
     
@@ -138,6 +138,7 @@ name="quantity" value={e.quantity} onChange={e=>setQuantity(e.target.value)}/>
 </Stack>
 {error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
 {success ? <Alert severity="success">تم تحديث البيانات بنجاح</Alert>:null}
+
 
 </form>
 </div>
