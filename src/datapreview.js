@@ -26,11 +26,11 @@ const [admin,isAdmin]=useState(true)
 const navigate = useNavigate()
 useEffect(()=>{
   
-  // if(ref.current == 0){ 
+  if(ref.current == 0){ 
     console.log(ref.current);
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
-     e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(e.data) 
+     e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
      )
 //     console.log(data )
 
@@ -41,9 +41,9 @@ if(localStorage.getItem("token")){
   setToken(details)
   
   }
-//     ref.current=ref.current +1
+    ref.current=ref.current +1
 
-// }
+}
 else  {
 // ref.current = 1
 }
