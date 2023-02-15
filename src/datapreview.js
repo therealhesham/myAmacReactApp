@@ -136,6 +136,7 @@ setUpdater(id)
               </tr>      
                <div>
           {updater == e._id ? 
+          <tbody>
           <tr>
             <form  >
     
@@ -156,6 +157,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/></td
 
 </form>
 </tr>
+</tbody>
 :null}
 </div>
 </tbody>)}
