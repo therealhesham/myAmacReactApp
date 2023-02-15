@@ -33,9 +33,9 @@ const [success,setSuccess]= useState()
 console.log(updater)
 const navigate = useNavigate()
 useEffect(()=>{
-  
-  // if(ref.current == 0){ 
-    console.log(ref.current);
+  console.log(ref.current);
+  if(ref.current == 0){ 
+    
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
      e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(e.data) 
@@ -48,8 +48,8 @@ if(localStorage.getItem("token")){
   const details = jwtDecode(getToken)
   setToken(details)
   
-  // }
-  //   ref.current=ref.current +1
+  }
+    ref.current=ref.current +1
 
 }
 else  {
