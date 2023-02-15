@@ -100,6 +100,7 @@ setUpdater(id)
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
+ref.current = ref.current *0 
     }
 
       return (
