@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField , Button, Alert } from "@mui/material";
+import { TextField , Button, Alert, Stack } from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
@@ -122,9 +122,9 @@ setSearcher(dataRe)
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>            {/* <br></br> */}
           {updater == e._id ? 
-          <div><form >
+          <div><form  >
     
-
+<Stack  direction="row">
 <TextField id="outlined-basic" label="المخزن" variant="outlined"
  type="text" name="store" value={e.store} onChange={(e)=>setStore(e.target.value)}/>
 <TextField id="outlined-basic" label="المهام" variant="outlined" 
@@ -137,7 +137,7 @@ name="quantity" value={e.quantity} onChange={e=>setQuantity(e.target.value)}/>
 
 {error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
 {success ? <Alert severity="success">تم تحديث البيانات بنجاح</Alert>:null}
-
+</Stack>
 </form>
 </div>
 :null}
