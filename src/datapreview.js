@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField , Button } from "@mui/material";
+import { TextField , Button, Alert } from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
@@ -27,6 +27,8 @@ const [items,setItems] = useState("")
 const [store,setStore]=useState("مخزن بني مزار الرئيسي")
 const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
+const [error,setError]= useState("")
+const [success,setSuccess]= useState()
 
 const navigate = useNavigate()
 useEffect(()=>{
