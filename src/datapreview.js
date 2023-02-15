@@ -96,7 +96,7 @@ setUpdater(id)
     }
     const updateOne=(e)=>{
       console.log("updateOne",e)
-      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?setSuccess("تم تحديث البيان") & setUpdater(0) & ref.current *0  :setError("خطأ في البيانات") )
+      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?setSuccess("تم تحديث البيان") & setUpdater(null) & ref.current *0  :setError("خطأ في البيانات") )
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
@@ -134,8 +134,10 @@ setUpdater(id)
               <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>      
-               
-          {updater == e._id ? 
+</tbody>               
+)}        
+        {updater  ? 
+        <tbody>  
           <div><form  >
     <tr>
 {/* <Stack  direction="row">? */}
@@ -146,17 +148,18 @@ name="items" value={items} onChange={(e)=>setItems(e.target.value)}/></td>
 <td><TextField id="outlined-basic" label="الوحدة" variant="outlined"
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/></td>
 <td><TextField id="outlined-basic" label="الكمية" variant="outlined" 
-name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/></td></tr>
+name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/></td>
 <Button variant="contained"  onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>
 {/* </Stack> */}
-
+</tr>
 
 
 </form>
 </div>
+</tbody>
 :null}
 
-</tbody>)}
+
           
                   </Table>
     <div>
