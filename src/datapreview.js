@@ -34,7 +34,7 @@ console.log(updater)
 const navigate = useNavigate()
 useEffect(()=>{
   
-  if(ref.current == 0){ 
+  // if(ref.current == 0){ 
     console.log(ref.current);
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
@@ -48,8 +48,8 @@ if(localStorage.getItem("token")){
   const details = jwtDecode(getToken)
   setToken(details)
   
-  }
-    ref.current=ref.current +1
+  // }
+  //   ref.current=ref.current +1
 
 }
 else  {
