@@ -84,14 +84,14 @@ const dataRe = [...data]
 setSearcher(dataRe)
     }
     const updating =(id,items,store,type,quantity)=>{
-setUpdater(id)
+
       setItems(items);
 
       setStore(store);
 setType(type);
       
 setQuantity(quantity);
-      
+setUpdater(id)      
 
     }
     const updateOne=(e)=>{
