@@ -120,7 +120,7 @@ setSearcher(dataRe)
               <td>{e.quantity}</td>
               <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>setUpdater(e._id)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
-            <br></br>
+            {/* <br></br> */}
           {updater == e._id?<form >
     
 
