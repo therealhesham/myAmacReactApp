@@ -32,9 +32,10 @@ const [error,setError]= useState("")
 const [success,setSuccess]= useState()
 console.log(updater)
 const navigate = useNavigate()
+const [zero,setZero]= useState(0)
 useEffect(()=>{
   console.log(ref.current);
-  if(ref.current == 0){ 
+  if(ref.current == zero){ 
     
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
@@ -49,7 +50,7 @@ if(localStorage.getItem("token")){
   setToken(details)
   
   }
-    ref.current=ref.current +1
+    setZero(zero + 1)
 
 }
 else  {
@@ -85,6 +86,7 @@ setSearcher(dataRe)
     }
     const reset =()=>{
       ref.current = ref.current * 0 ;
+      setZero(0)
 console.log(ref.current)
 setUpdater(0) 
 
