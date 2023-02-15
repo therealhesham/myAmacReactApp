@@ -51,7 +51,7 @@ return(
     <Stack maxWidth="800px" minWidth="250px" style={{padding:"60px"}} gap="12px">
 
 <TextField id="outlined-basic" label="المخزن" variant="outlined"
- type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/>
+ type="text" name="store" value="مخزن بني مزار الرئيسي" onChange={(e)=>setStore(e.target.value)}/>
 <TextField id="outlined-basic" label="المهام" variant="outlined" 
 name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>
 <TextField id="outlined-basic" label="الوحدة" variant="outlined"
