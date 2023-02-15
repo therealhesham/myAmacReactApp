@@ -136,7 +136,7 @@ ref.current = ref.current *0
               </tr>      
                     <br></br>
           {updater == e._id ? 
-          <div><form  >
+          <><form  >
     
 <Stack  direction="row">
 <TextField id="outlined-basic" label="المخزن" variant="outlined"
@@ -154,7 +154,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>
 
 
 </form>
-</div>
+</>
 :null}
 
 </tbody>)}
