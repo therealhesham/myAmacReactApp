@@ -127,13 +127,13 @@ setUpdater(id)
 
               
              
-              <td>{updater ?<TextField id="outlined-basic" label="المخزن" variant="outlined"
+              <td>{updater  == e._id?<TextField id="outlined-basic" label="المخزن" variant="outlined"
  type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
-              <td>{updater ? <TextField id="outlined-basic" label="المهام" variant="outlined" 
+              <td>{updater ==e._id? <TextField id="outlined-basic" label="المهام" variant="outlined" 
 name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</td>
-              <td>{updater ?<TextField id="outlined-basic" label="الوحدة" variant="outlined"
+              <td>{updater ==e._id?<TextField id="outlined-basic" label="الوحدة" variant="outlined"
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td>
-              <td>{updater?<TextField id="outlined-basic" label="الكمية" variant="outlined" 
+              <td>{updater==e._id?<TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
               <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
