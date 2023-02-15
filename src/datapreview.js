@@ -86,7 +86,7 @@ setSearcher(dataRe)
     const reset =()=>{
 setUpdater(0) 
 ref.current = ref.current * 0 ;
-
+console.log(ref.current)
     }
     const updating =(id,items,store,type,quantity)=>{
 
