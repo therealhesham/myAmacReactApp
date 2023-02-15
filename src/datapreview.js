@@ -96,11 +96,11 @@ setUpdater(id)
     }
     const updateOne=(e)=>{
       console.log("updateOne",e)
-      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?setSuccess("تم تحديث البيان") & setUpdater(0) :setError("خطأ في البيانات") )
+      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?setSuccess("تم تحديث البيان") & setUpdater(0) & ref.current *0  :setError("خطأ في البيانات") )
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
-ref.current = ref.current *0 
+// ref.current = 
     }
 
       return (
@@ -138,7 +138,7 @@ ref.current = ref.current *0
           {updater == e._id ? 
           <div><form  >
     
-<Stack  direction="row">
+{/* <Stack  direction="row">? */}
 <td><TextField id="outlined-basic" label="المخزن" variant="outlined"
  type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/></td>
 <td><TextField id="outlined-basic" label="المهام" variant="outlined" 
@@ -147,10 +147,9 @@ name="items" value={items} onChange={(e)=>setItems(e.target.value)}/></td>
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/></td>
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>
-<Button variant="contained" size="medium" onClick={()=>updateOne(e._id)}>تسجيل بيانات</Button>
-</Stack>
-{error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
-{success ? <Alert severity="success">تم تحديث البيانات بنجاح</Alert>:null}
+<Button variant="contained"  onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>
+{/* </Stack> */}
+
 
 
 </form>
