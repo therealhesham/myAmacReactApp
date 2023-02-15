@@ -132,9 +132,9 @@ setUpdater(id)
 
               
              
-              <td>{updater  == e._id?<TextField id="outlined-basic" label="المخزن" variant="outlined"
+              <td>{updater  == e._id?<TextField id="outlined-basic" fullWidth label="المخزن" variant="outlined"
  type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
-              <td>{updater ==e._id? <TextField id="outlined-basic" label="المهام" variant="outlined" 
+              <td>{updater ==e._id? <TextField id="outlined-basic" fullWidth label="المهام" variant="outlined" 
 name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</td>
               <td>{updater ==e._id?<TextField id="outlined-basic" label="الوحدة" variant="outlined"
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td>
