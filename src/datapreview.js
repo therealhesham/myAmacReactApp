@@ -137,7 +137,7 @@ setUpdater(id)
                
           {updater == e._id ? 
           <div><form  >
-    
+    <tr>
 {/* <Stack  direction="row">? */}
 <td><TextField id="outlined-basic" label="المخزن" variant="outlined"
  type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/></td>
@@ -145,8 +145,8 @@ setUpdater(id)
 name="items" value={items} onChange={(e)=>setItems(e.target.value)}/></td>
 <td><TextField id="outlined-basic" label="الوحدة" variant="outlined"
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/></td>
-<TextField id="outlined-basic" label="الكمية" variant="outlined" 
-name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>
+<td><TextField id="outlined-basic" label="الكمية" variant="outlined" 
+name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/></td></tr>
 <Button variant="contained"  onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>
 {/* </Stack> */}
 
