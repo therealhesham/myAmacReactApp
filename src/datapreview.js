@@ -30,7 +30,7 @@ useEffect(()=>{
     console.log(ref.current);
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
-     e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
+     e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(e.data) 
      )
 //     console.log(data )
 
@@ -70,7 +70,7 @@ setPage(1)
     }
 
     const Delet=(e)=>{
-      axios.post('https://amaccompany.onrender.com/delete',{id:e}).then((e) => console.log(e.data))
+      axios.post('https://amaccompany.onrender.com/delete',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)
