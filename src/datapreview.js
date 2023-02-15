@@ -134,7 +134,7 @@ setUpdater(id)
               <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>      
-               
+               <div>
           {updater == e._id ? 
           <tr>
             <form  >
@@ -157,7 +157,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/></td
 </form>
 </tr>
 :null}
-
+</div>
 </tbody>)}
           
                   </Table>
