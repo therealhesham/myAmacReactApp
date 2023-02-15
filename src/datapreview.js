@@ -29,7 +29,7 @@ const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
 const [error,setError]= useState("")
 const [success,setSuccess]= useState()
-
+console.log(updater)
 const navigate = useNavigate()
 useEffect(()=>{
   
