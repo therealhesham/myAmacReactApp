@@ -134,9 +134,9 @@ ref.current = ref.current *0
               <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>      
-                    <br></br>
+               
           {updater == e._id ? 
-          <><form  >
+          <div><form  >
     
 <Stack  direction="row">
 <TextField id="outlined-basic" label="المخزن" variant="outlined"
@@ -154,7 +154,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>
 
 
 </form>
-</>
+</div>
 :null}
 
 </tbody>)}
