@@ -101,7 +101,7 @@ setUpdater(id)
     }
     const updateOne=(e)=>{
       console.log("updateOne",e)
-      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ? setUpdater(0) & reset()  :setError("خطأ في البيانات") )
+      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ? setUpdater(0) & reset  :setError("خطأ في البيانات") )
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
