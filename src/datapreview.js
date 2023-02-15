@@ -84,7 +84,8 @@ setSearcher(dataRe)
     }
 
     const updateOne=(e)=>{
-      // axios.post('https://amaccompany.onrender.com/updatedata',{id:id,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => console.log(e.data))
+      console.log("updateOne",e)
+      axios.post('https://amaccompany.onrender.com/updatedata',{id:id,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => console.log(e.data))
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
@@ -118,9 +119,9 @@ setSearcher(dataRe)
               <td>{e.items}</td>
               <td>{e.type}</td>
               <td>{e.quantity}</td>
-              <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>setUpdater(e._id)}>UPDATE</Button></td>
+              <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>setUpdater(e._id)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
-              </tr>            {/* <br></br> */}
+                    {/* <br></br> */}
           {updater == e._id ? 
           <div><form  >
     
@@ -134,14 +135,14 @@ name="items" value={e.items} onChange={(e)=>setItems(e.target.value)}/>
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={e.quantity} onChange={e=>setQuantity(e.target.value)}/>
 <Button variant="contained" size="medium" onClick={()=>updateOne(e._id)}>تسجيل بيانات</Button>
-
+</Stack>
 {error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
 {success ? <Alert severity="success">تم تحديث البيانات بنجاح</Alert>:null}
-</Stack>
+
 </form>
 </div>
 :null}
-
+</tr>      
 </tbody>)}
           
                   </Table>
