@@ -121,9 +121,26 @@ setSearcher(dataRe)
               <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>setUpdater(e._id)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>            {/* <br></br> */}
-          {updater == e._id ?
-          console.log("id",updater)
-          :null}
+          {updater == e._id ? 
+          <div><form >
+    
+
+<TextField id="outlined-basic" label="المخزن" variant="outlined"
+ type="text" name="store" value={e.store} onChange={(e)=>setStore(e.target.value)}/>
+<TextField id="outlined-basic" label="المهام" variant="outlined" 
+name="items" value={e.items} onChange={(e)=>setItems(e.target.value)}/>
+<TextField id="outlined-basic" label="الوحدة" variant="outlined"
+ name="type" value={e.type} onChange={(e)=> setType(e.target.value)}/>
+<TextField id="outlined-basic" label="الكمية" variant="outlined" 
+name="quantity" value={e.quantity} onChange={e=>setQuantity(e.target.value)}/>
+<Button variant="contained" size="medium" onClick={()=>updateOne(e._id)}>تسجيل بيانات</Button>
+
+{error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
+{success ? <Alert severity="success">تم تحديث البيانات بنجاح</Alert>:null}
+
+</form>
+</div>
+:null}
 
 </tbody>)}
           
