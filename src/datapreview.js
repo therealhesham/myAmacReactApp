@@ -145,7 +145,7 @@ name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>
 <TextField id="outlined-basic" label="الوحدة" variant="outlined"
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/>
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
-name="quantity" value={quantity} onChange={e=>setQuantity(e.target.value)}/>
+name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>
 <Button variant="contained" size="medium" onClick={()=>updateOne(e._id)}>تسجيل بيانات</Button>
 </Stack>
 {error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
