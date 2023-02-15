@@ -28,6 +28,7 @@ const [store,setStore]=useState("مخزن بني مزار الرئيسي")
 const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
 const [error,setError]= useState("")
+// const [id,setID]= useState("")
 const [success,setSuccess]= useState()
 console.log(updater)
 const navigate = useNavigate()
@@ -82,7 +83,17 @@ const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)
     }
+    const updating =(id,items,store,type,quantity)=>{
+setUpdater(id)
+      setItems(items);
 
+      setStore(store);
+setType(type);
+      
+setQuantity(quantity);
+      
+
+    }
     const updateOne=(e)=>{
       console.log("updateOne",e)
       axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?setSuccess("تم تحديث البيان") & setUpdater(0) :setError("خطأ في البيانات") )
@@ -119,7 +130,7 @@ setSearcher(dataRe)
               <td>{e.items}</td>
               <td>{e.type}</td>
               <td>{e.quantity}</td>
-              <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>setUpdater(e._id)}>UPDATE</Button></td>
+              <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button></td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>      
                     <br></br>
@@ -128,13 +139,13 @@ setSearcher(dataRe)
     
 <Stack  direction="row">
 <TextField id="outlined-basic" label="المخزن" variant="outlined"
- type="text" name="store" value={e.store} onChange={(e)=>setStore(e.target.value)}/>
+ type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/>
 <TextField id="outlined-basic" label="المهام" variant="outlined" 
-name="items" value={e.items} onChange={(e)=>setItems(e.target.value)}/>
+name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>
 <TextField id="outlined-basic" label="الوحدة" variant="outlined"
- name="type" value={e.type} onChange={(e)=> setType(e.target.value)}/>
+ name="type" value={type} onChange={(e)=> setType(e.target.value)}/>
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
-name="quantity" value={e.quantity} onChange={e=>setQuantity(e.target.value)}/>
+name="quantity" value={quantity} onChange={e=>setQuantity(e.target.value)}/>
 <Button variant="contained" size="medium" onClick={()=>updateOne(e._id)}>تسجيل بيانات</Button>
 </Stack>
 {error ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
