@@ -135,31 +135,10 @@ name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td>
               <td>{updater==e._id?<TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
-              <td><Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button></td>
+              <td>{updater == e._id ? <Button variant="contained"  onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>      
                
-          {updater == e._id ? 
-          <div><form  >
-    <tr>
-{/* <Stack  direction="row">? */}
-<td><TextField id="outlined-basic" label="المخزن" variant="outlined"
- type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/></td>
-<td><TextField id="outlined-basic" label="المهام" variant="outlined" 
-name="items" value={items} onChange={(e)=>setItems(e.target.value)}/></td>
-<td><TextField id="outlined-basic" label="الوحدة" variant="outlined"
- name="type" value={type} onChange={(e)=> setType(e.target.value)}/></td>
-<td><TextField id="outlined-basic" label="الكمية" variant="outlined" 
-name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/></td>
-</tr>
-<Button variant="contained"  onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>
-{/* </Stack> */}
-
-
-
-</form>
-</div>
-:null}
 
 </tbody>)}
           
