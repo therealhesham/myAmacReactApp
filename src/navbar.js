@@ -55,7 +55,7 @@ useEffect( ()=>{
   // if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/falserequests",{withCredentials:true}).then((e)=> e.data == "deleted token"  ?
    
- Logout: 
+ Logout(): 
     setData(e.data) )
 // ref.current = ref.current+1
 // }
