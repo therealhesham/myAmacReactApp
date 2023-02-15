@@ -85,8 +85,9 @@ const dataRe = [...data]
 setSearcher(dataRe)
     }
     const reset =()=>{
-      ref.current = ref.current * 0 ;
-      setZero(0)
+     
+      setZero(ref.current)
+      setZero(ref.current-1)
 console.log(ref.current)
 setUpdater(0) 
 
@@ -135,15 +136,15 @@ setUpdater(id)
 
               
              
-              <td>{updater  == e._id?<TextField id="outlined-basic" fullWidth label="المخزن" variant="outlined"
+              <td>{updater  == e._id?<TextField id="outlined-basic" style={{width:"25px"}} label="المخزن" variant="outlined"
  type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
-              <td>{updater ==e._id? <TextField id="outlined-basic" fullWidth label="المهام" variant="outlined" 
+              <td>{updater ==e._id? <TextField style={{width:"25px"}} id="outlined-basic" fullWidth label="المهام" variant="outlined" 
 name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</td>
-              <td>{updater ==e._id?<TextField id="outlined-basic" label="الوحدة" variant="outlined"
+              <td>{updater ==e._id?<TextField id="outlined-basic" style={{width:"25px"}} label="الوحدة" variant="outlined"
  name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td>
-              <td>{updater==e._id?<TextField id="outlined-basic" label="الكمية" variant="outlined" 
+              <td>{updater==e._id?<TextField id="outlined-basic"  style={{width:"25px"}} label="الكمية" variant="outlined" 
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
-              <td>{updater == e._id ? <Button variant="contained"  onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
+              <td>{updater == e._id ? <Button variant="contained"  style={{width:"25px"}} onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
               <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
               </tr>      
                
