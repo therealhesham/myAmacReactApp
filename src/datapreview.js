@@ -85,7 +85,7 @@ setSearcher(dataRe)
 
     const updateOne=(e)=>{
       console.log("updateOne",e)
-      axios.post('https://amaccompany.onrender.com/updatedata',{id:id,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => console.log(e.data))
+      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => console.log(e.data))
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
