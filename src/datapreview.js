@@ -84,8 +84,8 @@ const dataRe = [...data]
 setSearcher(dataRe)
     }
     const reset =()=>{
-
-ref.current = ref.current  - ref.current
+setUpdater(0) 
+ref.current = 0 
 
     }
     const updating =(id,items,store,type,quantity)=>{
@@ -101,7 +101,7 @@ setUpdater(id)
     }
     const updateOne=(e)=>{
       console.log("updateOne",e)
-      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ? setUpdater(0) & reset  :setError("خطأ في البيانات") )
+      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?  reset()  :setError("خطأ في البيانات") )
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
