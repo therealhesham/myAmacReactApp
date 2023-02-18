@@ -49,12 +49,13 @@ const postHandler =(e)=>{
         contractor:contractor,typeOfContracting:typeOfContracting,
         items:items,location:lOcation,quantity:quantity},{withCredentials:true}).then(e=>
            e.data == "false" ? setExistense("خطأ في التسجيل المهام غير متاحة بالمخزن") :
-            setDone("تم تسجيل البيانات بنجاح")  & Clear() 
+             Clear() 
             )
             
     }
 
     const Clear =()=>{
+        setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
 setTypeOfImporter("")
 setType("")
