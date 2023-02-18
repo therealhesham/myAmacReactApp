@@ -141,7 +141,7 @@ label="المهام"
 onChange={(e)=>setItem(e.target.value) }
 >
 
-{!specificitems?"waiting":specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items}</MenuItem>)}
+{!specificitems?"waiting":specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{data.indexOf(e)} ||{e.items}</MenuItem>)}
 
 
 
