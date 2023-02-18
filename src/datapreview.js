@@ -123,7 +123,7 @@ setUpdater(id)
       
       <thead>
         <tr >
-        <th style={{width:"200px"}}>id</th><th>store</th>
+        <th style={{width:"20px"}}>id</th><th>store</th>
           <th>items</th>
           <th>type</th>
           <th>quantity</th>
