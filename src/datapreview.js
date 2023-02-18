@@ -121,7 +121,7 @@ setUpdater(id)
   <Table striped="columns">
       <thead>
         <tr>
-          <th>store</th>
+        <th>id</th><th>store</th>
           <th>items</th>
           <th>type</th>
           <th>quantity</th>
@@ -134,7 +134,7 @@ setUpdater(id)
       <tbody key={e._id}>
         <tr>
 
-          
+          <td>{searchedData.indexOf(e)}</td>
          
           <td style={{width:"200px"}}>{updater  == e._id?<TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
 type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
