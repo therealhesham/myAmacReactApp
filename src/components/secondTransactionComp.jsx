@@ -48,7 +48,7 @@ const postHandler =(e)=>{
     axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,
         items:items,location:lOcation,quantity:quantity},{withCredentials:true}).then(e=>
-           e.data == "false" ? setExistense("خطأ في التسجيل المهام غير متاحة بالمخزن") :
+           e.data == "error" ? setExistense("خطأ في التسجيل المهام غير متاحة بالمخزن") :
              Clear() 
             )
             
