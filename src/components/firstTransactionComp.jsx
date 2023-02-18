@@ -142,7 +142,7 @@ label="المهام"
 onChange={(e)=>setItem(e.target.value) }
 >
 
-{!data?"waiting":data.map(e=><MenuItem value={itemsno? console.log(data[itemsno])  : e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items }</MenuItem>)}
+{!data?"waiting":data.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{itemsno? data[itemsno]  :e.items }</MenuItem>)}
 
 
 
