@@ -86,6 +86,9 @@ onChange={(e)=>setFrom(e.target.value)}
 
 </Select>
 </FormControl>
+<TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
+name="quantity" value={itemsNo} onChange={e=>setItemsNo(e.target.value)}/>
+
 {itemsNo ? "":
     <FormControl fullWidth >
 <InputLabel id="demo-simple-select-label" >الجهة</InputLabel>
@@ -122,13 +125,11 @@ setDestination(e.target.value)
 }
 
 
-<TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
-name="quantity" value={itemsNo} onChange={e=>setItemsNo(e.target.value)}/>
 
 
 {store.length <= 0  & itemsNo ?
     <TextField id="outlined-basic" label="المهام" variant="outlined" 
-name="quantity" value={data[itemsNo].items} onChange={e=>setItem(e.target.value)& setSpecificUnite(data[itemsNo].unit)}/>
+name="quantity" value={data[itemsNo].items} onChange={e=>setItem(data[itemsNo].items)& setSpecificUnite(data[itemsNo].unit)}/>
 
 
 
