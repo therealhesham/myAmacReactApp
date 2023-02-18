@@ -9,7 +9,7 @@ import { Alert, Button, Stack, TextField } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-
+import _ from "lodash";
 // import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -30,7 +30,8 @@ const[from,setFrom]=useState("")
 const refFocus =useRef()
 const[to,setTo]=useState("")
 const[type,setType]=useState("")
-
+setItemsNo
+const [itemsno,setItemsNo]=useState("")
 const [quantity,setQuantity]=useState("")
 const [destination ,setDestination ] =useState("")
 const [item,setItem]=useState("")
@@ -48,7 +49,7 @@ const postHandler =(e)=>{
     axios.post("https://amaccompany.onrender.com/transactionexport",
     {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt},{withCredentials:true}).
     then(e=>{
-        e.data == "false" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
+        e.data == "error" ? setExistense("  ...خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
     
     }
  const getSpecificData =(e)   =>{
@@ -63,6 +64,7 @@ return(
 
 
 <Stack   gap="12px">
+    
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
 
@@ -94,8 +96,8 @@ id="demo-simple-select"
 value={destination}
 label="الجهة"
 
-onFocusCapture={getSpecificData}
-autoFocus
+// onFocusCapture={getSpecificData}
+// autoFocus
 onChange={(e)=>
 
 setDestination(e.target.value)
@@ -125,7 +127,8 @@ setDestination(e.target.value)
 
 
 
-
+<TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
+name="quantity" value={itemsno} onChange={e=>setItemsNo(e.target.value)}/>
 
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المهام</InputLabel>
@@ -139,7 +142,7 @@ label="المهام"
 onChange={(e)=>setItem(e.target.value) }
 >
 
-{!specificitems?"waiting":specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items }</MenuItem>)}
+{!data?"waiting":data.map(e=><MenuItem value={itemsno? data[itemsno]  : e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items }</MenuItem>)}
 
 
 
