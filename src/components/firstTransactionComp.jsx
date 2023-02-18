@@ -89,8 +89,13 @@ onChange={(e)=>setFrom(e.target.value)}
 <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
 name="quantity" value={itemsNo} onChange={e=>setItemsNo(e.target.value)}/>
 
-{itemsNo ? "":
-    <FormControl fullWidth >
+{store.length >= 0 & itemsNo ?
+<TextField id="outlined-basic" label="المهام" variant="outlined" 
+name="quantity" value={data[itemsNo].items} onChange={e=>setItem(data[itemsNo].items)& setSpecificUnite(data[itemsNo].unit)}/>
+
+
+:
+<div>    <FormControl fullWidth >
 <InputLabel id="demo-simple-select-label" >الجهة</InputLabel>
 <Select name="destination"
 labelId="demo-simple-select-label"
@@ -120,22 +125,6 @@ setDestination(e.target.value)
 
 </Select>
 </FormControl>
-
-
-}
-
-
-
-
-{store.length <= 0  & itemsNo ?
-    <TextField id="outlined-basic" label="المهام" variant="outlined" 
-name="quantity" value={data[itemsNo].items} onChange={e=>setItem(data[itemsNo].items)& setSpecificUnite(data[itemsNo].unit)}/>
-
-
-
-
-:
-
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المهام</InputLabel>
 
@@ -156,7 +145,12 @@ onChange={(e)=>setItem(e.target.value) }
 
 </Select>
 </FormControl>
+
+</div>
 }
+
+
+
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
 <Select
