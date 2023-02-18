@@ -30,7 +30,7 @@ const[from,setFrom]=useState("")
 const refFocus =useRef()
 const[to,setTo]=useState("")
 const[type,setType]=useState("")
-
+const [itemsNo,setItemsNo]=useState("")
 const [quantity,setQuantity]=useState("")
 const [destination ,setDestination ] =useState("")
 const [item,setItem]=useState("")
@@ -120,17 +120,23 @@ setDestination(e.target.value)
 
 
 
+<TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
+name="quantity" value={itemsNo} onChange={e=>setItemsNo(e.target.value)}/>
+
+
+{itemsNo ?
+    <TextField id="outlined-basic" label="المهام" variant="outlined" 
+name="quantity" value={data[itemsNo].items} onChange={e=>setItem(e.target.value)& setSpecificUnite(data[itemsNo].unit)}/>
 
 
 
 
-
-
-{/* <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
-name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
+:
 
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المهام</InputLabel>
+
+
 <Select
 labelId="demo-simple-select-label"
 id="demo-simple-select"
@@ -147,7 +153,7 @@ onChange={(e)=>setItem(e.target.value) }
 
 </Select>
 </FormControl>
-
+}
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
 <Select
