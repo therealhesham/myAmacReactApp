@@ -49,7 +49,7 @@ function Logout(){
     
   localStorage.removeItem("token")  
   // window.location.reload()
- navigate("/logout")
+//  navigate("/logout")
  }
 useEffect( ()=>{
   // if(ref.current == 0){
