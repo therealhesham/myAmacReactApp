@@ -143,7 +143,7 @@ onChange={(e)=>setItem(e.target.value) }
 >
 {itemsno? 
     <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
-name="quantity" value={data[itemsno]} onChange={e=>setItem(data[itemsno])} onFocusCapture={()=>setSpecificUnite(e.type)}/>
+name="quantity" value={data[itemsno]} onChange={e=>setItem(data[itemsno])} />
 
 
   :
