@@ -9,7 +9,7 @@ import { Alert, Button, Stack, TextField } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import _ from "lodash";
+
 // import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -31,7 +31,6 @@ const refFocus =useRef()
 const[to,setTo]=useState("")
 const[type,setType]=useState("")
 
-const [itemsno,setItemsNo]=useState("")
 const [quantity,setQuantity]=useState("")
 const [destination ,setDestination ] =useState("")
 const [item,setItem]=useState("")
@@ -96,8 +95,8 @@ id="demo-simple-select"
 value={destination}
 label="الجهة"
 
-// onFocusCapture={getSpecificData}
-// autoFocus
+onFocusCapture={getSpecificData}
+autoFocus
 onChange={(e)=>
 
 setDestination(e.target.value)
@@ -127,8 +126,8 @@ setDestination(e.target.value)
 
 
 
-<TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
-name="quantity" value={itemsno} onChange={e=>setItemsNo(e.target.value)}/>
+{/* <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
+name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
 
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المهام</InputLabel>
@@ -141,17 +140,8 @@ value={item}
 label="المهام"
 onChange={(e)=>setItem(e.target.value) }
 >
-{itemsno? 
-    <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
-name="quantity" value={data[itemsno]} onChange={e=>setItem(data[itemsno])} />
 
-
-  :
-<div>
-{!data?"waiting":data.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items }</MenuItem>)}   
-</div>
-}
-
+{!specificitems?"waiting":specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items }</MenuItem>)}
 
 
 
