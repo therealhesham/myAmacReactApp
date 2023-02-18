@@ -27,6 +27,7 @@ export default function Fourth({fromList,data,unit}){
     const [contractor,setContractor] = useState("")
     const [destination,setDestination] = useState("")
     const [items,setItems] = useState("")
+    const [receipt,setReceipt] = useState("")
     const [quantity,setQuantity]=useState("")
     const [type,setType]=useState("")
     const [notExist,setExistense]=useState("")
@@ -37,11 +38,24 @@ e.preventDefault()
     axios.post("/specificdata",{store:destination}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
  }
+
+ const Clear =()=>{
+    setDone("تم تسجيل البيانات بنجاح") 
+setFrom("")
+setTypeOfImporter("")
+setType("")
+setQuantity("")
+setItems("")
+settypeOfContracting("")
+
+
+
+}
 const PostHandler= ()=>{
-    if (!contractor ||  !destination || !quantity || !type || !items ) return setExistense("رجاء ملىء البيانات")
+    if (!contractor ||  !destination || !quantity || !type || !items || !receipt ) return setExistense("رجاء ملىء البيانات")
 axios.post("/refund",{contractor:contractor,destination:destination,itens:items,
-    quantity:quantity,type:type}).thenthen(e=>{
-        !e.data ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
+    quantity:quantity,type:type,receiptno:receipt}).thenthen(e=>{
+        e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : Clear()})
 
 
 }
@@ -52,7 +66,8 @@ return(
 
 
 <Stack maxWidth="800px" minWidth="250px" style={{padding:"60px"}} gap="12px">
-
+<TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
+name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label"> المقاول</InputLabel>
 <Select

@@ -29,6 +29,7 @@ const [typeOfImporter,setTypeOfImporter]=useState("")
 const [contractor,setContractor]=useState("")
 const [type,setType]=useState("")
 const [quantity,setQuantity]=useState("")
+const [receipt,setReceipt]=useState("")
 const [items,setItems]=useState("")
 const [typeOfContracting,settypeOfContracting]=useState("")
 const [lOcation,setlOcation]=useState("")
@@ -43,12 +44,12 @@ const [done,setDone]=useState(null)
 
 // })
 const postHandler =(e)=>{
-    if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items  ) return setExistense("رجاء ملىء البيانات")
+    if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
     e.preventDefault()
     axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,
-        items:items,location:lOcation,quantity:quantity},{withCredentials:true}).then(e=>
-           e.data == "error" ? setExistense("خطأ في التسجيل المهام غير متاحة بالمخزن") :
+        items:items,location:lOcation,quantity:quantity,receiptno:receipt},{withCredentials:true}).then(e=>
+           e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") :
              Clear() 
             )
             
@@ -79,7 +80,8 @@ return(
 <div>
     <form  style={{width:styler }}>
 <Stack   gap="12px">
-
+<TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
+name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المخزن</InputLabel>
 <Select

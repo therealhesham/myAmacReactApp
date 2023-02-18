@@ -38,14 +38,15 @@ const [notExist,setExistense]=useState("")
 const [store,setStore]=useState(destination)
 const [done,setDone]=useState("")
 const [alert,setAlert] = useState("")
+const [receipt,setReceipt]=useState("")
 const [specificitems,setToGetSpecificITems]=useState([])
 const [specificUnite,setSpecificUnite]=useState()
 const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"error":""}>{notExist}</Alert>)}, 5000)
 const postHandler =(e)=>{
     e.preventDefault()
-    if (!from ||  !type || !quantity || !destination || !item ) return setExistense("رجاء ملىء البيانات")
+    if (!from ||  !type || !quantity || !destination || !item || !receipt ) return setExistense("رجاء ملىء البيانات")
     axios.post("https://amaccompany.onrender.com/transactionexport",
-    {source:from,destination:destination,unit:type,quantity:quantity,items:item},{withCredentials:true}).
+    {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt},{withCredentials:true}).
     then(e=>{
         e.data == "false" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
     
@@ -62,6 +63,8 @@ return(
 
 
 <Stack   gap="12px">
+<TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
+name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
 
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">مصدر الوارد</InputLabel>

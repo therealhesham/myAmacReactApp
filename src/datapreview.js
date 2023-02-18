@@ -113,54 +113,57 @@ setUpdater(id)
     }
 
       return (
-  
-  <div>
-        {/* <App/> */}
-        {/* <ComboBox data={[...searchedData]}/> */}
-        <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
-      <Table striped="columns">
-          <thead>
-            <tr>
-              <th>store</th>
-              <th>items</th>
-              <th>type</th>
-              <th>quantity</th>
-              <th>Update</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          {/* {data.} */}
-          {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map((e)=>
-          <tbody key={e._id}>
-            <tr>
+  <div>{token?  
+    <div>
+    {/* <App/> */}
+    {/* <ComboBox data={[...searchedData]}/> */}
+    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
+  <Table striped="columns">
+      <thead>
+        <tr>
+          <th>store</th>
+          <th>items</th>
+          <th>type</th>
+          <th>quantity</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      {/* {data.} */}
+      {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map((e)=>
+      <tbody key={e._id}>
+        <tr>
 
-              
-             
-              <td style={{width:"200px"}}>{updater  == e._id?<TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
- type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
-              <td style={{width:"200px"}} >{updater ==e._id? <TextField style={{width:"200px"}} id="outlined-basic" fullWidth label="المهام" variant="outlined" 
+          
+         
+          <td style={{width:"200px"}}>{updater  == e._id?<TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
+type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
+          <td style={{width:"200px"}} >{updater ==e._id? <TextField style={{width:"200px"}} id="outlined-basic" fullWidth label="المهام" variant="outlined" 
 name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</td>
-              <td style={{width:"80px"}}> {updater ==e._id?<TextField id="outlined-basic" style={{width:"80px"}} label="الوحدة" variant="outlined"
- name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td>
-              <td style={{width:"70px"}}>{updater==e._id?<TextField id="outlined-basic"  style={{width:"70px"}} label="الكمية" variant="outlined" 
+          <td style={{width:"80px"}}> {updater ==e._id?<TextField id="outlined-basic" style={{width:"80px"}} label="الوحدة" variant="outlined"
+name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td>
+          <td style={{width:"70px"}}>{updater==e._id?<TextField id="outlined-basic"  style={{width:"70px"}} label="الكمية" variant="outlined" 
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
-              <td style={{width:"70px"}}>{updater == e._id ? <Button variant="contained"  style={{width:"70px"}} onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
-              <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
-              </tr>      
-               
+          <td style={{width:"70px"}}>{updater == e._id ? <Button variant="contained"  style={{width:"70px"}} onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
+          <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
+          </tr>      
+           
 
 </tbody>)}
-          
-                  </Table>
-    <div>
-    <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
-    </div>
-  
+      
+              </Table>
+<div>
+<Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
+</div>
+
 {/* <Transaction data={data}/> */}
 </div>
 
 
 
+    
+    :""}</div>
+  
 
 )
 
