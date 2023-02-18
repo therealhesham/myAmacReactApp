@@ -39,7 +39,7 @@ useEffect(()=>{
     
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     // console.log(e)
-     e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(e.data) 
+     e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
      )
 //     console.log(data )
 
@@ -134,7 +134,7 @@ setUpdater(id)
       <tbody key={e._id}>
         <tr>
 
-          <td>{searchedData.indexOf(e)}</td>
+          <td>{data.indexOf(e)}</td>
          
           <td style={{width:"200px"}}>{updater  == e._id?<TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
 type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
