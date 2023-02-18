@@ -30,7 +30,7 @@ const[from,setFrom]=useState("")
 const refFocus =useRef()
 const[to,setTo]=useState("")
 const[type,setType]=useState("")
-setItemsNo
+
 const [itemsno,setItemsNo]=useState("")
 const [quantity,setQuantity]=useState("")
 const [destination ,setDestination ] =useState("")
