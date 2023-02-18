@@ -124,7 +124,7 @@ setDestination(e.target.value)
 name="quantity" value={itemsNo} onChange={e=>setItemsNo(e.target.value)}/>
 
 
-{itemsNo ?
+{!store & itemsNo ?
     <TextField id="outlined-basic" label="المهام" variant="outlined" 
 name="quantity" value={data[itemsNo].items} onChange={e=>setItem(e.target.value)& setSpecificUnite(data[itemsNo].unit)}/>
 
