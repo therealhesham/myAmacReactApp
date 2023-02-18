@@ -86,8 +86,8 @@ onChange={(e)=>setFrom(e.target.value)}
 
 </Select>
 </FormControl>
-
-<FormControl fullWidth >
+{itemsNo ? "":
+    <FormControl fullWidth >
 <InputLabel id="demo-simple-select-label" >الجهة</InputLabel>
 <Select name="destination"
 labelId="demo-simple-select-label"
@@ -118,6 +118,8 @@ setDestination(e.target.value)
 </Select>
 </FormControl>
 
+
+}
 
 
 <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
