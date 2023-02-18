@@ -52,6 +52,7 @@ function Logout(){
 //  navigate("/logout")
  }
 useEffect( ()=>{
+  // const 
   // if(ref.current == 0){
    axios.get("https://amaccompany.onrender.com/falserequests",{withCredentials:true}).then((e)=> e.data == "deleted token"  ?
    
@@ -66,9 +67,9 @@ const details = jwtDecode(getToken)
 setToken(details)
  }
  
-// else if(localStorage.getItem("token") == null)
-// {navigate("/login")}
-//  }
+else if(localStorage.getItem("token") == null)
+{navigate("/login")}
+ 
   },[data])
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
