@@ -141,8 +141,17 @@ value={item}
 label="المهام"
 onChange={(e)=>setItem(e.target.value) }
 >
+{itemsno? 
+    <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
+name="quantity" value={data[itemsno]} onChange={e=>setItem(data[itemsno])} onFocusCapture={()=>setSpecificUnite(e.type)}/>
 
-{!data?"waiting":data.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{itemsno? data[itemsno]  :e.items }</MenuItem>)}
+
+  :
+<div>
+{!data?"waiting":data.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items }</MenuItem>)}   
+</div>
+}
+
 
 
 
