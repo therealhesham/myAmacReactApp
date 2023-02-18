@@ -119,9 +119,11 @@ setUpdater(id)
     {/* <ComboBox data={[...searchedData]}/> */}
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
   <Table striped="columns">
+      
+      
       <thead>
-        <tr>
-        <th>id</th><th>store</th>
+        <tr >
+        <th style={{width:"200px"}}>id</th><th>store</th>
           <th>items</th>
           <th>type</th>
           <th>quantity</th>
