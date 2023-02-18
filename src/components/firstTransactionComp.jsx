@@ -95,7 +95,7 @@ name="quantity" value={data[itemsNo].items} onChange={e=>setItem(data[itemsNo].i
 
 
 :
-<div>  <>{console.log(itemsNo)}{console.log(data[itemsNo].items)}</>  <FormControl fullWidth >
+<div>  <>{console.log(data[itemsNo].items)}</>  <FormControl fullWidth >
 <InputLabel id="demo-simple-select-label" >الجهة</InputLabel>
 <Select name="destination"
 labelId="demo-simple-select-label"
