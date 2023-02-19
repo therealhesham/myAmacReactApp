@@ -126,7 +126,7 @@ setDestination(e.target.value)
           id="combo-box-demo"
         labe
         options={data.map((option) => option.items)}
-        renderInput={(params) => <TextField {...params} onClickCapture={e=>console.log(e.target.value)} label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
+        renderInput={(params) => <TextField {...params} onChange={e=>console.log(e.target.value)} label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
 
 
