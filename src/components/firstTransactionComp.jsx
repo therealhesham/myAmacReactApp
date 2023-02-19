@@ -48,7 +48,7 @@ const postHandler =(e)=>{
     axios.post("https://amaccompany.onrender.com/transactionexport",
     {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt},{withCredentials:true}).
     then(e=>{
-        e.data == "error" ? setExistense("  ...خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
+        e.data == "error" ? setExistense("خطأ في تسجيل البيانات .. المهام غير متاحة بالمخزن او قد تكون اخترت وحدة غير مناسبة لقائمة الجرد..من فضلك الرجوع لقائمة الجرد من هنا ") : setDone("تم تسجيل البيانات بنجاح")})
     
     }
  const getSpecificData =(e)   =>{
