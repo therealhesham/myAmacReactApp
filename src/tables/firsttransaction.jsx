@@ -54,7 +54,7 @@ setPage(1)
     }
 
     const Delet=(e)=>{
-      axios.post('/deletfirsttransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
+      axios.post('https://amaccompany.onrender.com/deletfirsttransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)
