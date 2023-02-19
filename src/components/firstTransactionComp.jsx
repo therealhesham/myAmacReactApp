@@ -5,7 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Alert, Button, Stack, TextField } from "@mui/material";
+import { Alert, Autocomplete, Button, Stack, TextField } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
@@ -122,7 +122,12 @@ setDestination(e.target.value)
 
 
 
-
+<Autocomplete
+        id="free-solo-demo"
+        freeSolo
+        options={data.map((option) => option.items)}
+        renderInput={(params) => <TextField {...params} onChange={e=>console.log(e)} label="freeSolo" />}
+      />
 
 
 
