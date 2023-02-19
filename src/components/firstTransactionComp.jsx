@@ -124,7 +124,8 @@ setDestination(e.target.value)
 
 <Autocomplete
           id="combo-box-demo"
-          onInputChange={(event, value) => console.log(event,value)}
+          onInputChange={(event, value) => setItem(value)}
+          onClickCapture={()=>setSpecificUnite(e.type)}
         options={data.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
@@ -133,7 +134,38 @@ setDestination(e.target.value)
 
 {/* <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
 name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
+{item
+?
 
+
+<FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
+<Select
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+name="unit"
+value={type}
+label="الوحدة"
+onChange={(e)=>setType(e.target.value)}
+>
+
+
+    
+<MenuItem value={specificUnite} key="1" >{specificUnite}</MenuItem>
+
+
+
+</Select>
+</FormControl>
+
+
+
+
+
+
+
+:
+<div>
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المهام</InputLabel>
 <Select
@@ -171,6 +203,9 @@ onChange={(e)=>setType(e.target.value)}
 
 </Select>
 </FormControl>
+
+</div>
+}
 
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={quantity} onChange={e=>setQuantity(e.target.value)}/>
