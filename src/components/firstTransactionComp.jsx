@@ -124,7 +124,11 @@ setDestination(e.target.value)
 
 <Autocomplete
           id="combo-box-demo"
-          onChange={e=>console.log(e.target.value)}
+          onInputChange={(event, value) => {
+            if (event?.type === "change") {
+             setInputValue(value);
+            }
+           }}
         options={data.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
