@@ -125,7 +125,7 @@ setDestination(e.target.value)
 <Autocomplete
           id="combo-box-demo"
           onInputChange={(event, value) => setItem(value)}
-          onClickCapture={()=>setSpecificUnite(e.type)}
+        //   onClickCapture={(e)=>setSpecificUnite(e.type)}
         options={data.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
@@ -151,8 +151,9 @@ onChange={(e)=>setType(e.target.value)}
 
 
     
-<MenuItem value={specificUnite} key="1" >{specificUnite}</MenuItem>
-
+<MenuItem value="م/ط" key="1" >م/ط</MenuItem>
+<MenuItem value="طن" key="2" >طن</MenuItem>
+<MenuItem value="عدد" key="3" >عدد</MenuItem>
 
 
 </Select>
