@@ -127,7 +127,7 @@ setDestination(e.target.value)
           onInputChange={(event, value) => setItem(value)}
         //   onClickCapture={(e)=>setSpecificUnite(e.type)}
         options={data.map((option) => option.items)}
-        renderInput={(params) => <TextField {...params}  label="المهام" placeholder="البحث في قائمة المهام من خلال الحروف .. ثم اختار من القائمة"/>}
+        renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
 
 
@@ -166,7 +166,48 @@ onChange={(e)=>setType(e.target.value)}
 
 
 :
-<p1>wainting</p1>
+
+<span>waiting for choosing items</span>
+//  <div>
+// <FormControl fullWidth>
+// <InputLabel id="demo-simple-select-label">المهام</InputLabel>
+// <Select
+// labelId="demo-simple-select-label"
+// id="demo-simple-select"
+
+// value={item}
+
+// label="المهام"
+// onChange={(e)=>setItem(e.target.value) }
+// >
+
+// {!specificitems?"waiting":specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items}</MenuItem>)}
+
+
+// </Select>
+// </FormControl>
+
+// <FormControl fullWidth>
+// <InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
+// <Select
+// labelId="demo-simple-select-label"
+// id="demo-simple-select"
+// name="unit"
+// value={type}
+// label="الوحدة"
+// onChange={(e)=>setType(e.target.value)}
+// >
+
+
+    
+// <MenuItem value={specificUnite} key="1" >{specificUnite}</MenuItem>
+
+
+
+// </Select>
+// </FormControl>
+
+// </div> 
 }
 
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
