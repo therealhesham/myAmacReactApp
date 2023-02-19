@@ -126,7 +126,7 @@ setDestination(e.target.value)
           id="combo-box-demo"
           onInputChange={(event, value) => {
             if (event?.type === "change") {
-             setInputValue(value);
+             console.log(value);
             }
            }}
         options={data.map((option) => option.items)}
