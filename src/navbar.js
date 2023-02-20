@@ -195,9 +195,9 @@ else if(localStorage.getItem("token") == null)
             <Link to="/chat"><SendIcon fontSize="small" color="action" variant="error"></SendIcon>  </Link>
             </Badge>
             <Badge badgeContent={typeof data == "string" ? null :data.length} color="error" style={{paddingLeft:"12px"}} >
-            
+            <Link to="/list">
             <NotificationsNoneIcon fontSize="small" color="action" variant="secondary"/>
-            
+            </Link>
           </Badge>
             <Menu
               sx={{ mt: '45px' }}
