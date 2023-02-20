@@ -90,8 +90,8 @@ else if(localStorage.getItem("token") == null)
   };
 
   return (
-    <AppBar position="sticky" style={{ height:"60px"}}>
-      <Container maxWidth="xxl">
+    <AppBar position="static" style={{ height:"60px"}} >
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
