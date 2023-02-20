@@ -125,6 +125,7 @@ else if(localStorage.getItem("token") == null)
               
             </IconButton>
             <Menu
+            disableScrollLock={true}
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
