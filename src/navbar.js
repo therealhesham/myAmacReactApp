@@ -91,7 +91,7 @@ else if(localStorage.getItem("token") == null)
 
   return (
     <AppBar position="sticky" style={{ height:"60px"}}>
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
@@ -144,7 +144,7 @@ else if(localStorage.getItem("token") == null)
             >
               {pages.map((page) => (
                 <MenuItem  onClick={handleCloseNavMenu}>
-                  <Typography key={page.id} textAlign="center" variant='black' color="white"  >{page.link}</Typography>
+                  <Typography key={page.id} textAlign="center" variant='black'   >{page.link}</Typography>
                 </MenuItem>
               ))}
             </Menu>
