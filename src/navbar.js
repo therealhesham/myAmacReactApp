@@ -90,7 +90,7 @@ else if(localStorage.getItem("token") == null)
   };
 
   return (
-    <AppBar position="sticky" style={{ height:"60px"}}>
+    <AppBar position="sticky" style={{ height:"60px" ,backgroundColor:"darkgray"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -191,14 +191,14 @@ else if(localStorage.getItem("token") == null)
                 <Avatar alt={token.firstName} src={token.url} />
               </IconButton> 
             </Tooltip>
-            <Badge  color="secondary" style={{paddingLeft:"12px"}} >
+            {/* <Badge  color="secondary" style={{paddingLeft:"12px"}} >
             <Link to="/chat"><SendIcon fontSize="small" color="action" variant="error"></SendIcon>  </Link>
             </Badge>
             <Badge badgeContent={typeof data == "string" ? null :data.length} color="error" style={{paddingLeft:"12px"}} >
             <Link to="/list">
             <NotificationsNoneIcon fontSize="small" color="action" variant="secondary"/>
             </Link>
-          </Badge>
+          </Badge> */}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
