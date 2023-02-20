@@ -62,11 +62,11 @@ React.useEffect(()=>
           </Grid>
           <Grid xs={2} sm={4} md={4} >
             <Item>
-               <div ><Typography > <Typography  >user name:</Typography><Typography style={{color:"darkgray"}}>{profiledata.username}</Typography></Typography></div>
-            <Typography>First Name:</Typography><Typography style={{color:"darkgray"}}>{profiledata.firstName}</Typography>
+               <div ><Typography > <Typography  >user name:</Typography><Typography style={{color:"blue"}}>{profiledata.username}</Typography></Typography></div>
+            <Typography>First Name:</Typography><Typography style={{color:"blue"}}>{profiledata.firstName}</Typography>
             <div style={{display:"inline-block"}}><Typography style={{display:"inline-block" , whiteSpace:"nowrap",overflow: "hidden",textOverflow: "ellipsis"}}>second Name: <Typography style={{color:"blue"}}>{profiledata.secondName}</Typography></Typography></div>
-            <Typography>Job Title:</Typography><Typography style={{color:"darkgray"}}>{profiledata.position}</Typography>
-            {/* <Typography>Age:</Typography> */}
+            <Typography>Job Title:</Typography><Typography style={{color:"blue"}}>{profiledata.position}</Typography>
+            <Typography>Age:</Typography>
 
             
             </Item>

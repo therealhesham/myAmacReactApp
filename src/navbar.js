@@ -25,7 +25,7 @@ import jwtDecode from 'jwt-decode';
 
 
 const pages = [
-{link : <Link to="/profile" style={{textDecoration:"none",color:"black"}}>الصفحة الشخصية</Link>,id:1},
+{link : <Link to="/profile" style={{textDecoration:"none",color:"black",fontSize:"12px"}}>الصفحة الشخصية</Link>,id:1},
 {link:<Link to="/preview" style={{textDecoration:"none",color:"black",borderColor:"white"}}>جرد المخازن</Link>,id:2}
 ,
 {link:<Link to="/postmaindata" style={{textDecoration:"none",color:"black",borderColor:"black"}}>اضافة جرد</Link>,id:3},
@@ -90,7 +90,7 @@ else if(localStorage.getItem("token") == null)
   };
 
   return (
-    <AppBar position="sticky" style={{ height:"60px" ,backgroundColor:"darkgray"}}>
+    <AppBar position="sticky" style={{ height:"60px"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
