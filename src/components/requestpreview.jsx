@@ -24,7 +24,7 @@ const ref = useRef(0)
 const navigate = useNavigate()
 
 const matches = useMediaQuery('(min-width:600px)');
-    useEffect(()=>{
+useEffect(()=>{
 
       const token = localStorage.getItem("token");
 if (!token) return navigate("/login")
@@ -35,7 +35,7 @@ axios.get("https://amaccompany.onrender.com/requests",{withCredentials:true,
 headers: {
   'Content-Type': 'application/json'
 }
-}).then((e)=>   { e.data == "not authenticated" ? navigate("/login")  : setData(e.data)} )
+}).then((e)=>   console.log(e) )
 
 setFiltered(data.filter(e=> e.isOk == true))
 setFilteredfalse(data.filter(e=> e.isOk != true))
