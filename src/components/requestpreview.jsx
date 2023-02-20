@@ -31,7 +31,11 @@ if (!token) return navigate("/login")
 
 
 // if (ref.current < 1){
-axios.get("https://amaccompany.onrender.com/requests",{withCredentials:true}).then((e)=>   { e.data == "not authenticated" ? navigate("/login")  : setData(e.data)} )
+axios.get("https://amaccompany.onrender.com/requests",{withCredentials:true,
+headers: {
+  'Content-Type': 'application/json'
+}
+}).then((e)=>   { e.data == "not authenticated" ? navigate("/login")  : setData(e.data)} )
 
 setFiltered(data.filter(e=> e.isOk == true))
 setFilteredfalse(data.filter(e=> e.isOk != true))
