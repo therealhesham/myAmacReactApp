@@ -42,13 +42,29 @@ const [receipt,setReceipt]=useState("")
 const [specificitems,setToGetSpecificITems]=useState([])
 const [specificUnite,setSpecificUnite]=useState()
 const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"error":""}>{notExist}</Alert>)}, 5000)
+const Clear =()=>{
+    setDone("تم تسجيل البيانات بنجاح") 
+setFrom("")
+setTo("")
+setExistense("")
+setType("")
+setQuantity("")
+setItem("")
+
+
+
+
+}
 const postHandler =(e)=>{
     e.preventDefault()
+    const find = localStorage.getItem("token")
+    const details = jwtDecode(find)
+    
     if (!from ||  !type || !quantity || !destination || !item || !receipt ) return setExistense("رجاء ملىء البيانات")
     axios.post("https://amaccompany.onrender.com/transactionexport",
-    {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt},{withCredentials:true}).
+    {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt,user:details.uername},{withCredentials:true}).
     then(e=>{
-        e.data == "error" ? setExistense("خطأ في تسجيل البيانات .. المهام غير متاحة بالمخزن او قد تكون اخترت وحدة غير مناسبة لقائمة الجرد..من فضلك الرجوع لقائمة الجرد من هنا ") : setDone("تم تسجيل البيانات بنجاح")})
+        e.data == "error" ? setExistense("خطأ في تسجيل البيانات .. المهام غير متاحة بالمخزن او قد تكون اخترت وحدة غير مناسبة لقائمة الجرد..من فضلك الرجوع لقائمة الجرد من هنا ") : Clear()})
     
     }
  const getSpecificData =(e)   =>{

@@ -78,7 +78,9 @@ items:{type:"string",required:true},
 unit:{type:"string"},
 location:{type:"string"},
 date:{type:"string",default:new Date(Date.now()).toDateString()},
-user:"string" */}
+user:"string" 
+*/}
+<th>رقم الاذن</th>
               <th>من</th>
               <th>الى</th>
               
@@ -100,7 +102,7 @@ user:"string" */}
             <tr>
 
               {console.log(e)}
-             
+             <td>{e.receiptno}</td>
               <td>{e.from}</td>
               <td>{e.to}</td>
               <td>{e.items}</td>

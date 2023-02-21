@@ -79,6 +79,7 @@ unit:{type:"string"},
 location:{type:"string"},
 date:{type:"string",default:new Date(Date.now()).toDateString()},
 user:"string" */}
+<th>رقم الاذن</th>
               <th>مصدر</th>
               <th>النوع</th>
               <th>المقاول</th>
@@ -101,7 +102,7 @@ user:"string" */}
             <tr>
 
               {console.log(e)}
-             
+             <th>{e.receiptno}</th>
               <td>{e.store}</td>
               <td>{e.typeOfImporter}</td>
               <td>{e.contractor}</td>

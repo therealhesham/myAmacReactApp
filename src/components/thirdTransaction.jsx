@@ -35,9 +35,12 @@ const [specificUnite,setSpecificUnite]=useState()
 const [done,setDone]=useState(null)
 const postHandler = (e)=>{
 e.preventDefault();
+e.preventDefault()
+    const find = localStorage.getItem("token")
+    const details = jwtDecode(find)
 if (!from ||  !to || !quantity || !type || !items || !receipt ) return setExistense("رجاء ملىء البيانات")
 if (from === to ) return setExistense("من فضلك غير احد المخزنين")
-axios.post("https://amaccompany.onrender.com/thirdtransaction",{receiptno:receipt,from:from,to:to,items:items,type:type,quantity:quantity},{withCredentials:true}).then(e=>
+axios.post("https://amaccompany.onrender.com/thirdtransaction",{user:details.username,receiptno:receipt,from:from,to:to,items:items,type:type,quantity:quantity},{withCredentials:true}).then(e=>
     e.data == "error" ? setExistense("  خطأ في التسجيل ... المهام غير متاحة بالمخزن المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : Clear())
 
 }

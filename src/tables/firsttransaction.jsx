@@ -67,7 +67,7 @@ setSearcher(dataRe)
       <Table striped="columns" variant="dark" style={{width:"900px"}} >
           <thead>
             <tr>
-              
+              <th>رقم الاذن</th>
               <th>مصدر</th>
               <th>الى مخزن</th>
               <th>مهام</th>
@@ -86,7 +86,7 @@ setSearcher(dataRe)
             <tr>
 
               {console.log(e)}
-             
+              <td>{e.receiptno}</td>
               <td>{e.source}</td>
               <td>{e.destination}</td>
               <td>{e.items}</td>
