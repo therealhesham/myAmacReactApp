@@ -194,7 +194,9 @@ label="الموقع"
 onChange={(e)=>setlOcation(e.target.value)}
 >
 
-<MenuItem value="اسامي القرى" >"اسامي القري"</MenuItem>
+<MenuItem value="ابشاق" >ابشاق</MenuItem>
+<MenuItem value="السعدية" >السعدية</MenuItem>
+<MenuItem value="بني خالد" >بني خالد</MenuItem>
 
 
 
