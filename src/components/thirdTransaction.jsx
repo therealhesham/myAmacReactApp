@@ -82,7 +82,11 @@ onFocusCapture={getSpecificData}
 onChange={(e)=>setFrom(e.target.value)}
 >
 
-
+<MenuItem value={e} key="902">مخزن مطاي الرئيسي</MenuItem>
+<MenuItem value={e} key="903">مخزن بني مزار الرئيسي</MenuItem>
+<MenuItem value={e} key="905"></MenuItem>
+<MenuItem value={e} key="906"></MenuItem>
+<MenuItem value={e} key="907"></MenuItem>
 {fromList.map(e=> <MenuItem value={e} key={[fromList[e]]}>{e}</MenuItem>)  }
 
 

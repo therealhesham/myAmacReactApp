@@ -137,7 +137,18 @@ onChange={(e)=>setContractor(e.target.value)}
 >
 
 
-<MenuItem  value="ؤخىفقش">اسماء مقاولين هنا</MenuItem>
+<MenuItem  value="مخيمر">مخيمر</MenuItem>
+<MenuItem  value="كامل عيد">كامل عيد</MenuItem>
+<MenuItem  value="احمد سليمان">احمد سليمان</MenuItem>
+<MenuItem  value="محمد السيد عصفور">محمد السيد عصفور</MenuItem>
+<MenuItem  value="ربيع فايز">ربيع فايز</MenuItem>
+<MenuItem  value="علي ابو العز">علي ابو العز</MenuItem>
+<MenuItem  value="بكر راضي">بكر راضي</MenuItem>
+<MenuItem  value="حنا فرج">حنا فرج </MenuItem>
+<MenuItem  value="علاء حسن">علاء حسن</MenuItem>
+<MenuItem  value="عيسى">عيسى</MenuItem>
+<MenuItem  value="نور حجازي">نور حجازي</MenuItem>
+<MenuItem  value="سمير ثابت">سمير ثابت</MenuItem>
 
 
 
@@ -195,6 +206,14 @@ onChange={(e)=>setlOcation(e.target.value)}
 >
 
 <MenuItem value="ابشاق" >ابشاق</MenuItem>
+<MenuItem value="ابوان" >ابوان</MenuItem>
+<MenuItem value="بردنوها" >بردنوها</MenuItem>
+<MenuItem value="نزلة جلف" >نزلة جلف</MenuItem>
+<MenuItem value="سلاقوس" >سلاقوس</MenuItem>
+<MenuItem value="شلقام" >شلقام</MenuItem>
+<MenuItem value="بني سعيد" >بني سعيد</MenuItem>
+<MenuItem value="جريس" >جريس</MenuItem>
+<MenuItem value="كوم محرص" >كوم محرص</MenuItem>
 <MenuItem value="السعدية" >السعدية</MenuItem>
 <MenuItem value="بني خالد" >بني خالد</MenuItem>
 
