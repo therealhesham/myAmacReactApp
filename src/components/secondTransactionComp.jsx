@@ -212,6 +212,7 @@ onChange={(e)=>setlOcation(e.target.value)}
 <MenuItem value="نزلة جلف" >نزلة جلف</MenuItem>
 <MenuItem value="سلاقوس" >سلاقوس</MenuItem>
 <MenuItem value="شلقام" >شلقام</MenuItem>
+<MenuItem value="دمشير" >دمشير</MenuItem>
 <MenuItem value="بني سعيد" >بني سعيد</MenuItem>
 <MenuItem value="جريس" >جريس</MenuItem>
 <MenuItem value="كوم محرص" >كوم محرص</MenuItem>
