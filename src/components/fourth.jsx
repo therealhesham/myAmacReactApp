@@ -44,8 +44,7 @@ const PostHandler= ()=>{
 axios.post("https://amaccompany.onrender.com/refund",
 {receiptno:receiptno,contractor:contractor,destination:destination,items:items,
     quantity:quantity,type:type},{withCredentials:true}).then(e=>{
-    console.log(e.data)
-    })
+        e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
 
 
 }
@@ -131,7 +130,7 @@ label="المهام"
 onChange={(e)=>setItems(e.target.value) }
 >
 
-{!specificitems?"waiting":specificitems.map(e=><MenuItem value={e} onClickCapture={()=>setSpecificUnite(e.type)} >{e.items}</MenuItem>)}
+{!specificitems?"waiting":specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)} >{e.items}</MenuItem>)}
 
 
 
