@@ -44,7 +44,8 @@ const PostHandler= ()=>{
 axios.post("https://amaccompany.onrender.com/refund",
 {receiptno:receiptno,contractor:contractor,destination:destination,items:items,
     quantity:quantity,type:type},{withCredentials:true}).then(e=>{
-        e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
+    console.log(e.data)
+    })
 
 
 }
