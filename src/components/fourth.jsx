@@ -30,6 +30,7 @@ export default function Fourth({fromList,data,unit,styler}){
     const [quantity,setQuantity]=useState("")
     const [specificUnite,setSpecificUnite]=useState()
     const [type,setType]=useState("")
+    const [receiptno,setReceiptno]=useState("")
     const [notExist,setExistense]=useState("")
 const [done,setDone]=useState("")
 const getSpecificData =(e)   =>{
@@ -40,7 +41,7 @@ e.preventDefault()
  }
 const PostHandler= ()=>{
     if (!contractor ||  !destination || !quantity || !type || !items ) return setExistense("رجاء ملىء البيانات")
-axios.post("https://amaccompany.onrender.com/refund",{contractor:contractor,destination:destination,itens:items,
+axios.post("https://amaccompany.onrender.com/refund",{receiptno:receiptno,contractor:contractor,destination:destination,itens:items,
     quantity:quantity,type:type},{withCredentials:true}).then(e=>{
         !e.data ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
 
@@ -53,7 +54,8 @@ return(
 
 
 <Stack gap="12px">
-
+<TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
+name="quantity" value={receiptno} onChange={e=>setReceiptno(e.target.value)}/>
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label"> المقاول</InputLabel>
 <Select

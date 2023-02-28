@@ -79,7 +79,8 @@ unit:{type:"string"},
 location:{type:"string"},
 date:{type:"string",default:new Date(Date.now()).toDateString()},
 user:"string" */}
-              <th>المقاول</th>
+              
+              <th>رقم الاذن</th>
               <th>المخزن</th>
               
               
@@ -100,7 +101,7 @@ user:"string" */}
             <tr>
 
              
-   
+  <td>{e.receiptno}</td>
               <td>{e.contractor}</td>
               <td>{e.destination}</td>
               <td>{e.items}</td>
