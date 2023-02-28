@@ -173,7 +173,7 @@ else if(localStorage.getItem("token") == null)
          {token? <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-              
+              style={{backgroundColor:"skyblue"}}
               variant='primary'
               
                 key={page.id}
