@@ -136,7 +136,7 @@ label="المقاول"
 onChange={(e)=>setContractor(e.target.value)}
 >
 
-
+<MenuItem  value="عبدالعال">عبدالعال</MenuItem>
 <MenuItem  value="مخيمر">مخيمر</MenuItem>
 <MenuItem  value="كامل عيد">كامل عيد</MenuItem>
 <MenuItem  value="احمد سليمان">احمد سليمان</MenuItem>
@@ -208,11 +208,13 @@ value={lOcation}
 label="الموقع"
 onChange={(e)=>setlOcation(e.target.value)}
 >
-
+<MenuItem value="جبل الطير" >جبل الطير</MenuItem>
+<MenuItem value="ابوقرقاص" >ابوقرقاص</MenuItem>
 <MenuItem value="ابشاق" >ابشاق</MenuItem>
 <MenuItem value="ابوان" >ابوان</MenuItem>
 <MenuItem value="بردنوها" >بردنوها</MenuItem>
 <MenuItem value="نزلة جلف" >نزلة جلف</MenuItem>
+<MenuItem value="ابوجرج" >ابوجرج</MenuItem>
 <MenuItem value="سلاقوس" >سلاقوس</MenuItem>
 <MenuItem value="شلقام" >شلقام</MenuItem>
 <MenuItem value="دمشير" >دمشير</MenuItem>
