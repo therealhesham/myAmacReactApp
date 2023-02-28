@@ -145,7 +145,7 @@ else if(localStorage.getItem("token") == null)
             >
               {pages.map((page) => (
                 <MenuItem  onClick={handleCloseNavMenu}>
-                  <Typography key={page.id} textAlign="center" variant='black'   >{page.link}</Typography>
+                  <Typography key={page.id} textAlign="center" variant='black' style={{backgroundColor:"skyblue"}}  >{page.link}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -173,7 +173,7 @@ else if(localStorage.getItem("token") == null)
          {token? <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-              style={{backgroundColor:"skyblue"}}
+              
               variant='primary'
               
                 key={page.id}
