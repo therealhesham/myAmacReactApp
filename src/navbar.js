@@ -25,12 +25,12 @@ import jwtDecode from 'jwt-decode';
 
 
 const pages = [
-{link : <Link to="/profile" style={{textDecoration:"none",color:"black",fontSize:"12px"}}>الصفحة الشخصية</Link>,id:1},
-{link:<Link to="/preview" style={{textDecoration:"none",color:"black",borderColor:"white"}}>جرد المخازن</Link>,id:2}
+{link : <Link to="/profile" style={{textDecoration:"none",fontSize:"12px"}}>الصفحة الشخصية</Link>,id:1},
+{link:<Link to="/preview" style={{textDecoration:"none",borderColor:"white"}}>جرد المخازن</Link>,id:2}
 ,
-{link:<Link to="/postmaindata" style={{textDecoration:"none",color:"black",borderColor:"black"}}>اضافة جرد</Link>,id:3},
-{link:<Link to="/transaction" style={{textDecoration:"none",color:"black",borderColor:"black"}}>اضافة عملية</Link>,id:4},
-{link:<Link to="/previewtable" style={{textDecoration:"none",color:"black",borderColor:"black"}}>جداول العمليات</Link>,id:5}
+{link:<Link to="/postmaindata" style={{textDecoration:"none",borderColor:"black"}}>اضافة جرد</Link>,id:3},
+{link:<Link to="/transaction" style={{textDecoration:"none",borderColor:"black"}}>اضافة عملية</Link>,id:4},
+{link:<Link to="/previewtable" style={{textDecoration:"none",borderColor:"black"}}>جداول العمليات</Link>,id:5}
 
 ];
 const settings = [{setting:<Link to="/profile">Profile</Link>,id:1}, {setting:'store',id:2},
@@ -144,9 +144,11 @@ else if(localStorage.getItem("token") == null)
               }}
             >
               {pages.map((page) => (
-                <MenuItem  onClick={handleCloseNavMenu}>
+                <MenuItem  onClick={handleCloseNavMenu}
+                style={{backgroundColor:"rgb(25, 118, 210)"}} 
+                >
                   <Typography key={page.id} textAlign="center" variant='black' 
-                  // style={{backgroundColor:"skyblue"}} 
+                  
                    >{page.link}</Typography>
                 </MenuItem>
               ))}
