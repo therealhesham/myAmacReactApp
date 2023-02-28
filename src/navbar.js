@@ -145,7 +145,9 @@ else if(localStorage.getItem("token") == null)
             >
               {pages.map((page) => (
                 <MenuItem  onClick={handleCloseNavMenu}>
-                  <Typography key={page.id} textAlign="center" variant='black' style={{backgroundColor:"skyblue"}}  >{page.link}</Typography>
+                  <Typography key={page.id} textAlign="center" variant='black' 
+                  // style={{backgroundColor:"skyblue"}} 
+                   >{page.link}</Typography>
                 </MenuItem>
               ))}
             </Menu>
