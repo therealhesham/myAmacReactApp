@@ -151,6 +151,7 @@ onChange={(e)=>setContractor(e.target.value)}
 <MenuItem  value="سمير ثابت">سمير ثابت</MenuItem>
 <MenuItem  value="ابو راس">ابو راس</MenuItem>
 <MenuItem  value="صفوت طه">صفوت طه</MenuItem>
+<MenuItem  value="عمر حامد">عمر حامد</MenuItem>
 <MenuItem  value="مصطفى اشرف">مصطفى اشرف</MenuItem>
 
 
