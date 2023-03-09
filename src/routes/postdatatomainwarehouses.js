@@ -11,14 +11,14 @@ import {useEffect, useState} from "react";
 function PostNewDataToMainWarehouse(){
 
 const [items,setItems] = useState("")
-const [store,setStore]=useState("مخزن مطاي الرئيسي")
+const [store,setStore]=useState("مخزن بني مزار مطاي")
 const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
 const [error,setError]= useState("")
 const [success,setSuccess]= useState()
 const clear=()=>{
     setItems("")
-    setStore("مخزن مطاي الرئيسي")
+    setStore("مخزن بني مزار مطاي")
     setType("")
     setQuantity("")
     setError(null)
