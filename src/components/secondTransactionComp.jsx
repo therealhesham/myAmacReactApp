@@ -154,6 +154,7 @@ onChange={(e)=>setContractor(e.target.value)}
 <MenuItem  value="عمر حامد">عمر حامد</MenuItem>
 <MenuItem  value="مصطفى اشرف">مصطفى اشرف</MenuItem>
 
+<MenuItem  value="ناجح حمدي">ناجح حمدي</MenuItem>
 
 
 
@@ -223,8 +224,11 @@ onChange={(e)=>setlOcation(e.target.value)}
 <MenuItem value="كوم محرص" >كوم محرص</MenuItem>
 <MenuItem value="السعدية" >السعدية</MenuItem>
 <MenuItem value="بني خالد" >بني خالد</MenuItem>
-
-
+<MenuItem  value="طوخ الخيل">طوخ الخيل</MenuItem>
+<MenuItem  value="دشطوط">دشطوط</MenuItem>
+<MenuItem  value="ريحانة">ريحانة</MenuItem>
+<MenuItem  value="اطفيح">اطفيح</MenuItem>
+<MenuItem  value="البرنسات">البرنسات</MenuItem>
 
 </Select>
 </FormControl>
