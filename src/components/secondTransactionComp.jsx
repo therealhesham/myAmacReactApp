@@ -135,7 +135,7 @@ value={contractor}
 label="المقاول"
 onChange={(e)=>setContractor(e.target.value)}
 >
-
+<MenuItem  value="عادل">عادل</MenuItem>
 <MenuItem  value="عبدالعال">عبدالعال</MenuItem>
 <MenuItem  value="مخيمر">مخيمر</MenuItem>
 <MenuItem  value="كامل عيد">كامل عيد</MenuItem>
@@ -231,6 +231,8 @@ onChange={(e)=>setlOcation(e.target.value)}
 <MenuItem  value="ريحانة">ريحانة</MenuItem>
 <MenuItem  value="اطفيح">اطفيح</MenuItem>
 <MenuItem  value="البرنسات">البرنسات</MenuItem>
+
+<MenuItem  value="سمالوط">سمالوط</MenuItem>
 
 </Select>
 </FormControl>
