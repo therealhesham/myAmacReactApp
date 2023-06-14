@@ -148,6 +148,7 @@ onChange={(e)=>setContractor(e.target.value)}
 <MenuItem  value="علاء حسن">علاء حسن</MenuItem>
 <MenuItem  value="عيسى">عيسى</MenuItem>
 <MenuItem  value="نور حجازي">نور حجازي</MenuItem>
+    <MenuItem  value="ماهر حسين">ماهر حسين</MenuItem>
 <MenuItem  value="سمير ثابت">سمير ثابت</MenuItem>
 <MenuItem  value="ابو راس">ابو راس</MenuItem>
 <MenuItem  value="صفوت طه">صفوت طه</MenuItem>
@@ -231,7 +232,7 @@ onChange={(e)=>setlOcation(e.target.value)}
 <MenuItem  value="ريحانة">ريحانة</MenuItem>
 <MenuItem  value="اطفيح">اطفيح</MenuItem>
 <MenuItem  value="البرنسات">البرنسات</MenuItem>
-
+<MenuItem  value="دمشاو هاشم">دمشاو هاشم</MenuItem>
 <MenuItem  value="سمالوط">سمالوط</MenuItem>
 
 </Select>
