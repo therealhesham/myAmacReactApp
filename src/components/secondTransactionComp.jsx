@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 
 
 
-export default function SecondTransaction({fromList,source,contractorNames,client,data,unit , styler}){
+export default function SecondTransaction({fromList,source,contractorNames,client,data,unit , places,styler}){
 const [from,setFrom]=useState("")
 const [typeOfImporter,setTypeOfImporter]=useState("")
 const [contractor,setContractor]=useState("")
@@ -182,31 +182,9 @@ value={lOcation}
 label="الموقع"
 onChange={(e)=>setlOcation(e.target.value)}
 >
-<MenuItem value="جبل الطير" >جبل الطير</MenuItem>
-<MenuItem value="ابوقرقاص" >ابوقرقاص</MenuItem>
-<MenuItem value="ابشاق" >ابشاق</MenuItem>
-<MenuItem value="ابوان" >ابوان</MenuItem>
-<MenuItem value="بردنوها" >بردنوها</MenuItem>
-<MenuItem value="نزلة جلف" >نزلة جلف</MenuItem>
-<MenuItem value="ابوجرج" >ابوجرج</MenuItem>
-<MenuItem value="سلاقوس" >سلاقوس</MenuItem>
-<MenuItem value="شلقام" >شلقام</MenuItem>
-<MenuItem value="دمشير" >دمشير</MenuItem>
-<MenuItem value="بني سعيد" >بني سعيد</MenuItem>
-<MenuItem value="جريس" >جريس</MenuItem>
-<MenuItem value="كوم محرص" >كوم محرص</MenuItem>
-<MenuItem value="السعدية" >السعدية</MenuItem>
-<MenuItem value="بني خالد" >بني خالد</MenuItem>
-<MenuItem  value="طوخ الخيل">طوخ الخيل</MenuItem>
-<MenuItem  value="دشطوط">دشطوط</MenuItem>
-<MenuItem  value="ريحانة">ريحانة</MenuItem>
-<MenuItem  value="سفاي">سفاي</MenuItem>
-<MenuItem  value="دعبس">دعبس</MenuItem>
-<MenuItem  value="اطفيح">اطفيح</MenuItem>
-<MenuItem  value="البرنسات">البرنسات</MenuItem>
-<MenuItem  value="دمشاو هاشم">دمشاو هاشم</MenuItem>
-<MenuItem  value="سمالوط">سمالوط</MenuItem>
 
+    {places.map(e=>
+<MenuItem  value={e.name}>{e.name}</MenuItem>)}
 </Select>
 </FormControl>
 <FormControl fullWidth>
