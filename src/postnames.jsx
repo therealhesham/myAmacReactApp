@@ -29,7 +29,7 @@ const [ contractorName,setContractorName]=useState("")
 const [place,setPlace]=useState("")
 const [store,setStore]=useState("")
 
-function ContractorHandler(){
+function contractorHandler(){
 
 
     axios.post("https://amaccompany.onrender.com/namesofcontractors",{name:contractorName},{withCredentials:true}).then((e)=>{e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل"}).catch(e=>console.log(e))
@@ -53,7 +53,7 @@ function storeHandler(){
 
 return(
 <div>
-    <form  style={{width:styler }}>
+    <form  style={{width:"400px" }}>
 <Stack   gap="12px">
 
 <TextField id="outlined-basic" label="مقاول" variant="outlined" 
@@ -90,4 +90,4 @@ name="quantity" value={store} onChange={e=>setStore(e.target.value)}/>
 
 }
 
-export default Names;
+export default names;
