@@ -52,11 +52,18 @@ const postHandler =async (e)=>{
     await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,unit:type,
         items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
-           e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") :
+           e.data == "error" ? setdoneexist("خطأ في التسجيل ... المهام غير متاحة بالمخزن") :
              Clear() 
             )
             
     }
+    function setdoneexist(e){
+
+        setExistense(null)
+        setDone(e)
+
+    }
+
 
     const Clear =()=>{
         setDone("تم تسجيل البيانات بنجاح") 
@@ -186,23 +193,7 @@ onChange={(e)=>settypeOfContracting(e.target.value)}
 </Select>
 </FormControl>
 : null }
-<FormControl fullWidth>
-<InputLabel id="demo-simple-select-label">المهام</InputLabel>
-<Select
-labelId="demo-simple-select-label"
-id="demo-simple-select"
-name="items"
-value={items}
-label="المهام"
-onChange={(e)=>setItems(e.target.value)}
->
 
-{specificitems?specificitems.map(e=><MenuItem value={e.items} key={specificitems[e]} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items}</MenuItem>):"waiting"}
-
-
-
-</Select>
-</FormControl>
 {specificitems?<Autocomplete
           id="combo-box-demo"
           onInputChange={(event, value) => setItems(value)}
