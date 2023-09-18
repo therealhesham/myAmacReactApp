@@ -76,17 +76,23 @@ const [contractorNames,setContractors]=useState([])
  const source = ["القاهرة", "اسماء مصانع", "مشتريات"]
  const match = useMediaQuery("(max-width: 450px)")
  const navigate =useNavigate()
-useEffect( ()=>{
 
 
-    // for (let i = 0; i < ref.current ; i++) {
-await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+ async function getDatas(){
+
+  await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setData(_.reverse(e.data))).catch(error=>console.log(error))
 // alert(localStorage.getItem("firstname"))
 
 
 await axios.get("https://amaccompany.onrender.com/listofnames",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setContractors(_.reverse(e.data))).catch(error=>console.log(error))
+
+ }
+ useEffect( ()=>{
+  getDatas()
+
+    // for (let i = 0; i < ref.current ; i++) {
 const loStorage = localStorage.getItem("token")
 if(!loStorage) return;
 // console.log(Tabs);
