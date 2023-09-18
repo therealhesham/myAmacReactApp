@@ -72,12 +72,12 @@ settypeOfContracting("")
     }
     async function finder(e){
         setItems(e)
-        await axios.post("https://amaccompany.onrender.com/specificunit",{items:e},{withCredentials:true}).then((value)=>setSpecificUnite(value.type)).catch(e=>console.log(e))
+         axios.post("https://amaccompany.onrender.com/specificunit",{items:e,store:from},{withCredentials:true}).then((value)=>setSpecificUnite(value.type)).catch(e=>console.log(e))
             }      
     async function getSpecificData(e){
     // alert(destination)
 
-    await axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+     axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
     
  }
