@@ -161,7 +161,7 @@ return(
           
         >
           <TabPanel  value={value} index={0} key="0" dir={theme.direction} >
-          <FirstTransaction   fromList={fromList}  data={data} client={client} source={source} unit={unit}/>
+          <FirstTransaction  places={places} fromList={fromList}  data={data} client={client} source={source} unit={unit}/>
           </TabPanel>
           <TabPanel value={value}  index={1} key="1" dir={theme.direction}>
           <SecondTransaction  places={places}   storenames={storenames} contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={source} unit={unit}/>
