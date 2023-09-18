@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Alert, Button, Stack, TextField } from "@mui/material";
+import { Alert, Button, Stack, TextField ,Autocomplete} from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
@@ -203,6 +203,14 @@ onChange={(e)=>setItems(e.target.value)}
 
 </Select>
 </FormControl>
+{specificitems?<Autocomplete
+          id="combo-box-demo"
+          onInputChange={(event, value) => setItems(value)}
+        //   onClickCapture={(e)=>setSpecificUnite(e.type)}
+        options={specificitems.map((option) => option.items)}
+        renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
+      />:"waiting"}
+
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">الموقع</InputLabel>
 <Select
