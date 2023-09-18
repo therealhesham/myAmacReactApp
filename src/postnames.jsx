@@ -29,24 +29,24 @@ const [ contractorName,setContractorName]=useState("")
 const [place,setPlace]=useState("")
 const [store,setStore]=useState("")
 
-function contractorHandler(){
+async function contractorHandler(){
 
 
-    axios.post("https://amaccompany.onrender.com/namesofcontractors",{name:contractorName},{withCredentials:true}).then((e)=>{e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل"}).catch(e=>console.log(e))
-
-}
-
-function placeHandler(){
-
-
-    axios.post("https://amaccompany.onrender.com/listofplaces",{name:place},{withCredentials:true}).then((e)=>{e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل"}).catch(e=>console.log(e))
+    await axios.post("https://amaccompany.onrender.com/namesofcontractors",{name:contractorName},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
 
 }
 
-function storeHandler(){
+async function placeHandler(){
 
 
-    axios.post("https://amaccompany.onrender.com/namesofstores",{name:store},{withCredentials:true}).then((e)=>{e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل"}).catch(e=>console.log(e))
+    await axios.post("https://amaccompany.onrender.com/listofplaces",{name:place},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
+
+}
+
+async function storeHandler(){
+
+
+    await axios.post("https://amaccompany.onrender.com/namesofstores",{name:store},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
 
 }
 
