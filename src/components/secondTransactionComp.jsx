@@ -70,10 +70,14 @@ settypeOfContracting("")
 
 
     }
-    const getSpecificData =(e)   =>{
+    async function finder(e){
+        setItems(e)
+        await axios.post("https://amaccompany.onrender.com/specificunit",{itens:e},{withCredentials:true}).then((value)=>setSpecificUnite(value.type)).catch(e=>console.log(e))
+            }      
+    async const getSpecificData =(e)   =>{
     // alert(destination)
 
-    axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    await axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
     
  }
@@ -200,15 +204,15 @@ onChange={(e)=>setItems(e.target.value)}
 {specificitems?specificitems.map(e=><MenuItem value={e.items} key={specificitems[e]} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items}</MenuItem>):"waiting"}
 
 
-{/* const [json,setjson]=useState({}) */}
+
 </Select>
 </FormControl>
 {specificitems?<Autocomplete
           id="combo-box-demo"
-          onInputChange={(event, value) => setItems(value)}
-        //   onClickCapture={()=>setSpecificUnite(e.type)}
-        options={specificitems.map((option) => option)}
-        renderInput={(params) => <TextField value={params.items}  onClickCapture={()=>setSpecificUnite(params.type)} label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
+          onInputChange={(event, value) => finder(value)}
+    
+        options={specificitems.map((option) => option.items)}
+        renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />:"waiting"}
 
 <FormControl fullWidth>
@@ -246,7 +250,27 @@ onChange={(e)=>setlOcation(e.target.value)}
 
 </Select>
 </FormControl>
+{/* <FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
+<Select
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+name="unit"
+value={type}
+label="الوحدة"
+onChange={(e)=>setType(e.target.value)}
+>
 
+
+    
+<MenuItem value="م/ط" key="1" >م/ط</MenuItem>
+<MenuItem value="طن" key="2" >طن</MenuItem>
+<MenuItem value="عدد" key="3" >عدد</MenuItem>
+<MenuItem value="عدد" key="4" >م2</MenuItem>
+
+
+</Select>
+</FormControl> */}
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
 <Select
