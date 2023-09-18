@@ -52,20 +52,15 @@ const postHandler =async (e)=>{
     await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,unit:type,
         items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
-           e.data == "error" ? setdoneexist("خطأ في التسجيل ... المهام غير متاحة بالمخزن") :
+           e.data == "error" ? setExistense("   ..خطأ في التسجيل ... المهام غير متاحة بالمخزن او وحدات المنصرف  لا تناسب وحدات الجرد") :
              Clear() 
             )
             
     }
-    function setdoneexist(e){
-
-        setExistense(null)
-        setDone(e)
-
-    }
 
 
     const Clear =()=>{
+setExistense(null)
         setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
 setTypeOfImporter("")
