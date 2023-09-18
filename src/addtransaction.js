@@ -75,7 +75,7 @@ const [contractorNames,setContractors]=useState([])
   const [places,setPlaces]=useState([])
   const [storenames,setStoreNames]=useState([])
  const client = ["مقاول" , "مخزن"]
- const source = ["القاهرة", "اسماء مصانع", "مشتريات"]
+ const source = ["القاهرة", "اسماء مصانع", "مشتريات","مصنع البحرين"]
  const match = useMediaQuery("(max-width: 450px)")
  const navigate =useNavigate()
 
