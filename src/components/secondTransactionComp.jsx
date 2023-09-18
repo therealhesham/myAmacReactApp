@@ -163,23 +163,6 @@ onChange={(e)=>settypeOfContracting(e.target.value)}
 </Select>
 </FormControl>
 : null }
-<FormControl fullWidth>
-<InputLabel id="demo-simple-select-label">المهام</InputLabel>
-<Select
-labelId="demo-simple-select-label"
-id="demo-simple-select"
-name="items"
-value={items}
-label="المهام"
-onChange={(e)=>setItems(e.target.value)}
->
-
-{specificitems?specificitems.map(e=><MenuItem value={e.items} key={specificitems[e]} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items}</MenuItem>):"waiting"}
-
-
-
-</Select>
-</FormControl>
 {specificitems?<Autocomplete
           id="combo-box-demo"
           onInputChange={(event, value) => setItems(value)}
