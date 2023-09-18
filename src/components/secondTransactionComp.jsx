@@ -137,7 +137,8 @@ value={contractor}
 label="المقاول"
 onChange={(e)=>setContractor(e.target.value)}
 >
-<MenuItem  value={contractorNames}>{contractorNames}</MenuItem>
+    {contractorNames.map(e=>
+<MenuItem  value={e.name}>{e.name}</MenuItem>)}
 
 </Select>
 </FormControl>
