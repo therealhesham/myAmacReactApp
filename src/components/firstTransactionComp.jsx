@@ -20,7 +20,7 @@ import SecondTransaction from "./secondTransactionComp";
 import { useRef } from "react";
 
 
-export default function FirstTransaction({fromList,data,source,client,unit,pader,styler
+export default function FirstTransaction({fromList,data,source,places,client,unit,pader,styler
 }){
 
 // React.useEffect
@@ -95,7 +95,7 @@ onChange={(e)=>setFrom(e.target.value)}
 >
 
 
-{source.map(e=> <MenuItem value={e} key={source.indexOf(e)}>{e}</MenuItem>)  }
+{places.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
 
 
 
