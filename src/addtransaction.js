@@ -172,7 +172,7 @@ return(
           <TabPanel value={3} index={3}  dir={theme.direction}>
             
             {/* <Thirdtransaction fromList={fromList} data={data} client={client} source={source} unit={unit}/> */}
-          <Fourth  fromList={fromList} data={data}  unit={unit}/>
+          <Fourth places={places}   storenames={storenames} contractorNames={contractorNames} fromList={fromList} data={data}  unit={unit}/>
           </TabPanel>
         </SwipeableViews>
       </Box>
