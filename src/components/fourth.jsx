@@ -22,7 +22,7 @@ import jwtDecode from "jwt-decode";
 
 
 
-export default function Fourth({fromList,data,unit,styler}){
+export default function Fourth({fromList,data,unit,styler,contractorNames}){
     const [specificitems,setToGetSpecificITems]=useState([])
     const [contractor,setContractor] = useState("")
     const [destination,setDestination] = useState("")
@@ -68,8 +68,8 @@ label="المقاول"
 onChange={(e)=>setContractor(e.target.value)}
 >
 
+    {contractorNames.map(e=><MenuItem value={e.name}>{e.name}</MenuItem>)}
 
-<MenuItem value="اسماء المقاولين">اسماء المقاولين</MenuItem>
 
 
 
