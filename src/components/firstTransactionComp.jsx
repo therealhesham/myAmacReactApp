@@ -95,7 +95,7 @@ onChange={(e)=>setFrom(e.target.value)}
 >
 
 
-{places.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
+{source.map(e=> <MenuItem value={e} key={source.indexOf(e)}>{e}</MenuItem>)  }
 
 
 
