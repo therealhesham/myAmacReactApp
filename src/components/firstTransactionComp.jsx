@@ -55,13 +55,13 @@ setItem("")
 
 
 }
-const postHandler =(e)=>{
+const postHandler =async (e)=>{
     e.preventDefault()
     const find = localStorage.getItem("token")
     const details = jwtDecode(find)
     
     if (!from ||  !type || !quantity || !destination || !item || !receipt ) return setExistense("رجاء ملىء البيانات")
-    axios.post("https://amaccompany.onrender.com/transactionexport",
+    await axios.post("https://amaccompany.onrender.com/transactionexport",
     {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt,user:details.uername},{withCredentials:true}).
     then(e=>{
         e.data == "error" ? setExistense("خطأ في تسجيل البيانات .. المهام غير متاحة بالمخزن او قد تكون اخترت وحدة غير مناسبة لقائمة الجرد..من فضلك الرجوع لقائمة الجرد من هنا ") : Clear()})
