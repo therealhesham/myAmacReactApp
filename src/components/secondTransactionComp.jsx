@@ -48,7 +48,7 @@ const postHandler =async (e)=>{
     const find = localStorage.getItem("token")
     const details = jwtDecode(find)
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
-    
+    console.log(type,from,items)
     await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,unit:type,
         items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
