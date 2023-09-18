@@ -50,7 +50,7 @@ const postHandler =async (e)=>{
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
     
     await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
-        contractor:contractor,typeOfContracting:typeOfContracting,
+        contractor:contractor,typeOfContracting:typeOfContracting,unit:type,
         items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
            e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") :
              Clear() 
