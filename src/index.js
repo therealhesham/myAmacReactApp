@@ -25,6 +25,7 @@ import Profile from './App';
 import jwtDecode from 'jwt-decode';
 import {Provider} from 'react-redux'
 import Logout from './logoutComponent';
+import Names from './postnames';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,7 +37,7 @@ root.render(
     <Routes>
     <Route element={<Login/>}  path="/login"/>
     <Route element={<Logout/>}  path="/logout"/>
-
+    <Route element={<Names/>}  path="/postnames"/>
     {/* <Route element={<DataPreview/>}  path="/"/> */}
     <Route element={<Transaction/>}  path="/transaction"/>
     <Route element={<DataPreview/>}  path="/preview" />
