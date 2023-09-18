@@ -74,7 +74,7 @@ settypeOfContracting("")
         setItems(e)
         await axios.post("https://amaccompany.onrender.com/specificunit",{itens:e},{withCredentials:true}).then((value)=>setSpecificUnite(value.type)).catch(e=>console.log(e))
             }      
-    async const getSpecificData =(e)   =>{
+    async function getSpecificData(e){
     // alert(destination)
 
     await axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
