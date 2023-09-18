@@ -264,7 +264,7 @@ onChange={(e)=>setType(e.target.value)}
 <MenuItem value="م/ط" key="1" >م/ط</MenuItem>
 <MenuItem value="طن" key="2" >طن</MenuItem>
 <MenuItem value="عدد" key="3" >عدد</MenuItem>
-<MenuItem value="عدد" key="4" >م2</MenuItem>
+<MenuItem value="م2" key="4" >م2</MenuItem>
 
 
 </Select>
