@@ -90,4 +90,4 @@ name="quantity" value={store} onChange={e=>setStore(e.target.value)}/>
 
 }
 
-export default names;
+export default Names;
