@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 
 
 
-export default function SecondTransaction({fromList,source,client,data,unit , styler}){
+export default function SecondTransaction({fromList,source,contractorNames,client,data,unit , styler}){
 const [from,setFrom]=useState("")
 const [typeOfImporter,setTypeOfImporter]=useState("")
 const [contractor,setContractor]=useState("")
@@ -48,19 +48,18 @@ const postHandler =async (e)=>{
     const find = localStorage.getItem("token")
     const details = jwtDecode(find)
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
-    console.log(type,from,items)
+    
     await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
-        contractor:contractor,typeOfContracting:typeOfContracting,unit:type,
+        contractor:contractor,typeOfContracting:typeOfContracting,
         items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
-           e.data == "error" ? setExistense("   ..خطأ في التسجيل ... المهام غير متاحة بالمخزن او وحدات المنصرف  لا تناسب وحدات الجرد") :
+           e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") :
              Clear() 
             )
             
     }
-
-
+    
     const Clear =()=>{
-setExistense(null)
+        setExistense(null)
         setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
 setTypeOfImporter("")
@@ -72,6 +71,7 @@ settypeOfContracting("")
 
 
     }
+
     const getSpecificData =(e)   =>{
     // alert(destination)
 
@@ -137,32 +137,7 @@ value={contractor}
 label="المقاول"
 onChange={(e)=>setContractor(e.target.value)}
 >
-<MenuItem  value="عادل">عادل</MenuItem>
-<MenuItem  value="عبدالعال">عبدالعال</MenuItem>
-<MenuItem  value="مخيمر">مخيمر</MenuItem>
-<MenuItem  value="كامل عيد">كامل عيد</MenuItem>
-<MenuItem  value="احمد سليمان">احمد سليمان</MenuItem>
-<MenuItem  value="محمد السيد عصفور">محمد السيد عصفور</MenuItem>
-<MenuItem  value="ربيع فايز">ربيع فايز</MenuItem>
-<MenuItem  value="علي ابو العز">علي ابو العز</MenuItem>
-<MenuItem  value="بكر راضي">بكر راضي</MenuItem>
-<MenuItem  value="حنا فرج">حنا فرج </MenuItem>
-<MenuItem  value="علاء حسن">علاء حسن</MenuItem>
-<MenuItem  value="عيسى">عيسى</MenuItem>
-<MenuItem  value="نور حجازي">نور حجازي</MenuItem>
-    <MenuItem  value="ماهر حسين">ماهر حسين</MenuItem>
-<MenuItem  value="سمير ثابت">سمير ثابت</MenuItem>
-<MenuItem  value="ابو راس">ابو راس</MenuItem>
-    <MenuItem  value="محمد عبدالظاهر">محمد عبدالظاهر</MenuItem>
-<MenuItem  value="صفوت طه">صفوت طه</MenuItem>
-<MenuItem  value="عمر حامد">عمر حامد</MenuItem>
-<MenuItem  value="مصطفى اشرف">مصطفى اشرف</MenuItem>
-
-<MenuItem  value="ناجح حمدي">ناجح حمدي</MenuItem>
-
-<MenuItem  value="سيد عبدالنبي">سيد عبدالنبي</MenuItem>
-
-
+<MenuItem  value={contractorNames}>{contractorNames}</MenuItem>
 
 </Select>
 </FormControl>
@@ -188,7 +163,23 @@ onChange={(e)=>settypeOfContracting(e.target.value)}
 </Select>
 </FormControl>
 : null }
+<FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">المهام</InputLabel>
+<Select
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+name="items"
+value={items}
+label="المهام"
+onChange={(e)=>setItems(e.target.value)}
+>
 
+{specificitems?specificitems.map(e=><MenuItem value={e.items} key={specificitems[e]} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items}</MenuItem>):"waiting"}
+
+
+
+</Select>
+</FormControl>
 {specificitems?<Autocomplete
           id="combo-box-demo"
           onInputChange={(event, value) => setItems(value)}
