@@ -206,7 +206,7 @@ onChange={(e)=>setItems(e.target.value)}
 {specificitems?<Autocomplete
           id="combo-box-demo"
           onInputChange={(event, value) => setItems(value)}
-        //   onClickCapture={(e)=>setSpecificUnite(e.type)}
+          onClickCapture={()=>setSpecificUnite(e.type)}
         options={specificitems.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />:"waiting"}
