@@ -72,7 +72,7 @@ settypeOfContracting("")
     }
     async function finder(e){
         setItems(e)
-        await axios.post("https://amaccompany.onrender.com/specificunit",{itens:e},{withCredentials:true}).then((value)=>setSpecificUnite(value.type)).catch(e=>console.log(e))
+        await axios.post("https://amaccompany.onrender.com/specificunit",{items:e},{withCredentials:true}).then((value)=>setSpecificUnite(value.type)).catch(e=>console.log(e))
             }      
     async function getSpecificData(e){
     // alert(destination)
