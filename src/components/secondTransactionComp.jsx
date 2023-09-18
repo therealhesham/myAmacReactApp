@@ -43,13 +43,13 @@ const [done,setDone]=useState(null)
 
 
 // })
-const postHandler =(e)=>{
+const postHandler =async (e)=>{
     e.preventDefault()
     const find = localStorage.getItem("token")
     const details = jwtDecode(find)
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
     
-    axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
+    await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,
         items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
            e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") :
