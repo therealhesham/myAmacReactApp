@@ -72,6 +72,8 @@ const ref = React.useRef(1)
 const [unit,setUnit]=useState([])
 const [StorageToken, SetToken]= useState("")
 const [contractorNames,setContractors]=useState([])
+  const [places,setPlaces]=useState([])
+  const [storenames,setStoreNames]=useState([])
  const client = ["مقاول" , "مخزن"]
  const source = ["القاهرة", "اسماء مصانع", "مشتريات"]
  const match = useMediaQuery("(max-width: 450px)")
@@ -87,6 +89,15 @@ setData(_.reverse(e.data))).catch(error=>console.log(error))
 
 await axios.get("https://amaccompany.onrender.com/listofnames",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setContractors(_.reverse(e.data))).catch(error=>console.log(error))
+
+
+await axios.get("https://amaccompany.onrender.com/listofplaces",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+setPlaces(_.reverse(e.data))).catch(error=>console.log(error))
+
+   await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+setStoreNames(_.reverse(e.data))).catch(error=>console.log(error))
+
+   
 
  }
  useEffect( ()=>{
@@ -153,7 +164,7 @@ return(
           <FirstTransaction   fromList={fromList}  data={data} client={client} source={source} unit={unit}/>
           </TabPanel>
           <TabPanel value={value}  index={1} key="1" dir={theme.direction}>
-          <SecondTransaction  contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={source} unit={unit}/>
+          <SecondTransaction  places={places}   storenames={storenames} contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={source} unit={unit}/>
           </TabPanel>
           <TabPanel value={value} index={2} key="2" dir={theme.direction}>
           <Thirdtransaction fromList={fromList} data={data} client={client} source={source} unit={unit}/>
