@@ -7,6 +7,7 @@ import { useState } from "react";
 
 
 
+
 const Paginat =(props)=>{
     const [startpager,setPage] = useState(1)
 const [sizer,setSize] = useState("")
