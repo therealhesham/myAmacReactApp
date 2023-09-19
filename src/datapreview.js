@@ -111,13 +111,17 @@ setUpdater(id)
 // setSearcher(dataRe)
 // ref.current = 
     }
-
+    String.prototype.ArtoEn= function() {
+      return this.replace(/[\u0660-\u0669]/g, 
+        d => d.charCodeAt() - 1632)
+    }
+    
       return (
   <div>{token?  
     <div>
     {/* <App/> */}
     {/* <ComboBox data={[...searchedData]}/> */}
-    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
+    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e.ArtoEn())}/>
   <Table striped="columns">
       
       

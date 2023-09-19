@@ -147,10 +147,10 @@ return(
             variant="fullWidth"
             aria-label="full width tabs example"
           >
-            <Tab   label="وارد" {...a11yProps(0)} key=0/>
-            <Tab  label="منصرف" {...a11yProps(1)} key=1/>
-            <Tab  label="تحويل" {...a11yProps(2)} key=2/>
-            <Tab label="مرتجع" {...a11yProps(3)} key=3/>
+            <Tab   label="وارد" {...a11yProps(0)} key="0"/>
+            <Tab  label="منصرف" {...a11yProps(1)} key="1"/>
+            <Tab  label="تحويل" {...a11yProps(2)} key="2"/>
+            <Tab label="مرتجع" {...a11yProps(3)} key="3"/>
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -160,16 +160,16 @@ return(
           onChangeIndex={handleChangeIndex}
           
         >
-          <TabPanel  value={value} index={0} key=0 dir={theme.direction} >
+          <TabPanel  value={value} index={0} key="0" dir={theme.direction} >
           <FirstTransaction  places={places} fromList={fromList}  data={data} client={client} source={source} unit={unit}/>
           </TabPanel>
-          <TabPanel value={value}  index={1} key=1 dir={theme.direction}>
+          <TabPanel value={value}  index={1} key="1" dir={theme.direction}>
           <SecondTransaction  places={places}   storenames={storenames} contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={source} unit={unit}/>
           </TabPanel>
-          <TabPanel value={value} index={2} key=2 dir={theme.direction}>
+          <TabPanel value={value} index={2} key="2" dir={theme.direction}>
           <Thirdtransaction fromList={fromList} data={data} client={client} source={source} unit={unit}/>
           </TabPanel>
-          <TabPanel value={3} index=3  dir={theme.direction}>
+          <TabPanel value={value} index="3"  dir={theme.direction}>
             
             {/* <Thirdtransaction fromList={fromList} data={data} client={client} source={source} unit={unit}/> */}
           <Fourth places={places}   storenames={storenames} contractorNames={contractorNames} fromList={fromList} data={data}  unit={unit}/>
