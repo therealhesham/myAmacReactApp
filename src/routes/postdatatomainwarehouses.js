@@ -1,4 +1,4 @@
-import { Alert, Button, Stack, TextField } from "@mui/material";
+import { Alert, Autocomplete, Button, Stack, TextField } from "@mui/material";
 import axios from "axios";
 
 import {useEffect, useState} from "react";
@@ -11,24 +11,41 @@ import {useEffect, useState} from "react";
 function PostNewDataToMainWarehouse(){
 
 const [items,setItems] = useState("")
-const [store,setStore]=useState("مخزن بني مزار الرئيسي")
+const [store,setStore]=useState("")
 const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
 const [error,setError]= useState("")
 const [success,setSuccess]= useState()
+const [stores,setStores]=useState([])
 const clear=()=>{
     setItems("")
-    setStore("مخزن بني مزار الرئيسي")
+    setStore("")
     setType("")
     setQuantity("")
     setError(null)
     setSuccess("تم تسجيل البيانات بنجاح")
     }
+
+
+async function dataGetter(){
+    await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then((e) => 
     
-const PostHandler = (e)=>{
+     setStores(e.data)
+     )
+
+
+
+}
+useEffect(()=>{
+    
+  dataGetter();
+},[])
+    
+
+const PostHandler = async (e)=>{
     e.preventDefault()
     
-axios.post("https://amaccompany.onrender.com/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
+await axios.post("https://amaccompany.onrender.com/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
 then(e=>e.data == "success" ? clear() :setError("يرجى مراعاة ادخال البيانات الصحيحة"))
 
 }
@@ -49,9 +66,13 @@ return(
 <div> 
     <form >
     <Stack maxWidth="800px" minWidth="250px" style={{padding:"60px"}} gap="12px">
-
-<TextField id="outlined-basic" label="المخزن" variant="outlined"
- type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/>
+    <Autocomplete
+          id="combo-box-demo"
+          onInputChange={(event, value) => setStore(value)}
+        //   onClickCapture={(e)=>setSpecificUnite(e.type)}
+        options={stores.map((option) => option.name)}
+        renderInput={(params) => <TextField {...params}  label="المخازن" placeholder="اختر المخزن"/>}
+      />
 <TextField id="outlined-basic" label="المهام" variant="outlined" 
 name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>
 <TextField id="outlined-basic" label="الوحدة" variant="outlined"

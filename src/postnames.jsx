@@ -53,7 +53,7 @@ async function storeHandler(){
 
 return(
 <div>
-    <form  style={{width:"400px" }}>
+    <form  style={{width:"400px" , padding :"20px" }}>
 <Stack   gap="12px">
 
 <TextField id="outlined-basic" label="مقاول" variant="outlined" 

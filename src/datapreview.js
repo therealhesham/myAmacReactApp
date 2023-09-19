@@ -34,7 +34,7 @@ console.log(updater)
 const navigate = useNavigate()
 const [zero,setZero]= useState(0)
 useEffect(()=>{
-  console.log(ref.current);
+  
   // if(ref.current == zero){ 
     
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
@@ -57,7 +57,7 @@ if(localStorage.getItem("token")){
 // // ref.current = 1
 // }
 }
-    ,[updater])
+    ,[])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
