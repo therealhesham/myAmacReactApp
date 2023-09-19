@@ -94,7 +94,7 @@ setContractors(_.reverse(e.data))).catch(error=>console.log(error))
 await axios.get("https://amaccompany.onrender.com/listofplaces",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setPlaces(_.reverse(e.data))).catch(error=>console.log(error))
 
-   await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setStoreNames(_.reverse(e.data))).catch(error=>console.log(error))
 
    
