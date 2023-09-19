@@ -57,7 +57,7 @@ if(localStorage.getItem("token")){
 // // ref.current = 1
 // }
 }
-    ,[])
+    ,[updater])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
@@ -103,9 +103,9 @@ setQuantity(quantity);
 setUpdater(id)      
 
     }
-    const updateOne=(e)=>{
+    const updateOne=async (e)=>{
       console.log("updateOne",e)
-      axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?  reset()  :setError("خطأ في البيانات") )
+      await axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?  reset()  :setError("خطأ في البيانات") )
 // const data = searchedData.filter((s)=> e != s._id)
 // const dataRe = [...data]
 // setSearcher(dataRe)
