@@ -33,14 +33,20 @@ const [success,setSuccess]= useState()
 console.log(updater)
 const navigate = useNavigate()
 const [zero,setZero]= useState(0)
+
+async function dataGetter(){
+
+  await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
+    
+  e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
+  )
+
+}
 useEffect(()=>{
-  
+  dataGetter();
   // if(ref.current == zero){ 
     
-    axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     
-     e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
-     )
 //     console.log(data )
 
 if(localStorage.getItem("token")){
