@@ -67,7 +67,7 @@ else  {
 s.preventDefault();
 
 // console.log(`${s.target.value}`.trim());
-const mapper = data.filter(e=>e.items.includes(s.target.value))
+const mapper = data.filter(e=>e.items.includes(s.target.value.ArtoEn()))
 console.log(mapper)
 setSearcher(mapper)
 setPage(1)
@@ -111,7 +111,7 @@ setUpdater(id)
 // setSearcher(dataRe)
 // ref.current = 
     }
-    String.prototype.ArtoEn= function() {
+String.prototype.ArtoEn= function() {
       return this.replace(/[\u0660-\u0669]/g, 
         d => d.charCodeAt() - 1632)
     }
@@ -121,7 +121,7 @@ setUpdater(id)
     <div>
     {/* <App/> */}
     {/* <ComboBox data={[...searchedData]}/> */}
-    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e.ArtoEn())}/>
+    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
   <Table striped="columns">
       
       
