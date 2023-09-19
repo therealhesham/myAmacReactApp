@@ -35,10 +35,10 @@ const navigate = useNavigate()
 const [zero,setZero]= useState(0)
 useEffect(()=>{
   console.log(ref.current);
-  if(ref.current == zero){ 
+  // if(ref.current == zero){ 
     
     axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
-    // console.log(e)
+    
      e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
      )
 //     console.log(data )
@@ -52,12 +52,12 @@ if(localStorage.getItem("token")){
   }
     setZero(zero + 1)
 
+// }
+// else  {
+// // ref.current = 1
+// }
 }
-else  {
-// ref.current = 1
-}
-}
-    ,[data,searchedData])
+    ,[])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
