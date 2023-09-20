@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import _ from "lodash"
 
 // import Paginat from "./pagination";
-import { TextField , Button } from "@mui/material";
+import { TextField , Button, Stack } from "@mui/material";
 
 import socketClient  from "socket.io-client";
 
@@ -34,26 +34,51 @@ else  {
 // ref.current = 1
 }
 }
-    ,[data,searchedData])
+    ,[])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
     };
 
     const Search = (s)=>{
-s.preventDefault();
-console.log(`${s.target.value}`.trim());
-const mapper = data.filter(e=>e.items.includes(`${s.target.value}`))
-
-setSearcher(mapper)
-setPage(1)
-// .includes("سلاقوس")
-
-// data.filter((e)=>e.includes("مواسير"))
-// console.log(newData);
-
-    }
-
+      s.preventDefault();
+      
+      const mapper = data.filter(e=>e.items.includes(`${s.target.value}`))
+      
+      setSearcher(mapper)
+      setPage(1)
+      // .includes("سلاقوس")
+      
+      // data.filter((e)=>e.includes("مواسير"))
+      // console.log(newData);
+      
+          }
+    const SearchByReceipt = (s)=>{
+            s.preventDefault();
+            
+            const mapper = data.filter(e=>e.receiptno.includes(s.target.value))
+            
+            setSearcher(mapper)
+            setPage(1)
+            // .includes("سلاقوس")
+            
+            // data.filter((e)=>e.includes("مواسير"))
+            // console.log(newData);
+            
+                }
+    const searchByContractor = (s)=>{
+                  s.preventDefault();
+                  
+                  const mapper = data.filter(e=>e.contractor.includes(s.target.value))
+                  
+                  setSearcher(mapper)
+                  setPage(1)
+                  // .includes("سلاقوس")
+                  
+                  // data.filter((e)=>e.includes("مواسير"))
+                  // console.log(newData);
+                  
+                      }                  
     const Delet=(e)=>{
       axios.get('https://amaccompany.onrender.com/deletesecondtransaction/'+e).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
@@ -64,7 +89,12 @@ setSearcher(dataRe)
   
   <div>
         {/* <App/> */}
-        <TextField style={{"marginTop": "12px"}} label="Search" onChange={Search}/>
+        <Stack>
+        <TextField style={{"marginTop": "12px"}} label="بحث بالمهام " onChange={Search}/>
+        <TextField style={{"marginTop": "12px"}} label="بحث برقم الاذن " onChange={SearchByReceipt}/>
+        <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={searchByContractor}/>
+ 
+        </Stack>
       <Table striped="columns" variant="dark" style={{width:"1000px"}} >
           <thead>
             <tr>

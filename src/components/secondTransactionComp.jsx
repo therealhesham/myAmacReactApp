@@ -29,14 +29,15 @@ const [typeOfImporter,setTypeOfImporter]=useState("")
 const [contractor,setContractor]=useState("")
 const [type,setType]=useState("")
 const [quantity,setQuantity]=useState("")
-const [receipt,setReceipt]=useState("")
-const [items,setItems]=useState("")
-const [typeOfContracting,settypeOfContracting]=useState("")
-const [lOcation,setlOcation]=useState("")
-const [specificitems,setToGetSpecificITems]=useState([])
-const [notExist,setExistense]=useState(null)
-const [specificUnite,setSpecificUnite]=useState()
-const [done,setDone]=useState(null)
+const [receipt,setReceipt]=useState("");
+const [items,setItems]=useState("");
+const [typeOfContracting,settypeOfContracting]=useState("");
+const [lOcation,setlOcation]=useState("");
+const [specificitems,setToGetSpecificITems]=useState([]);
+const [notExist,setExistense]=useState(null);
+const [specificUnite,setSpecificUnite]=useState();
+const [done,setDone]=useState(null);
+const [search,setSearcher]=useState("");
 // useEffect(()=>{
 
 //     if(ex)& Clear()
