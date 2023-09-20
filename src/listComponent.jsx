@@ -35,9 +35,9 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
 
-      <List style={{width: window !== "undefined" ? window.innerWidth:""}}>
+      <List width= {window !== "undefined" ? window.innerWidth:""}>
         {searchedData.map(e=>
-        <ListItem disablePadding style={{width: window !== "undefined" ? window.innerWidth:""}} >
+        <ListItem  disablePadding sx={{ width: '100%'}}>
           <Stack>
             
            {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
