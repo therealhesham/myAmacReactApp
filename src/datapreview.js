@@ -159,8 +159,8 @@ name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td
           <td style={{width:"70px"}}>{updater==e._id?<TextField id="outlined-basic"  style={{width:"70px"}} label="الكمية" variant="outlined" 
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
           <td style={{width:"70px"}}>{updater == e._id ? <Button variant="contained"  style={{width:"70px"}} onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
-          <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
-          <td><Button color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:[{المخزن : e.store,المهام:e.items,الوحدة:e.type,الكمية:e.quantity}],properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>Print </Button></td>
+          <td style={{width:"70px"}}><Button style={{width:"70px"}} color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
+          <td style={{width:"70px"}}><Button style={{width:"70px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:[{المخزن : e.store,المهام:e.items,الوحدة:e.type,الكمية:e.quantity}],properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>Print </Button></td>
           </tr>      
            
 
@@ -168,9 +168,10 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
       
               </Table>
 <div>
+  
 <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 </div>
-
+<div style={{width:"80px"}}><Button style={{width:"70px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:searchedData.filter(e=>{return e.store , e.items, e.type,e.quantity} ),properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>طباعة كامل الجرد</Button></div>
 {/* <Transaction data={data}/> */}
 </div>
 
