@@ -122,7 +122,9 @@ String.prototype.ArtoEn= function() {
   
     
     const printSearched =searchedData.map( ({store,items,type,quantity})=> {return store,items,type,quantity});
-      return (
+      
+    console.log(printSearched)
+    return (
   <div>{token?  
     <div>
     {/* <App/> */}
