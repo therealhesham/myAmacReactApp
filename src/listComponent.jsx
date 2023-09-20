@@ -27,7 +27,7 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     itemSize={getItemSize}
     width={window !== 'undefined' ? window.innerWidth : ""} >
     
-      <List>
+      
         {searchedData.map(e=>
         <ListItem disablePadding>
           <Stack>
@@ -45,7 +45,7 @@ type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> 
           <Button  fullWidth color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>console.log("sss")}>Delete</Button>
           </Stack>
         </ListItem>)}
-      </List>
+      
       <Divider />
     
     </FixedSizeList>
