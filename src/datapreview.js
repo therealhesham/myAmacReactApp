@@ -121,7 +121,7 @@ String.prototype.ArtoEn= function() {
     }
   
     
-    const printSearched =searchedData.filter( (dataPrint) => dataPrint.store , dataPrint.items, dataPrint.type,dataPrint.quantity);
+    const printSearched =searchedData.filter( ({store,items,type,quantity})=> ({store,items,type,quantity}));
       return (
   <div>{token?  
     <div>
@@ -171,7 +171,9 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
   
 <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 </div>
-<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:printSearched
+<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:printSearched,
+ gridHeaderStyle: 'color: black;  border: 3px solid #3971A5;',
+ gridStyle: 'border: 3px solid #3971A5;'
 ,properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>طباعة كامل الجرد</Button></div>
 {/* <Transaction data={data}/> */}
 </div>
