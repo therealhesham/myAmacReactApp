@@ -43,7 +43,7 @@ else  {
     const Search = (s)=>{
       s.preventDefault();
       
-      const mapper = data.filter(e=>e.items.includes(`${s.target.value}`))
+      const mapper = searchedData.filter(e=>e.items.includes(`${s.target.value}`))
       
       setSearcher(mapper)
       setPage(1)
@@ -56,7 +56,7 @@ else  {
     const SearchByReceipt = (s)=>{
             s.preventDefault();
             
-            const mapper = data.filter(e=>e.receiptno.includes(s.target.value))
+            const mapper = searchedData.filter(e=>e.receiptno.includes(s.target.value))
             
             setSearcher(mapper)
             setPage(1)
@@ -69,7 +69,7 @@ else  {
     const searchByContractor = (s)=>{
                   s.preventDefault();
                   
-                  const mapper = data.filter(e=>e.contractor.includes(s.target.value))
+                  const mapper = searchedData.filter(e=>e.contractor.includes(s.target.value))
                   
                   setSearcher(mapper)
                   setPage(1)
