@@ -32,7 +32,7 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     // sss = 
     // nnnn=
     
-    return (<Box sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}>
+    return (<div>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
 
@@ -58,7 +58,7 @@ type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> 
       <Divider />
       <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 
-  </Box> );
+  </div> );
 }
  
 export default ListCompon;
