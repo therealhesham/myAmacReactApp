@@ -9,28 +9,20 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Button, TextField, Stack } from '@mui/material';
 import { FixedSizeList } from 'react-window';
-import { useEffect } from 'react';
 import { useState } from 'react';
+import Paginat from './pagination';
 
 
-const ListCompon = ({data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
-    const [searchedData,setSearcher ] = useState([])
-    async function dataGetter(){
-
-        await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
-          
-        e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
-        )
+const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
+    
+    
+    const [startpage,setPage] = useState(0)
+    
+    const handleChange = (event, value) => {
+        setPage(value);
+      };
       
-      }
-      useEffect(()=>{
-        dataGetter();
-        // if(ref.current == zero){ 
-          
-      }    
-      //     console.log(data )
-      ,[])      
-      
+    
     
     const rowSizes = new Array(searchedData.length)
     .fill(true)
@@ -42,11 +34,7 @@ const ListCompon = ({data,delet,updateOne,items,store,quantity,updater,token,sea
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
-<FixedSizeList    height={window !== 'undefined' ?  window.innerHeight : ""}
-    itemCount={searchedData.length}
-    itemSize={getItemSize}
-    width={window !== 'undefined' ? window.innerWidth : ""} >
-    
+
       <List>
         {searchedData.map(e=>
         <ListItem disablePadding>
@@ -67,8 +55,8 @@ type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> 
         </ListItem>)}
       </List>
       <Divider />
-    
-    </FixedSizeList>
+      <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
+
   </Box> );
 }
  
