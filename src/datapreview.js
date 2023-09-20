@@ -25,7 +25,7 @@ const ref = useRef(0);
 const [authenticator,setAuthenticator]=useState("");
 const [admin,isAdmin]=useState(true)
 const [items,setItems] = useState("")
-const [store,setStore]=useState("مخزن بني مزار الرئيسي")
+const [store,setStore]=useState("")
 const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
 const [error,setError]= useState("")
@@ -171,7 +171,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
   
 <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 </div>
-<div style={{width:"200px"}}><Button style={{width:"170px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:searchedData.filter(dataPrint =>{return dataPrint.store , dataPrint.items, dataPrint.type,dataPrint.quantity} )
+<div style={{width:"200px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:searchedData.filter((dataPrint) =>{return dataPrint.store , dataPrint.items, dataPrint.type,dataPrint.quantity} )
 ,properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>طباعة كامل الجرد</Button></div>
 {/* <Transaction data={data}/> */}
 </div>
