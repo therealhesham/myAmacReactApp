@@ -205,7 +205,7 @@ else if(localStorage.getItem("token") == null)
             <NotificationsNoneIcon fontSize="small" color="action" variant="secondary"/>
             </Link>
           </Badge> */}
-            <Menu
+            <Menu disableScrollLock={true}
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
