@@ -29,7 +29,7 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     
       
         {searchedData.map(e=>
-        <ListItem disablePadding>
+        
           <Stack>
             
            {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
@@ -44,7 +44,7 @@ type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> 
             <Button variant="contained"   fullWidth onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>
           <Button  fullWidth color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>console.log("sss")}>Delete</Button>
           </Stack>
-        </ListItem>)}
+        )}
       
       <Divider />
     
