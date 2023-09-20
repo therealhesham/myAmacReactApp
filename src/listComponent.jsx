@@ -42,13 +42,13 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
           <Stack>
             
            {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
-type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> : <ListItemText  >{e.store}</ListItemText>}
+type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> : <ListItemText style={{width:"400px"}} >{e.store}</ListItemText>}
     {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="المهام" variant="outlined"
-type="text" name="store" value={items} onChange={(e)=>setItems(e.target.value)}/> : <ListItemText  >{e.items}</ListItemText>}
+type="text" name="store" value={items} onChange={(e)=>setItems(e.target.value)}/> : <ListItemText style={{width:"400px"}} >{e.items}</ListItemText>}
              {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="الكمية" variant="outlined"
-type="text" name="store" value={quantity} onChange={(e)=>setquantity(e.target.value)}/> : <ListItemText  >{e.quantity}</ListItemText>}
+type="text" name="store" value={quantity} onChange={(e)=>setquantity(e.target.value)}/> : <ListItemText  style={{width:"400px"}}>{e.quantity}</ListItemText>}
             {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
-type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> : <ListItemText  >{e.types}</ListItemText>}
+type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> : <ListItemText style={{width:"400px"}} >{e.types}</ListItemText>}
             
             {updater?<Button variant="contained" color="info" style={{paddingBottom:"12px"}}  fullWidth onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}
           <Button  fullWidth color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>console.log("sss")}>Delete</Button>
