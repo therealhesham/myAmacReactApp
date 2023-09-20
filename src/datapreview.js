@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField , Button, Alert, Stack, useMediaQuery } from "@mui/material";
+import { TextField , Button, Alert, Stack, useMediaQuery, ButtonBase } from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
@@ -133,7 +133,7 @@ String.prototype.ArtoEn= function() {
     
     return (
   <div>{matches?  
-    <><List data={data} searchedData={searchedData} setItems={setItems} delet={Delet} setStore={setStore}
+    <><ListCompon data={data} items={items} quantity={Quantity} store={store} type={type} searchedData={searchedData}  setItems={setItems} delet={Delet} setStore={setStore}
 
 setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(e,s)} updateOne={updateOne} updater={updater} updating={updating}
 
