@@ -38,7 +38,7 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
 
       <List width= {400} >
         {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map(e=>
-        <ListItem  disablePadding sx={{ width: '100%'}}>
+        <ListItem  disablePadding sx={{ width: 400}}>
           <Stack>
             
            {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
