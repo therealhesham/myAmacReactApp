@@ -35,7 +35,7 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
 
-      <List width= {window !== "undefined" ? window.innerWidth:""}>
+      <List width= {400}>
         {searchedData.map(e=>
         <ListItem  disablePadding sx={{ width: '100%'}}>
           <Stack>
@@ -49,7 +49,7 @@ type="text" name="store" value={quantity} onChange={(e)=>setquantity(e.target.va
             {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
 type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> : <ListItemText  >{e.types}</ListItemText>}
             
-            {updater?<Button variant="contained"   fullWidth onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}
+            {updater?<Button variant="contained" color="info"   fullWidth onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}
           <Button  fullWidth color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>console.log("sss")}>Delete</Button>
           </Stack>
         </ListItem>)}
