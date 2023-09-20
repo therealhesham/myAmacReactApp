@@ -22,10 +22,10 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
-<FixedSizeList    height={sss}
+<FixedSizeList    height={window !== 'undefined' ? "": sss}
     itemCount={searchedData.length}
     itemSize={getItemSize}
-    width={nnnn} >
+    width={window !== 'undefined' ? "": nnnn} >
     
       <List>
         {searchedData.map(e=>
