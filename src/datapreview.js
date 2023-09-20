@@ -4,14 +4,15 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField , Button, Alert, Stack } from "@mui/material";
+import { TextField , Button, Alert, Stack, useMediaQuery } from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useMatch, useNavigate } from "react-router-dom";
 import ComboBox from "./search";
 import jwtDecode from "jwt-decode";
 import printJS from "print-js";
+import List from "./listComponent";
 
 function DataPreview(){
 const [data,setData]=useState([]);
@@ -35,7 +36,7 @@ console.log(updater)
 const [printDataDelet,setPrintDataDelet]=useState(searchedData)
 const navigate = useNavigate()
 const [zero,setZero]= useState(0)
-
+const matches = useMediaQuery('(max-width:400px)');
 async function dataGetter(){
 
   await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
@@ -57,6 +58,11 @@ if(localStorage.getItem("token")){
   const details = jwtDecode(getToken)
   setToken(details)
   
+  }
+  else if (!localStorage.getITem("token")){
+navigate("/login")
+
+
   }
     setZero(zero + 1)
 
@@ -126,10 +132,15 @@ String.prototype.ArtoEn= function() {
       
     
     return (
-  <div>{token?  
+  <div>{matches?  
+    <><List data={data} searchedData={searchedData} setItems={setItems} delet={Delet} setStore={setStore}
+
+setquantity={setQuantity} settype={setType} token={token} search={()=>Search(e)} updateOne={updateOne} updater={updater} updating={updating}
+
+/></>
+    :
     <div>
-    {/* <App/> */}
-    {/* <ComboBox data={[...searchedData]}/> */}
+    
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
   <Table striped="columns">
       
@@ -181,12 +192,13 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
 {/* <Transaction data={data}/> */}
 
 <span style={{color:"black"}}>  IT team work on releasing IOS and Android Applications,stay Tuned </span>
+
 </div>
 
 
 
     
-    :""}</div>
+    }</div>
   
 
 )
