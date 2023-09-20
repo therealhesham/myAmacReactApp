@@ -44,7 +44,7 @@ React.useEffect(()=>
 
 }
 
-,[token,profiledata]
+,[]
 
 
 )    
