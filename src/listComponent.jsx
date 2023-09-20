@@ -16,7 +16,7 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
-<FixedSizeList height={window.innerHeight}   width={window.innerWidth}>
+<FixedSizeList  useIsScrolling={true}  >
     <nav aria-label="main mailbox folders">
       <List>
         {searchedData.map(e=>
