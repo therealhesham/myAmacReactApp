@@ -53,7 +53,7 @@ async function storeHandler(){
 async function factoryHandler(){
 
 
-    await axios.post("https://amaccompany.onrender.com/listoffactories",{name:store},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
+    await axios.post("https://amaccompany.onrender.com/listoffactories",{name:factory},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
 
 }
 
