@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import _ from "lodash"
 
 // import Paginat from "./pagination";
-import { TextField , Button, Stack } from "@mui/material";
+import { TextField , Button, Stack, useMediaQuery } from "@mui/material";
 
 import socketClient  from "socket.io-client";
 
@@ -95,7 +95,7 @@ setSearcher(dataRe)
         <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={searchByContractor}/>
  
         </Stack>
-      <Table striped="columns" variant="dark" style={{width:"1000px"}} >
+      <Table striped="columns"  style={{width:"1000px"}} >
           <thead>
             <tr>
             {/* store:{type:"string",required:true},
