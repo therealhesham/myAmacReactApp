@@ -168,10 +168,10 @@ return(
           <FirstTransaction  places={places} fromList={fromList}  data={data} client={client} source={factories} unit={unit}/>
           </TabPanel>
           <TabPanel value={value}  index={1} key="1" dir={theme.direction}>
-          <SecondTransaction  places={places}   storenames={storenames} contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={source} unit={unit}/>
+          <SecondTransaction  places={places}   storenames={storenames} contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={factories} unit={unit}/>
           </TabPanel>
           <TabPanel value={value} index={2} key="2" dir={theme.direction}>
-          <Thirdtransaction fromList={fromList} data={data} client={client} source={source} unit={unit}/>
+          <Thirdtransaction fromList={fromList} data={data} client={client} source={factories} unit={unit}/>
           </TabPanel>
           <TabPanel value={value} index="3"  dir={theme.direction}>
             
