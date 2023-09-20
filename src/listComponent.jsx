@@ -9,9 +9,29 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Button, TextField, Stack } from '@mui/material';
 import { FixedSizeList } from 'react-window';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 
-const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
+const ListCompon = ({data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
+    const [searchedData,setSearcher ] = useState([])
+    async function dataGetter(){
+
+        await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
+          
+        e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
+        )
+      
+      }
+      useEffect(()=>{
+        dataGetter();
+        // if(ref.current == zero){ 
+          
+      }    
+      //     console.log(data )
+      ,[])      
+      
+    
     const rowSizes = new Array(searchedData.length)
     .fill(true)
     .map(() => 25 + Math.round(Math.random() * 50));
@@ -27,9 +47,9 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     itemSize={getItemSize}
     width={window !== 'undefined' ? window.innerWidth : ""} >
     
-      
+      <List>
         {searchedData.map(e=>
-        
+        <ListItem disablePadding>
           <Stack>
             
            {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
@@ -44,8 +64,8 @@ type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> 
             <Button variant="contained"   fullWidth onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>
           <Button  fullWidth color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>console.log("sss")}>Delete</Button>
           </Stack>
-        )}
-      
+        </ListItem>)}
+      </List>
       <Divider />
     
     </FixedSizeList>
