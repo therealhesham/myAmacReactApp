@@ -179,6 +179,8 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
  gridStyle: 'border: 2px solid #3971A5;'
 ,properties:["store","items","type","quantity"],type:'json'}) }>طباعة كامل الجرد</Button></div>
 {/* <Transaction data={data}/> */}
+
+<span style={{color:"black"}}>  IT team wotk on releasing IOS and Android Applications,stay Tuned </span>
 </div>
 
 

@@ -38,6 +38,7 @@ root.render(
     <Route element={<Login/>}  path="/login"/>
     <Route element={<Logout/>}  path="/logout"/>
     <Route element={<Names/>}  path="/postnames"/>
+    <Route element={<DataPreview/>}  path="/"/>
     {/* <Route element={<DataPreview/>}  path="/"/> */}
     <Route element={<Transaction/>}  path="/transaction"/>
     <Route element={<DataPreview/>}  path="/preview" />
