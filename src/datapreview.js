@@ -180,7 +180,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
 ,properties:["store","items","type","quantity"],type:'json'}) }>طباعة كامل الجرد</Button></div>
 {/* <Transaction data={data}/> */}
 
-<span style={{color:"black"}}>  IT team wotk on releasing IOS and Android Applications,stay Tuned </span>
+<span style={{color:"black"}}>  IT team work on releasing IOS and Android Applications,stay Tuned </span>
 </div>
 
 
