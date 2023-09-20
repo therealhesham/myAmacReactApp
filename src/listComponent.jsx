@@ -19,8 +19,8 @@ import exportFromJSON from 'export-from-json'
 const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
 
 const xlsx = "xls";
-const download = "download"
-    const download=exportFromJSON({ searchedData , download , xlsx })    
+const downloads = "download"
+    const download=exportFromJSON({ searchedData , downloads , xlsx })    
     
     const [startpage,setPage] = useState(0)
     const [size,setSize] = useState(10)
