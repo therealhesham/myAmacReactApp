@@ -16,16 +16,16 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     .fill(true)
     .map(() => 25 + Math.round(Math.random() * 50));
     const getItemSize = index => rowSizes[index];
-    sss = window.innerHeight
-    nnnn=window.innerWidth
+    // sss = 
+    // nnnn=
     
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
-<FixedSizeList    height={window !== 'undefined' ? "": sss}
+<FixedSizeList    height={window !== 'undefined' ?  window.innerHeight : ""}
     itemCount={searchedData.length}
     itemSize={getItemSize}
-    width={window !== 'undefined' ? "": nnnn} >
+    width={window !== 'undefined' ? window.innerWidth : ""} >
     
       <List>
         {searchedData.map(e=>
