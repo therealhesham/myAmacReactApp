@@ -79,8 +79,8 @@ else  {
                   // console.log(newData);
                   
                       }                  
-    const Delet=(e)=>{
-      axios.get('https://amaccompany.onrender.com/deletesecondtransaction/'+e).then((e) => console.log(e.data))
+    const Delet=async (e)=>{
+      await axios.get('https://amaccompany.onrender.com/deletesecondtransaction/'+e).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)
@@ -98,17 +98,7 @@ setSearcher(dataRe)
       <Table striped="columns"  style={{width:"1000px"}} >
           <thead>
             <tr>
-            {/* store:{type:"string",required:true},
-typeOfImporter:{type:"string",required:true},
-contractor:{type:"string"},
-typeOfContracting:{type:"string"},
-
-quantity:{type:"number",required:true},
-items:{type:"string",required:true},
-unit:{type:"string"},
-location:{type:"string"},
-date:{type:"string",default:new Date(Date.now()).toDateString()},
-user:"string" */}
+            
 <th>رقم الاذن</th>
               <th>مصدر</th>
               <th>النوع</th>
