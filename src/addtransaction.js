@@ -173,7 +173,7 @@ return(
           <TabPanel value={value} index={2} key="2" dir={theme.direction}>
           <Thirdtransaction fromList={fromList} data={data} client={client} source={factories} unit={unit}/>
           </TabPanel>
-          <TabPanel value={value} index="3"  dir={theme.direction}>
+          <TabPanel value={value} index={3} key="3" dir={theme.direction}>
             
             {/* <Thirdtransaction fromList={fromList} data={data} client={client} source={source} unit={unit}/> */}
           <Fourth places={places}   storenames={storenames} contractorNames={contractorNames} fromList={fromList} data={data}  unit={unit}/>
