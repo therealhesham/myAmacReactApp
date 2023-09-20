@@ -12,12 +12,18 @@ import { FixedSizeList } from 'react-window';
 
 
 const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
-
+    const rowSizes = new Array(searchedData.length)
+    .fill(true)
+    .map(() => 25 + Math.round(Math.random() * 50));
+    const getItemSize = index => rowSizes[index];
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
-<FixedSizeList  useIsScrolling={true}  >
-    <nav aria-label="main mailbox folders">
+<FixedSizeList    height={widnow.innerHeight}
+    itemCount={searchedData.length}
+    itemSize={getItemSize}
+    width={window.innerWidth} >
+    
       <List>
         {searchedData.map(e=>
         <ListItem disablePadding>
@@ -38,7 +44,7 @@ type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> 
         </ListItem>)}
       </List>
       <Divider />
-    </nav>
+    
     </FixedSizeList>
   </Box> );
 }
