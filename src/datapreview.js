@@ -85,8 +85,8 @@ setPage(1)
 
     }
 
-    const Delet=(e)=>{
-      axios.post('https://amaccompany.onrender.com/delete',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
+    const Delet=async (e)=>{
+      await axios.post('https://amaccompany.onrender.com/delete',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)
@@ -113,10 +113,7 @@ setUpdater(id)
     const updateOne=async (e)=>{
       console.log("updateOne",e)
       await axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?  reset()  :setError("خطأ في البيانات") )
-// const data = searchedData.filter((s)=> e != s._id)
-// const dataRe = [...data]
-// setSearcher(dataRe)
-// ref.current = 
+
     }
 String.prototype.ArtoEn= function() {
       return this.replace(/[\u0660-\u0669]/g, 
@@ -124,7 +121,7 @@ String.prototype.ArtoEn= function() {
     }
   
     
-    const printSearched =searchedData.filter((dataPrint) =>{return dataPrint.store , dataPrint.items, dataPrint.type,dataPrint.quantity});
+    const printSearched =searchedData.filter( dataPrint => dataPrint.store , dataPrint.items, dataPrint.type,dataPrint.quantity);
       return (
   <div>{token?  
     <div>
