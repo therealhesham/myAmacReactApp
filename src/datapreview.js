@@ -32,6 +32,7 @@ const [error,setError]= useState("")
 // const [id,setID]= useState("")
 const [success,setSuccess]= useState()
 console.log(updater)
+const [printDataDelet,setPrintDataDelet]=useState(searchedData)
 const navigate = useNavigate()
 const [zero,setZero]= useState(0)
 
@@ -173,10 +174,10 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
   
 <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 </div>
-<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:searchedData.map(e=>{return  e.store,e.items,e.type,e.quantity}),
- gridHeaderStyle: 'color: black;  border: 3px solid #3971A5;',
- gridStyle: 'border: 3px solid #3971A5;'
-,properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>طباعة كامل الجرد</Button></div>
+<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:printDataDelet.forEach(e=> delete e._id),
+ gridHeaderStyle: 'color: black;  border: 2px solid #3971A5;',
+ gridStyle: 'border: 2px solid #3971A5;'
+,properties:["store","items","type","quantity"],type:'json'}) }>طباعة كامل الجرد</Button></div>
 {/* <Transaction data={data}/> */}
 </div>
 
