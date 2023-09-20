@@ -9,14 +9,14 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Button, TextField, Stack } from '@mui/material';
 import { FixedSizeList } from 'react-window';
-import { inner } from '@cloudinary/url-gen/qualifiers/outlineMode';
+
 
 const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
 
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
-<FixedSizeList height={window.innerHeight} itemSize={window.innerHeight/5} itemCount={5} width={window.innerWidth}>
+<FixedSizeList height={window.innerHeight} itemSize={200}  width={window.innerWidth}>
     <nav aria-label="main mailbox folders">
       <List>
         {searchedData.map(e=>
