@@ -74,13 +74,17 @@ const [StorageToken, SetToken]= useState("")
 const [contractorNames,setContractors]=useState([])
   const [places,setPlaces]=useState([])
   const [storenames,setStoreNames]=useState([])
+  const [factories,setFactories]=useState([])
  const client = ["مقاول" , "مخزن"]
- const source = ["القاهرة", "اسماء مصانع", "مشتريات","مصنع البحرين"]
+ 
  const match = useMediaQuery("(max-width: 450px)")
  const navigate =useNavigate()
 
 
  async function getDatas(){
+  await axios.get("https://amaccompany.onrender.com/listoffactories",{withCredentials:true}).then((e) => 
+  setFactories(e.data)
+  )
 
   await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setData(_.reverse(e.data))).catch(error=>console.log(error))
@@ -161,7 +165,7 @@ return(
           
         >
           <TabPanel  value={value} index={0} key="0" dir={theme.direction} >
-          <FirstTransaction  places={places} fromList={fromList}  data={data} client={client} source={source} unit={unit}/>
+          <FirstTransaction  places={places} fromList={fromList}  data={data} client={client} source={factories} unit={unit}/>
           </TabPanel>
           <TabPanel value={value}  index={1} key="1" dir={theme.direction}>
           <SecondTransaction  places={places}   storenames={storenames} contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={source} unit={unit}/>

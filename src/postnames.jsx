@@ -28,7 +28,7 @@ const [label,setLabel]=useState("")
 const [ contractorName,setContractorName]=useState("")
 const [place,setPlace]=useState("")
 const [store,setStore]=useState("")
-
+const [factory,setFactory]=useState("")
 async function contractorHandler(){
 
 
@@ -50,6 +50,12 @@ async function storeHandler(){
 
 }
 
+async function factoryHandler(){
+
+
+    await axios.post("https://amaccompany.onrender.com/listoffactories",{name:store},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
+
+}
 
 return(
 <div>
@@ -69,6 +75,10 @@ name="quantity" value={place} onChange={e=>setPlace(e.target.value)}/>
 <TextField id="outlined-basic" label="مخزن" variant="outlined" 
 name="quantity" value={store} onChange={e=>setStore(e.target.value)}/>
 <Button variant="contained" size="medium"  onClick={storeHandler} >اضافة مخزن</Button> 
+
+<TextField id="outlined-basic" label="مصنع" variant="outlined" 
+name="quantity" value={factory} onChange={e=>setFactory(e.target.value)}/>
+<Button variant="contained" size="medium"  onClick={factoryHandler} >اضافة مصنع او مورد</Button> 
 
 </Stack>
 </form>

@@ -18,6 +18,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import SecondTransaction from "./secondTransactionComp";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 
 export default function FirstTransaction({fromList,data,source,places,client,unit,pader,styler
@@ -41,7 +42,12 @@ const [alert,setAlert] = useState("")
 const [receipt,setReceipt]=useState("")
 const [specificitems,setToGetSpecificITems]=useState([])
 const [specificUnite,setSpecificUnite]=useState()
+
+
 const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"error":""}>{notExist}</Alert>)}, 5000)
+
+
+
 const Clear =()=>{
     setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
@@ -84,18 +90,18 @@ return(
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
 
 <FormControl fullWidth>
-<InputLabel id="demo-simple-select-label">مصدر الوارد</InputLabel>
+<InputLabel id="demo-simple-select-label">المورد / المصنع</InputLabel>
 <Select
 name="source"
 labelId="demo-simple-select-label"
 id="demo-simple-select"
 value={from}
-label="الوارد"
+label="المورد"
 onChange={(e)=>setFrom(e.target.value)}
 >
 
 
-{source.map(e=> <MenuItem value={e} key={source.indexOf(e)}>{e}</MenuItem>)  }
+{source.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
 
 
 
