@@ -12,7 +12,7 @@ import { TextField, Typography } from '@mui/material';
 const List = ({searchedData,data,delet,updateOne,updater,token,search,setStore,setItems,setquantity,settype,updating}) => {
 
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>search(e)}/>
+    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
     <nav aria-label="main mailbox folders">
       <List>
         {searchedData.map(e=>

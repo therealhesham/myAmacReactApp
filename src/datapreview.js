@@ -135,7 +135,7 @@ String.prototype.ArtoEn= function() {
   <div>{matches?  
     <><List data={data} searchedData={searchedData} setItems={setItems} delet={Delet} setStore={setStore}
 
-setquantity={setQuantity} settype={setType} token={token} search={()=>Search(e)} updateOne={updateOne} updater={updater} updating={updating}
+setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(e,s)} updateOne={updateOne} updater={updater} updating={updating}
 
 /></>
     :
