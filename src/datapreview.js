@@ -75,7 +75,7 @@ s.preventDefault();
 
 // console.log(`${s.target.value}`.trim());
 const mapper = data.filter(e=>e.items.includes(s.target.value.ArtoEn()))
-console.log(mapper)
+
 setSearcher(mapper)
 setPage(1)
 // .includes("سلاقوس")
@@ -121,7 +121,7 @@ String.prototype.ArtoEn= function() {
     }
   
     
-    const printSearched =searchedData.map( ({store,items,type,quantity})=> {return store,items,type,quantity});
+    const printSearched =searchedData.map(e=>{return  s.store,e.items})
       
     console.log(printSearched)
     return (
@@ -173,7 +173,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
   
 <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 </div>
-<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:printSearched,
+<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:searchedData.map(e=>{return  s.store,e.items}),
  gridHeaderStyle: 'color: black;  border: 3px solid #3971A5;',
  gridStyle: 'border: 3px solid #3971A5;'
 ,properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>طباعة كامل الجرد</Button></div>
