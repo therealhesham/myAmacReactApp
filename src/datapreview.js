@@ -121,7 +121,7 @@ String.prototype.ArtoEn= function() {
     }
   
     
-    const printSearched =searchedData.filter( ({store,items,type,quantity})=> ({store,items,type,quantity}));
+    const printSearched =searchedData.map( ({store,items,type,quantity})=> ({store,items,type,quantity}));
       return (
   <div>{token?  
     <div>
