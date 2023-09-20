@@ -11,13 +11,14 @@ import { Button, TextField, Stack } from '@mui/material';
 import { FixedSizeList } from 'react-window';
 import { useState } from 'react';
 import Paginat from './pagination';
+import _ from 'lodash';
 
 
 const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
     
     
     const [startpage,setPage] = useState(0)
-    
+    const [size,setSize] = useState(10)
     const handleChange = (event, value) => {
         setPage(value);
       };
@@ -31,12 +32,12 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
     // sss = 
     // nnnn=
     
-    return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    return (<Box sx={{ width: '100%', maxWidth: 400, bgcolor: 'background.paper' }}>
 
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
 
-      <List width= {400}>
-        {searchedData.map(e=>
+      <List width= {400} >
+        {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map(e=>
         <ListItem  disablePadding sx={{ width: '100%'}}>
           <Stack>
             
