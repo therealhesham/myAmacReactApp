@@ -174,7 +174,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
   
 <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 </div>
-<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:printDataDelet.forEach(e=> delete e._id),
+<div style={{width:"200px",margin:"100px"}}><Button style={{width:"170px"}} color="info" variant="contained"  onClick={ ()=> printJS({printable:searchedData,
  gridHeaderStyle: 'color: black;  border: 2px solid #3971A5;',
  gridStyle: 'border: 2px solid #3971A5;'
 ,properties:["store","items","type","quantity"],type:'json'}) }>طباعة كامل الجرد</Button></div>
