@@ -50,7 +50,7 @@ type="text" name="store" value={quantity} onChange={(e)=>setquantity(e.target.va
             {updater === e._id? <TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
 type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> : <ListItemText style={{width:"400px"}} >{e.type}</ListItemText>}
             
-            {updater === e._id?<Button variant="contained" fullWidth color="info" style={{paddingBottom:"12px"}}   onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="info" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>console.log(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}
+            {updater === e._id?<Button variant="contained" fullWidth color="info" style={{paddingBottom:"12px"}}   onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="info" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}
           <Button  fullWidth color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>console.log("sss")}>Delete</Button>
           </Stack>
         </ListItem>)}
