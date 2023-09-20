@@ -11,6 +11,7 @@ import App from "./App";
 import { Navigate, useNavigate } from "react-router-dom";
 import ComboBox from "./search";
 import jwtDecode from "jwt-decode";
+import printJS from "print-js";
 
 function DataPreview(){
 const [data,setData]=useState([]);
@@ -139,6 +140,7 @@ String.prototype.ArtoEn= function() {
           <th>quantity</th>
           <th>Update</th>
           <th>Delete</th>
+          <th>Print</th>
         </tr>
       </thead>
       {/* {data.} */}
@@ -158,6 +160,7 @@ name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
           <td style={{width:"70px"}}>{updater == e._id ? <Button variant="contained"  style={{width:"70px"}} onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
           <td><Button color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
+          <td><Button color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:[{المخزن : e.store,المهام:e.items,الوحدة:e.type,الكمية:e.quantity}],properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>Print </Button></td>
           </tr>      
            
 
