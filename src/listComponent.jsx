@@ -7,7 +7,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, Stack } from '@mui/material';
 
 const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,updater,token,search,setStore,setItems,setquantity,type,settype,updating}) => {
 
@@ -17,7 +17,7 @@ const ListCompon = ({searchedData,data,delet,updateOne,items,store,quantity,upda
       <List>
         {searchedData.map(e=>
         <ListItem disablePadding>
-          
+          <Stack>
             
            {updater? <TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
 type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> : <ListItemText  >{e.store}</ListItemText>}
@@ -30,7 +30,7 @@ type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> 
             <ListItemText  >Delete</ListItemText>
             <Button variant="contained"  style={{width:"70px"}} onClick={()=>console.log(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>
           <Button style={{width:"70px"}} color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>console.log("sss")}>Delete</Button>
-
+          </Stack>
         </ListItem>)}
       </List>
       <Divider />
