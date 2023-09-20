@@ -171,7 +171,8 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
   
 <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
 </div>
-<div style={{width:"80px"}}><Button style={{width:"70px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:searchedData.filter(e=>{return e.store , e.items, e.type,e.quantity} ),properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>طباعة كامل الجرد</Button></div>
+<div style={{width:"200px"}}><Button style={{width:"170px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:searchedData.filter(dataPrint =>{return dataPrint.store , dataPrint.items, dataPrint.type,dataPrint.quantity} )
+,properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>طباعة كامل الجرد</Button></div>
 {/* <Transaction data={data}/> */}
 </div>
 
