@@ -12,7 +12,7 @@ import { Navigate, useMatch, useNavigate } from "react-router-dom";
 import ComboBox from "./search";
 import jwtDecode from "jwt-decode";
 import printJS from "print-js";
-import List from "./listComponent";
+import ListCompon from "./listComponent";
 
 function DataPreview(){
 const [data,setData]=useState([]);

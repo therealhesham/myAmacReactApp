@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { TextField, Typography } from '@mui/material';
 
-const List = ({searchedData,data,delet,updateOne,updater,token,search,setStore,setItems,setquantity,settype,updating}) => {
+const ListCompon = ({searchedData,data,delet,updateOne,updater,token,search,setStore,setItems,setquantity,settype,updating}) => {
 
     return (<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e,s)=>search(e,s)}/>
@@ -39,4 +39,4 @@ type="text" name="store" value={store} onChange={(e)=>settype(e.target.value)}/>
   </Box> );
 }
  
-export default List;
+export default ListCompon;
