@@ -56,7 +56,7 @@ type="text" name="store" value={quantity} onChange={(e)=>setquantity(e.target.va
 type="text" name="store" value={type} onChange={(e)=>settype(e.target.value)}/> : <ListItemText style={{width:"350px"}} >{e.type}</ListItemText>}
             
             {updater === e._id?<Button variant="contained" fullWidth color="info" style={{paddingBottom:"12px"}}   onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button fullWidth color="info" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}
-          <Button  fullWidth color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>delet(e._id)}>Delete</Button>
+          <Button  fullWidth color="error" variant="contained" disabled={true} onClick={()=>delet(e._id)}>Delete</Button>
           </Stack>
 
         </ListItem>)}
