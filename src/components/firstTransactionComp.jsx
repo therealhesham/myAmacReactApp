@@ -51,11 +51,11 @@ const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"err
 const Clear =()=>{
     setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
-setTo("")
+
 setExistense("")
 setType("")
 setQuantity("")
-setItem("")
+
 
 
 

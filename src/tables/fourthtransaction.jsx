@@ -23,18 +23,18 @@ const ref = useRef(0);
 const navigate = useNavigate()
 useEffect(()=>{
   
-  if(ref.current == 0){
+  // if(ref.current == 0){
     // console.log(ref.current);
     axios.get('https://amaccompany.onrender.com/refunds',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
     
-    ref.current=ref.current +1
-
+//     ref.current=ref.current +1
 }
-else  {
-// ref.current = 1
-}
-}
-    ,[data,searchedData])
+// }
+// else  {
+// // ref.current = 1
+// }
+// }
+    ,[])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
@@ -54,8 +54,8 @@ setPage(1)
 
     }
 
-    const Delet=(e)=>{
-      axios.get('https://amaccompany.onrender.com/deletrefund/'+e,{withCredentials:true}).then((e) => console.log(e.data))
+    const Delet=async (e)=>{
+      await axios.get('https://amaccompany.onrender.com/deletrefund/'+e,{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)
@@ -65,21 +65,10 @@ setSearcher(dataRe)
   <div>
         {/* <App/> */}
         <TextField style={{"marginTop": "12px"}} label="Search" onChange={Search}/>
-      <Table striped="columns" variant="dark" style={{width:"1000px"}} >
+      <Table striped="columns"  style={{width:"1000px"}} >
           <thead>
             <tr>
-            {/* store:{type:"string",required:true},
-typeOfImporter:{type:"string",required:true},
-contractor:{type:"string"},
-typeOfContracting:{type:"string"},
-
-quantity:{type:"number",required:true},
-items:{type:"string",required:true},
-unit:{type:"string"},
-location:{type:"string"},
-date:{type:"string",default:new Date(Date.now()).toDateString()},
-user:"string" */}
-              
+            
               <th>رقم الاذن</th>
               <th>المخزن</th>
               

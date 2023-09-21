@@ -64,7 +64,7 @@ setSearcher(dataRe)
   <div>
         {/* <App/> */}
         <TextField style={{"marginTop": "12px"}} label="Search" onChange={Search}/>
-      <Table striped="columns" variant="dark" style={{width:"900px"}} >
+      <Table striped="columns"  style={{width:"900px"}} >
           <thead>
             <tr>
               <th>رقم الاذن</th>
