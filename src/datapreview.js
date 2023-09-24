@@ -147,13 +147,13 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
       
       <thead>
         <tr >
-        <th style={{width:"20px"}}>id</th><th>store</th>
-          <th>items</th>
-          <th>type</th>
-          <th>quantity</th>
-          <th>Update</th>
-          <th>Delete</th>
-          <th>Print</th>
+        <th style={{width:"20px"}}>م</th><th>المخزن</th>
+          <th>المهام</th>
+          <th>الوحدة</th>
+          <th>كمية</th>
+          <th>تحديث</th>
+          <th>حذف</th>
+          <th>طباعة</th>
         </tr>
       </thead>
       {/* {data.} */}

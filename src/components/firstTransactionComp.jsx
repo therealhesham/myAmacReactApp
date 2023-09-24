@@ -5,7 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Alert, Autocomplete, Button, Stack, TextField } from "@mui/material";
+import { Alert, Autocomplete, Button, Stack, TextField, Typography } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
@@ -47,8 +47,14 @@ const [specificUnite,setSpecificUnite]=useState()
 const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"error":""}>{notExist}</Alert>)}, 5000)
 
 
+const ClearError=()=>{
+    setDone(null)
+    setExistense("خطأ في تسجيل البيانات .. المهام غير متاحة بالمخزن او قد تكون اخترت وحدة غير مناسبة لقائمة الجرد..من فضلك الرجوع لقائمة الجرد من هنا ")
 
+
+}
 const Clear =()=>{
+    setExistense(null)
     setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
 
@@ -70,13 +76,20 @@ const postHandler =async (e)=>{
     await axios.post("https://amaccompany.onrender.com/transactionexport",
     {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt,user:details.uername},{withCredentials:true}).
     then(e=>{
-        e.data == "error" ? setExistense("خطأ في تسجيل البيانات .. المهام غير متاحة بالمخزن او قد تكون اخترت وحدة غير مناسبة لقائمة الجرد..من فضلك الرجوع لقائمة الجرد من هنا ") : Clear()})
+        e.data == "error" ? ClearError() : Clear()})
     
     }
- const getSpecificData =(e)   =>{
+    const uniteGetter=(e)=>{
+        setItem(e)
+        const returner = data.filter(e=>e.items === e)
+        setType(returner.type)
+        
+        }
+        
+    const getSpecificData =async(e)   =>{
     // alert(destination)
 
-    axios.post("https://amaccompany.onrender.com/specificdata",{store:destination},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    await axios.post("https://amaccompany.onrender.com/specificdata",{store:destination},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
  }
 return(
@@ -146,12 +159,11 @@ setDestination(e.target.value)
 
 <Autocomplete
           id="combo-box-demo"
-          onInputChange={(event, value) => setItem(value)}
+          onInputChange={(event, value) => uniteGetter(value)}
         //   onClickCapture={(e)=>setSpecificUnite(e.type)}
         options={data.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
-
 
 
 {/* <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
@@ -160,28 +172,8 @@ name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
 ?
 
 
-<FormControl fullWidth>
-<InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
-<Select
-labelId="demo-simple-select-label"
-id="demo-simple-select"
-name="unit"
-value={type}
-label="الوحدة"
-onChange={(e)=>setType(e.target.value)}
->
 
-
-    
-<MenuItem value="م/ط" key="1" >م/ط</MenuItem>
-<MenuItem value="طن" key="2" >طن</MenuItem>
-<MenuItem value="عدد" key="3" >عدد</MenuItem>
-
-
-</Select>
-</FormControl>
-
-
+<Typography >{Type}</Typography>
 
 
 
