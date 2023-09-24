@@ -199,8 +199,8 @@ type="text" name="contractor" value={contractor} onChange={(e)=>setContractor(e.
 type="text" name="typeofcontracting" value={typeOfContracting} onChange={(e)=>setTypeOfContracting(e.target.value)}/>:e.typeOfContracting}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="المهام" variant="outlined"
 type="text" name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</td>
-              <td>updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="الكمية" variant="outlined"
-type="text" name="quantity" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>:{e.quantity}</td>
+              <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="الكمية" variant="outlined"
+type="text" name="quantity" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>:e.quantity}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
 type="text" name="unit" value={unit} onChange={(e)=>setUnit(e.target.value)}/>:e.unit}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="الموقع" variant="outlined"
