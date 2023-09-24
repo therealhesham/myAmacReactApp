@@ -100,9 +100,7 @@ setSearcher(dataRe)
     }
     const reset =()=>{
      
-      setZero(ref.current)
-      setZero(ref.current-1)
-console.log(ref.current)
+
 setUpdater(0) 
 
     }
