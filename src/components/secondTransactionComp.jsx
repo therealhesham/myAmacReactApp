@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Alert, Button, Stack, TextField ,Autocomplete} from "@mui/material";
+import { Alert, Button, Stack, TextField ,Autocomplete,Typography} from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
@@ -112,7 +112,7 @@ name="store"
 labelId="demo-simple-select-label"
 id="demo-simple-select"
 value={from}
-onFocusCapture={getSpecificData}
+
 label="المخزن"
 onChange={(e)=>itemsOfSpecificStore(e.target.value)}
 >
