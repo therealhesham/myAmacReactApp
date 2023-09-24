@@ -181,7 +181,7 @@ name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
 
 :
 
-<span>waiting for choosing items</span>
+<span>unit isn't detected</span>
 //  <div>
 // <FormControl fullWidth>
 // <InputLabel id="demo-simple-select-label">المهام</InputLabel>
