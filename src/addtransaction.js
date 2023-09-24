@@ -124,7 +124,7 @@ setUnit(unitArr)
 // }
 }
 
-,[])
+,[data])
 
 const theme = useTheme();
 const [value, setValue] = React.useState(0);
@@ -165,7 +165,7 @@ return(
           
         >
           <TabPanel  value={value} index={0} key="0" dir={theme.direction} >
-          <FirstTransaction  places={places} fromList={fromList}  data={data} client={client} source={factories} unit={unit}/>
+          <FirstTransaction  places={places} storenames={storenames} fromList={fromList}  data={data} client={client} source={factories} unit={unit}/>
           </TabPanel>
           <TabPanel value={value}  index={1} key="1" dir={theme.direction}>
           <SecondTransaction  places={places}   storenames={storenames} contractorNames={contractorNames}  fromList={fromList} data={data} client={client} source={factories} unit={unit}/>

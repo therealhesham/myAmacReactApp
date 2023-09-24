@@ -21,7 +21,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 
 
-export default function FirstTransaction({fromList,data,source,places,client,unit,pader,styler
+export default function FirstTransaction({fromList,data,storenames,source,places,client,unit,pader,styler
 }){
 
 // React.useEffect
@@ -142,7 +142,7 @@ setDestination(e.target.value)
 
 {
 
-  fromList.map(e=><MenuItem value={e} disabled={false}   >{e}</MenuItem>)
+  storenames.map(e=><MenuItem value={e.name} disabled={false}  key={e._id} >{e.name}</MenuItem>)
 
 
 
