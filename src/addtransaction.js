@@ -124,7 +124,7 @@ setUnit(unitArr)
 // }
 }
 
-,[data])
+,[])
 
 const theme = useTheme();
 const [value, setValue] = React.useState(0);

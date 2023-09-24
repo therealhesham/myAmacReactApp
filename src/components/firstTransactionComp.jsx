@@ -49,7 +49,7 @@ const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"err
 
 const ClearError=()=>{
     setDone(null)
-    setExistense("خطأ في تسجيل البيانات .. المهام غير متاحة بالمخزن او قد تكون اخترت وحدة غير مناسبة لقائمة الجرد..من فضلك الرجوع لقائمة الجرد من هنا ")
+    setExistense("خطأ في تسجيل البيانات .. تأكد من وجود المهام في جرد المخزن  ")
 
 
 }
@@ -160,20 +160,18 @@ setDestination(e.target.value)
 <Autocomplete
           id="combo-box-demo"
           onInputChange={(event, value) => uniteGetter(value)}
-        //   onClickCapture={(e)=>setSpecificUnite(e.type)}
+        
         options={data.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
 
 
-{/* <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
-name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
 {type
 ?
 
 
 
-<Typography >{type}</Typography>
+<Typography alignItems="center" justifyContent="center" >{type}</Typography>
 
 
 
@@ -182,46 +180,7 @@ name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
 :
 
 <span>unit isn't detected</span>
-//  <div>
-// <FormControl fullWidth>
-// <InputLabel id="demo-simple-select-label">المهام</InputLabel>
-// <Select
-// labelId="demo-simple-select-label"
-// id="demo-simple-select"
 
-// value={item}
-
-// label="المهام"
-// onChange={(e)=>setItem(e.target.value) }
-// >
-
-// {!specificitems?"waiting":specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items}</MenuItem>)}
-
-
-// </Select>
-// </FormControl>
-
-// <FormControl fullWidth>
-// <InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
-// <Select
-// labelId="demo-simple-select-label"
-// id="demo-simple-select"
-// name="unit"
-// value={type}
-// label="الوحدة"
-// onChange={(e)=>setType(e.target.value)}
-// >
-
-
-    
-// <MenuItem value={specificUnite} key="1" >{specificUnite}</MenuItem>
-
-
-
-// </Select>
-// </FormControl>
-
-// </div> 
 }
 
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 

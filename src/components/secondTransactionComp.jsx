@@ -53,10 +53,18 @@ const postHandler =async (e)=>{
     await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
         contractor:contractor,typeOfContracting:typeOfContracting,unit:type,
         items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
-           e.data == "error" ? setExistense("  خطأ في التسجيل ... المهام غير متاحة بالمخزن او وحدات المنصرف لا تناسب وحدات الجرد ") :
+           e.data == "error" ? ClearError():
              Clear() 
             )
             
+    }
+
+
+    const ClearError=()=>{
+        setDone(null)
+        setExistense("خطأ في تسجيل البيانات .. تأكد من وجود المهام في جرد المخزن  ")
+    
+    
     }
     
     const Clear =()=>{
@@ -66,21 +74,30 @@ setFrom("")
 setTypeOfImporter("")
 setType("")
 setQuantity("")
-setItems("")
+
+setContractor("")
 settypeOfContracting("")
 
 
 
     }
 
-    const getSpecificData =(e)   =>{
-    // alert(destination)
 
-    axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
-    // console.log(destination);
+ const uniteGetter=(s)=>{
+    setItems(s)
+    const returner = data.filter(e=>e.items === s)
+    setType(returner[0].type)
     
- }
-return(
+    } 
+
+const itemsOfSpecificStore=(s)=>{
+    setFrom(s)
+const specificITems= data.filter(e=>e.store === s)
+
+setToGetSpecificITems(specificITems)
+
+}
+    return(
 
 
 <div>
@@ -97,7 +114,7 @@ id="demo-simple-select"
 value={from}
 onFocusCapture={getSpecificData}
 label="المخزن"
-onChange={(e)=>setFrom(e.target.value)}
+onChange={(e)=>itemsOfSpecificStore(e.target.value)}
 >
 
 
@@ -167,12 +184,12 @@ onChange={(e)=>settypeOfContracting(e.target.value)}
 : null }
 {specificitems?<Autocomplete
           id="combo-box-demo"
-          onInputChange={(event, value) => setItems(value)}
+          onInputChange={(event, value) => uniteGetter(value)}
           
         options={specificitems.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />:"waiting"}
-
+  
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">الموقع</InputLabel>
 <Select
@@ -188,27 +205,22 @@ onChange={(e)=>setlOcation(e.target.value)}
 <MenuItem  value={e.name}>{e.name}</MenuItem>)}
 </Select>
 </FormControl>
-<FormControl fullWidth>
-<InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
-<Select
-labelId="demo-simple-select-label"
-id="demo-simple-select"
-name="unit"
-value={type}
-label="الوحدة"
-onChange={(e)=>setType(e.target.value)}
->
+{type
+?
 
 
-    
-<MenuItem value="م/ط" key="1" >م/ط</MenuItem>
-<MenuItem value="طن" key="2" >طن</MenuItem>
-<MenuItem value="عدد" key="3" >عدد</MenuItem>
-<MenuItem value="م2" key="4" >م2</MenuItem>
+
+<Typography alignItems="center" justifyContent="center" >{type}</Typography>
 
 
-</Select>
-</FormControl>
+
+
+
+:
+
+<span>unit isn't detected</span>
+
+}
 
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={quantity} onChange={e=>setQuantity(e.target.value)}/>
