@@ -79,9 +79,9 @@ const postHandler =async (e)=>{
         e.data == "error" ? ClearError() : Clear()})
     
     }
-    const uniteGetter=(e)=>{
-        setItem(e)
-        const returner = data.filter(e=>e.items === e)
+    const uniteGetter=(s)=>{
+        setItem(s)
+        const returner = data.filter(e=>e.items === s)
         setType(returner.type)
         
         }
@@ -168,7 +168,7 @@ setDestination(e.target.value)
 
 {/* <TextField id="outlined-basic" label="رقم المهام" variant="outlined" 
 name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
-{item
+{type
 ?
 
 
