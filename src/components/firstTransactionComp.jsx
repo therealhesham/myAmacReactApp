@@ -173,7 +173,7 @@ name="quantity" value={itemsno} onChange={e=>setQuantity(e.target.value)}/> */}
 
 
 
-<Typography >{Type}</Typography>
+<Typography >{type}</Typography>
 
 
 
