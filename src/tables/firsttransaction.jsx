@@ -20,20 +20,18 @@ const [searchedData,setSearcher ] = useState([])
 const [id,setId]=useState("")
 const ref = useRef(0);
 const navigate = useNavigate()
+
+
 useEffect(()=>{
   
-  if(ref.current == 0){
-    // console.log(ref.current);
-    axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
-    
-    ref.current=ref.current +1
 
+    // console.log(ref.current);
+    axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
+    
 }
-else  {
-// ref.current = 1
-}
-}
-    ,[data,searchedData])
+
+
+    ,[])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);

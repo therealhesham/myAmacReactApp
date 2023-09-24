@@ -31,7 +31,7 @@ const[from,setFrom]=useState("")
 const refFocus =useRef()
 const[to,setTo]=useState("")
 const[type,setType]=useState("")
-
+const[date,setDate]=useState("")
 const [quantity,setQuantity]=useState("")
 const [destination ,setDestination ] =useState("")
 const [item,setItem]=useState("")
@@ -59,7 +59,7 @@ const Clear =()=>{
 setFrom("")
 
 setExistense("")
-setType("")
+
 setQuantity("")
 
 
@@ -74,7 +74,7 @@ const postHandler =async (e)=>{
     
     if (!from ||  !type || !quantity || !destination || !item || !receipt ) return setExistense("رجاء ملىء البيانات")
     await axios.post("https://amaccompany.onrender.com/transactionexport",
-    {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt,user:details.uername},{withCredentials:true}).
+    {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt,user:details.username,date:date},{withCredentials:true}).
     then(e=>{
         e.data == "error" ? ClearError() : Clear()})
     
@@ -108,7 +108,8 @@ return(
     
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
-
+<TextField id="outlined-basic" label="التاريخ" variant="outlined"  type="date"
+name="date" value={date} onChange={e=>setDate(e.target.value)}/>
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المورد / المصنع</InputLabel>
 <Select

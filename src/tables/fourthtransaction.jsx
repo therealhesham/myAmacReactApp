@@ -71,7 +71,7 @@ setSearcher(dataRe)
             
               <th>رقم الاذن</th>
               <th>المخزن</th>
-              
+              <th>المقاول</th>
               
               <th>المهام</th>
               <th>كمية</th>
@@ -79,7 +79,7 @@ setSearcher(dataRe)
               
              
               <th>تاريخ</th>
-              <th>Delete</th>
+              <th>حذف</th>
             </tr>
           </thead>
           {console.log(size)}

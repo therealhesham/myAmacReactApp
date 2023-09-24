@@ -23,17 +23,10 @@ const ref = useRef(0);
 const navigate = useNavigate()
 useEffect(()=>{
   
-  if(ref.current == 0){
-    // console.log(ref.current);
-    axios.get('https://amaccompany.onrender.com/getsecondtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data.reverse()) )
-    
-    ref.current=ref.current +1
+    axios.get('https://amaccompany.onrender.com/getsecondtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
+}    
 
-}
-else  {
-// ref.current = 1
-}
-}
+
     ,[])
     // console.log(ref.current);
     const handleChange = (event, value) => {

@@ -33,21 +33,32 @@ const [specificitems,setToGetSpecificITems]=useState([])
 const [receipt,setReceipt]=useState("")
 const [specificUnite,setSpecificUnite]=useState()
 const [done,setDone]=useState(null)
+
+const[date,setDate]=useState("")
 const postHandler = (e)=>{
-e.preventDefault();
+
 e.preventDefault()
     const find = localStorage.getItem("token")
     const details = jwtDecode(find)
 if (!from ||  !to || !quantity || !type || !items || !receipt ) return setExistense("رجاء ملىء البيانات")
 if (from === to ) return setExistense("من فضلك غير احد المخزنين")
-axios.post("https://amaccompany.onrender.com/thirdtransaction",{user:details.username,receiptno:receipt,from:from,to:to,items:items,type:type,quantity:quantity},{withCredentials:true}).then(e=>
-    e.data == "error" ? setExistense("  خطأ في التسجيل ... المهام غير متاحة بالمخزن المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : Clear())
+axios.post("https://amaccompany.onrender.com/thirdtransaction",{date:date,user:details.username,receiptno:receipt,from:from,to:to,items:items,type:type,quantity:quantity},{withCredentials:true}).then(e=>
+    e.data == "error" ? ClearError("المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : Clear())
 
 }
-const getSpecificData =(e)   =>{
+
+function ClearError(e){
+    setDone(null)
+    setExistense(e)
+
+
+}
+
+
+const getSpecificData =async(e)   =>{
     // alert(destination)
 // ss
-    axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+   await axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
    
  }
@@ -69,6 +80,8 @@ return (
 <Stack gap="12px">
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
+<TextField id="outlined-basic" label="التاريخ" variant="outlined" type='date'
+name="quantity" value={date} onChange={e=>setDate(e.target.value)}/>
 
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">من مخزن</InputLabel>

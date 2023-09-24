@@ -38,6 +38,7 @@ const [notExist,setExistense]=useState(null);
 const [specificUnite,setSpecificUnite]=useState();
 const [done,setDone]=useState(null);
 const [search,setSearcher]=useState("");
+const[date,setDate]=useState("")
 // useEffect(()=>{
 
 //     if(ex)& Clear()
@@ -51,8 +52,7 @@ const postHandler =async (e)=>{
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
     
     await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
-        contractor:contractor,typeOfContracting:typeOfContracting,unit:type,
-        items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
+        contractor:contractor,typeOfContracting:typeOfContracting,unit:type,date:date,items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
            e.data == "error" ? ClearError():
              Clear() 
             )
@@ -72,10 +72,10 @@ const postHandler =async (e)=>{
         setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
 setTypeOfImporter("")
-setType("")
+
 setQuantity("")
 
-setContractor("")
+setContractor(null)
 settypeOfContracting("")
 
 
@@ -97,14 +97,15 @@ const specificITems= data.filter(e=>e.store === s)
 setToGetSpecificITems(specificITems)
 
 }
-    return(
-
-
-<div>
+    return( 
+    <div>
     <form  style={{width:styler }}>
 <Stack   gap="12px">
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
+<TextField id="outlined-basic" label="التاريخ" variant="outlined" type='date'
+name="date" value={date} onChange={e=>setDate(e.target.value)}/>
+
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">المخزن</InputLabel>
 <Select

@@ -39,10 +39,10 @@ e.preventDefault()
     axios.post("https://amaccompany.onrender.com/specificdata",{store:destination},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
  }
-const PostHandler= ()=>{
+const PostHandler=async ()=>{
     if (!contractor ||  !destination || !quantity || !type || !items ) return setExistense("رجاء ملىء البيانات")
-axios.post("https://amaccompany.onrender.com/refund",
-{receiptno:receiptno,contractor:contractor,destination:destination,items:items,
+await axios.post("https://amaccompany.onrender.com/refund",
+{receiptno:receiptno,contractor:contractor,destination:destination,items:items,date:date,
     quantity:quantity,type:type},{withCredentials:true}).then(e=>{
         e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
 

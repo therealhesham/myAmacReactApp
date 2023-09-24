@@ -53,10 +53,9 @@ setFilteredfalse(data.filter(e=> e.isOk != true))
 // }
 
 
-},[data,filteredData,filtered])
-const setter = (id)=>{
-axios.post("https://amaccompany.onrender.com/setter",{id:id},{withCredentials:true}).then(e=>console.log("deleted"))
-ref.current = -1
+},[])
+const setter = async (id)=>{
+await axios.post("https://amaccompany.onrender.com/setter",{id:id},{withCredentials:true}).then(e=>console.log("deleted"))
 
 }
   return (
