@@ -11,6 +11,7 @@ import socketClient  from "socket.io-client";
 
 import { Navigate, useNavigate } from "react-router-dom";
 import Paginat from "../pagination";
+import jwtDecode from "jwt-decode";
 
 
 function ImportedData(){
@@ -31,12 +32,24 @@ const[items,setItems]=useState("")
 const[unit,setUnit]=useState("")
 const [user,setUser]=useState("")
 const [date,setDate]=useState("")
-
+const[token,setToken]=useState({})
 useEffect(()=>{
   
+if(localStorage.getItem("token")){
+  const getToken = localStorage.getItem("token");
+  
+  const details = jwtDecode(getToken)
+  setToken(details)
+  axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
+  }
+  else if (!localStorage.getITem("token")){
+navigate("/login")
+
+
+  }
 
     // console.log(ref.current);
-    axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
+  
     
 }
 

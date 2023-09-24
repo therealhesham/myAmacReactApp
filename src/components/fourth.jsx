@@ -33,6 +33,7 @@ export default function Fourth({fromList,data,unit,styler,contractorNames}){
     const [receiptno,setReceiptno]=useState("")
     const [notExist,setExistense]=useState("")
 const [done,setDone]=useState("")
+const [date,setDate]=useState("")
 const getSpecificData =(e)   =>{
     // alert(destination)
 e.preventDefault()
@@ -57,6 +58,8 @@ return(
 <Stack gap="12px">
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receiptno} onChange={e=>setReceiptno(e.target.value)}/>
+<TextField id="outlined-basic" label="التاريخ" variant="outlined" type='date'
+name="quantity" value={date} onChange={e=>setDate(e.target.value)}/>
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label"> المقاول</InputLabel>
 <Select
