@@ -85,7 +85,14 @@ const postHandler =async (e)=>{
         setType(returner[0].type)
         
         }
+        const itemsOfSpecificStore=(s)=>{
+            setDestination(s)
+        const specificITem= data.filter(e=>e.store === s)
         
+        setToGetSpecificITems(specificITem)
+        
+
+    }        
     const getSpecificData =async(e)   =>{
     // alert(destination)
 
@@ -130,11 +137,11 @@ id="demo-simple-select"
 value={destination}
 label="الجهة"
 
-onFocusCapture={getSpecificData}
+
 autoFocus
 onChange={(e)=>
 
-setDestination(e.target.value)
+    itemsOfSpecificStore(e.target.value)
  
 }
 
@@ -161,7 +168,7 @@ setDestination(e.target.value)
           id="combo-box-demo"
           onInputChange={(event, value) => uniteGetter(value)}
         
-        options={data.map((option) => option.items)}
+        options={specificitems.map((option) => option.items)}
         renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
       />
 
