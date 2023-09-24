@@ -82,7 +82,7 @@ const postHandler =async (e)=>{
     const uniteGetter=(s)=>{
         setItem(s)
         const returner = data.filter(e=>e.items === s)
-        setType(returner.type)
+        console.log(returner)
         
         }
         
