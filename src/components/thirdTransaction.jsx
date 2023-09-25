@@ -42,7 +42,7 @@ e.preventDefault()
     const details = jwtDecode(find)
 if (!from ||  !to || !quantity || !type || !items || !receipt ) return setExistense("رجاء ملىء البيانات")
 if (from === to ) return setExistense("من فضلك غير احد المخزنين")
-axios.post("https://amaccompany.onrender.com/thirdtransaction",{date:date,user:details.username,receiptno:receipt,from:from,to:to,items:items,type:type,quantity:quantity},{withCredentials:true}).then(e=>
+axios.post("https://amaccompany.onrender.com/thirdtransaction",{date:date,user:details.username,receiptno:receipt,from:from,to:to,items:items,unit:type,quantity:quantity},{withCredentials:true}).then(e=>
     e.data == "error" ? ClearError("المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : Clear())
 
 }
