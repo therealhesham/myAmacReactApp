@@ -211,7 +211,7 @@ onChange={(e)=>setlOcation(e.target.value)}
 
 
 
-<Typography alignItems="center" justifyContent="center" >{type}</Typography>
+<Typography alignItems="center"  justifyContent="center" >{type}</Typography>
 
 
 

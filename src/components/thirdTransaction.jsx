@@ -3,7 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Alert, Button, Stack, TextField, useMediaQuery } from "@mui/material";
+import { Alert, Autocomplete, Button, Stack, TextField, useMediaQuery } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 
 import TabList from '@mui/lab/TabList';
@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 
 
 export default function Thirdtransaction ({fromList,data,unit,styler}){
+
 const [from , setFrom]= useState("")
 const [to,setTo]=useState("")
 const [items,setItems]=useState("")
@@ -53,7 +54,12 @@ function ClearError(e){
 
 
 }
-
+const uniteGetter=(s)=>{
+    setItems(s)
+    const returner = data.filter(e=>e.items === s)
+    setType(returner[0].type)
+    
+    } 
 
 const getSpecificData =async(e)   =>{
     // alert(destination)
@@ -123,44 +129,15 @@ onChange={(e)=>setTo(e.target.value)}
 </Select>
 </FormControl>
 
-<FormControl fullWidth>
-<InputLabel id="demo-simple-select-label">المهام</InputLabel>
-<Select
-labelId="demo-simple-select-label"
-id="demo-simple-select"
-name="items"
-value={items}
-label="المهام"
-onChange={(e)=>setItems(e.target.value)}
->
+<Autocomplete
+          id="combo-box-demo"
+          onInputChange={(event, value) => uniteGetter(value)}
+          
+        options={specificitems.map((option) => option.items)}
+        renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
+      />
 
-{specificitems.map(e=><MenuItem value={e.items} onClickCapture={()=>setSpecificUnite(e.type)}>{e.items }</MenuItem>)}
-
-
-
-</Select>
-</FormControl>
-
-<FormControl fullWidth>
-<InputLabel id="demo-simple-select-label">الوحدة</InputLabel>
-<Select
-labelId="demo-simple-select-label"
-id="demo-simple-select"
-name="unit"
-value={type}
-label="الوحدة"
-onChange={(e)=>setType(e.target.value)}
->
-
-
-    
-<MenuItem value={specificUnite} key="1" >{specificUnite}</MenuItem>
-
-
-
-</Select>
-</FormControl>
-
+<Typography alignItems="center" justifyContent="center" >{type}</Typography>
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={quantity} onChange={e=>setQuantity(e.target.value)}/>
 <Button variant="contained" size="medium"  onClick={postHandler} >تسجيل بيانات</Button> 

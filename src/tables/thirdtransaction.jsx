@@ -21,11 +21,13 @@ const [id,setId]=useState("")
 const [deletedColumn,setDeleter]= useState(false)
 const ref = useRef(0);
 const navigate = useNavigate()
+const [deletesss,setDeletess]=useState([])
+
 useEffect(()=>{
   
     axios.get('https://amaccompany.onrender.com/getthirdtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
 }
-    ,[])
+    ,[deletesss])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
@@ -46,10 +48,9 @@ setPage(1)
     }
 
     const Delet=async(e)=>{
-      await axios.get('https://amaccompany.onrender.com/deletethirdtransaction/'+e,{withCredentials:true}).then((e) => console.log(e.data))
-const data = searchedData.filter((s)=> e != s._id)
-const dataRe = [...data]
-setSearcher(_.reverse(e.dataRe))
+      await axios.get('https://amaccompany.onrender.com/deletethirdtransaction/'+e,{withCredentials:true}).then((e) => e.date  ==="deleted" ?setDeletess("newData"): console.log(e.data))
+
+
     }
       return (
   
