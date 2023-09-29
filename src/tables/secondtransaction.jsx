@@ -52,10 +52,7 @@ else if (!localStorage.getITem("token")){
   navigate("/login")
   
 
-}
-}
-
-    ,[])
+}},[])
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
@@ -99,10 +96,10 @@ else if (!localStorage.getITem("token")){
                   // data.filter((e)=>e.includes("مواسير"))
                   // console.log(newData);
                   
-                      }                  
-                      
-const Delet= async (e)=>{
-  if(e !=== "hesham") return;
+                      }
+
+const Delet = async (e)=>{
+  if(e !== "hesham") return;
       await axios.get('https://amaccompany.onrender.com/deletesecondtransaction/'+e).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
@@ -111,9 +108,7 @@ setSearcher(dataRe)
 
     
     const updating =(id,store,receiptno,typeOfImporter,contractor,typeOfContracting,
-      quantity,items,unit,date,location,user
-      
-      )=>{
+      quantity,items,unit,date,location,user)=>{
 
       setUpdater(id);
 setStore(store);
@@ -135,7 +130,7 @@ setUpdater(0)
 
       }
       const updateOne=async (e)=>{
-        console.log("updateOne",e)
+        
         await axios.post('https://amaccompany.onrender.com/updatesecondtransaction',
         {id:e,store:store,
           receiptno:receiptno,
@@ -155,7 +150,7 @@ setUpdater(0)
       return (
   
   <div>
-        {/* <App/> */}
+
         <Stack>
         <TextField style={{"marginTop": "12px"}} label="بحث بالمهام " onChange={Search}/>
         <TextField style={{"marginTop": "12px"}} label="بحث برقم الاذن " onChange={SearchByReceipt}/>
@@ -225,7 +220,7 @@ type="text" name="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:e
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>
   
-{/* <Transaction data={data}/> */}
+
 </div>
 
 
@@ -238,8 +233,6 @@ type="text" name="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:e
 
 
 
-
-
-}
-
+              }
+            
 export default SecondTransactionadding;
