@@ -26,7 +26,7 @@ import jwtDecode from 'jwt-decode';
 import {Provider} from 'react-redux'
 import Logout from './logoutComponent';
 import Names from './postnames';
-
+import PrivacyPolice from './privacypolice';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
@@ -46,6 +46,7 @@ root.render(
     <Route element={<Profile/>}  path="/Profile" />
     <Route element={<Chat/>}  path="/chat"/>
     <Route element={<AlignItemsList/>}  path="/list"/>
+    <Route element={<PrivacyPolice/>}  path="/privacypolicy"/>
     <Route element={<Register/>}  path="/register"/>
   <Route element={<PostNewDataToMainWarehouse/>} path="/postmaindata"/>
     

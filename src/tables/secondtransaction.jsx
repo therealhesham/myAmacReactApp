@@ -100,7 +100,9 @@ else if (!localStorage.getITem("token")){
                   // console.log(newData);
                   
                       }                  
-    const Delet=async (e)=>{
+                      
+const Delet= async (e)=>{
+  if(e !=== "hesham") return;
       await axios.get('https://amaccompany.onrender.com/deletesecondtransaction/'+e).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
