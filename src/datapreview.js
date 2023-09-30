@@ -57,7 +57,7 @@ if(localStorage.getItem("token")){
   
   const details = jwtDecode(getToken)
   setToken(details)
-  
+  dataGetter();
   }
   else if (!localStorage.getItem("token")){
 navigate("/login")
@@ -65,7 +65,7 @@ navigate("/login")
 
   }
     setZero(zero + 1)
-    dataGetter();
+    
 // }
 // else  {
 // // ref.current = 1
