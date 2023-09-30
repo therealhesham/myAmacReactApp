@@ -97,12 +97,13 @@ setPage(1)
     }
     const [falser,setFalser]=useState(false)
     const setStoreQuery=(s)=>{
+      setFalser(true)
 if (searchValue.length > 0 ) {
 const mapper = data.filter(e=>e.items.includes(s.target.value.ArtoEn()))
 const mmm = mapper.filter(e=> e.store.includes(s.target.value))
 setSearcher(mmm)
 }
- else{     const we= searchedData.filter(e=> e.store.includes(s.target.value) )
+ else {     const we= data.filter(e=> e.store.includes(s.target.value) )
 
       setSearcher(we)}
           }
@@ -159,9 +160,10 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
         label={e.name}
         control={
           <Checkbox
+
             value={e.name}
-            Checked ={false}
-            onChange={e=>setStoreQuery(e)}
+            Checked ={falser}
+            onChange={e=> e.target.checked ? setStoreQuery(e):""}
             color="primary"
           />
         }
