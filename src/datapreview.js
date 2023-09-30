@@ -59,7 +59,7 @@ if(localStorage.getItem("token")){
   setToken(details)
   
   }
-  else if (!localStorage.getITem("token")){
+  else if (!localStorage.getItem("token")){
 navigate("/login")
 
 
