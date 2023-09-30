@@ -42,7 +42,7 @@ if(localStorage.getItem("token")){
   setToken(details)
   axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
   }
-  else if (!localStorage.getITem("token")){
+  else if (!localStorage.getItem("token")){
 navigate("/login")
 
 
