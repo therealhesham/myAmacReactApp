@@ -80,10 +80,10 @@ navigate("/login")
     const handleChange = (event, value) => {
       setPage(value);
     };
-
+const [searchValue,setSearchValue]=useState("")
     const Search = (s)=>{
 s.preventDefault();
-
+setSearchValue(s.target.value.ArtoEn())
 // console.log(`${s.target.value}`.trim());
 const mapper = data.filter(e=>e.items.includes(s.target.value.ArtoEn()))
 
@@ -97,9 +97,14 @@ setPage(1)
     }
     const [falser,setFalser]=useState(false)
     const setStoreQuery=(s)=>{
-setFalser(false)
-      const we= searchedData.filter(e=> e.store.includes(s) )
-      setSearcher(we)
+if (searchValue.length > 0 ) {
+const mapper = data.filter(e=>e.items.includes(s.target.value.ArtoEn()))
+const mmm = mapper.filter(e=> e.store.includes(s.target.value))
+setSearcher(mmm)
+}
+ else{     const we= searchedData.filter(e=> e.store.includes(s.target.value) )
+
+      setSearcher(we)}
           }
     const Delet=async (e)=>{
       await axios.post('https://amaccompany.onrender.com/delete',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
@@ -148,15 +153,15 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     :
     <div>
     
-    <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
+    <TextField style={{"marginTop": "12px"}} label="Search"    value={searchValue} onChange={(e)=>Search(e)}/>
 
     {storeNames.map(e=><FormControlLabel
         label={e.name}
         control={
           <Checkbox
             value={e.name}
-            Checked ={falser}
-            onChange={e=>e.target.checked ? setStoreQuery(e.name):setStoreQuery("")}
+            Checked ={false}
+            onChange={e=>setStoreQuery(e)}
             color="primary"
           />
         }
