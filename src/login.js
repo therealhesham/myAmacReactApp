@@ -17,16 +17,25 @@ function Login(){
     window.location.reload()
   }
   const navigate=useNavigate()
-useEffect(()=>{
-try {
-  const decode = localStorage.getItem("token")
-const decoder = jwtDecode(decode)  
-navigate("/profile")
-} catch (error) {
-  console.log(error)
-}  
+
+
+const Checker = ()=>{
+  try {
+    const decode = localStorage.getItem("token")
+  const decoder = jwtDecode(decode)  
+   if (decode.username) return navigate("/profile");
   
-})
+  } catch (error) {
+    
+  }  
+  
+
+}
+
+
+  useEffect(()=>{
+  Checker()
+},[])
 
 
 const [email,setEmail]=useState("")
