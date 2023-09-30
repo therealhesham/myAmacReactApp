@@ -45,7 +45,7 @@ async function dataGetter(){
   
   await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     
-  e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
+  e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) 
   )
 
 }
@@ -95,7 +95,11 @@ setPage(1)
 // console.log(newData);
 
     }
+    const setStoreQuery=(s)=>{
 
+      const we= searchedData.filter(e=> e.store.includes(s) )
+      setSearcher(we)
+          }
     const Delet=async (e)=>{
       await axios.post('https://amaccompany.onrender.com/delete',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
@@ -150,8 +154,8 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
         control={
           <Checkbox
             value={e.name}
-            
-            onChange={e=>console.log(e.target.checked)}
+            Checked ={false}
+            onChange={e=>e.target.checked ? setStoreQuery(e.name):setStoreQuery("")}
             color="primary"
           />
         }
