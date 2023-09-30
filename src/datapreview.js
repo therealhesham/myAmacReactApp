@@ -144,20 +144,21 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     <div>
     
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
-  <Table striped="columns">
 
-{storeNames.map(e=><FormControlLabel
+    {storeNames.map(e=><FormControlLabel
         label={e.name}
         control={
           <Checkbox
             value={e.name}
-            checked={e.name}
+            
             onChange={e=>console.log(e.target.checked)}
             color="primary"
           />
         }
       />)}      
       
+  <Table striped="columns">
+
       <thead>
         <tr >
         <th style={{width:"20px"}}>م</th><th>المخزن</th>
