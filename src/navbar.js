@@ -71,7 +71,7 @@ setToken(details)
 else if(localStorage.getItem("token") == null)
 {navigate("/login")}
  
-  },[data])
+  },[])
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
