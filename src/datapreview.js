@@ -156,7 +156,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     
     <TextField style={{"marginTop": "12px"}} label="Search"    value={searchValue} onChange={(e)=>Search(e)}/>
 
-    {storeNames.map(e=><FormControlLabel
+    {/* {storeNames.map(e=><FormControlLabel
         label={e.name}
         control={
           <Checkbox
@@ -168,7 +168,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
           />
         }
       />)}      
-      
+       */}
   <Table striped="columns">
 
       <thead>
