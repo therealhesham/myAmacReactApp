@@ -95,8 +95,9 @@ setPage(1)
 // console.log(newData);
 
     }
+    const [falser,setFalser]=useState(false)
     const setStoreQuery=(s)=>{
-
+setFalser(false)
       const we= searchedData.filter(e=> e.store.includes(s) )
       setSearcher(we)
           }
@@ -154,7 +155,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
         control={
           <Checkbox
             value={e.name}
-            Checked ={false}
+            Checked ={falser}
             onChange={e=>e.target.checked ? setStoreQuery(e.name):setStoreQuery("")}
             color="primary"
           />
