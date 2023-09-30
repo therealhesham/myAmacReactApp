@@ -46,7 +46,7 @@ async function dataGetter(){
 
 }
 useEffect(()=>{
-  dataGetter();
+  
   // if(ref.current == zero){ 
     
     
@@ -65,7 +65,7 @@ navigate("/login")
 
   }
     setZero(zero + 1)
-
+    dataGetter();
 // }
 // else  {
 // // ref.current = 1
