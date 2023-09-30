@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField , Button, Alert, Stack, useMediaQuery, ButtonBase } from "@mui/material";
+import { TextField , Button, Alert, Stack, useMediaQuery, ButtonBase, FormControl, FormLabel, FormHelperText, FormControlLabel, Checkbox } from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
@@ -31,14 +31,18 @@ const [type,setType]=useState("")
 const [Quantity,setQuantity]=useState("")
 const [error,setError]= useState("")
 // const [id,setID]= useState("")
+const [storeNames,setStoreNames]=useState([])
 const [success,setSuccess]= useState()
-console.log(updater)
+
 const [printDataDelet,setPrintDataDelet]=useState(searchedData)
 const navigate = useNavigate()
 const [zero,setZero]= useState(0)
 const matches = useMediaQuery('(max-width:400px)');
 async function dataGetter(){
 
+  await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+  setStoreNames(e.data))
+  
   await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     
   e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) 
@@ -141,7 +145,18 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     
     <TextField style={{"marginTop": "12px"}} label="Search" onChange={(e)=>Search(e)}/>
   <Table striped="columns">
-      
+
+{storeNames.map(e=><FormControlLabel
+        label={e.name}
+        control={
+          <Checkbox
+            value={e.name}
+            checked={e.name}
+            onChange={e=>console.log(e.target.checked)}
+            color="primary"
+          />
+        }
+      />)}      
       
       <thead>
         <tr >
