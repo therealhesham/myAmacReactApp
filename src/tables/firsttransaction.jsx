@@ -45,6 +45,7 @@ const [uploadFile, setUploadFile] = useState("");
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
+    height:300,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -155,15 +156,15 @@ setDate(date)
       <Table striped="columns"  style={{width:"900px"}} >
           <thead>
             <tr>
-              <th>رقم الاذن</th>
-              <th>مصدر</th>
-              <th>الى مخزن</th>
-              <th>مهام</th>
-              <th>كمية</th>
-              <th>الوحدة</th>
-              <th>صورة الاذن</th>
-              <th>بواسطة</th>
-              <th>تاريخ</th>
+              <th style={{width:"220px"}}>رقم الاذن</th>
+              <th style={{width:"220px"}}>مصدر</th>
+              <th style={{width:"220px"}}>الى مخزن</th>
+              <th style={{width:"220px"}}>مهام</th>
+              <th style={{width:"220px"}}>كمية</th>
+              <th style={{width:"220px"}}>الوحدة</th>
+              <th style={{width:"220px"}}>صورة الاذن</th>
+              <th style={{width:"220px"}}>بواسطة</th>
+              <th style={{width:"220px"}}>تاريخ</th>
               <th>حذف</th>
               <th>تحديث</th>
             </tr>
@@ -205,7 +206,7 @@ type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> 
           <Typography id="modal-modal-title" variant="h6" component="h2">
           صورة الاذن رقم {e.receiptno}
           </Typography>
-          <img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} />
+          <img  src={cloudinaryImage} />
         </Box>
       </Modal>
               <td style={{width:"70px"}}>{updater === e._id ? <Button variant="contained"  style={{width:"70px"}} 
