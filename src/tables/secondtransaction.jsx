@@ -48,7 +48,7 @@ if(localStorage.getItem("token")){
   
   const details = jwtDecode(getToken)
   setToken(details)
-    axios.get('https://amaccompany.onrender.com/getsecondtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
+    axios.get('https://amaccompany.onrender.com/getsecondtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data.reverse()) & setData(e.data.reverse()) )
 }    
 else if (!localStorage.getITem("token")){
   navigate("/login")

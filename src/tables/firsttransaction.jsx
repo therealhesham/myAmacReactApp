@@ -36,8 +36,9 @@ const[token,setToken]=useState({})
 const [uploadFile, setUploadFile] = useState("");
   const [cloudinaryImage, setCloudinaryImage] = useState("")
   const [ statePreviewImage,setStatePreview]=useState(false)
-
-useEffect(()=>{
+  const handleClose = () => setStatePreview(false);
+  const handleOpen = () => setStatePreview(true);
+  useEffect(()=>{
   
 if(localStorage.getItem("token")){
   const getToken = localStorage.getItem("token");
@@ -175,12 +176,25 @@ type="number" name="store" value={quantity} onChange={(e)=>setQuantity(e.target.
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
 type="text" name="store" value={unit} onChange={(e)=>setUnit(e.target.value)}/> :e.unit}</td>
                   <td>{e.file?<Typography onClick={()=>{setStatePreview(true) 
-                              setCloudinaryImage(e.file)}} style={{color:"green"}}>   صورة الاذن من هنا </Typography>:<Typography>غير متاح صور اذون</Typography>  }</td>            
+                              setCloudinaryImage(e.file)}} style={{color:"green",padding:4}}>   صورة الاذن من هنا </Typography>:<Typography>غير متاح صور اذون</Typography>  }</td>            
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="المستخدم" variant="outlined"
 type="text" name="store" value={user} onChange={(e)=>setUser(e.target.value)}/> :e.user}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="التاريخ" variant="outlined"
 type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> :e.date}</td>
               <td><Button color="error" variant="contained" onClick={()=>Delet(e._id)}>Delete</Button></td>
+              <Modal
+        open={statePreviewImage}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+          صورة الاذن رقم {e.receiptno}
+          </Typography>
+          <img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} />
+        </Box>
+      </Modal>
               <td style={{width:"70px"}}>{updater === e._id ? <Button variant="contained"  style={{width:"70px"}} 
               onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.receiptno,e.source,e.destination,e.quantity,e.items,e.unit,e.user,e.date)}>UPDATE</Button>}</td>
             </tr>
