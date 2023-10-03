@@ -141,7 +141,7 @@ name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
                 handleUpload(event)
                 
                 ;}} 
-              /> {cloudinaryImage? <Text>تم رفع الملف</Text>:<Text>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Text> } </FormControl>
+              /> {cloudinaryImage? <Typography>تم رفع الملف</Typography>:<Typography>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Typography> } </FormControl>
 <TextField id="outlined-basic" label="التاريخ" variant="outlined"  type="date"
 name="date" value={date} onChange={e=>setDate(e.target.value)}/>
 <FormControl fullWidth>
