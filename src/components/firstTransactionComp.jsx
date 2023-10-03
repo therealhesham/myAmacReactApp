@@ -136,12 +136,12 @@ return(
     
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
- <FormControl><input type="file" 
+ <FormControl><input type="file"  
             placeholder="صورة الاذن" onChange ={(event) => {setUploadFile(event.target.files[0])
                 handleUpload(event)
                 
                 ;}} 
-              /> <FileUpload/> </FormControl>
+              /> {cloudinaryImage? <Text>تم رفع الملف</Text>:<Text>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Text> } </FormControl>
 <TextField id="outlined-basic" label="التاريخ" variant="outlined"  type="date"
 name="date" value={date} onChange={e=>setDate(e.target.value)}/>
 <FormControl fullWidth>

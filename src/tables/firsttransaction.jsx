@@ -40,7 +40,7 @@ if(localStorage.getItem("token")){
   
   const details = jwtDecode(getToken)
   setToken(details)
-  axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
+  axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
   }
   else if (!localStorage.getItem("token")){
 navigate("/login")
@@ -147,6 +147,7 @@ setDate(date)
               <th>مهام</th>
               <th>كمية</th>
               <th>الوحدة</th>
+              <th>صورة الاذن</th>
               <th>بواسطة</th>
               <th>تاريخ</th>
               <th>حذف</th>
@@ -161,8 +162,8 @@ setDate(date)
             <tr>
 
 
-              <td>{  updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="رقم الاذن" variant="outlined"
-type="number" name="store" value={receiptno} onChange={(e)=>setReceiptno(e.target.value)}/> : e.receiptno}</td>
+              <td>{  updater === e._id  ? <TextField  id="outlined-basic" style={{width:"200px"}} label="رقم الاذن" variant="outlined"
+type="number" name="store" value={receiptno}  onChange={(e)=>setReceiptno(e.target.value)}/> : e.receiptno}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="مصدر الوارد" variant="outlined"
 type="text" name="store" value={source} onChange={(e)=>setSource(e.target.value)}/> :e.source}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
@@ -173,7 +174,7 @@ type="text" name="store" value={items} onChange={(e)=>setItems(e.target.value)}/
 type="number" name="store" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/> :e.quantity}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
 type="text" name="store" value={unit} onChange={(e)=>setUnit(e.target.value)}/> :e.unit}</td>
-              
+              <td>{e.file ? e.file :"لا يوجد صورة للاذن حاليا في قاعدة البيانات"}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="المستخدم" variant="outlined"
 type="text" name="store" value={user} onChange={(e)=>setUser(e.target.value)}/> :e.user}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="التاريخ" variant="outlined"
