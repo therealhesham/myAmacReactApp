@@ -216,7 +216,7 @@ type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> 
 
 
         </Table>
-        {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
+        
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>
