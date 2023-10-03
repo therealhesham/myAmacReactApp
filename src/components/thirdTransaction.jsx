@@ -50,6 +50,29 @@ axios.post("https://amaccompany.onrender.com/thirdtransaction",{date:date,file:c
     e.data == "error" ? ClearError("المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : Clear())
 
 }
+const handleUpload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    formData.append(
+      "upload_preset",
+      "z8q1vykv"
+    );
+    formData.append("cloud_name","duo8svqci");
+    formData.append("folder", "samples");
+
+   await axios.post(
+      `https://api.cloudinary.com/v1_1/duo8svqci/image/upload`,
+      formData
+    )
+     .then((response) => {
+       console.log(response);
+       setCloudinaryImage(response.data.secure_url);
+     })
+     .catch((error) => {
+       console.log(error);
+     });  
+  };
 
 function ClearError(e){
     setDone(null)

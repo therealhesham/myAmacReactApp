@@ -30,6 +30,29 @@ const [date,setDate]=useState("")
 const [uploadFile, setUploadFile] = useState("");
   const [cloudinaryImage, setCloudinaryImage] = useState("")
   const [ statePreviewImage,setStatePreview]=useState(false)
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    formData.append(
+      "upload_preset",
+      "z8q1vykv"
+    );
+    formData.append("cloud_name","duo8svqci");
+    formData.append("folder", "samples");
+
+   await axios.post(
+      `https://api.cloudinary.com/v1_1/duo8svqci/image/upload`,
+      formData
+    )
+     .then((response) => {
+       console.log(response);
+       setCloudinaryImage(response.data.secure_url);
+     })
+     .catch((error) => {
+       console.log(error);
+     });  
+  };
 
 const getSpecificData =(e)   =>{
     // alert(destination)

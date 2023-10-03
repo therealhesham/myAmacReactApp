@@ -33,6 +33,10 @@ const[unit,setUnit]=useState("")
 const [user,setUser]=useState("")
 const [date,setDate]=useState("")
 const[token,setToken]=useState({})
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+  const [ statePreviewImage,setStatePreview]=useState(false)
+
 useEffect(()=>{
   
 if(localStorage.getItem("token")){
