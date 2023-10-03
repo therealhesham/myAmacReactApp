@@ -34,6 +34,9 @@ const [specificitems,setToGetSpecificITems]=useState([])
 const [receipt,setReceipt]=useState("")
 const [specificUnite,setSpecificUnite]=useState()
 const [done,setDone]=useState(null)
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+  const [ statePreviewImage,setStatePreview]=useState(false)
 
 const[date,setDate]=useState("")
 const postHandler = (e)=>{
@@ -43,7 +46,7 @@ e.preventDefault()
     const details = jwtDecode(find)
 if (!from ||  !to || !quantity || !type || !items || !receipt ) return setExistense("رجاء ملىء البيانات")
 if (from === to ) return setExistense("من فضلك غير احد المخزنين")
-axios.post("https://amaccompany.onrender.com/thirdtransaction",{date:date,user:details.username,receiptno:receipt,from:from,to:to,items:items,unit:type,quantity:quantity},{withCredentials:true}).then(e=>
+axios.post("https://amaccompany.onrender.com/thirdtransaction",{date:date,file:cloudinaryImage,user:details.username,receiptno:receipt,from:from,to:to,items:items,unit:type,quantity:quantity},{withCredentials:true}).then(e=>
     e.data == "error" ? ClearError("المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : Clear())
 
 }
@@ -86,6 +89,13 @@ return (
 <Stack gap="12px">
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
+<FormControl><input type="file"  
+            placeholder="صورة الاذن" onChange ={(event) => {setUploadFile(event.target.files[0])
+                handleUpload(event)
+                
+                ;}} 
+              /> {cloudinaryImage? <Typography onClick={()=>setStatePreview(true)} style={{color:"green"}}>   تم رفع الملف ... لمراجعة الصورة اضغط هنا </Typography>:<Typography>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Typography> } </FormControl>
+              {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
 <TextField id="outlined-basic" label="التاريخ" variant="outlined" type='date'
 name="quantity" value={date} onChange={e=>setDate(e.target.value)}/>
 

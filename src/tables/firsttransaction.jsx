@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import _ from "lodash"
 
 // import Paginat from "./pagination";
-import { TextField , Button } from "@mui/material";
+import { TextField , Button, Typography } from "@mui/material";
 
 import socketClient  from "socket.io-client";
 
@@ -174,7 +174,8 @@ type="text" name="store" value={items} onChange={(e)=>setItems(e.target.value)}/
 type="number" name="store" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/> :e.quantity}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
 type="text" name="store" value={unit} onChange={(e)=>setUnit(e.target.value)}/> :e.unit}</td>
-              <td>{e.file ? e.file :"لا يوجد صورة للاذن حاليا في قاعدة البيانات"}</td>
+                  <td>{e.file?<Typography onClick={()=>{setStatePreview(true) 
+                              setCloudinaryImage(e.file)}} style={{color:"green"}}>   صورة الاذن من هنا </Typography>:<Typography>غير متاح صور اذون</Typography>  }</td>            
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="المستخدم" variant="outlined"
 type="text" name="store" value={user} onChange={(e)=>setUser(e.target.value)}/> :e.user}</td>
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="التاريخ" variant="outlined"
@@ -188,6 +189,7 @@ type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> 
 
 
         </Table>
+        {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>

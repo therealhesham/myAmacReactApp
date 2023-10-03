@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import _ from "lodash"
 
 // import Paginat from "./pagination";
-import { TextField , Button } from "@mui/material";
+import { TextField , Button, Typography } from "@mui/material";
 
 import socketClient  from "socket.io-client";
 
@@ -22,6 +22,9 @@ const [deletedColumn,setDeleter]= useState(false)
 const ref = useRef(0);
 const navigate = useNavigate()
 const [deletesss,setDeletess]=useState([])
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+  const [ statePreviewImage,setStatePreview]=useState(false)
 
 useEffect(()=>{
   
@@ -60,18 +63,7 @@ setPage(1)
       <Table striped="columns"  style={{width:"1000px"}} >
           <thead>
             <tr>
-            {/* store:{type:"string",required:true},
-typeOfImporter:{type:"string",required:true},
-contractor:{type:"string"},
-typeOfContracting:{type:"string"},
-
-quantity:{type:"number",required:true},
-items:{type:"string",required:true},
-unit:{type:"string"},
-location:{type:"string"},
-date:{type:"string",default:new Date(Date.now()).toDateString()},
-user:"string" 
-*/}
+   
 <th>رقم الاذن</th>
               <th>من</th>
               <th>الى</th>
@@ -80,7 +72,7 @@ user:"string"
               <th>المهام</th>
               <th>كمية</th>
               <th>الوحدة</th>
-              
+    <th>رابط صورة الاذن</th>          
               <th>بواسطة</th>
               <th>تاريخ</th>
               <th>Delete</th>
@@ -102,7 +94,8 @@ user:"string"
               
               
                             <td>{e.unit}</td>
-              
+                            <td>{e.file?<Typography onClick={()=>{setStatePreview(true) 
+                              setCloudinaryImage(e.file)}} style={{color:"green"}}>   صورة الاذن من هنا </Typography>:<Typography>غير متاح صور اذون</Typography>  }</td>             
                             <td>{e.user}</td>
               <td>{e.date}</td>
               <td><Button color="error" variant="contained" onClick={()=>Delet(e._id)}>Delete</Button></td>
@@ -112,6 +105,7 @@ user:"string"
 
 
         </Table>
+        {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>

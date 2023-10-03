@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import _ from "lodash"
 
 // import Paginat from "./pagination";
-import { TextField , Button, Stack, useMediaQuery } from "@mui/material";
+import { TextField , Button, Stack, useMediaQuery, Typography } from "@mui/material";
 
 import socketClient  from "socket.io-client";
 
@@ -36,7 +36,9 @@ const [user,setUser]=useState("");
 const [error,setError]=useState("")
 const[token,setToken]=useState({})
 const ref = useRef(0);
-
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+  const [ statePreviewImage,setStatePreview]=useState(false)
 
 const navigate = useNavigate()
 useEffect(()=>{
@@ -169,6 +171,7 @@ setUpdater(0)
               <th>المهام</th>
               <th>كمية</th>
               <th>الوحدة</th>
+              <th>صورة الاذن</th>
               <th>موقع العملية</th>
               
               <th>بواسطة</th>
@@ -200,6 +203,9 @@ type="text" name="items" value={items} onChange={(e)=>setItems(e.target.value)}/
 type="text" name="quantity" value={quantity} onChange={(e)=>setQuantity(e.target.value)}/>:e.quantity}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="الوحدة" variant="outlined"
 type="text" name="unit" value={unit} onChange={(e)=>setUnit(e.target.value)}/>:e.unit}</td>
+  <td>{e.file?<Typography onClick={()=>{setStatePreview(true)
+  setCloudinaryImage(e.file)}
+  } style={{color:"green"}}>    صورة الاذن من هنا </Typography>:<Typography>غير متاح صور اذون</Typography>  }</td>             
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="الموقع" variant="outlined"
 type="text" name="location" value={location} onChange={(e)=>setLocation(e.target.value)}/>:e.location}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="المستخدم" variant="outlined"
@@ -216,6 +222,7 @@ type="text" name="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:e
 
 
         </Table>
+        {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>

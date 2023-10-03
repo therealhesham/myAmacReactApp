@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import _ from "lodash"
 
 // import Paginat from "./pagination";
-import { TextField , Button } from "@mui/material";
+import { TextField , Button, Typography } from "@mui/material";
 
 import socketClient  from "socket.io-client";
 
@@ -21,6 +21,9 @@ const [id,setId]=useState("")
 const [deletedColumn,setDeleter]= useState(false)
 const ref = useRef(0);
 const navigate = useNavigate()
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+  const [ statePreviewImage,setStatePreview]=useState(false)
 useEffect(()=>{
   
   // if(ref.current == 0){
@@ -76,7 +79,7 @@ setSearcher(dataRe)
               <th>المهام</th>
               <th>كمية</th>
               <th>الوحدة</th>
-              
+  <th>رابط صورة الاذن</th>            
              
               <th>تاريخ</th>
               <th>حذف</th>
@@ -99,7 +102,9 @@ setSearcher(dataRe)
               
                             <td>{e.type}</td>
               
-             
+                <td>{e.file?<Typography onClick={()=>{setStatePreview(true)
+                setCloudinaryImage(e.file)}
+                } style={{color:"green"}}>   صورة الاذن من هنا </Typography>:<Typography>غير متاح صور اذون</Typography>  }</td>             
               <td>{e.date}</td>
               <td><Button color="error" variant="contained" onClick={()=>Delet(e._id)}>Delete</Button></td>
             </tr>
@@ -108,6 +113,7 @@ setSearcher(dataRe)
 
 
         </Table>
+        {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>

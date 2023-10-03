@@ -6,14 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Alert, Button, Stack, TextField } from "@mui/material";
-// import TabContext from '@mui/lab/TabContext';
-// import TabList from '@mui/lab/TabList';
-// import TabPanel from '@mui/lab/TabPanel';
-
-// import Box from '@mui/material/Box';
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
+import { Alert, Button, Stack, TextField, Typography } from "@mui/material";
 
 
 import jwtDecode from "jwt-decode";
@@ -34,6 +27,10 @@ export default function Fourth({fromList,data,unit,styler,contractorNames}){
     const [notExist,setExistense]=useState("")
 const [done,setDone]=useState("")
 const [date,setDate]=useState("")
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+  const [ statePreviewImage,setStatePreview]=useState(false)
+
 const getSpecificData =(e)   =>{
     // alert(destination)
 e.preventDefault()
@@ -43,7 +40,7 @@ e.preventDefault()
 const PostHandler=async ()=>{
     if (!contractor ||  !destination || !quantity || !type || !items ) return setExistense("رجاء ملىء البيانات")
 await axios.post("https://amaccompany.onrender.com/refund",
-{receiptno:receiptno,contractor:contractor,destination:destination,items:items,date:date,
+{receiptno:receiptno,contractor:contractor,destination:destination,items:items,date:date,file:cloudinaryImage,
     quantity:quantity,type:type},{withCredentials:true}).then(e=>{
         e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})
 
@@ -58,6 +55,14 @@ return(
 <Stack gap="12px">
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receiptno} onChange={e=>setReceiptno(e.target.value)}/>
+
+<FormControl><input type="file"  
+            placeholder="صورة الاذن" onChange ={(event) => {setUploadFile(event.target.files[0])
+                handleUpload(event)
+                
+                ;}} 
+              /> {cloudinaryImage? <Typography onClick={()=>setStatePreview(true)} style={{color:"green"}}>   تم رفع الملف ... لمراجعة الصورة اضغط هنا </Typography>:<Typography>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Typography> } </FormControl>
+              {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
 <TextField id="outlined-basic" label="التاريخ" variant="outlined" type='date'
 name="quantity" value={date} onChange={e=>setDate(e.target.value)}/>
 <FormControl fullWidth>

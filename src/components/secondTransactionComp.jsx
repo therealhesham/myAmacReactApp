@@ -81,7 +81,7 @@ const postHandler =async (e)=>{
     const details = jwtDecode(find)
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
     
-    await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
+    await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,file:cloudinaryImage,
         contractor:contractor,typeOfContracting:typeOfContracting,unit:type,date:date,items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
            e.data == "error" ? ClearError():
              Clear() 
@@ -141,7 +141,7 @@ name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
                 handleUpload(event)
                 
                 ;}} 
-              /> {cloudinaryImage? <Typography onClick={()=>setStatePreview(true)} style={{color:"green"}}>   تم رفع الملف ... لمراجعة الصورة اضغط هنا <URL></URL></Typography>:<Typography>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Typography> } </FormControl>
+              /> {cloudinaryImage? <Typography onClick={()=>setStatePreview(true)} style={{color:"green"}}>   تم رفع الملف ... لمراجعة الصورة اضغط هنا </Typography>:<Typography>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Typography> } </FormControl>
               {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
 <TextField id="outlined-basic" label="التاريخ" variant="outlined" type='date'
 name="date" value={date} onChange={e=>setDate(e.target.value)}/>
