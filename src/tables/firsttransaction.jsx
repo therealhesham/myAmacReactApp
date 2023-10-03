@@ -103,7 +103,7 @@ const SearchByReceipt = (s)=>{
 
 const Search = (s)=>{
 s.preventDefault();
-console.log(`${s.target.value}`.trim());
+
 const mapper = data.filter(e=>e.items.includes(`${s.target.value}`))
 
 setSearcher(mapper)
@@ -133,7 +133,7 @@ setDate(date)
     
     }
     const updateOne=async (e)=>{
-      console.log("updateOne",e)
+      
       await axios.post('https://amaccompany.onrender.com/updatefirsttransaction',
       {id:e,receiptno:receiptno,
         source:source,
