@@ -13,12 +13,14 @@ import TabPanel from '@mui/lab/TabPanel';
 // import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import {Cloudinary} from "@cloudinary/url-gen";
 
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import SecondTransaction from "./secondTransactionComp";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { FileUpload } from "@mui/icons-material";
 
 
 export default function FirstTransaction({fromList,data,storenames,source,places,client,unit,pader,styler
@@ -42,9 +44,35 @@ const [alert,setAlert] = useState("")
 const [receipt,setReceipt]=useState("")
 const [specificitems,setToGetSpecificITems]=useState([])
 const [specificUnite,setSpecificUnite]=useState()
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    formData.append(
+      "upload_preset",
+      "z8q1vykv"
+    );
+    formData.append("cloud_name","duo8svqci");
+    formData.append("folder", "samples");
+
+   await axios.post(
+      `https://api.cloudinary.com/v1_1/duo8svqci/image/upload`,
+      formData
+    )
+     .then((response) => {
+       console.log(response);
+       setCloudinaryImage(response.data.secure_url);
+     })
+     .catch((error) => {
+       console.log(error);
+     });  
+  };
 
 
-const myTimeout = setTimeout(function (){setAlert(<Alert severity={notExist?"error":""}>{notExist}</Alert>)}, 5000)
+
 
 
 const ClearError=()=>{
@@ -74,7 +102,7 @@ const postHandler =async (e)=>{
     
     if (!from ||  !type || !quantity || !destination || !item || !receipt ) return setExistense("رجاء ملىء البيانات")
     await axios.post("https://amaccompany.onrender.com/transactionexport",
-    {source:from,destination:destination,unit:type,quantity:quantity,items:item,receiptno:receipt,user:details.username,date:date},{withCredentials:true}).
+    {source:from,destination:destination,unit:type,quantity:quantity,items:item,file:cloudinaryImage,receiptno:receipt,user:details.username,date:date},{withCredentials:true}).
     then(e=>{
         e.data == "error" ? ClearError() : Clear()})
     
@@ -108,6 +136,12 @@ return(
     
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
+ <FormControl><input type="file" 
+            placeholder="صورة الاذن" onChange ={(event) => {setUploadFile(event.target.files[0])
+                handleUpload(event)
+                
+                ;}} 
+              /> <FileUpload/> </FormControl>
 <TextField id="outlined-basic" label="التاريخ" variant="outlined"  type="date"
 name="date" value={date} onChange={e=>setDate(e.target.value)}/>
 <FormControl fullWidth>
