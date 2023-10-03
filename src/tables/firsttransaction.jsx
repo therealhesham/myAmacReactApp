@@ -44,8 +44,8 @@ const [uploadFile, setUploadFile] = useState("");
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
-    height:300,
+    width: "400px",
+    height:"300px",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -206,7 +206,7 @@ type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> 
           <Typography id="modal-modal-title" variant="h6" component="h2">
           صورة الاذن رقم {e.receiptno}
           </Typography>
-          <img  src={cloudinaryImage} />
+          <img   style={style} src={cloudinaryImage} />
         </Box>
       </Modal>
               <td style={{width:"70px"}}>{updater === e._id ? <Button variant="contained"  style={{width:"70px"}} 
