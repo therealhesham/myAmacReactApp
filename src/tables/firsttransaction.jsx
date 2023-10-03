@@ -152,6 +152,7 @@ setDate(date)
   <div>
         {/* <App/> */}
         <TextField style={{"marginTop": "12px"}} label="بحث بالمهام " onChange={Search}/>
+
         <TextField style={{"marginTop": "12px"}} label="بحث برقم الاذن" onChange={SearchByReceipt}/>
       <Table striped="columns"  style={{width:"900px"}} >
           <thead>
@@ -196,7 +197,16 @@ type="text" name="store" value={user} onChange={(e)=>setUser(e.target.value)}/> 
               <td>{updater === e._id ? <TextField id="outlined-basic" style={{width:"200px"}} label="التاريخ" variant="outlined"
 type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> :e.date}</td>
               <td><Button color="error" variant="contained" onClick={()=>Delet(e._id)}>Delete</Button></td>
-              <Modal
+              
+              <td style={{width:"70px"}}>{updater === e._id ? <Button variant="contained"  style={{width:"70px"}} 
+              onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.receiptno,e.source,e.destination,e.quantity,e.items,e.unit,e.user,e.date)}>UPDATE</Button>}</td>
+            </tr>
+            
+          </tbody>)}
+
+
+        </Table>
+        <Modal
         open={statePreviewImage}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -209,15 +219,6 @@ type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> 
           <img   style={style} src={cloudinaryImage} />
         </Box>
       </Modal>
-              <td style={{width:"70px"}}>{updater === e._id ? <Button variant="contained"  style={{width:"70px"}} 
-              onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.receiptno,e.source,e.destination,e.quantity,e.items,e.unit,e.user,e.date)}>UPDATE</Button>}</td>
-            </tr>
-          
-          </tbody>)}
-
-
-        </Table>
-        
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>
