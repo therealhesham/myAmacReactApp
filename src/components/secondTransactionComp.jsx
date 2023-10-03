@@ -39,6 +39,36 @@ const [specificUnite,setSpecificUnite]=useState();
 const [done,setDone]=useState(null);
 const [search,setSearcher]=useState("");
 const[date,setDate]=useState("")
+const [uploadFile, setUploadFile] = useState("");
+  const [cloudinaryImage, setCloudinaryImage] = useState("")
+  const [ statePreviewImage,setStatePreview]=useState(false)
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    formData.append(
+      "upload_preset",
+      "z8q1vykv"
+    );
+    formData.append("cloud_name","duo8svqci");
+    formData.append("folder", "samples");
+
+   await axios.post(
+      `https://api.cloudinary.com/v1_1/duo8svqci/image/upload`,
+      formData
+    )
+     .then((response) => {
+       console.log(response);
+       setCloudinaryImage(response.data.secure_url);
+     })
+     .catch((error) => {
+       console.log(error);
+     });  
+  };
+
+
+
+
 // useEffect(()=>{
 
 //     if(ex)& Clear()
@@ -72,7 +102,8 @@ const postHandler =async (e)=>{
         setDone("تم تسجيل البيانات بنجاح") 
 setFrom("")
 setTypeOfImporter("")
-
+setCloudinaryImage("")
+setStatePreview(false)
 setQuantity("")
 
 setContractor(null)
@@ -97,12 +128,21 @@ const specificITems= data.filter(e=>e.store === s)
 setToGetSpecificITems(specificITems)
 
 }
+
     return( 
     <div>
     <form  style={{width:styler }}>
 <Stack   gap="12px">
 <TextField id="outlined-basic" label="رقم الاذن" variant="outlined" 
 name="quantity" value={receipt} onChange={e=>setReceipt(e.target.value)}/>
+
+<FormControl><input type="file"  
+            placeholder="صورة الاذن" onChange ={(event) => {setUploadFile(event.target.files[0])
+                handleUpload(event)
+                
+                ;}} 
+              /> {cloudinaryImage? <Typography onClick={()=>setStatePreview(true)} style={{color:"green"}}>   تم رفع الملف ... لمراجعة الصورة اضغط هنا <URL></URL></Typography>:<Typography>في حالة وجود اذن صرف  رجاء اختيار صورة الاذن</Typography> } </FormControl>
+              {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
 <TextField id="outlined-basic" label="التاريخ" variant="outlined" type='date'
 name="date" value={date} onChange={e=>setDate(e.target.value)}/>
 
