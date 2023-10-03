@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import _ from "lodash"
 
 // import Paginat from "./pagination";
-import { TextField , Button, Typography } from "@mui/material";
+import { TextField , Button, Typography, Modal, Box } from "@mui/material";
 
 import socketClient  from "socket.io-client";
 
@@ -38,6 +38,19 @@ const [uploadFile, setUploadFile] = useState("");
   const [ statePreviewImage,setStatePreview]=useState(false)
   const handleClose = () => setStatePreview(false);
   const handleOpen = () => setStatePreview(true);
+
+  const style = {
+    position: 'absolute' ,
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  
   useEffect(()=>{
   
 if(localStorage.getItem("token")){
