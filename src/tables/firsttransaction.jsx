@@ -94,15 +94,11 @@ const mapper = data.filter(e=>e.items.includes(`${s.target.value}`))
 
 setSearcher(mapper)
 setPage(1)
-// .includes("سلاقوس")
-
-// data.filter((e)=>e.includes("مواسير"))
-// console.log(newData);
 
     }
 
-    const Delet=(e)=>{
-      axios.post('https://amaccompany.onrender.com/deletfirsttransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
+    const Delet=async (e)=>{
+      await axios.post('https://amaccompany.onrender.com/deletfirsttransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)

@@ -101,11 +101,11 @@ else if (!localStorage.getITem("token")){
                       }
 
 const Delet = async (e)=>{
+  await axios.post('https://amaccompany.onrender.com/deletsecondtransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
+  const data = searchedData.filter((s)=> e != s._id)
+  const dataRe = [...data]
+  setSearcher(dataRe)
   
-      await axios.get('https://amaccompany.onrender.com/deletesecondtransaction/'+e).then((e) => console.log(e.data))
-const data = searchedData.filter((s)=> e != s._id)
-const dataRe = [...data]
-setSearcher(dataRe)
     }
 
     
