@@ -27,6 +27,7 @@ import {Provider} from 'react-redux'
 import Logout from './logoutComponent';
 import Names from './postnames';
 import PrivacyPolice from './privacypolice';
+import RecycleBin from './recyclebin';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
@@ -49,6 +50,7 @@ root.render(
     <Route element={<PrivacyPolice/>}  path="/privacypolicy"/>
     <Route element={<Register/>}  path="/register"/>
   <Route element={<PostNewDataToMainWarehouse/>} path="/postmaindata"/>
+  <Route element={<RecycleBin/>} path="/recyclebin"/>
     
 
     </Routes>
