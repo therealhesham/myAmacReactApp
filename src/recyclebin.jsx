@@ -2,10 +2,11 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import * as React from "react";
 import { DataGrid } from '@mui/x-data-grid';
+import { useNavigate } from "react-router-dom";
 
 function RecycleBin(){
 const [data,setData]=React.useState([]);
-
+const navigate = useNavigate()
 
 const fetcher = async()=>{
     

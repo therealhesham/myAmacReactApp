@@ -214,7 +214,7 @@ type="date" name="store" value={date} onChange={(e)=>setDate(e.target.value)}/> 
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-          صورة الاذن رقم {e.receiptno}
+          صورة الاذن رقم {receiptno}
           </Typography>
           <img   style={style} src={cloudinaryImage} />
         </Box>
