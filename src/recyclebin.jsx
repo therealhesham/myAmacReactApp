@@ -68,7 +68,7 @@ return row._id
 
   return (
     <div style={{ height: 300, width: '100%' }}>
-      <DataGrid getRowId={getRowId} rows={ data.map(e=>{e.type,e.date,e.user})} columns={columns} />
+      <DataGrid getRowId={getRowId} rows={ data} columns={columns} />
     </div>
   );
     
