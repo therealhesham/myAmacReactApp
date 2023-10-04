@@ -15,7 +15,7 @@ const fetcher = async()=>{
         
         const details = jwtDecode(getToken)
         
-        await axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setData(e.data) )
+        await axios.get('https://amaccompany.onrender.com/recyclebin',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setData(e.data) )
         }
         else if (!localStorage.getItem("token")){
       navigate("/login")
@@ -58,13 +58,17 @@ const rows = [
     { field: 'imageurl', headerName: 'صورة الرابط', width: 200 },
     // { field: 'transaction', headerName: 'صورة الرابط', width: 200 },
   ];
-  
+  function getRowId(row){
+
+return row._id
+
+  }
 
 
 
   return (
     <div style={{ height: 300, width: '100%' }}>
-      <DataGrid rows={data} columns={columns} />
+      <DataGrid getRowId={getRowId} rows={ data.map(e=>{e.type,e.date,e.user})} columns={columns} />
     </div>
   );
     
