@@ -59,7 +59,7 @@ if(localStorage.getItem("token")){
   
   const details = jwtDecode(getToken)
   setToken(details)
-  axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
+  axios.get('https://amaccompany.onrender.com/firsttansactionlist',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data.reverse()) & setData(e.data.reverse()) )
   }
   else if (!localStorage.getItem("token")){
 navigate("/login")
