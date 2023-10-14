@@ -45,7 +45,7 @@ const [uploadFile, setUploadFile] = useState("");
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: "400px",
-    height:"300px",
+    height:"500px",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,

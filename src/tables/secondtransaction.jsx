@@ -32,6 +32,7 @@ const[items,setItems]=useState("");
 const [unit,setUnit]=useState("");
 const [date,setDate]=useState("");
 const [location,setLocation]=useState("");
+const handleClose = () => setStatePreview(false);
 const [user,setUser]=useState("");
 const [error,setError]=useState("")
 const[token,setToken]=useState({})
@@ -39,7 +40,19 @@ const ref = useRef(0);
 const [uploadFile, setUploadFile] = useState("");
   const [cloudinaryImage, setCloudinaryImage] = useState("")
   const [ statePreviewImage,setStatePreview]=useState(false)
-
+  const style = {
+    position: 'absolute' ,
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "400px",
+    height:"500px",
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+  
 const navigate = useNavigate()
 useEffect(()=>{
   
@@ -67,10 +80,6 @@ else if (!localStorage.getITem("token")){
       
       setSearcher(mapper)
       setPage(1)
-      // .includes("سلاقوس")
-      
-      // data.filter((e)=>e.includes("مواسير"))
-      // console.log(newData);
       
           }
     const SearchByReceipt = (s)=>{
@@ -80,10 +89,6 @@ else if (!localStorage.getITem("token")){
             
             setSearcher(mapper)
             setPage(1)
-            // .includes("سلاقوس")
-            
-            // data.filter((e)=>e.includes("مواسير"))
-            // console.log(newData);
             
                 }
     const searchByContractor = (s)=>{
@@ -93,10 +98,6 @@ else if (!localStorage.getITem("token")){
                   
                   setSearcher(mapper)
                   setPage(1)
-                  // .includes("سلاقوس")
-                  
-                  // data.filter((e)=>e.includes("مواسير"))
-                  // console.log(newData);
                   
                       }
 
@@ -155,10 +156,10 @@ setUpdater(0)
   <div>
 
         <Stack>
-        <TextField style={{"marginTop": "12px"}} label="بحث بالمهام " onChange={Search}/>
-        <TextField style={{"marginTop": "12px"}} label="بحث برقم الاذن " onChange={SearchByReceipt}/>
-        <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={searchByContractor}/>
- 
+        <TextField style={{"marginTop": "12px"}} label="بحث بالمهام " onChange={(e)=>Search(e)}/>
+        <TextField style={{"marginTop": "12px"}} label="بحث برقم الاذن " onChange={(e)=>SearchByReceipt(e)}/>
+        <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={(e)=>searchByContractor(e)}/>
+        {/* <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={searchByContractor}/> */}
         </Stack>
       <Table striped="columns"  style={{width:"1000px"}} >
           <thead>
@@ -182,7 +183,7 @@ setUpdater(0)
             </tr>
           </thead>
           
-          {_.drop(searchedData,(startpage-1 )* size).slice(0,size).map((e)=>
+          {_.drop(searchedData.reverse(),(startpage-1 )* size).slice(0,size).map((e)=>
           
           <tbody key={e._id}>
             <tr>
@@ -196,7 +197,7 @@ type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/
 type="text" name="typeofimporter" value={typeOfImporter} onChange={(e)=>setTypeOfImporter(e.target.value)}/>:e.typeOfImporter}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="مقاول" variant="outlined"
 type="text" name="contractor" value={contractor} onChange={(e)=>setContractor(e.target.value)}/>:e.contractor}</td>
-              <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="رقم الاذن" variant="outlined"
+              <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="ذاتي / خصم" variant="outlined"
 type="text" name="typeofcontracting" value={typeOfContracting} onChange={(e)=>setTypeOfContracting(e.target.value)}/>:e.typeOfContracting}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="المهام" variant="outlined"
 type="text" name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</td>
@@ -211,8 +212,9 @@ type="text" name="unit" value={unit} onChange={(e)=>setUnit(e.target.value)}/>:e
 type="text" name="location" value={location} onChange={(e)=>setLocation(e.target.value)}/>:e.location}</td>
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="المستخدم" variant="outlined"
 type="text" name="user" value={user} onChange={(e)=>setUser(e.target.value)}/>:e.user}</td>
+
               <td>{updater === e._id ?<TextField id="outlined-basic" style={{width:"200px"}} label="التاريخ" variant="outlined"
-type="text" name="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:e.date}</td>
+type="date" name="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:e.date}</td>
               <td><Button color="error" variant="contained" onClick={()=>Delet(e._id)}>Delete</Button></td>
               <td style={{width:"70px"}}>{updater === e._id ? <Button variant="contained"  style={{width:"70px"}} 
               onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.store,e.receiptno,e.typeOfImporter,e.contractor,e.typeOfContracting,
@@ -223,7 +225,19 @@ type="text" name="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:e
 
 
         </Table>
-        {statePreviewImage?<div ><img style={{height:"300px",width:"600",zIndex:1,position:"absolute",top:1}} src={cloudinaryImage} onClick={()=>setStatePreview(false)}/></div>:""}
+        <Modal
+        open={statePreviewImage}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+          صورة الاذن رقم {receiptno}
+          </Typography>
+          <img   style={style} src={cloudinaryImage} />
+        </Box>
+      </Modal>
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>
