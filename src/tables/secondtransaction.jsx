@@ -78,7 +78,7 @@ else if (!localStorage.getITem("token")){
       
       const mapper = data.filter(e=>e.items.includes(`${s.target.value}`))
       
-      setSearcher(mapper)
+      setSearcher(mapper.reverse())
       setPage(1)
       
           }
@@ -87,16 +87,18 @@ else if (!localStorage.getITem("token")){
             
             const mapper = data.filter(e=>e.receiptno.includes(s.target.value))
             
-            setSearcher(mapper)
+            setSearcher(mapper.reverse())
             setPage(1)
             
                 }
+
+                const [contractorsearcher,setcontractorsearcher]=useState("")
     const searchByContractor = (s)=>{
                   s.preventDefault();
-                  
+                  setcontractorsearcher(s.target.value)
                   const mapper = data.filter(e=>e.contractor.includes(s.target.value))
                   
-                  setSearcher(mapper)
+                  setSearcher(mapper.reverse())
                   setPage(1)
                   
                       }
@@ -158,7 +160,7 @@ setUpdater(0)
         <Stack>
         <TextField style={{"marginTop": "12px"}} label="بحث بالمهام " onChange={(e)=>Search(e)}/>
         <TextField style={{"marginTop": "12px"}} label="بحث برقم الاذن " onChange={(e)=>SearchByReceipt(e)}/>
-        <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={(e)=>searchByContractor(e)}/>
+        <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " value={contractorsearcher} onChange={(e)=>searchByContractor(e)}/>
         {/* <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={searchByContractor}/> */}
         </Stack>
       <Table striped="columns"  style={{width:"1000px"}} >
