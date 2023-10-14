@@ -97,7 +97,7 @@ else if (!localStorage.getITem("token")){
                   s.preventDefault();
                   setcontractorsearcher(s.target.value)
                   const mapper = data.filter(e=>e.contractor.includes(contractorsearcher))
-                  
+                
                   setSearcher(mapper.reverse())
                   setPage(1)
                   

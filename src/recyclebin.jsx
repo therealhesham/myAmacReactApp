@@ -67,7 +67,7 @@ return row._id
 
 
   return (
-    <div style={{ height: 300, width: '100%' }}>
+    <div style={{ height: "100%", width: '100%' }}>
       <DataGrid getRowId={getRowId} style={{width:"100%"}} rows={ data} columns={columns} />
     </div>
   );
