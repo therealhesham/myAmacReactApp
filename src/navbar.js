@@ -31,7 +31,8 @@ const pages = [
 {link:<Link to="/postmaindata" style={{textDecoration:"none",color:"white",borderColor:"black"}}>اضافة جرد</Link>,id:3},
 {link:<Link to="/transaction" style={{textDecoration:"none",color:"white",borderColor:"black"}}>اضافة عملية</Link>,id:4},
 {link:<Link to="/previewtable" style={{textDecoration:"none",color:"white",borderColor:"black"}}>جداول العمليات</Link>,id:5},
-{link:<Link to="/postnames" style={{textDecoration:"none",color:"white",borderColor:"black"}}>اضافة اسماء</Link>,id:6}
+{link:<Link to="/postnames" style={{textDecoration:"none",color:"white",borderColor:"black"}}>اضافة اسماء</Link>,id:6},
+{link:<Link to="/recyclebin" style={{textDecoration:"none",color:"white",borderColor:"black"}}>المحذوفات</Link>,id:7}
 
 ];
 const settings = [{setting:<Link to="/profile">Profile</Link>,id:1}, {setting:'store',id:2},
