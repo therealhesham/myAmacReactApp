@@ -78,7 +78,7 @@ else if (!localStorage.getITem("token")){
       
       const mapper = data.filter(e=>e.items.includes(`${s.target.value}`))
       
-      setSearcher(mapper.reverse())
+      setSearcher(mapper)
       setPage(1)
       
           }
@@ -87,7 +87,7 @@ else if (!localStorage.getITem("token")){
             
             const mapper = data.filter(e=>e.receiptno.includes(s.target.value))
             
-            setSearcher(mapper.reverse())
+            setSearcher(mapper)
             setPage(1)
             
                 }
@@ -98,7 +98,7 @@ else if (!localStorage.getITem("token")){
                   setcontractorsearcher(s.target.value)
                   const mapper = data.filter(e=>e.contractor.includes(contractorsearcher))
                 
-                  setSearcher(mapper.reverse())
+                  setSearcher(mapper)
                   setPage(1)
                   
                       }
