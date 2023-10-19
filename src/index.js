@@ -28,6 +28,7 @@ import Logout from './logoutComponent';
 import Names from './postnames';
 import PrivacyPolice from './privacypolice';
 import RecycleBin from './recyclebin';
+import ItemPage from './item';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
@@ -36,6 +37,8 @@ root.render(
     <BrowserRouter>
   <ResponsiveAppBar/>
     <Routes>
+
+<Route  element={<ItemPage/>} path='/:name'/>
     <Route element={<Login/>}  path="/login"/>
     <Route element={<Logout/>}  path="/logout"/>
     <Route element={<Names/>}  path="/postnames"/>
