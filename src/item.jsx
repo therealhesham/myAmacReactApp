@@ -24,7 +24,7 @@ await axios.get(`https://amaccompany.onrender.com/find/${name}/store/${store}`).
 const columns= [
     { field: 'receiptno', headerName: 'رقم الاذن', width: 150 },  
     { field: 'transaction', headerName: 'نوع العملية', width: 150 },
-    { field: 'transactiontype', headerName: 'نوع العملية', width: 150 },
+    { field: 'transactionType', headerName: 'نوع العملية', width: 150 },
     { field: 'quantity', headerName: 'الكمية', width: 200 },
     { field: 'file', headerName: 'صورة الاذن', width: 800 },
     { field: 'date', headerName: 'تاريخ الاصدار', width: 150 },
