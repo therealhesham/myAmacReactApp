@@ -14,8 +14,8 @@ const [ array,setArray]=useState([]);
 useEffect(()=>{
 (async function getData(){
     
-await axios.get("https://amaccompany.onrender.com/find/"+name+"/store/"+store).then(e=> e.data == "not authenticated" ? navigate("/login"):setArray(e.data))
-
+await axios.get(`https://amaccompany.onrender.com/find/${name}/store/${store}`).then(e=> e.data == "not authenticated" ? navigate("/login"):setArray(e.data))
+console.log(array)
 
 })()
 
