@@ -36,12 +36,12 @@ return row._id
 
   }
 
-return ( <>
+return ( <div style={{height:'100%',width:"100%"}}>
 
 <div style={{ height: "100%", width: '100%' }}>
       <DataGrid getRowId={getRowId} style={{width:"100%"}} rows={array} columns={columns} />
     </div>
-    </> );
+    </div> );
 }
  
 export default ItemPage ;
