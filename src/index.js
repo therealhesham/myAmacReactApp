@@ -38,7 +38,7 @@ root.render(
   <ResponsiveAppBar/>
     <Routes>
 
-<Route  element={<ItemPage/>} path='/:name'/>
+<Route  element={<ItemPage/>} path='/:name/:store'/>
     <Route element={<Login/>}  path="/login"/>
     <Route element={<Logout/>}  path="/logout"/>
     <Route element={<Names/>}  path="/postnames"/>
