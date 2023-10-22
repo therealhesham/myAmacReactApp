@@ -8,7 +8,7 @@ import { TextField , Button, Alert, Stack, useMediaQuery, ButtonBase, FormContro
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
-import { Navigate, useMatch, useNavigate } from "react-router-dom";
+import { Link, Navigate, useMatch, useNavigate } from "react-router-dom";
 import ComboBox from "./search";
 import jwtDecode from "jwt-decode";
 import printJS from "print-js";
@@ -192,7 +192,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
           <td style={{width:"200px"}}>{updater  == e._id?<TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
 type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
           <td style={{width:"200px"}} >{updater ==e._id? <TextField style={{width:"200px"}} id="outlined-basic" fullWidth label="المهام" variant="outlined" 
-name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:e.items}</td>
+name="items" value={items} onChange={(e)=>setItems(e.target.value)}/>:<Link to={"/"+ e.items+"/"+ e.store}>{e.items}</Link>}</td>
           <td style={{width:"80px"}}> {updater ==e._id?<TextField id="outlined-basic" style={{width:"80px"}} label="الوحدة" variant="outlined"
 name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td>
           <td style={{width:"70px"}}>{updater==e._id?<TextField id="outlined-basic"  style={{width:"70px"}} label="الكمية" variant="outlined" 
