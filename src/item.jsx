@@ -26,9 +26,10 @@ const columns= [
     { field: 'receiptno', headerName: 'رقم الاذن', width: 150 },  
     { field: 'transaction', headerName: 'نوع العملية', width: 150 },
     { field: 'transactionType', headerName: 'نوع العملية', width: 150 },
+    { field: 'store', headerName: 'المخزن', width: 150 },
     { field: 'quantity', headerName: 'الكمية', width: 200 },
     
-    { field: 'date', headerName: 'تاريخ الاصدار', width: 150 },
+    { field: 'date', headerName: 'تاريخ الاصدار', width: 150 }, 
     { field: 'file', headerName: 'صورة الاذن', width: 800 }
     // { field: 'transaction', headerName: 'صورة الرابط', width: 200 },
   ];
