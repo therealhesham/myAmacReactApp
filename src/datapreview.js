@@ -40,7 +40,7 @@ const [zero,setZero]= useState(0)
 const matches = useMediaQuery('(max-width:400px)');
 async function dataGetter(){
 
-  await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+ await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
   setStoreNames(e.data))
   
   await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
