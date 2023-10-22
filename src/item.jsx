@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const ItemPage = (props) => {
 
 const params = useParams()
-console.log(props)
+console.log(params)
 
 return ( <>
     
