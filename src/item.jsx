@@ -42,7 +42,7 @@ return row._id
   }
 
 return ( <div style={{height:'100%',width:"100%"}}>
-<Typography style={{marginLeft:"50%"}}>بيان {name} المتاح في {store}</Typography>
+<Typography style={{marginLeft:"50%",fontSize:"100Px",color:"dodgerblue"}}>بيان {name} المتاح في {store}</Typography>
 <div style={{ height: "100%", width: '100%' }}>
       <DataGrid getRowId={getRowId} style={{width:"100%",border:'black'}} rows={array} columns={columns} />
     </div>
