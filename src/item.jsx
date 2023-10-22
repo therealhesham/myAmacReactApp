@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const ItemPage = (props) => {
-
+const navigate = useNavigate();
 const {name,store} = useParams()
 const [ array,setArray]=useState([]);
 useEffect(()=>{
