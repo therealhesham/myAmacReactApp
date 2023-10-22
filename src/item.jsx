@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 import * as React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from "react-router-dom";
-
+import {sort } from"fast-sort";
 
 const ItemPage = (props) => {
 const navigate = useNavigate();
@@ -14,8 +14,9 @@ const [ array,setArray]=useState([]);
 useEffect(()=>{
 (async function getData(){
     
-await axios.get(`https://amaccompany.onrender.com/find/${name}/store/${store}`).then(e=> e.data == "not authenticated" ? navigate("/login"):setArray(e.data))
-
+ const data = await axios.get(`https://amaccompany.onrender.com/find/${name}/store/${store}`).then(e=> e.data == "not authenticated" ? navigate("/login"):e.data)
+const sortedData = sort(data).desc(u=>u.date)
+setArray(sortedData)
 
 })()
 
