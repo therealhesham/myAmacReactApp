@@ -11,6 +11,7 @@ const ItemPage = (props) => {
 const navigate = useNavigate();
 const {name,store} = useParams()
 const [ array,setArray]=useState([]);
+
 useEffect(()=>{
 (async function getData(){
     
@@ -40,9 +41,9 @@ return row._id
   }
 
 return ( <div style={{height:'100%',width:"100%"}}>
-
+الـ{name} المتاح في مخزن {store}
 <div style={{ height: "100%", width: '100%' }}>
-      <DataGrid getRowId={getRowId} style={{width:"100%"}} rows={array} columns={columns} />
+      <DataGrid getRowId={getRowId} style={{width:"100%",border:'black'}} rows={array} columns={columns} />
     </div>
     </div> );
 }
