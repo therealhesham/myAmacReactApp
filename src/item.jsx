@@ -26,9 +26,9 @@ const columns= [
     { field: 'transaction', headerName: 'نوع العملية', width: 150 },
     { field: 'transactionType', headerName: 'نوع العملية', width: 150 },
     { field: 'quantity', headerName: 'الكمية', width: 200 },
-    { field: 'file', headerName: 'صورة الاذن', width: 800 },
+    
     { field: 'date', headerName: 'تاريخ الاصدار', width: 150 },
-
+    { field: 'file', headerName: 'صورة الاذن', width: 800 }
     // { field: 'transaction', headerName: 'صورة الرابط', width: 200 },
   ];
   function getRowId(row){
