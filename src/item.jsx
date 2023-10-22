@@ -6,6 +6,7 @@ import * as React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from "react-router-dom";
 import {sort } from"fast-sort";
+import { Typography } from "@mui/material";
 
 const ItemPage = (props) => {
 const navigate = useNavigate();
@@ -41,7 +42,7 @@ return row._id
   }
 
 return ( <div style={{height:'100%',width:"100%"}}>
-الـ{name} المتاح في مخزن {store}
+<Typography style={{marginLeft:"50%"}}>بيان {name} المتاح في {store}</Typography>
 <div style={{ height: "100%", width: '100%' }}>
       <DataGrid getRowId={getRowId} style={{width:"100%",border:'black'}} rows={array} columns={columns} />
     </div>
