@@ -19,7 +19,7 @@ const [success,setSuccess]= useState()
 const [stores,setStores]=useState([])
 const clear=()=>{
     setItems("")
-    // setStore("")
+    setStore("مخزن بني مزار الرئيسي")
     setType("")
     setQuantity("")
     setError(null)
