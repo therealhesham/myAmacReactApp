@@ -95,6 +95,23 @@ setPage(1)
 // console.log(newData);
 
     }
+ 
+    const SearchByCode = (s)=>{
+      s.preventDefault();
+      setSearchValue(s.target.value.ArtoEn())
+      // console.log(`${s.target.value}`.trim());
+      const mapper = data.filter(e=>e.code.includes(s.target.value.ArtoEn()))
+      
+      setSearcher(mapper)
+      setPage(1)
+      // .includes("سلاقوس")
+      
+      // data.filter((e)=>e.includes("مواسير"))
+      // console.log(newData);
+      
+          }
+       
+ 
     const [falser,setFalser]=useState(false)
     const setStoreQuery=(s)=>{
       setFalser(true)
@@ -153,9 +170,11 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
 /></>
     :
     <div>
+    <div>
+    <TextField style={{"marginTop": "12px"}} label="بحث باسم الصنف"    value={searchValue} onChange={(e)=>Search(e)}/>
+    <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValue} onChange={(e)=>SearchByCode(e)}/>
     
-    <TextField style={{"marginTop": "12px"}} label="Search"    value={searchValue} onChange={(e)=>Search(e)}/>
-
+    </div>
     {/* {storeNames.map(e=><FormControlLabel
         label={e.name}
         control={
@@ -173,7 +192,8 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
 
       <thead>
         <tr >
-        <th style={{width:"20px"}}>م</th><th>المخزن</th>
+        <th style={{width:"50px"}}>كود الصنف</th>
+        <th>المخزن</th>
           <th>المهام</th>
           <th>الوحدة</th>
           <th>كمية</th>
@@ -187,7 +207,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
       <tbody key={e._id}>
         <tr>
 
-          <td>{data.indexOf(e)}</td>
+          <td>{e.code}</td>
          
           <td style={{width:"200px"}}>{updater  == e._id?<TextField id="outlined-basic" style={{width:"200px"}} label="المخزن" variant="outlined"
 type="text" name="store" value={store} onChange={(e)=>setStore(e.target.value)}/> :e.store}</td>
