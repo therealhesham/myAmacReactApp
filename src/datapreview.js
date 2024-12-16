@@ -81,7 +81,9 @@ navigate("/login")
       setPage(value);
     };
 const [searchValue,setSearchValue]=useState("")
-    const Search = (s)=>{
+const [searchValueByCode,setSearchValueByCode]=useState("")
+
+const Search = (s)=>{
 s.preventDefault();
 setSearchValue(s.target.value.ArtoEn())
 // console.log(`${s.target.value}`.trim());
@@ -98,7 +100,7 @@ setPage(1)
  
     const SearchByCode = (s)=>{
       s.preventDefault();
-      setSearchValue(s.target.value.ArtoEn())
+      setSearchValueByCode(s.target.value.ArtoEn())
       // console.log(`${s.target.value}`.trim());
       const mapper = data.filter(e=>e.code.includes(s.target.value.ArtoEn()))
       
@@ -172,7 +174,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     <div>
     <div>
     <TextField style={{"marginTop": "12px"}} label="بحث باسم الصنف"    value={searchValue} onChange={(e)=>Search(e)}/>
-    <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValue} onChange={(e)=>SearchByCode(e)}/>
+    <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValueByCode} onChange={(e)=>SearchByCode(e)}/>
     
     </div>
     {/* {storeNames.map(e=><FormControlLabel
