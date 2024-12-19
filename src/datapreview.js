@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField,Typography ,Box, Button,InputLabel, Alert, Stack, useMediaQuery, Select,ButtonBase, FormControl, FormLabel, FormHelperText, FormControlLabel, Checkbox ,Modal} from "@mui/material";
+import { TextField,Typography ,Box, Button,InputLabel, MenuItem,Alert, Stack, useMediaQuery, Select,ButtonBase, FormControl, FormLabel, FormHelperText, FormControlLabel, Checkbox ,Modal} from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
@@ -18,6 +18,8 @@ import e from "cors";
 function DataPreview(){
 const [data,setData]=useState([]);
 const [updater,setUpdater]= useState("")
+const [done,setDone]=useState("")
+
 const [startpage,setPage] = useState(0)
 const [size,setSize] = useState(10)
 const [searchedData,setSearcher ] = useState([])
@@ -42,6 +44,26 @@ const [zero,setZero]= useState(0)
 const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);
 const handleClose = () => setOpen(false);
+const ClearError=()=>{
+  setDone(null)
+  setExistense("خطأ في تسجيل البيانات .. تأكد من وجود المهام في جرد المخزن  ")
+
+
+}
+const Clear =()=>{
+  setExistense(null)
+  setDone("تم تسجيل البيانات بنجاح") 
+setFrom("")
+
+setExistense("")
+
+setQuantity("")
+
+
+
+
+
+}
 
 
 const matches = useMediaQuery('(max-width:400px)');
@@ -134,6 +156,7 @@ setPage(1)
             boxShadow: 24,
             p: 4,
           };       
+const [notExist,setExistense]=useState("")
  
     const [falser,setFalser]=useState(false)
     const setStoreQuery=(s)=>{
@@ -203,7 +226,7 @@ const[destination,setDestination]=useState("");
       
       if (!from ||  !type || !newQuantity || !destination || !items || !receiptNo ) return setExistense("رجاء ملىء البيانات")
       await axios.post("https://amaccompany.onrender.com/transactionexport",
-      {source:from,destination:destination,unit:type,quantity:newQuantity,items,receiptno:receiptNo,user:details.username,date:date},{withCredentials:true}).
+      {source:from,destination:destination,unit:type,quantity:newQuantity,items,receiptno:receiptNo,user:details.username,date:""},{withCredentials:true}).
       then(e=>{
           e.data == "error" ? ClearError() : Clear()})
       
@@ -252,7 +275,7 @@ onChange={(e)=>setFrom(e.target.value)}
 >
 
 
-{source.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
+{factories.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
 
 
 
@@ -268,7 +291,7 @@ onChange={(e)=>setFrom(e.target.value)}
 
 
 
-          <TextField label="الكمية" value={quantity} onChange={e=>setNewQuantity(e.target.value)}/>
+          <TextField label="الكمية" value={newQuantity} onChange={e=>setNewQuantity(e.target.value)}/>
 
 <Button style={{width:"70px"}} color="info" variant="contained"> اضافة وارد</Button>
 
