@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField , Button, Alert, Stack, useMediaQuery, ButtonBase, FormControl, FormLabel, FormHelperText, FormControlLabel, Checkbox } from "@mui/material";
+import { TextField,Typography ,Box, Button,InputLabel, Alert, Stack, useMediaQuery, Select,ButtonBase, FormControl, FormLabel, FormHelperText, FormControlLabel, Checkbox ,Modal} from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
@@ -13,6 +13,7 @@ import ComboBox from "./search";
 import jwtDecode from "jwt-decode";
 import printJS from "print-js";
 import ListCompon from "./listComponent";
+import e from "cors";
 
 function DataPreview(){
 const [data,setData]=useState([]);
@@ -23,6 +24,7 @@ const [searchedData,setSearcher ] = useState([])
 const [id,setId]=useState("")
 const [token,setToken]=useState()
 const ref = useRef(0);
+const [from,setFrom]=useState("")
 const [authenticator,setAuthenticator]=useState("");
 const [admin,isAdmin]=useState(true)
 const [items,setItems] = useState("")
@@ -33,15 +35,23 @@ const [error,setError]= useState("")
 // const [id,setID]= useState("")
 const [storeNames,setStoreNames]=useState([])
 const [success,setSuccess]= useState()
-
+const[factories,setFactories]=useState([])
 const [printDataDelet,setPrintDataDelet]=useState(searchedData)
 const navigate = useNavigate()
 const [zero,setZero]= useState(0)
+const [open, setOpen] = useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
+
+
 const matches = useMediaQuery('(max-width:400px)');
 async function dataGetter(){
 
  await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
   setStoreNames(e.data))
+  await axios.get("https://amaccompany.onrender.com/listoffactories",{withCredentials:true}).then((e) => 
+    setFactories(e.data)
+    )
   
   await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
     
@@ -112,7 +122,18 @@ setPage(1)
       // console.log(newData);
       
           }
-       
+
+          const style = {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            border: '2px solid #000',
+            boxShadow: 24,
+            p: 4,
+          };       
  
     const [falser,setFalser]=useState(false)
     const setStoreQuery=(s)=>{
@@ -138,6 +159,20 @@ setSearcher(dataRe)
 setUpdater(0) 
 
     }
+
+    const importing =(id,items,store,type,quantity)=>{
+
+      setItems(items);
+
+      setStore(store);
+setType(type);
+      
+setQuantity(quantity);
+// setUpdater(id)      
+handleOpen()
+    }
+ 
+
     const updating =(id,items,store,type,quantity)=>{
 
       setItems(items);
@@ -158,8 +193,22 @@ String.prototype.ArtoEn= function() {
       return this.replace(/[\u0660-\u0669]/g, 
         d => d.charCodeAt() - 1632)
     }
+  const[receiptNo,setReceiptNO]=useState("");
+  const [newQuantity,setNewQuantity]=useState(0);
+const[destination,setDestination]=useState("");
+    const postHandler =async (e)=>{
+      e.preventDefault()
+      const find = localStorage.getItem("token")
+      const details = jwtDecode(find)
+      
+      if (!from ||  !type || !newQuantity || !destination || !items || !receiptNo ) return setExistense("رجاء ملىء البيانات")
+      await axios.post("https://amaccompany.onrender.com/transactionexport",
+      {source:from,destination:destination,unit:type,quantity:newQuantity,items,receiptno:receiptNo,user:details.username,date:date},{withCredentials:true}).
+      then(e=>{
+          e.data == "error" ? ClearError() : Clear()})
+      
+      }
   
-    
     
       
     
@@ -173,6 +222,62 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     :
     <div>
     <div>
+      <Modal 
+      
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      
+      > 
+      <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            اضافة وارد 
+          </Typography>
+
+          <TextField label="رقم الاذن" value={receiptNo} onChange={e=>setReceiptNO(e.target.value)}/>
+
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {items}
+          </Typography>
+          <FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">المورد / المصنع</InputLabel>
+<Select
+name="source"
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+value={from}
+label="المورد"
+onChange={(e)=>setFrom(e.target.value)}
+>
+
+
+{source.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
+
+
+
+
+</Select>
+</FormControl>
+
+
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+  {store} 
+          </Typography>
+
+
+
+
+          <TextField label="الكمية" value={quantity} onChange={e=>setNewQuantity(e.target.value)}/>
+
+<Button style={{width:"70px"}} color="info" variant="contained"> اضافة وارد</Button>
+
+        </Box>
+
+
+      </Modal>
+
+
     <TextField style={{"marginTop": "12px"}} label="بحث باسم الصنف"    value={searchValue} onChange={(e)=>Search(e)}/>
     <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValueByCode} onChange={(e)=>SearchByCode(e)}/>
     
@@ -220,6 +325,9 @@ name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td
           <td style={{width:"70px"}}>{updater==e._id?<TextField id="outlined-basic"  style={{width:"70px"}} label="الكمية" variant="outlined" 
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
           <td style={{width:"70px"}}>{updater == e._id ? <Button variant="contained"  style={{width:"70px"}} onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
+
+          <td style={{width:"70px"}}><Button style={{width:"70px"}} color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>importing(e._id)}>توريد</Button></td>
+
           <td style={{width:"70px"}}><Button style={{width:"70px"}} color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
           <td style={{width:"70px"}}><Button style={{width:"70px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:[{المخزن : e.store,المهام:e.items,الوحدة:e.type,الكمية:e.quantity}],properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>Print </Button></td>
           </tr>      
