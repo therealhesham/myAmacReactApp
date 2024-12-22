@@ -223,8 +223,8 @@ const[destination,setDestination]=useState("");
       e.preventDefault()
       const find = localStorage.getItem("token")
       const details = jwtDecode(find)
-      console.log(from,type ,newQuantity,destination ,items ,receiptNo)
-      if (!from ||  !type || !newQuantity || !destination || !items || !receiptNo ) return setExistense("رجاء ملىء البيانات")
+      console.log(from,type ,newQuantity,store ,items ,receiptNo)
+      if (!from ||  !type || !newQuantity || !store || !items || !receiptNo ) return setExistense("رجاء ملىء البيانات")
       await axios.post("https://amaccompany.onrender.com/transactionexport",
       {source:from,destination:destination,unit:type,quantity:newQuantity,items,receiptno:receiptNo,user:details.username,date:""},{withCredentials:true}).
       then(e=>{
