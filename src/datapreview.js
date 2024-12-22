@@ -226,7 +226,7 @@ const[destination,setDestination]=useState("");
       console.log(from,type ,newQuantity,store ,items ,receiptNo)
       if (!from ||  !type || !newQuantity || !store || !items || !receiptNo ) return setExistense("رجاء ملىء البيانات")
       await axios.post("https://amaccompany.onrender.com/transactionexport",
-      {source:from,destination:destination,unit:type,quantity:newQuantity,items,receiptno:receiptNo,user:details.username,date:""},{withCredentials:true}).
+      {source:from,destination:store,unit:type,quantity:newQuantity,items,receiptno:receiptNo,user:details.username,date:""},{withCredentials:true}).
       then(e=>{
           e.data == "error" ? ClearError() : Clear()})
       
