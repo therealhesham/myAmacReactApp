@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 import _, { update } from "lodash"
 import Paginat from "./pagination";
-import { TextField,Typography ,Box, Button,InputLabel, MenuItem,Alert, Stack, useMediaQuery, Select,ButtonBase, FormControl, FormLabel, FormHelperText, FormControlLabel, Checkbox ,Modal} from "@mui/material";
+import { TextField,Typography ,Box, Button,InputLabel, MenuItem,Alert, Stack, useMediaQuery, Select,ButtonBase, FormControl,FormLabel, FormHelperText, FormControlLabel, Checkbox ,Modal} from "@mui/material";
 import Transaction from "./addtransaction";
 import socketClient  from "socket.io-client";
 import App from "./App";
@@ -254,6 +254,12 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
       
       > 
       <Box sx={style}>
+
+      { notExist ? <Alert severity="error" >
+    {notExist}</Alert>:null}
+    { done ?    <Alert severity="success">{done}</Alert>:null}
+
+
           <Typography id="modal-modal-title" variant="h6" component="h2">
             اضافة وارد 
           </Typography>
