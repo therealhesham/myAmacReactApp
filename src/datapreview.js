@@ -253,7 +253,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
       aria-describedby="modal-modal-description"
       
       > 
-      <Box sx={style}>
+      <Box>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             اضافة وارد 
           </Typography>
@@ -293,7 +293,7 @@ onChange={(e)=>setFrom(e.target.value)}
 
           <TextField label="الكمية" value={newQuantity} onChange={e=>setNewQuantity(e.target.value)}/>
 
-<Button style={{width:"70px"}} color="info" variant="contained"> اضافة وارد</Button>
+<Button style={{width:"70px"}} color="info" variant="contained" onClick={postHandler}> اضافة وارد</Button>
 
         </Box>
 
