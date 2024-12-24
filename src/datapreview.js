@@ -129,7 +129,7 @@ async function dataGetter(){
  
 }
 
-const [dateNow,setDateNow]=useState(0);
+const [dateNow,setDateNow]=useState(Date.now());
 useEffect(()=>{
   (async function GetMainData(){
   await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
@@ -395,10 +395,11 @@ onChange={(e)=>setFrom(e.target.value)}
 
           <TextField label="الكمية" value={newQuantity} onChange={e=>setNewQuantity(e.target.value)}/>
 
-<Button style={{width:"70px"}} color="info" variant="contained" onClick={postHandler}> اضافة وارد</Button>
-
         </Box>
 
+          <Button style={{width:"70px"}} color="info" variant="contained" onClick={handleClose}> close</Button>
+
+<Button style={{width:"70px"}} color="info" variant="contained" onClick={postHandler}> اضافة وارد</Button>
 
       </Modal>
 
@@ -540,11 +541,11 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
 
 
 
-          <TextField label="الكمية" value={newQuantity} onChange={e=>setNewQuantity(e.target.value)}/>
-
-<Button style={{width:"70px"}} color="info" variant="contained" onClick={postExportHandler}> اضافة منصرف</Button>
 
         </Box>
+        <Button style={{width:"70px"}} color="info" variant="contained" onClick={handleCloseExporting}> Close</Button>
+
+        <Button style={{width:"70px"}} color="info" variant="contained" onClick={postExportHandler}> اضافة منصرف</Button>
 
 
       </Modal>
