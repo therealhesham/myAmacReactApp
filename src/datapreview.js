@@ -190,9 +190,9 @@ setPage(1)
       s.preventDefault();
       setSearchValueByCode(s.target.value.ArtoEn())
       // console.log(`${s.target.value}`.trim());
-      const mapper = data.filter(e=>e.code.includes(s.target.value.ArtoEn()))
+      const mapperCodeSearch = data.filter(e=>e.code.includes(s.target.value.ArtoEn()));
       
-      setSearcher(mapper)
+      setSearcher(mapperCodeSearch)
       setPage(1)
       // .includes("سلاقوس")
       
