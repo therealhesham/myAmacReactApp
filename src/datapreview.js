@@ -100,7 +100,7 @@ setFrom("")
 setExistense("")
 
 setQuantity("")
-
+setDateNow(Date.now())
 
 
 
@@ -133,6 +133,8 @@ async function dataGetter(){
   )
 
 }
+
+const [dateNow,setDateNow]=useState(0);
 useEffect(()=>{
   
   // if(ref.current == zero){ 
@@ -159,7 +161,9 @@ navigate("/login")
 // // ref.current = 1
 // }
 }
-    ,[])
+    ,[dateNow])
+    
+    
     // console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
@@ -230,7 +234,7 @@ setSearcher(dataRe)
     }
     const reset =()=>{
      
-
+setDateNow(Date.now())
 setUpdater(0) 
 
     }
@@ -293,14 +297,16 @@ String.prototype.ArtoEn= function() {
   const[receiptNo,setReceiptNO]=useState("");
   const [newQuantity,setNewQuantity]=useState(0);
 const[destination,setDestination]=useState("");
+const [importDate,setImportDate]=useState("");
+const [exportDate,setExportDate]=useState("");
     const postHandler =async (e)=>{
       e.preventDefault()
       const find = localStorage.getItem("token")
       const details = jwtDecode(find)
       console.log(from,type ,newQuantity,store ,items ,receiptNo)
-      if (!from ||  !type || !newQuantity || !store || !items || !receiptNo ) return setExistense("رجاء ملىء البيانات")
+      if (!from ||  !type || !newQuantity || !store ||!importDate  || !items || !receiptNo ) return setExistense("رجاء ملىء البيانات")
       await axios.post("https://amaccompany.onrender.com/transactionexport",
-      {source:from,destination:store,unit:type,quantity:newQuantity,items,receiptno:receiptNo,user:details.username,date:""},{withCredentials:true}).
+      {source:from,destination:store,unit:type,quantity:newQuantity,items,date:importDate,receiptno:receiptNo,user:details.username,date:""},{withCredentials:true}).
       then(e=>{
           e.data == "error" ? ClearError() : Clear()})
       
@@ -310,10 +316,10 @@ const[destination,setDestination]=useState("");
         e.preventDefault()
         const find = localStorage.getItem("token")
         const details = jwtDecode(find)
-        if (!from ||  !type || !typeOfImporter || !lOcation  ||!exportQuantity || !items|| !receiptNo ) return setExistense("رجاء ملىء البيانات")
+        if (!from ||  !type || !typeOfImporter || exportDate|| !lOcation  ||!exportQuantity || !items|| !receiptNo ) return setExistense("رجاء ملىء البيانات")
         
         await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
-            contractor:contractor,typeOfContracting:typeOfContracting,unit:type,date:date,items:items,location:lOcation,quantity:exportQuantityuantity,receiptno:receiptNo,user:details.username},{withCredentials:true}).then(e=>
+            contractor:contractor,typeOfContracting:typeOfContracting,unit:type,date:exportDate,items:items,location:lOcation,quantity:exportQuantity,receiptno:receiptNo,user:details.username},{withCredentials:true}).then(e=>
                e.data == "error" ? ClearError():
                  Clear() 
                 )
@@ -381,6 +387,9 @@ onChange={(e)=>setFrom(e.target.value)}
   {store} 
           </Typography>
 
+
+
+          <TextField label="التاريخ" value={importDate} type="date" onChange={e=>setImportDate(e.target.value)}/>
 
 
 
@@ -484,6 +493,10 @@ onChange={(e)=>settypeOfContracting(e.target.value)}
 </Select>
 </FormControl>
 : null }
+
+          <TextField label="التاريخ" value={exportDate} type="date" onChange={e=>setExportDate(e.target.value)}/>
+
+
 <FormControl fullWidth>
 <InputLabel id="demo-simple-select-label">الموقع</InputLabel>
 <Select
