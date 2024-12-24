@@ -395,12 +395,14 @@ onChange={(e)=>setFrom(e.target.value)}
 
           <TextField label="الكمية" value={newQuantity} onChange={e=>setNewQuantity(e.target.value)}/>
 
-        </Box>
-
+          <div>
           <Button style={{width:"70px"}} color="info" variant="contained" onClick={handleClose}> close</Button>
 
 <Button style={{width:"70px"}} color="info" variant="contained" onClick={postHandler}> اضافة وارد</Button>
+</div>
 
+
+        </Box>
       </Modal>
 
 
@@ -537,15 +539,17 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
 
 
 
+<div>
+        <Button style={{width:"70px"}} color="info" variant="contained" onClick={handleCloseExporting}> Close</Button>
 
+        <Button style={{width:"70px"}} color="info" variant="contained" onClick={postExportHandler}> اضافة منصرف</Button>
+
+</div>
 
 
 
 
         </Box>
-        <Button style={{width:"70px"}} color="info" variant="contained" onClick={handleCloseExporting}> Close</Button>
-
-        <Button style={{width:"70px"}} color="info" variant="contained" onClick={postExportHandler}> اضافة منصرف</Button>
 
 
       </Modal>
