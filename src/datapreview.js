@@ -257,7 +257,7 @@ handleOpen()
 
       setItems(items);
 
-      setStore(store);
+      setFrom(store);
 setType(type);
       
 setExportQuantity(quantity);
@@ -317,7 +317,7 @@ const [exportDate,setExportDate]=useState("");
         const find = localStorage.getItem("token");
         const details = jwtDecode(find);
         console.log(from,type,exportDate,lOcation,exportQuantity,items,receiptNo)
-        if (!from ||  !type || !typeOfImporter || exportDate|| !lOcation  ||!exportQuantity || !items|| !receiptNo ) return setExistense("رجاء ملىء البيانات")
+        if (  !type || !typeOfImporter || exportDate|| !lOcation  ||!exportQuantity || !items|| !receiptNo ) return setExistense("رجاء ملىء البيانات")
         
         await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
             contractor:contractor,typeOfContracting:typeOfContracting,unit:type,date:exportDate,items:items,location:lOcation,quantity:exportQuantity,receiptno:receiptNo,user:details.username},{withCredentials:true}).then(e=>
