@@ -26,11 +26,12 @@ import { useEffect, useState } from "react";
 export default function SecondTransaction({fromList,source,contractorNames,client,data,unit , places,styler}){
 const [from,setFrom]=useState("")
 const [typeOfImporter,setTypeOfImporter]=useState("")
-const [contractor,setContractor]=useState("")
 const [type,setType]=useState("")
 const [quantity,setQuantity]=useState("")
 const [receipt,setReceipt]=useState("");
 const [items,setItems]=useState("");
+const [contractor,setContractor]=useState("")
+
 const [typeOfContracting,settypeOfContracting]=useState("");
 const [lOcation,setlOcation]=useState("");
 const [specificitems,setToGetSpecificITems]=useState([]);

@@ -26,6 +26,8 @@ const [searchedData,setSearcher ] = useState([])
 const [id,setId]=useState("")
 const [token,setToken]=useState()
 const ref = useRef(0);
+const [typeOfImporter,setTypeOfImporter]=useState("")
+
 const [from,setFrom]=useState("")
 const [authenticator,setAuthenticator]=useState("");
 const [admin,isAdmin]=useState(true)
@@ -40,11 +42,51 @@ const [success,setSuccess]= useState()
 const[factories,setFactories]=useState([])
 const [printDataDelet,setPrintDataDelet]=useState(searchedData)
 const navigate = useNavigate()
+const [contractor,setContractor]=useState("")
+const [contractorNames,setContractors]=useState([])
+  const [places,setPlaces]=useState([])
+
+const [typeOfContracting,settypeOfContracting]=useState("");
+const [lOcation,setlOcation]=useState("");
+const[exportQuantity,setExportQuantity]=useState(0)
 const [zero,setZero]= useState(0)
 const [open, setOpen] = useState(false);
+const [openExportingModal,setOpenExportingModal]=useState(false)
 const handleOpen = () => setOpen(true);
-const handleClose = () => setOpen(false);
-const ClearError=()=>{
+
+const handleCloseExporting=()=>{
+
+setReceiptNO("")    
+  setItems("");
+
+  setStore("");
+setType("");
+  
+setQuantity(0);
+// setUpdater(id)     
+  setOpen(false)
+
+
+
+}
+
+
+const handleClose = () => 
+  {
+
+setReceiptNO("")    
+    
+    setItems("");
+
+    setStore("");
+setType("");
+    
+setQuantity(0);
+// setUpdater(id)     
+    setOpen(false)
+  
+  }
+    const ClearError=()=>{
   setDone(null)
   setExistense("خطأ في تسجيل البيانات .. تأكد من وجود المهام في جرد المخزن  ")
 
@@ -69,8 +111,18 @@ setQuantity("")
 const matches = useMediaQuery('(max-width:400px)');
 async function dataGetter(){
 
- await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
-  setStoreNames(e.data))
+
+
+  await axios.get("https://amaccompany.onrender.com/listofnames",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+  setContractors(_.reverse(e.data))).catch(error=>console.log(error))
+  
+  
+  await axios.get("https://amaccompany.onrender.com/listofplaces",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+  setPlaces(_.reverse(e.data))).catch(error=>console.log(error))
+  
+
+//  await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+//   setStoreNames(e.data))
   await axios.get("https://amaccompany.onrender.com/listoffactories",{withCredentials:true}).then((e) => 
     setFactories(e.data)
     )
@@ -190,11 +242,33 @@ setUpdater(0)
       setStore(store);
 setType(type);
       
-setQuantity(quantity);
+setNewQuantity(quantity);
 // setUpdater(id)      
 handleOpen()
     }
  
+
+
+    const exporting =(id,items,store,type,quantity)=>{
+
+      setItems(items);
+
+      setStore(store);
+setType(type);
+      
+setExportQuantity(quantity);
+// setUpdater(id)     
+setOpenExportingModal(true)
+}
+
+
+
+
+
+
+
+
+
 
     const updating =(id,items,store,type,quantity)=>{
 
@@ -232,6 +306,19 @@ const[destination,setDestination]=useState("");
       
       }
   
+      const postExportHandler =async (e)=>{
+        e.preventDefault()
+        const find = localStorage.getItem("token")
+        const details = jwtDecode(find)
+        if (!from ||  !type || !typeOfImporter || !lOcation  ||!exportQuantity || !items|| !receiptNo ) return setExistense("رجاء ملىء البيانات")
+        
+        await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
+            contractor:contractor,typeOfContracting:typeOfContracting,unit:type,date:date,items:items,location:lOcation,quantity:exportQuantityuantity,receiptno:receiptNo,user:details.username},{withCredentials:true}).then(e=>
+               e.data == "error" ? ClearError():
+                 Clear() 
+                )
+      
+        }
     
       
     
@@ -307,6 +394,150 @@ onChange={(e)=>setFrom(e.target.value)}
       </Modal>
 
 
+
+      <Modal 
+      
+      open={openExportingModal}
+      onClose={handleCloseExporting}
+            aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      
+      > 
+      <Box sx={style}>
+
+      { notExist ? <Alert severity="error" >
+    {notExist}</Alert>:null}
+    { done ?    <Alert severity="success">{done}</Alert>:null}
+
+
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            اضافة منصرف 
+          </Typography>
+
+          <TextField label="رقم الاذن" value={receiptNo} onChange={e=>setReceiptNO(e.target.value)}/>
+
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {items}
+          </Typography>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+  {store} 
+          </Typography>
+
+
+
+
+
+
+          <FormControl fullWidth>
+<InputLabel id="demo-simple-select-label"  >نوع التنفيذ</InputLabel>
+<Select
+name="typeOfImporter"
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+value={typeOfImporter}
+label="ذاتي / مقاول"
+onChange={(e)=>setTypeOfImporter(e.target.value)}
+>
+
+
+<MenuItem  value="تنفيذ ذاتي">تنفيذ ذاتي</MenuItem><MenuItem   value="تنفيذ مقاول">تنفيذ مقاول</MenuItem>
+
+
+
+
+</Select>
+</FormControl>
+{  typeOfImporter == "تنفيذ مقاول" ?<FormControl fullWidth>
+<InputLabel id="demo-simple-select-label"  >المقاول</InputLabel>
+<Select
+name="contractor"
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+value={contractor}
+label="المقاول"
+onChange={(e)=>setContractor(e.target.value)}
+>
+    {contractorNames.map(e=>
+<MenuItem  value={e.name}>{e.name}</MenuItem>)}
+
+</Select>
+</FormControl>
+: null }
+{  typeOfImporter == "تنفيذ مقاول" ?<FormControl fullWidth>
+<InputLabel id="demo-simple-select-label"  >نوع العملية</InputLabel>
+<Select 
+name="typeOfContracting"
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+value={typeOfContracting}
+label="المقاول"
+onChange={(e)=>settypeOfContracting(e.target.value)}
+>
+
+
+<MenuItem  value="تشغيل">تشغيل</MenuItem>
+<MenuItem  value="خصم">خصم</MenuItem>
+
+
+
+
+</Select>
+</FormControl>
+: null }
+<FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">الموقع</InputLabel>
+<Select
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+name="location"
+value={lOcation}
+label="الموقع"
+onChange={(e)=>setlOcation(e.target.value)}
+>
+
+    {places.map(e=>
+<MenuItem  value={e.name}>{e.name}</MenuItem>)}
+</Select>
+</FormControl>
+
+
+
+<Typography alignItems="center"  justifyContent="center" >{type}</Typography>
+
+
+
+
+
+<TextField id="outlined-basic" label="الكمية" variant="outlined" 
+name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.value)}/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <TextField label="الكمية" value={newQuantity} onChange={e=>setNewQuantity(e.target.value)}/>
+
+<Button style={{width:"70px"}} color="info" variant="contained" onClick={postExportHandler}> اضافة منصرف</Button>
+
+        </Box>
+
+
+      </Modal>
+
+
+
     <TextField style={{"marginTop": "12px"}} label="بحث باسم الصنف"    value={searchValue} onChange={(e)=>Search(e)}/>
     <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValueByCode} onChange={(e)=>SearchByCode(e)}/>
     
@@ -335,6 +566,8 @@ onChange={(e)=>setFrom(e.target.value)}
           <th>كمية</th>
           <th>تحديث</th>
           <th>اضافة وارد</th>
+          <th>اضافة منصرف</th>
+
           <th>حذف</th>
           <th>طباعة</th>
         </tr>
@@ -356,7 +589,12 @@ name="type" value={type} onChange={(e)=> setType(e.target.value)}/> :e.type}</td
 name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.quantity}</td>
           <td style={{width:"70px"}}>{updater == e._id ? <Button variant="contained"  style={{width:"70px"}} onClick={()=>updateOne(e._id)}>تحديث بيانات</Button>:<Button color="success" variant="contained" disabled={token.isAdmin?false:true}  onClick={()=>updating(e._id,e.items,e.store,e.type,e.quantity)}>UPDATE</Button>}</td>
 
-          <td style={{width:"70px"}}><Button style={{width:"70px"}} color="warning" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>importing(e._id,e.items,e.store,e.type)}>اضافة وارد</Button></td>
+          <td style={{width:"100px"}}><Button style={{width:"100px"}} color="warning" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>importing(e._id,e.items,e.store,e.type)}>اضافة وارد</Button></td>
+
+
+          <td style={{width:"100px"}}><Button style={{width:"100px"}} color="success" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>exporting(e._id,e.items,e.store,e.type)}>اضافة منصرف</Button></td>
+
+
 
           <td style={{width:"70px"}}><Button style={{width:"70px"}} color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
           <td style={{width:"70px"}}><Button style={{width:"70px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:[{المخزن : e.store,المهام:e.items,الوحدة:e.type,الكمية:e.quantity}],properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>Print </Button></td>
