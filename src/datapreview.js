@@ -313,9 +313,10 @@ const [exportDate,setExportDate]=useState("");
       }
   
       const postExportHandler =async (e)=>{
-        e.preventDefault()
-        const find = localStorage.getItem("token")
-        const details = jwtDecode(find)
+        e.preventDefault();
+        const find = localStorage.getItem("token");
+        const details = jwtDecode(find);
+        console.log(from,type,exportDate,lOcation,exportQuantity,items,receiptNo)
         if (!from ||  !type || !typeOfImporter || exportDate|| !lOcation  ||!exportQuantity || !items|| !receiptNo ) return setExistense("رجاء ملىء البيانات")
         
         await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,
