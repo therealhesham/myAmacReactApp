@@ -64,7 +64,7 @@ setType("");
   
 setQuantity(0);
 // setUpdater(id)     
-  setOpen(false)
+  setOpenExportingModal(false)
 
 
 
@@ -587,7 +587,7 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
           <th>اضافة منصرف</th>
 
           <th>حذف</th>
-          <th>طباعة</th>
+          {/* <th>طباعة</th> */}
         </tr>
       </thead>
       {/* {data.} */}
@@ -615,7 +615,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
 
 
           <td style={{width:"70px"}}><Button style={{width:"70px"}} color="error" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>Delet(e._id)}>Delete</Button></td>
-          <td style={{width:"70px"}}><Button style={{width:"70px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:[{المخزن : e.store,المهام:e.items,الوحدة:e.type,الكمية:e.quantity}],properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>Print </Button></td>
+          {/* <td style={{width:"70px"}}><Button style={{width:"70px"}} color="info" variant="contained" disabled={token.isAdmin?false:true} onClick={ ()=> printJS({printable:[{المخزن : e.store,المهام:e.items,الوحدة:e.type,الكمية:e.quantity}],properties:["المخزن","المهام","الوحدة","الكمية"],type:'json'}) }>Print </Button></td> */}
           </tr>      
            
 
