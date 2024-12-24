@@ -126,16 +126,16 @@ async function dataGetter(){
   await axios.get("https://amaccompany.onrender.com/listoffactories",{withCredentials:true}).then((e) => 
     setFactories(e.data)
     )
-  
-  await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
-    
-  e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) 
-  )
-
+ 
 }
 
 const [dateNow,setDateNow]=useState(0);
 useEffect(()=>{
+  (async function GetMainData(){
+  await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then((e) => 
+    
+    e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) 
+    )})()
   
   // if(ref.current == zero){ 
     
