@@ -387,16 +387,19 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     <Modal 
       
       open={openNEWItemModal}
-      onClose={()=>{
+      onClose={()=>
 setOpenNEWItemModal(false)
 
-      }}
+      }
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       
       > 
+    
     <form >
-    <Stack maxWidth="800px" minWidth="250px" style={{padding:"60px"}} gap="12px">
+    <Box sx={style}>
+
+    {/* <Stack maxWidth="800px" minWidth="250px" style={{padding:"60px"}} gap="12px"> */}
     <Autocomplete
           id="combo-box-demo"
           onInputChange={(event, value) => setNewAddedStore(value)}
@@ -414,7 +417,7 @@ name="quantity" value={newAddedQuantity} onChange={e=>setNewAddedQuantity(e.targ
 
 {errorNEwItemModal ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
 
-</Stack></form>      </Modal>
+</Box></form>      </Modal>
 
 
 
