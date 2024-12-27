@@ -674,7 +674,7 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
         }
       />)}      
        */}
-<div style={{backgroundColor:"dodgerblue",cursor:"pointer"}} onClick={()=>setOpenNEWItemModal(true)}> <Typography> Add Item </Typography> <PlusOneRounded/></div>
+<div style={{backgroundColor:"dodgerblue",cursor:"pointer"}} onClick={()=>setOpenNEWItemModal(true)}>  Add Item  <PlusOneRounded color="white"/></div>
   <Table striped="columns">
 
       <thead>
