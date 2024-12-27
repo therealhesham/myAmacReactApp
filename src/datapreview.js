@@ -371,7 +371,9 @@ const [exportDate,setExportDate]=useState("");
       
         }
     
-      
+const closeNEWitemmodall=        ()=>
+          setOpenNEWItemModal(false)
+          
     
     return (
   <div>{matches?  
@@ -387,10 +389,7 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     <Modal 
       
       open={openNEWItemModal}
-      onClose={()=>
-setOpenNEWItemModal(false)
-
-      }
+      onClose={closeNEWitemmodall}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       
