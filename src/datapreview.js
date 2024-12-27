@@ -281,7 +281,7 @@ setOpenExportingModal(true)
 
 
     const updating =(id,items,store,type,quantity)=>{
-
+setQuantity(quantity)
       setItems(items);
 
       setStore(store);
