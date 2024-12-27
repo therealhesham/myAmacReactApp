@@ -664,7 +664,7 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
 <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
     <div>
     <TextField style={{"marginTop": "12px"}} label="بحث باسم الصنف"    value={searchValue} onChange={(e)=>Search(e)}/>
-    <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValueByCode} onChange={(e)=>SearchByCode(e)}/>
+    {/* <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValueByCode} onChange={(e)=>SearchByCode(e)}/> */}
 </div>    
       
     <div style={{backgroundColor:"dodgerblue",padding:"9px",borderRadius:"5px",cursor:"pointer",color:"white",width:"100px" ,marginTop:"13px"}} onClick={opennewitemmodal}>  اضافة عنصر   </div>
