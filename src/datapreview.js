@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useReducer, useRef, useState } from "react";
 import Table from 'react-bootstrap/Table';
-
 import _, { update } from "lodash"
 import Paginat from "./pagination";
 import { TextField,Typography ,Box, Button,InputLabel, MenuItem,Alert, Stack,Autocomplete, useMediaQuery, Select,ButtonBase, FormControl,FormLabel, FormHelperText, FormControlLabel, Checkbox ,Modal} from "@mui/material";
@@ -13,8 +12,6 @@ import ComboBox from "./search";
 import jwtDecode from "jwt-decode";
 import printJS from "print-js";
 import ListCompon from "./listComponent";
-import e from "cors";
-import { PlusOneRounded } from "@mui/icons-material";
 
 function DataPreview(){
 const [data,setData]=useState([]);
