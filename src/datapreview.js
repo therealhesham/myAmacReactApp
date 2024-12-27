@@ -14,6 +14,7 @@ import jwtDecode from "jwt-decode";
 import printJS from "print-js";
 import ListCompon from "./listComponent";
 import e from "cors";
+import { PlusOneRounded } from "@mui/icons-material";
 
 function DataPreview(){
 const [data,setData]=useState([]);
@@ -45,6 +46,7 @@ const navigate = useNavigate()
 const [contractor,setContractor]=useState("")
 const [contractorNames,setContractors]=useState([])
   const [places,setPlaces]=useState([])
+  const [stores,setStores]=useState([])
 
 const [typeOfContracting,settypeOfContracting]=useState("");
 const [lOcation,setlOcation]=useState("");
@@ -100,6 +102,8 @@ setFrom("")
 setExistense("")
 
 setQuantity("")
+setOpenExportingModal(false)
+setOpen(false)
 setDateNow(Date.now())
 
 
@@ -110,7 +114,12 @@ setDateNow(Date.now())
 
 const matches = useMediaQuery('(max-width:400px)');
 async function dataGetter(){
-
+  
+    await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then((e) => 
+    
+     setStores(e.data)
+     )
+    
 
 
   await axios.get("https://amaccompany.onrender.com/listofnames",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
@@ -290,6 +299,41 @@ setUpdater(id)
       await axios.post('https://amaccompany.onrender.com/updatedata',{id:e,store:store,items:items,type:type,quantity:Quantity},{withCredentials:true}).then((e) => e.data == "updated" ?  reset()  :setError("خطأ في البيانات") )
 
     }
+    const additem = ()=>{
+
+
+      
+    }
+
+
+    const {openNEWItemModal,setOpenNEWItemModal  }=useState(false) 
+const [newAddedItems,setNewAddedItem]=useState("");
+const[newAddedStore,setNewAddedStore]=useState("");
+const[newAddedType,setNewAddedType]=useState("");
+const [newAddedQuantity,setNewAddedQuantity]=useState(0);
+const [errorNEwItemModal,setErrorNewItemModal]= useState("")
+const [successNEwItemModal,setSuccessNewItemModal]= useState()
+
+
+const newDataDone = ()=>{
+
+setNewAddedItem("")
+setNewAddedStore("")
+  setNewAddedType("");
+
+
+  setNewAddedQuantity(0)
+setErrorNewItemModal("")
+setOpenNEWItemModal(false)
+}
+    
+const PostHandlerNewItem = async (e)=>{
+  e.preventDefault()
+  
+await axios.post("https://amaccompany.onrender.com/postnewdatatostore",{items:newAddedItems,store:newAddedStore,type:newAddedType,quantity:newAddedQuantity},{withCredentials:true}).
+then(e=>e.data == "success" ? newDataDone() :setErrorNewItemModal("يرجى مراعاة ادخال البيانات الصحيحة"))
+
+}
 String.prototype.ArtoEn= function() {
       return this.replace(/[\u0660-\u0669]/g, 
         d => d.charCodeAt() - 1632)
@@ -339,6 +383,62 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
     :
     <div>
     <div>
+
+    <Modal 
+      
+      open={openNEWItemModal}
+      onClose={()=>{
+setOpenNEWItemModal(false)
+
+      }}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      
+      > 
+    <form >
+    <Stack maxWidth="800px" minWidth="250px" style={{padding:"60px"}} gap="12px">
+    <Autocomplete
+          id="combo-box-demo"
+          onInputChange={(event, value) => setNewAddedStore(value)}
+        //   onClickCapture={(e)=>setSpecificUnite(e.type)}
+        options={stores.map((option) => option.name)}
+        renderInput={(params) => <TextField {...params}  label="المخازن" placeholder="اختر المخزن"/>}
+      />
+<TextField id="outlined-basic" label="المهام" variant="outlined" 
+name="items" value={newAddedItems} onChange={(e)=>setNewAddedItem(e.target.value)}/>
+<TextField id="outlined-basic" label="الوحدة" variant="outlined"
+ name="type" value={newAddedType} onChange={(e)=> setNewAddedType(e.target.value)}/>
+<TextField id="outlined-basic" label="الكمية" variant="outlined" 
+name="quantity" value={newAddedQuantity} onChange={e=>setNewAddedQuantity(e.target.value)}/>
+<Button variant="contained" size="medium" onClick={PostHandlerNewItem}>تسجيل بيانات</Button>
+
+{errorNEwItemModal ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
+
+</Stack></form>      </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <Modal 
       
       open={open}
@@ -564,7 +664,7 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
     {/* {storeNames.map(e=><FormControlLabel
         label={e.name}
         control={
-          <Checkbox
+          <Checkbox 
 
             value={e.name}
             Checked ={falser}
@@ -574,6 +674,7 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
         }
       />)}      
        */}
+<div style={{backgroundColor:"dodgerblue",cursor:"pointer"}} onClick={()=>{()=>setOpenNEWItemModal(true)}}> <Typography> Add Item </Typography> <PlusOneRounded/></div>
   <Table striped="columns">
 
       <thead>
