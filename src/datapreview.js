@@ -720,7 +720,7 @@ name="quantity" value={Quantity} onChange={e=>setQuantity(e.target.value)}/>:e.q
           <td style={{width:"100px"}}><Button style={{width:"100px"}} color="warning" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>importing(e._id,e.items,e.store,e.type)}>اضافة وارد</Button></td>
 
 
-          <td style={{width:"100px"}}><Button style={{width:"100px"}} color="success" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>exporting(e._id,e.items,e.store,e.type)}>اضافة منصرف</Button></td>
+          <td style={{width:"100px"}}><Button style={{width:"100px"}} color="secondary" variant="contained" disabled={token.isAdmin?false:true} onClick={()=>exporting(e._id,e.items,e.store,e.type)}>اضافة منصرف</Button></td>
 
 
 
