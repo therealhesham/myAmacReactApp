@@ -392,7 +392,6 @@ setquantity={setQuantity} settype={setType} token={token} search={(e,s)=>Search(
       
       > 
     
-    <form >
     <Box sx={style}>
 
     {/* <Stack maxWidth="800px" minWidth="250px" style={{padding:"60px"}} gap="12px"> */}
@@ -413,7 +412,7 @@ name="quantity" value={newAddedQuantity} onChange={e=>setNewAddedQuantity(e.targ
 
 {errorNEwItemModal ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
 
-</Box></form>      </Modal>
+</Box>      </Modal>
 
 
 
