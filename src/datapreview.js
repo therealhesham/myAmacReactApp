@@ -408,11 +408,15 @@ name="items" value={newAddedItems} onChange={(e)=>setNewAddedItem(e.target.value
  name="type" value={newAddedType} onChange={(e)=> setNewAddedType(e.target.value)}/>
 <TextField id="outlined-basic" label="الكمية" variant="outlined" 
 name="quantity" value={newAddedQuantity} onChange={e=>setNewAddedQuantity(e.target.value)}/>
-<Button variant="contained" size="medium" onClick={PostHandlerNewItem}>تسجيل بيانات</Button>
+<div>
+
+<Button style={{width:"70px"}} color="info" variant="contained" size="medium" onClick={PostHandlerNewItem}>تسجيل بيانات</Button>
+</div>
 
 {errorNEwItemModal ? <Alert severity="error">خطأ في ادخال البيانات</Alert>:null}
 
-</Box>      </Modal>
+</Box>    
+  </Modal>
 
 
 
