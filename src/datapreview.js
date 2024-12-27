@@ -666,7 +666,7 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
     <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValueByCode} onChange={(e)=>SearchByCode(e)}/>
 </div>    
       
-    <div style={{backgroundColor:"dodgerblue",cursor:"pointer",color:"white",width:"100px" ,height:"30px",marginTop:"13px"}} onClick={opennewitemmodal}>  اضافة عنصر   </div>
+    <div style={{backgroundColor:"dodgerblue",padding:"9px",borderRadius:"5px",cursor:"pointer",color:"white",width:"100px" ,height:"30px",marginTop:"13px"}} onClick={opennewitemmodal}>  اضافة عنصر   </div>
     </div>
     </div>
     {/* {storeNames.map(e=><FormControlLabel
