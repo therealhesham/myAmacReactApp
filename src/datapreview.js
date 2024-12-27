@@ -233,10 +233,11 @@ setSearcher(mmm)
       setSearcher(we)}
           }
     const Delet=async (e)=>{
-      await axios.post('https://amaccompany.onrender.com/delete',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
-const data = searchedData.filter((s)=> e != s._id)
-const dataRe = [...data]
-setSearcher(dataRe)
+      
+//       await axios.post('https://amaccompany.onrender.com/delete',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
+// const data = searchedData.filter((s)=> e != s._id)
+// const dataRe = [...data]
+// setSearcher(dataRe)
     }
     const reset =()=>{
      
