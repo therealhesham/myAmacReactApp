@@ -323,6 +323,7 @@ setNewAddedStore("")
 setErrorNewItemModal("")
 setOpenNEWItemModal(false)
 }
+const opennewitemmodal =       ()=>setOpenNEWItemModal(true)
     
 const PostHandlerNewItem = async (e)=>{
   e.preventDefault()
@@ -676,7 +677,7 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
         }
       />)}      
        */}
-<div style={{backgroundColor:"dodgerblue",cursor:"pointer"}} onClick={()=>setOpenNEWItemModal(true)}>  اضافة عنصر الى المخزن  </div>
+<div style={{backgroundColor:"dodgerblue",cursor:"pointer"}} onClick={opennewitemmodal}>  اضافة عنصر الى المخزن  </div>
   <Table striped="columns">
 
       <thead>
