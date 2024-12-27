@@ -323,7 +323,7 @@ setNewAddedStore("")
 setErrorNewItemModal("")
 setOpenNEWItemModal(false)
 }
-const opennewitemmodal =       ()=>setOpenNEWItemModal(true)
+function opennewitemmodal (){setOpenNEWItemModal(true)}
     
 const PostHandlerNewItem = async (e)=>{
   e.preventDefault()
