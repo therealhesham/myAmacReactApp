@@ -179,6 +179,7 @@ const [searchValueByCode,setSearchValueByCode]=useState("")
 const [searchedStore,setSearchedStore]=useState("")
 
 const filterStore = (s) =>{
+  setSearchedStore(s.target.value)
 // setSearchValue(s.target.value.ArtoEn())
 // console.log(`${s.target.value}`.trim());
 const mapper = data.filter(e=>e.store.includes(s.target.value))
@@ -674,14 +675,14 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
 
       </Modal>
 
-<div style={{display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-             <FormControl fullWidth>
+<div style={{display:"flex",flexDirection:"column",marginTop:"3px",justifyContent:"space-between"}}>
+             <FormControl >
 <InputLabel id="demo-simple-select-label">بحث بالمخزن</InputLabel>
 <Select
 name="source"
 labelId="demo-simple-select-label"
 id="demo-simple-select"
-// value={from}
+value={searchedStore}
 label="المورد"
 onChange={(e)=>filterStore(e.target.value)}
 >
