@@ -180,8 +180,6 @@ const [searchedStore,setSearchedStore]=useState("")
 
 const filterStore = (s) =>{
   setSearchedStore(s.target.value)
-// setSearchValue(s.target.value.ArtoEn())
-// console.log(`${s.target.value}`.trim());
 const mapper = data.filter(e=>e.store.includes(s.target.value))
 
 setSearcher(mapper)
@@ -688,7 +686,7 @@ onChange={(e)=>filterStore(e.target.value)}
 >
 
 
-{stores.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
+{storeNames.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
 
 
 
