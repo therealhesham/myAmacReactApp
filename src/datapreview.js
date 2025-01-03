@@ -687,7 +687,7 @@ onChange={(e)=>filterStore(e.target.value)}
 >
 
 
-{storeNames.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
+{store.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
 
 
 
