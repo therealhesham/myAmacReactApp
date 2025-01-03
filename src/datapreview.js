@@ -683,7 +683,7 @@ labelId="demo-simple-select-label"
 id="demo-simple-select"
 value={searchedStore}
 label="المورد"
-onChange={(e)=>filterStore(e.target.value)}
+onChange={(e)=>filterStore(e)}
 >
 
 
