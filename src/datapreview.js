@@ -179,6 +179,7 @@ const [searchValueByCode,setSearchValueByCode]=useState("")
 const [searchedStore,setSearchedStore]=useState("")
 
 const filterStore = (s) =>{
+  s.preventDefault()
   setSearchedStore(s.target.value)
 const mapper = data.filter(e=>e.store.includes(s.target.value))
 
