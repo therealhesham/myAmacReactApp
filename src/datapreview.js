@@ -176,7 +176,21 @@ navigate("/login")
     };
 const [searchValue,setSearchValue]=useState("")
 const [searchValueByCode,setSearchValueByCode]=useState("")
+const [searchedStore,setSearchedStore]=useState("")
 
+const filterStore = (s) =>{
+// setSearchValue(s.target.value.ArtoEn())
+// console.log(`${s.target.value}`.trim());
+const mapper = data.filter(e=>e.store.includes(s.target.value))
+
+setSearcher(mapper)
+setPage(1)
+// .includes("سلاقوس")
+
+// data.filter((e)=>e.includes("مواسير"))
+// console.log(newData);
+
+}
 const Search = (s)=>{
 s.preventDefault();
 setSearchValue(s.target.value.ArtoEn())
@@ -660,8 +674,27 @@ name="quantity" value={exportQuantity} onChange={e=>setExportQuantity(e.target.v
 
       </Modal>
 
+<div style={{display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
+             <FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">بحث بالمخزن</InputLabel>
+<Select
+name="source"
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+// value={from}
+label="المورد"
+onChange={(e)=>filterStore(e.target.value)}
+>
 
-<div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+
+{storeNames.map(e=> <MenuItem value={e.name} key={e._id}>{e.name}</MenuItem>)  }
+
+
+
+
+</Select>
+</FormControl>
+
     <div>
     <TextField style={{"marginTop": "12px"}} label="بحث باسم الصنف"    value={searchValue} onChange={(e)=>Search(e)}/>
     {/* <TextField style={{"marginTop": "12px"}} label="بحث بكود الصنف"    value={searchValueByCode} onChange={(e)=>SearchByCode(e)}/> */}
