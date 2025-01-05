@@ -191,19 +191,12 @@ setPage(1)
 // console.log(newData);
 
 }
-function areAllItemsInArray(arr1, arr2) {
-  const set2 = new Set(arr2);  // Convert arr2 to a Set for faster lookup
-  return arr1.some(item => set2.has(item));
-}
+
 const Search = (s)=>{
 s.preventDefault();
 setSearchValue(s.target.value.ArtoEn())
 // console.log(`${s.target.value}`.trim());
-const mapper = data.filter(e=>{
-  const eE = e.items.split("");
- const sS= s.target.value.ArtoEn().split("");
-  
-  return  areAllItemsInArray(sS,eE)})
+const mapper = data.filter(e=>e.items.includes(s.target.value.ArtoEn()))
 
 setSearcher(mapper)
 setPage(1)
