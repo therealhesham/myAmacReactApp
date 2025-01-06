@@ -192,18 +192,33 @@ setPage(1)
 
 }
 
+
+
+
+
+const arraySearch=[]
 const Search = (s)=>{
 s.preventDefault();
 setSearchValue(s.target.value.ArtoEn())
 // console.log(`${s.target.value}`.trim());
-const mapper = data.filter(e=>e.items.includes(s.target.value.ArtoEn()))
+function areAllItemsInArray(arr1, arr2) {
+  const set2 = new Set(arr2);  // Convert arr2 to a Set for faster lookup
+  return arr1.some(item => set2.has(item));
+}
 
-setSearcher(mapper)
+const specificSearch = data.filter(b=>b.items.includes(s.target.value.ArtoEn()));
+const filtering =data.filter(e=>{
+const n = e.items.split(s.target.value.ArtoEn());
+
+return areAllItemsInArray(n,s.target.value.ArtoEn())
+
+});
+arraySearch.push(...specificSearch,...filtering)
+const uniqueArray = arraySearch.filter((value, index, self) => {
+  return self.indexOf(value) === index;
+});
+setSearcher(uniqueArray)
 setPage(1)
-// .includes("سلاقوس")
-
-// data.filter((e)=>e.includes("مواسير"))
-// console.log(newData);
 
     }
  
