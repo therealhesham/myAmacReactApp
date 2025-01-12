@@ -33,7 +33,7 @@ React.useEffect(()=>
         console.log(token)
         // 
         if(ref.current == 0){          
-        axios.get("https://amaccompany.onrender.com/info/"+details.id,{withCredentials:true}).then(e=>e.data?setData(e.data):navigate("/login"))
+        axios.get(process.env.REACT_APP_API_URL+"/info/"+details.id,{withCredentials:true}).then(e=>e.data?setData(e.data):navigate("/login"))
       console.log(profiledata)
       // https://my-amac-react-app.vercel.app/profile
       ref.current = ref.current +1

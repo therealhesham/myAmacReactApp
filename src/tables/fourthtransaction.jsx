@@ -28,7 +28,7 @@ useEffect(()=>{
   
   // if(ref.current == 0){
     // console.log(ref.current);
-    axios.get('https://amaccompany.onrender.com/refunds',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data) & setData(e.data) )
+    axios.get(process.env.REACT_APP_API_URL+'/refunds',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
     
 //     ref.current=ref.current +1
 }
@@ -58,7 +58,7 @@ setPage(1)
     }
 
     const Delet=async (e)=>{
-      await axios.get('https://amaccompany.onrender.com/deletrefund/'+e,{withCredentials:true}).then((e) => console.log(e.data))
+      await axios.get(process.env.REACT_APP_API_URL+'/deletrefund/'+e,{withCredentials:true}).then((e) => console.log(e.data))
 const data = searchedData.filter((s)=> e != s._id)
 const dataRe = [...data]
 setSearcher(dataRe)
@@ -68,7 +68,7 @@ setSearcher(dataRe)
   <div>
         {/* <App/> */}
         <TextField style={{"marginTop": "12px"}} label="Search" onChange={Search}/>
-      <Table striped="columns"  style={{width:"1000px"}} >
+      <Table striped="columns"   >
           <thead>
             <tr>
             

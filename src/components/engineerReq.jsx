@@ -24,7 +24,7 @@ useEffect(()=>{
 {!localStorage.getItem("token") ?
     
 navigate("/login") :
- axios.get("https://amaccompany.onrender.com/userlists", {withCredentials:true,
+ axios.get(process.env.REACT_APP_API_URL+"/userlists", {withCredentials:true,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -50,7 +50,7 @@ setFirstName("")
   
   }    
 const mmessage = ()=>{
-    axios.post("https://amaccompany.onrender.com/send",{sender:token.firstName,firstName:firstName,id:id,message:message,
+    axios.post(process.env.REACT_APP_API_URL+"/send",{sender:token.firstName,firstName:firstName,id:id,message:message,
       title:title},{withCredentials:true}).then(e=> e.data ? clear() : "")
 
       

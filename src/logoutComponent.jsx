@@ -14,7 +14,7 @@ function Logout(){
 
         navigate("/login")
     }    
-    axios.get("https://amaccompany.onrender.com/logout",{withCredentials:true}).then((e)=> 
+    axios.get(process.env.REACT_APP_API_URL+"/logout",{withCredentials:true}).then((e)=> 
     e.data =="token deleted" ? localStorage.removeItem("token")
     & window.location.reload():""
     

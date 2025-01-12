@@ -82,7 +82,7 @@ const postHandler =async (e)=>{
     const details = jwtDecode(find)
     if (!from ||  !type || !typeOfImporter || !lOcation  ||!quantity || !items|| !receipt  ) return setExistense("رجاء ملىء البيانات")
     
-    await axios.post("https://amaccompany.onrender.com/secondtransaction",{store:from,typeOfImporter:typeOfImporter,file:cloudinaryImage,
+    await axios.post(process.env.REACT_APP_API_URL+"/secondtransaction",{store:from,typeOfImporter:typeOfImporter,file:cloudinaryImage,
         contractor:contractor,typeOfContracting:typeOfContracting,unit:type,date:date,items:items,location:lOcation,quantity:quantity,receiptno:receipt,user:details.username},{withCredentials:true}).then(e=>
            e.data == "error" ? ClearError():
              Clear() 

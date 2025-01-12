@@ -28,7 +28,7 @@ const clear=()=>{
 
 
 async function dataGetter(){
-    await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then((e) => 
+    await axios.get(process.env.REACT_APP_API_URL+"/listofstores",{withCredentials:true}).then((e) => 
     
      setStores(e.data)
      )
@@ -45,7 +45,7 @@ useEffect(()=>{
 const PostHandler = async (e)=>{
     e.preventDefault()
     
-await axios.post("https://amaccompany.onrender.com/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
+await axios.post(process.env.REACT_APP_API_URL+"/postnewdatatostore",{items:items,store:store,type:type,quantity:Quantity},{withCredentials:true}).
 then(e=>e.data == "success" ? clear() :setError("يرجى مراعاة ادخال البيانات الصحيحة"))
 
 }

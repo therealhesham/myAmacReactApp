@@ -47,7 +47,7 @@ e.preventDefault()
     const details = jwtDecode(find)
 if (!from ||  !to || !quantity || !type || !items || !receipt ) return setExistense("رجاء ملىء البيانات")
 if (from === to ) return setExistense("من فضلك غير احد المخزنين")
-axios.post("https://amaccompany.onrender.com/thirdtransaction",{date:date,file:cloudinaryImage,user:details.username,receiptno:receipt,from:from,to:to,items:items,unit:type,quantity:quantity},{withCredentials:true}).then(e=>
+axios.post(process.env.REACT_APP_API_URL+"/thirdtransaction",{date:date,file:cloudinaryImage,user:details.username,receiptno:receipt,from:from,to:to,items:items,unit:type,quantity:quantity},{withCredentials:true}).then(e=>
     e.data == "error" ? ClearError("المحول اليه او قد يكون الكمية في المخزن المحول منه اقل من المطلوب ") : Clear())
 
 }
@@ -91,7 +91,7 @@ const uniteGetter=(s)=>{
 const getSpecificData =async(e)   =>{
     // alert(destination)
 // ss
-   await axios.post("https://amaccompany.onrender.com/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+   await axios.post(process.env.REACT_APP_API_URL+"/specificdata",{store:from},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
    
  }

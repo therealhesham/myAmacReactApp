@@ -3,18 +3,20 @@ import { useEffect, useReducer, useRef, useState } from "react";
 import Table from 'react-bootstrap/Table';
 
 import _ from "lodash"
-
 // import Paginat from "./pagination";
-import { TextField , Button, Stack, useMediaQuery, Typography, Modal, Box } from "@mui/material";
+import {FormControl,InputLabel,Select,MenuItem, TextField , Button, Stack, Autocomplete,useMediaQuery, Typography, Modal, Box } from "@mui/material";
 
 import socketClient  from "socket.io-client";
+import * as XLSX from "xlsx"
 
 import { Navigate, useNavigate } from "react-router-dom";
 import Paginat from "../pagination";
 import jwtDecode from "jwt-decode";
 
 function SecondTransactionadding(){
+  
 const [data,setData]=useState([]);
+const [searchEngineModal,setSearchEngineModal]=useState(false);
 const [startpage,setPage] = useState(1)
 const [size,setSize] = useState(10)
 const [searchedData,setSearcher ] = useState([])
@@ -40,6 +42,22 @@ const ref = useRef(0);
 const [uploadFile, setUploadFile] = useState("");
   const [cloudinaryImage, setCloudinaryImage] = useState("")
   const [ statePreviewImage,setStatePreview]=useState(false)
+  
+  
+  const styleModal = {
+    display:"flex",
+    gap:"12px",
+    flexDirection:"column",
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 400,
+      bgcolor: 'background.paper',
+      border: '2px solid #000',
+      boxShadow: 24,
+      p: 4,
+    };       
   const style = {
     position: 'absolute' ,
     top: '50%',
@@ -54,6 +72,25 @@ const [uploadFile, setUploadFile] = useState("");
   };
   
 const navigate = useNavigate()
+const[uniqueitems,setUniqueITems]=useState([])
+const [stores,setStores]=useState([])
+
+const [contractors,setContractors]=useState([])
+async function dataGetter(){
+  
+  await axios.get(process.env.REACT_APP_API_URL+"/listofstores",{withCredentials:true}).then((e) => 
+  
+   setStores(e.data)
+   )
+
+
+   
+  await axios.get(process.env.REACT_APP_API_URL+"/listofnames",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+  setContractors(_.reverse(e.data))).catch(error=>console.log(error))
+  
+}
+
+
 useEffect(()=>{
   
 if(localStorage.getItem("token")){
@@ -61,14 +98,43 @@ if(localStorage.getItem("token")){
   
   const details = jwtDecode(getToken)
   setToken(details)
-    axios.get('https://amaccompany.onrender.com/getsecondtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(e.data.reverse()) & setData(e.data.reverse()) )
+dataGetter()
+  axios.get(process.env.REACT_APP_API_URL+'/uniqueitems',{withCredentials:true}).then((e) => setUniqueITems(e.data)  )
+  
+    axios.get(process.env.REACT_APP_API_URL+'/getsecondtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(e.data) )
 }    
 else if (!localStorage.getITem("token")){
   navigate("/login")
   
 
 }},[])
-    // console.log(ref.current);
+const [searchedExecutionType,setSearchedExecutionType]=useState("");
+const[searchedTypeOfImporter,setSearchedOfTypeOfImporter]=useState("");
+const [searchedItem,setSearchedItem]=useState("");
+const [searchedContractor,setSearchedContractor]=useState("");
+const [searchedStore,setSearchedStore]=useState("");
+
+const searchHandler = async()=>{
+
+await axios.post(process.env.REACT_APP_API_URL+'/searchsecondtransaction',{searchedStore,searchedTypeOfImporter,searchedItem,searchedContractor},{withCredentials:true}).then((e) => setSearcher(_.reverse(e.data))  )
+  
+
+
+}
+const handleExportToExcel = () => {
+  // Convert JSON data to a worksheet
+  const ws = XLSX.utils.json_to_sheet(searchedData);
+
+  // Create a workbook with the worksheet
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+  // Write the workbook to a binary Excel file and trigger a download
+  XLSX.writeFile(wb, 'data.xlsx');
+};
+
+
+// console.log(ref.current);
     const handleChange = (event, value) => {
       setPage(value);
     };
@@ -105,7 +171,7 @@ else if (!localStorage.getITem("token")){
 
 const Delet = async (e)=>{
   
-  await axios.post('https://amaccompany.onrender.com/deletesecondtransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
+  await axios.post(process.env.REACT_APP_API_URL+'/deletesecondtransaction',{id:e},{withCredentials:true}).then((e) => console.log(e.data))
   const data = searchedData.filter((s)=> e != s._id)
   const dataRe = [...data]
   setSearcher(dataRe)
@@ -137,7 +203,7 @@ setUpdater(0)
       }
       const updateOne=async (e)=>{
         
-        await axios.post('https://amaccompany.onrender.com/updatesecondtransaction',
+        await axios.post(process.env.REACT_APP_API_URL+'/updatesecondtransaction',
         {id:e,store:store,
           receiptno:receiptno,
           typeOfImporter:typeOfImporter,
@@ -156,14 +222,114 @@ setUpdater(0)
       return (
   
   <div>
+<Modal open={searchEngineModal} 
+      onClose={()=>setSearchEngineModal(false)}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+
+
+
+>
+<Box sx={styleModal}>
+<div>
+  Search Engine
+</div>
+<Autocomplete
+          id="combo-box-demo"
+          onInputChange={(event, value) => setSearchedItem(value)}
+        
+        options={uniqueitems.map((option) => option)}
+        renderInput={(params) => <TextField {...params}  label="المهام" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
+      />
+      <FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">تشغيل / خصم</InputLabel>
+<Select
+name="exectype"
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+value={searchedExecutionType}
+label="تشغيل / خصم"
+onChange={(e)=>setSearchedExecutionType(e.target.value)}
+>
+
+<MenuItem value="تشغيل" >تشغيل</MenuItem>
+<MenuItem value="خصم" >خصم</MenuItem>
+
+
+
+
+
+</Select>
+</FormControl>
+
+
+
+
+
+<FormControl fullWidth>
+<InputLabel id="demo-simple-select-label">ذاتي / مقاول</InputLabel>
+<Select
+name="exectype"
+labelId="demo-simple-select-label"
+id="demo-simple-select"
+value={searchedTypeOfImporter}
+label="ذاتي / مقاول"
+onChange={(e)=>setSearchedOfTypeOfImporter(e.target.value)}
+>
+
+<MenuItem value="تنفيذ ذاتي" >تنفيذ ذاتي</MenuItem>
+<MenuItem value="تنفيذ مقاول" >تنفيذ مقاول</MenuItem>
+
+
+
+
+
+</Select>
+</FormControl>
+
+
+
+
+
+<Autocomplete
+          id="combo-box-demo"
+          onInputChange={(event, value) => setSearchedStore(value)}
+        value={searchedStore}  
+        options={stores.map((option) => option.name)}
+        renderInput={(params) => <TextField {...params}  label="المخازن" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
+      />
+
+<Autocomplete
+          id="combo-box-demo"
+          onInputChange={(event, value) => setSearchedContractor(value)}
+       value={searchedContractor}   
+        options={contractors.map((option) => option.name)}
+        renderInput={(params) => <TextField {...params}  label="المخازن" placeholder="اكتب اول حرفين من المهام واختار من القائمة"/>}
+      />
+
+
+
+<Button onClick={searchHandler} variant="contained" color="info">search</Button>
+
+<Button onClick={()=>setSearchEngineModal(false)} variant="contained" color="error">cancel</Button>
+
+
+</Box>
+
+</Modal>
 
         <Stack>
-        <TextField style={{"marginTop": "12px"}} label="بحث بالمهام " onChange={(e)=>Search(e)}/>
         <TextField style={{"marginTop": "12px"}} label="بحث برقم الاذن " onChange={(e)=>SearchByReceipt(e)}/>
-        <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " value={contractorsearcher} onChange={(e)=>searchByContractor(e)}/>
         {/* <TextField style={{"marginTop": "12px"}} label="بحث باسم المقاول " onChange={searchByContractor}/> */}
+        <div>
+        <Button onClick={handleExportToExcel} variant="contained" color="info">Excel File</Button>  
+
+        <Button onClick={()=>setSearchEngineModal(true)} variant="contained" color="warning">search engine</Button>  
+
+</div>
+
         </Stack>
-      <Table striped="columns"  style={{width:"1000px"}} >
+      <Table striped="columns"  >
           <thead>
             <tr>
             
@@ -227,23 +393,11 @@ type="date" name="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:e
 
 
         </Table>
-        <Modal
-        open={statePreviewImage}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          صورة الاذن رقم {receiptno}
-          </Typography>
-          <img   style={style} src={cloudinaryImage} />
-        </Box>
-      </Modal>
+  
+
     <div>
     <Paginat  startPage={startpage} size={searchedData.length} Setter={handleChange} color="secondary"/>
     </div>
-  
 
 </div>
 

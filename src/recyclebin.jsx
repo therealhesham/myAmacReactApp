@@ -15,7 +15,7 @@ const fetcher = async()=>{
         
         const details = jwtDecode(getToken)
         
-        await axios.get('https://amaccompany.onrender.com/recyclebin',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setData(e.data) )
+        await axios.get(process.env.REACT_APP_API_URL+'/recyclebin',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setData(e.data) )
         }
         else if (!localStorage.getItem("token")){
       navigate("/login")

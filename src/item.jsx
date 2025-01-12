@@ -16,7 +16,7 @@ const [ array,setArray]=useState([]);
 useEffect(()=>{
 (async function getData(){
     
- const data = await axios.get(`https://amaccompany.onrender.com/find/${name}/store/${store}`).then(e=> e.data == "not authenticated" ? navigate("/login"):e.data)
+ const data = await axios.get(`${process.env.REACT_APP_API_URL}/find/${name}/store/${store}`).then(e=> e.data == "not authenticated" ? navigate("/login"):e.data)
 const sortedData = sort(data).desc(u=>u.date)
 setArray(sortedData)
 

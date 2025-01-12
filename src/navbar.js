@@ -56,7 +56,7 @@ function Logout(){
 useEffect( ()=>{
   // const 
   // if(ref.current == 0){
-   axios.get("https://amaccompany.onrender.com/falserequests",{withCredentials:true}).then((e)=> e.data == "deleted token"  ?
+   axios.get(process.env.REACT_APP_API_URL+"/falserequests",{withCredentials:true}).then((e)=> e.data == "deleted token"  ?
    
  Logout(): 
     setData(e.data) )

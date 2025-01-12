@@ -31,7 +31,7 @@ if (!token) return navigate("/login")
 
 
 // if (ref.current < 1){
-axios.get("https://amaccompany.onrender.com/requests",{withCredentials:true,
+axios.get(process.env.REACT_APP_API_URL+"/requests",{withCredentials:true,
 headers: {
   'Content-Type': 'application/json'
 }
@@ -55,7 +55,7 @@ setFilteredfalse(data.filter(e=> e.isOk != true))
 
 },[])
 const setter = async (id)=>{
-await axios.post("https://amaccompany.onrender.com/setter",{id:id},{withCredentials:true}).then(e=>console.log("deleted"))
+await axios.post(process.env.REACT_APP_API_URL+"/setter",{id:id},{withCredentials:true}).then(e=>console.log("deleted"))
 
 }
   return (

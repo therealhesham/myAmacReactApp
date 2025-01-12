@@ -32,28 +32,28 @@ const [factory,setFactory]=useState("")
 async function contractorHandler(){
 
 
-    await axios.post("https://amaccompany.onrender.com/namesofcontractors",{name:contractorName},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
+    await axios.post(process.env.REACT_APP_API_URL+"/namesofcontractors",{name:contractorName},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
 
 }
 
 async function placeHandler(){
 
 
-    await axios.post("https://amaccompany.onrender.com/listofplaces",{name:place},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
+    await axios.post(process.env.REACT_APP_API_URL+"/listofplaces",{name:place},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
 
 }
 
 async function storeHandler(){
 
 
-    await axios.post("https://amaccompany.onrender.com/namesofstores",{name:store},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
+    await axios.post(process.env.REACT_APP_API_URL+"/namesofstores",{name:store},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
 
 }
 
 async function factoryHandler(){
 
 
-    await axios.post("https://amaccompany.onrender.com/listoffactories",{name:factory},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
+    await axios.post(process.env.REACT_APP_API_URL+"/listoffactories",{name:factory},{withCredentials:true}).then((e)=>e.data?alert("تم اضافة بيانات"):"حطأ في التسجيل").catch(e=>console.log(e))
 
 }
 

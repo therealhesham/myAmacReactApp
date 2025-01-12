@@ -57,12 +57,12 @@ const [uploadFile, setUploadFile] = useState("");
 const getSpecificData =(e)   =>{
     // alert(destination)
 e.preventDefault()
-    axios.post("https://amaccompany.onrender.com/specificdata",{store:destination},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    axios.post(process.env.REACT_APP_API_URL+"/specificdata",{store:destination},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
  }
 const PostHandler=async ()=>{
     if (!contractor ||  !destination || !quantity || !type || !items ) return setExistense("رجاء ملىء البيانات")
-await axios.post("https://amaccompany.onrender.com/refund",
+await axios.post(process.env.REACT_APP_API_URL+"/refund",
 {receiptno:receiptno,contractor:contractor,destination:destination,items:items,date:date,file:cloudinaryImage,
     quantity:quantity,type:type},{withCredentials:true}).then(e=>{
         e.data == "error" ? setExistense("خطأ في التسجيل ... المهام غير متاحة بالمخزن") : setDone("تم تسجيل البيانات بنجاح")})

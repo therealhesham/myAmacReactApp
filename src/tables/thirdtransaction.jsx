@@ -28,7 +28,7 @@ const [uploadFile, setUploadFile] = useState("");
 
 useEffect(()=>{
   
-    axios.get('https://amaccompany.onrender.com/getthirdtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
+    axios.get(process.env.REACT_APP_API_URL+'/getthirdtransactions',{withCredentials:true}).then((e) => e.data == "not authenticated" ?navigate("/login") :setSearcher(_.reverse(e.data)) & setData(_.reverse(e.data)) )
 }
     ,[deletesss])
     // console.log(ref.current);
@@ -51,7 +51,7 @@ setPage(1)
     }
 
     const Delet=async(e)=>{
-      await axios.get('https://amaccompany.onrender.com/deletethirdtransaction/'+e,{withCredentials:true}).then((e) => e.date  ==="deleted" ?setDeletess("newData"): console.log(e.data))
+      await axios.get(process.env.REACT_APP_API_URL+'/deletethirdtransaction/'+e,{withCredentials:true}).then((e) => e.date  ==="deleted" ?setDeletess("newData"): console.log(e.data))
 
 
     }
@@ -60,7 +60,7 @@ setPage(1)
   <div>
         {/* <App/> */}
         <TextField style={{"marginTop": "12px"}} label="Search" onChange={Search}/>
-      <Table striped="columns"  style={{width:"1000px"}} >
+      <Table striped="columns"  >
           <thead>
             <tr>
    

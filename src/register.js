@@ -50,9 +50,9 @@ const fd = new FormData()
   fd.append("image",selectedFile)
 // form.append("image",selectedFile)
 // console.log(fd)
-axios.post("https://amaccompany.onrender.com/file",fd,{withCredentials:true}).then(e=>setUrl(e.data))
+axios.post(process.env.REACT_APP_API_URL+"/file",fd,{withCredentials:true}).then(e=>setUrl(e.data))
 
-axios.post("https://amaccompany.onrender.com/register",{username:username,
+axios.post(process.env.REACT_APP_API_URL+"/register",{username:username,
   firstName:firstName,
     secondName:secondName,
     position:position,

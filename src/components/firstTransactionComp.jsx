@@ -101,7 +101,7 @@ const postHandler =async (e)=>{
     const details = jwtDecode(find)
     
     if (!from ||  !type || !quantity || !destination || !item || !receipt ) return setExistense("رجاء ملىء البيانات")
-    await axios.post("https://amaccompany.onrender.com/transactionexport",
+    await axios.post(process.env.REACT_APP_API_URL+"/transactionexport",
     {source:from,destination:destination,unit:type,quantity:quantity,items:item,file:cloudinaryImage,receiptno:receipt,user:details.username,date:date},{withCredentials:true}).
     then(e=>{
         e.data == "error" ? ClearError() : Clear()})
@@ -124,7 +124,7 @@ const postHandler =async (e)=>{
     const getSpecificData =async(e)   =>{
     // alert(destination)
 
-    await axios.post("https://amaccompany.onrender.com/specificdata",{store:destination},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
+    await axios.post(process.env.REACT_APP_API_URL+"/specificdata",{store:destination},{withCredentials:true}).then((e)=>setToGetSpecificITems(e.data)).catch(e=>console.log(e))
     // console.log(destination);
  }
 return(

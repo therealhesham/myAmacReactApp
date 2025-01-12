@@ -82,23 +82,23 @@ const [contractorNames,setContractors]=useState([])
 
 
  async function getDatas(){
-  await axios.get("https://amaccompany.onrender.com/listoffactories",{withCredentials:true}).then((e) => 
+  await axios.get(process.env.REACT_APP_API_URL+"/listoffactories",{withCredentials:true}).then((e) => 
   setFactories(e.data)
   )
 
-  await axios.get("https://amaccompany.onrender.com/preview",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+  await axios.get(process.env.REACT_APP_API_URL+"/preview",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setData(_.reverse(e.data))).catch(error=>console.log(error))
 // alert(localStorage.getItem("firstname"))
 
 
-await axios.get("https://amaccompany.onrender.com/listofnames",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+await axios.get(process.env.REACT_APP_API_URL+"/listofnames",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setContractors(_.reverse(e.data))).catch(error=>console.log(error))
 
 
-await axios.get("https://amaccompany.onrender.com/listofplaces",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+await axios.get(process.env.REACT_APP_API_URL+"/listofplaces",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setPlaces(_.reverse(e.data))).catch(error=>console.log(error))
 
-await axios.get("https://amaccompany.onrender.com/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
+await axios.get(process.env.REACT_APP_API_URL+"/listofstores",{withCredentials:true}).then(e=> e.data == "not authenticated" ? navigate("/login"):
 setStoreNames(_.reverse(e.data))).catch(error=>console.log(error))
 
    
